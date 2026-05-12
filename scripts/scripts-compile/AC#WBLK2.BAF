@@ -1,0 +1,35 @@
+IF
+	Range([PC],12)
+	Global("Jump","LOCALS",1)
+	See([PC])
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		SetGlobal("Jump","LOCALS",2)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	GlobalGT("AC#W70Blackguard","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+IF
+	Global("Jump","LOCALS",0)
+	GlobalGT("AC#W_Rose_Abyss","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Jump","LOCALS",1)
+		JumpToPoint([1674.255])
+		Face(S)
+END
+
+IF
+	Global("Jump","LOCALS",0)
+THEN
+	RESPONSE #100
+		RandomWalk()
+END
+

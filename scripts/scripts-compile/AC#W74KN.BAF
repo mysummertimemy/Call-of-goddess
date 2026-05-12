@@ -1,0 +1,55 @@
+IF
+    GlobalGT("AC#W74WR","GLOBAL",5)
+    Global("WrathCheck","AC#W74",4)
+THEN
+    RESPONSE #100
+        SetGlobal("WrathCheck","AC#W74",5)
+        SetGlobal("AC#W74WR","GLOBAL",0)
+        StartDialogueNoSet(LastSeenBy(Myself))
+END
+
+IF
+    GlobalGT("AC#W74WR","GLOBAL",6)
+    Global("WrathCheck","AC#W74",2)
+THEN
+    RESPONSE #100
+        SetGlobal("WrathCheck","AC#W74",3)
+        SetGlobal("AC#W74WR","GLOBAL",0)
+        StartDialogueNoSet(LastSeenBy(Myself))
+END
+
+IF
+    GlobalGT("AC#W74WR","GLOBAL",5)
+    Global("WrathCheck","AC#W74",0)
+THEN
+    RESPONSE #100
+        SetGlobal("WrathCheck","AC#W74",1)
+        SetGlobal("AC#W74WR","GLOBAL",0)
+        StartDialogueNoSet(LastSeenBy(Myself))
+END
+
+IF
+    GlobalLT("WrathCheck","AC#W74",10)
+    HP(Myself,1)
+THEN
+    RESPONSE #100
+        ReallyForceSpellRES("AC#W74K",Myself)  // No such index
+        SetGlobal("AC#W74WR","GLOBAL",0)
+END
+
+IF
+    AttackedBy([GOODCUTOFF],DEFAULT)
+    !Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+IF
+    ActionListEmpty()
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+

@@ -1,0 +1,10 @@
+IF
+	IsOverMe([ANYONE])
+	Global("Warning","AC#W51",0)
+THEN
+	RESPONSE #100
+        SetGlobal("Warning","AC#W51",1)
+		DisplayString(Myself,@51000)
+END
+
+

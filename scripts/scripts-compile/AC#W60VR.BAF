@@ -1,0 +1,45 @@
+IF
+	GlobalGT("BaatezuHead","AC#W60",0)
+THEN
+	RESPONSE #100
+		Kill(Myself)
+END
+
+IF
+	See([PC])
+	!See("AC#WABBK")  // Abishai
+	NumDeadGT("AC#WABBK",3)  // Abishai
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPDIMNDR",Myself)
+		Wait(3)
+		PlaySound("PORTAL2")
+		DestroySelf()
+END
+
+IF
+	See([0.0.0.IMP])
+THEN
+	RESPONSE #100
+		Attack([0.0.0.IMP])
+END
+
+IF
+	Delay(6)
+	See([PC])
+	!See([ENEMY]) 
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPDIMNDR",Myself)
+		Wait(3)
+		PlaySound("PORTAL2")
+		DestroySelf()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

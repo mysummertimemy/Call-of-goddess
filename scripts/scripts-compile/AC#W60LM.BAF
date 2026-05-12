@@ -1,0 +1,21 @@
+IF
+	GlobalGT("BaatezuHead","AC#W60",0)
+THEN
+	RESPONSE #100
+		Kill(Myself)
+END
+
+IF
+	See([0.0.0.TANARI])
+THEN
+	RESPONSE #100
+		AttackReevaluate([0.0.0.TANARI],30)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

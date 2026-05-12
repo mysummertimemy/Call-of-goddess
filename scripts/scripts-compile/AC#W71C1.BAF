@@ -1,0 +1,21 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W71S1")  // Wyliniesh - Wyliniesh, der Succubus
+		FadeToColor([30.0],0)
+		Wait(3)
+		Rest()
+		ActionOverride(Player1,JumpToPoint([622.650]))
+		ActionOverride(Player2,Rest())
+		ActionOverride(Player3,Rest())
+		ActionOverride(Player4,Rest())
+		ActionOverride(Player5,Rest())
+		ActionOverride(Player6,Rest())
+		ApplySpellRES("AC#W71D",Player1)  // Entzug von Lebenskraft
+		FadeFromColor([30.0],0)
+		Wait(1)
+		SetGlobal("Rested","AC#W71",1)
+		ActionOverride("AC#W71S1",StartDialogueNoSet(Player1))
+END
+

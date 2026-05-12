@@ -1,0 +1,47 @@
+IF
+	Die()
+THEN
+	RESPONSE #100
+		ReallyForceSpellDead(Myself,RED_HOLY_MIGHT)  // SPWI985.SPL (No such index)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("resetprep","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("resetprep","LOCALS",THREE_MINUTES)
+		ApplySpell(Myself,WIZARD_FIRE_SHIELD_RED)  // SPWI418.SPL (Feuerschild (Rot))
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!Range(LastSeenBy(Myself),10)
+	!GlobalTimerNotExpired("renewflame","LOCALS")
+THEN
+	RESPONSE #15
+		SetGlobalTimer("renewflame","LOCALS",4)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_FIREBALL)  // SPWI304.SPL (Feuerball)
+		Continue()
+	RESPONSE #40
+		SetGlobalTimer("renewflame","LOCALS",4)
+		SpellNoDec(NearestEnemyOf(Myself),FLAMING_SKULL_BOLT)  // SPIN539.SPL (Magmakugel)
+		Continue()
+	RESPONSE #50
+		SetGlobalTimer("renewflame","LOCALS",4)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_AGANNAZAR_SCORCHER)  // SPWI217.SPL (Agannazars Hexerei)
+		Continue()
+	RESPONSE #100
+		SetGlobalTimer("renewflame","LOCALS",4)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_BURNING_HANDS)  // SPWI103.SPL (Brennende Hände)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

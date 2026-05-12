@@ -1,0 +1,7 @@
+IF
+	IsOverMe([PC])
+THEN
+	RESPONSE #100
+		ForceSpell(LastTrigger,ACID_DAMAGE_1)  // SPIN994.SPL (No such index)
+END
+

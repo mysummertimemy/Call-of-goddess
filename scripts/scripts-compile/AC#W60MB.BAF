@@ -1,0 +1,23 @@
+IF
+	GlobalGT("BaatezuHead","AC#W60",0)
+THEN
+	RESPONSE #100
+		Kill(Myself)
+END
+
+IF
+	Global("AdjustHP","LOCALS",0)
+	DifficultyLT(NORMAL)
+THEN
+	RESPONSE #100
+		ApplyDamagePercent(Myself,50,CRUSHING)
+		SetGlobal("AdjustHP","LOCALS",1)
+END
+
+IF
+	See([0.0.0.TANARI])
+THEN
+	RESPONSE #100
+		AttackReevaluate([0.0.0.TANARI],30)
+END
+

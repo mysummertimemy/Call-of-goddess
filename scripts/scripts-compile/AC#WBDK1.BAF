@@ -1,0 +1,26 @@
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	Global("firstUse","LOCALS",0)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#WBDK",LastSeenBy(Myself))
+		SetGlobal("firstUse","LOCALS",1)
+END
+
+IF
+	Delay(12)
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#WBDK",LastSeenBy(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),5)
+END
+

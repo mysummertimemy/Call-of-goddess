@@ -1,0 +1,28 @@
+IF
+	Die()
+THEN
+	RESPONSE #100
+		ReallyForceSpellDeadRES("AC#MANE",Myself)  // Mane: Säuredampf
+END
+
+IF
+	GlobalGT("BaatezuHead","AC#W60",0)
+THEN
+	RESPONSE #100
+		Kill(Myself)
+END
+
+IF
+	See([0.0.0.IMP])
+THEN
+	RESPONSE #100
+		Attack([0.0.0.IMP])
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

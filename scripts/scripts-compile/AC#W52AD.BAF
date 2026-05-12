@@ -1,0 +1,48 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	!PartyHasItem("AC#W60AC")  // Mastery Orb
+	!PartyHasItem("AC#W52H2")  // Helm of Acid Resistance (full)
+	Global("Acid_door","AC#W52",0)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@52004)  
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Acid_door","AC#W52",0)
+	PartyHasItem("AC#W52H2")  // Helm of Acid Resistance (full)
+THEN
+	RESPONSE #100
+		SetGlobal("Acid_door","AC#W52",1)
+		TakePartyItem("AC#W52H2")  // Helm of Acid Resistance (full)
+		DestroyItem("AC#W52H2")  // Helm of Acid Resistance (full)
+		GiveItemCreate("AC#W52H3",LastTrigger,0,0,0)  // Helm of Acid Resistance
+		DisplayStringNoName(Myself,@52002)  // You pour the acid out of the helmet over the metal, which immediately begins to dissolve.
+		OpenDoor("DOOR01")
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Acid_door","AC#W52",0)
+	PartyHasItem("AC#W60AC")  // Mastery Orb
+THEN
+	RESPONSE #100
+		SetGlobal("Acid_door","AC#W52",1)
+		TakePartyItemNum("AC#W60AC",6)  // Mastery Orb
+		DestroyItem("AC#W60AC")  // Mastery Orb
+		DisplayStringNoName(Myself,@52003) 
+		OpenDoor("DOOR01")
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // You are too far away to use that.
+END
+

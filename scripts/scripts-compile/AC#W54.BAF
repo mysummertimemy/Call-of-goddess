@@ -1,0 +1,24 @@
+IF
+	Global("AC#W_EnteredAcidSwamp","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_EnteredAcidSwamp","GLOBAL",1)
+END
+
+IF
+	SpellCast([ANYONE],WIZARD_FREEDOM)  // SPWI917.SPL (Freedom)
+	Global("FreeDragon","AC#W54",0)
+THEN
+	RESPONSE #100
+		SetGlobal("FreeDragon","AC#W54",1)
+END
+
+IF
+    Global("HezrouSpawn","AC#W54",0)
+	DifficultyGT(EASIEST)
+THEN
+    RESPONSE #100
+        CreateCreature("AC#WHEZ1",[2934.1415],NW)  // Hezrou
+        SetGlobal("HezrouSpawn","AC#W54",1)
+END
+

@@ -1,0 +1,211 @@
+IF
+	Global("AC#W_test_pride","GLOBAL",10)
+	Global("pride_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("pride_portal","AC#W70",1)
+		TriggerActivation("TRAC#W75",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#W_test_greed","GLOBAL",10)
+	Global("greed_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("greed_portal","AC#W70",1)
+		TriggerActivation("TRAC#W76",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#W_test_lust","GLOBAL",10)
+	Global("lust_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("lust_portal","AC#W70",1)
+		TriggerActivation("TRAC#W71",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#W_test_envy","GLOBAL",10)
+	Global("envy_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("envy_portal","AC#W70",1)
+		TriggerActivation("TRAC#W73",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#W_test_gluttony","GLOBAL",10)
+	Global("gluttony_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("gluttony_portal","AC#W70",1)
+		TriggerActivation("TRAC#W72",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#W_test_wrath","GLOBAL",10)
+	Global("wrath_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("wrath_portal","AC#W70",1)
+		TriggerActivation("TRAC#W74",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#W_test_sloth","GLOBAL",10)
+	Global("sloth_portal","AC#W70",0)
+THEN
+	RESPONSE #100
+		FadeToColor([1.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPSTRENH",Player1)
+		CreateVisualEffectObject("SPSTRENH",Player2)
+		CreateVisualEffectObject("SPSTRENH",Player3)
+		CreateVisualEffectObject("SPSTRENH",Player4)
+		CreateVisualEffectObject("SPSTRENH",Player5)
+		CreateVisualEffectObject("SPSTRENH",Player6)
+		SmallWait(7)
+		SetGlobal("sloth_portal","AC#W70",1)
+		TriggerActivation("TRAC#W77",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("Prep","AC#W70",0)
+THEN
+	RESPONSE #100
+		TriggerActivation("Travel_center",FALSE) 
+		SetGlobal("Prep","AC#W70",1)
+END
+
+IF
+	PartyHasItem("AC#WABRS")  // Rose des Abgrunds
+	Global("Has_Rose","AC#W70",0)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@440070)
+		AddJournalEntry(@440071,QUEST) 
+		TriggerActivation("Travel_center",TRUE) 
+		SetGlobal("Has_Rose","AC#W70",1)
+END
+
+IF
+	PartyHasItem("AC#WABRS")  // Rose of the Abyss
+	Global("AC#W70Blackguard","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W70Blackguard","GLOBAL",1)
+		CreateCreature("AC#WBLKG",[1659.541],SE)  // Morloth Darkblade
+END
+
+IF
+	Global("AC#W70Blackguard","GLOBAL",2)
+	Global("SpawnMaurezhi","AC#W70",0)
+	DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnMaurezhi","AC#W70",1)
+		CreateCreatureObjectEffect("AC#WMAUR","SPFLESHS",Player1)  // Maurezhi
+		CreateCreatureObjectEffect("AC#WMAUR","SPFLESHS",Player2)  // Maurezhi
+END
+
+IF
+	Global("AC#W70Blackguard","GLOBAL",2)
+	Global("SpawnMaurezhi","AC#W70",0)
+	DifficultyGT(EASY)
+	NumInParty(6)
+	//NumInPartyAlive(6)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnMaurezhi","AC#W70",1)
+		CreateCreatureObjectEffect("AC#WMAUR","SPFLESHS",Player5Fill)  // Maurezhi
+		CreateCreatureObjectEffect("AC#WMAUR","SPFLESHS",Player6Fill)  // Maurezhi
+END
+
+IF
+	Global("AC#W70Blackguard","GLOBAL",2)
+	Global("SpawnMaurezhi","AC#W70",0)
+	DifficultyGT(EASY)
+	NumInParty(5)
+	//NumInPartyAlive(6)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnMaurezhi","AC#W70",1)
+		CreateCreatureObjectEffect("AC#WMAUR","SPFLESHS",Player5Fill)  // Maurezhi
+END
+
+IF
+	Global("AC#W70Blackguard","GLOBAL",2)
+	Global("SpawnMaurezhi","AC#W70",0)
+	DifficultyGT(EASY)
+	NumInParty(4)
+	//NumInPartyAlive(6)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnMaurezhi","AC#W70",1)
+		CreateCreatureObjectEffect("AC#WMAUR","SPFLESHS",Player4Fill)  // Maurezhi
+END
+
+
+

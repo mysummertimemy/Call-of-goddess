@@ -1,0 +1,28 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		ClearAllActions()
+		FadeToColor([20.0],0)
+		JumpToPoint([2018.823])
+		ActionOverride(Player2,JumpToPoint([2167.828]))
+		ActionOverride(Player3,JumpToPoint([2059.927]))
+		ActionOverride(Player4,JumpToPoint([2058.977]))
+		ActionOverride(Player5,JumpToPoint([2175.971]))
+		ActionOverride(Player6,JumpToPoint([2165.1013]))
+		ActionOverride("acwauke1",JumpToPoint([2110.963]))
+		Face(10)
+		ActionOverride(Player2,Face(10))
+		ActionOverride(Player3,Face(10))
+		ActionOverride(Player4,Face(10))
+		ActionOverride(Player5,Face(10))
+		ActionOverride(Player6,Face(10))
+		ActionOverride("acwauke1",Face(10))
+		MoveViewPoint([2018.823],INSTANT)
+		FadeFromColor([20.0],0)
+		ActionOverride("AC#W80MA",StartDialogueNoSet(Player1))
+END
+
+
+

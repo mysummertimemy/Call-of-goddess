@@ -1,0 +1,117 @@
+IF
+	OR(3)
+		SpellCast([PC],WIZARD_TRUE_SIGHT)  // SPWI609.SPL (Wahrer Blick)
+		SpellCastPriest([PC],CLERIC_TRUE_SIGHT)  // SPPR505.SPL (Wahrer Blick)
+		SpellCastInnate([PC],INQUIS_TRUE_SIGHT)  // SPCL232.SPL (Wahrer Blick)
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WINP",Myself)  // Unsichtbarkeit aufheben
+		Enemy()
+END
+
+IF
+	Global("Invisibility","LOCALS",0)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WBIN",Myself)  // Unsichtbarkeit
+		SetGlobal("Invisibility","LOCALS",1)
+END
+
+IF
+	Allegiance(Myself,NEUTRAL)
+	!StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	Global("Invisibility","LOCALS",1)
+	Allegiance(Myself,NEUTRAL)
+	BecameVisible()
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	Global("Babau_Ambush","AC#W80",1)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf(Myself))
+		Continue()
+END
+
+IF
+	Delay(6)
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_RAY_OF_ENFEEBLEMENT)  // SPWI221.SPL (Strahl der Schwächung)
+END
+
+IF
+	See(StrongestOf)
+	GlobalLT("Invisibility","LOCALS",3)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	Allegiance(Myself,ENEMY)
+	Delay(6)
+THEN
+	RESPONSE #100
+		IncrementGlobal("Invisibility","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_INVISIBILITY)  // SPWI206.SPL (Unsichtbarkeit)
+		MoveToObject(StrongestOf)
+		AttackOneRound(StrongestOf)
+END
+
+IF
+	Delay(12)
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+THEN
+	RESPONSE #50
+		ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Magie bannen)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Fear","LOCALS",0)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+THEN
+	RESPONSE #50
+		ReallyForceSpell(NearestEnemyOf(Myself),DEMON_FEAR)  // SPIN890.SPL (Dämonenfurcht)
+		SetGlobal("Fear","LOCALS",1)
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		Attack(LastAttackerOf(Myself))
+END
+

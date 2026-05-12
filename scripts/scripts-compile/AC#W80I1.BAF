@@ -1,0 +1,18 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@80001)
+		TriggerActivation("Info_Desk",FALSE)
+		ContainerEnable("Container_Heart",TRUE)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+

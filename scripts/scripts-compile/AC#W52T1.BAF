@@ -1,0 +1,63 @@
+IF
+	Opened([ANYONE])
+	Global("HelmInfo","AC#W52",0)
+	PartyHasItemIdentified("AC#W52H1")
+	!PartyHasItem("AC#WCLYD")  // Clyddis' drawing
+THEN
+	RESPONSE #100
+		SetGlobal("HelmInfo","AC#W52",1)
+		DisplayString(Myself,@52005)
+END
+
+IF
+	Opened([ANYONE])
+	Global("AcidInfo","AC#W52",0)
+	Global("HelmInfo","AC#W52",0)
+	!PartyHasItem("AC#WCLYD")  // Clyddis' drawing
+THEN
+	RESPONSE #100
+		SetGlobal("AcidInfo","AC#W52",1)
+		DisplayString(Myself,@52005)
+END
+
+IF
+	Contains("AC#W52H1",Myself)  // Helm of Acid Resistance
+	Global("HelmFilled","AC#W52",0)
+	!PartyHasItem("AC#WCLYD")  // Clyddis' drawing
+THEN
+	RESPONSE #100
+		SetGlobal("HelmFilled","AC#W52",1)
+		CreateVisualEffect("SHACID2",[1815.847])
+		DestroyItem("AC#W60AC") 
+		DestroyItem("AC#W52H1")  // Helm of Acid Resistance
+		CreateItem("AC#W52H2",0,0,0)   // Helm of Acid Resistance (full)
+		DisplayString(Myself,@52001)  // You pour a little of the concentrated acid into the helmet.
+END
+
+IF
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,ACID)
+		CreateVisualEffectObject("SHACID2",LastTrigger)
+END
+
+IF
+	Contains("AC#W60AC",Myself)  // Concentrated acid
+	PartyHasItem("AC#WCLYD")  // Clyddis' drawing
+THEN
+	RESPONSE #100
+		DestroyItem("AC#W60AC")  // Concentrated acid
+END
+
+IF
+	!Contains("AC#W60AC",Myself)  // Concentrated acid
+	OpenState("DOOR01",FALSE)
+	!PartyHasItem("AC#WCLYD")  // Clyddis' drawing
+THEN
+	RESPONSE #100
+		Wait(2)
+		CreateVisualEffect("SHACID2",[1815.847])
+		CreateItem("AC#W60AC",0,0,0)  // Concentrated acid
+END
+

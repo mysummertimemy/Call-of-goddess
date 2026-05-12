@@ -1,0 +1,10 @@
+IF
+	RandomNum(5,1)
+THEN
+	RESPONSE #100
+		Face(5)
+		Swing()
+		Wait(2)
+		NoAction()
+END
+

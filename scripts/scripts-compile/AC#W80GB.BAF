@@ -1,0 +1,199 @@
+IF
+	Allegiance(Myself,ENEMY)
+	OR(7)
+		Gender(NearestEnemyOf(Myself),ILLUSIONARY)
+		StateCheck(NearestEnemyOf(Myself),STATE_INVISIBLE)
+		StateCheck(NearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+		StateCheck(SecondNearestEnemyOf(Myself),STATE_INVISIBLE)
+		StateCheck(SecondNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+		StateCheck(ThirdNearestEnemyOf(Myself),STATE_INVISIBLE)
+		StateCheck(ThirdNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+	!GlobalTimerNotExpired("GlabrezuSight","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("GlabrezuSight","LOCALS",TEN_ROUNDS)
+		ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Mirrorimage","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Mirrorimage","LOCALS",1)
+		ForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+	Global("Teleport","LOCALS",2)
+	Global("Charmed","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("Charmed","LOCALS",3)
+		ReallyForceSpell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+END
+
+IF
+	See([PC])
+	Global("Prep","LOCALS",1)
+	Global("Charmed","LOCALS",0)
+THEN
+	RESPONSE #100
+		AttackOneRound(LastSeenBy(Myself))
+		SetGlobal("Charmed","LOCALS",1)
+END
+
+IF
+	See([PC])
+	!StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+	Global("Prep","LOCALS",1)
+	Global("Charmed","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Charmed","LOCALS",2)
+		ReallyForceSpell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Teleport","LOCALS",1)
+THEN
+	RESPONSE #100
+		AttackOneRound(LastSeenBy(Myself))
+		SetGlobal("Teleport","LOCALS",2)
+END
+
+IF
+	OR(3)
+		See(NearestEnemyOfType([0.0.0.FIGHTER_ALL]))
+		See(NearestEnemyOfType([0.0.0.PALADIN_ALL]))
+		See(NearestEnemyOfType([0.0.0.RANGER_ALL]))
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_POWER_WORD_STUN)  // SPWI715.SPL (Power Word, Stun)
+		SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_POWER_WORD_STUN)  // SPWI715.SPL (Power Word, Stun)
+		SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Prep","LOCALS",2)
+THEN
+	RESPONSE #100
+		AttackOneRound(LastSeenBy(Myself))
+		SetGlobal("Prep","LOCALS",3)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Prep","LOCALS",4)
+THEN
+	RESPONSE #100
+		AttackOneRound(LastSeenBy(Myself))
+		SetGlobal("Prep","LOCALS",5)
+END
+
+IF
+	OR(2)
+		See([0.0.0.CLERIC_ALL])
+		See([0.0.0.MAGE_ALL])
+	Global("Prep","LOCALS",3)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+		SetGlobal("Prep","LOCALS",4)
+END
+
+IF
+	OR(2)
+		See([0.0.0.CLERIC_ALL])
+		See([0.0.0.MAGE_ALL])
+	Global("Prep","LOCALS",5)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+		SetGlobal("Prep","LOCALS",6)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+	Global("Prep","LOCALS",5)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+		SetGlobal("Prep","LOCALS",6)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Prep","LOCALS",1)
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+	!StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+	OR(4)
+		StateCheck(LastSeenBy(Myself),STATE_HASTED)
+		StateCheck(LastSeenBy(Myself),STATE_BLESS)
+		StateCheck(LastSeenBy(Myself),STATE_DRAWUPONHOLYMIGHT)
+		StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+		SetGlobal("Prep","LOCALS",2)
+END
+
+IF
+	See(ThirdNearestEnemyOf(Myself))
+	Global("Prep","LOCALS",1)
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+	!StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+	OR(4)
+		StateCheck(LastSeenBy(Myself),STATE_HASTED)
+		StateCheck(LastSeenBy(Myself),STATE_BLESS)
+		StateCheck(LastSeenBy(Myself),STATE_DRAWUPONHOLYMIGHT)
+		StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+		SetGlobal("Prep","LOCALS",2)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Prep","LOCALS",1)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+		SetGlobal("Prep","LOCALS",2)
+END
+
+IF
+	See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+		AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+	See([ANYONE])
+	Global("Prep","LOCALS",1)
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),30)
+END
+

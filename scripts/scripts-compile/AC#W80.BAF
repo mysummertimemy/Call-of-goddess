@@ -1,0 +1,268 @@
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("WaukeenFollows","AC#W80",0)
+	InMyArea(Player1)
+	!InMyArea("acwauke1")  // Waukeen
+	!Dead("acwauke1")  // Waukeen
+THEN
+	RESPONSE #100
+		SetGlobal("WaukeenFollows","AC#W80",1)
+		MoveGlobalObject("acwauke1",Player1)  // Waukeen
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("WaukeenFollows","AC#W80",1)
+	InMyArea(Player1)
+	!InMyArea("acwauke1")  // Waukeen
+	!Dead("acwauke1")  // Waukeen
+THEN
+	RESPONSE #100
+		SetGlobal("WaukeenFollows","AC#W80",0)
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("AC#W80MarettaSpawn","GLOBAL",0)
+	Global("AC#W_AttackedMaretta","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W80MarettaSpawn","GLOBAL",1)
+		CreateCreature("AC#W80MA",[1929.788],12)  // Maretta
+		CreateCreature("AC#WALU8",[1844.777],12)  // Lanzengarde
+		CreateCreature("AC#WALU8",[1921.884],12)  // Lanzengarde
+		CreateCreature("AC#W80GB",[1723.787],12)  // Glabrezu
+END
+
+IF
+    Global("SpawnMore","AC#W80",0)
+    GlobalGT("AC#W80MarettaSpawn","GLOBAL",0)
+    DifficultyGT(EASY)
+THEN
+    RESPONSE #100
+        SetGlobal("SpawnMore","AC#W80",1)
+        CreateCreature("AC#WHEZ8",[1723.536],SE)  // Hezrou
+        CreateCreature("AC#WMEZ8",[1682.846],E)  // Mezzoloth
+END
+
+IF
+    Global("SpawnMore","AC#W80",1)
+    LevelPartyGT(13)
+    DifficultyGT(EASY)
+THEN
+    RESPONSE #100
+        SetGlobal("SpawnMore","AC#W80",2)
+        CreateCreature("AC#WHEZ8",[1716.888],E)  // Hezrou
+        CreateCreature("AC#WMEZ8",[1940.605],S)  // Mezzoloth
+END
+
+IF
+	Global("EnteredArea","AC#W80",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredArea","AC#W80",1)
+		TriggerActivation("AR9717_Door1",FALSE)
+		TriggerActivation("AR9717_Door4",FALSE)
+		TriggerActivation("AR9717_Door6",FALSE)
+		TriggerActivation("AR9717_Door11",FALSE)
+		ContainerEnable("Container_Heart",FALSE)
+END
+
+IF
+	Global("EnteredThruOvens","AC#W80",0)
+	Global("AC#W_AttackedMaretta","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredThruOvens","AC#W80",1)
+		EraseJournalEntry(@400020)
+		AddJournalEntry(@400021,QUEST)
+END
+
+IF
+	Global("EnteredAfterAttack","AC#W80",0)
+	GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredAfterAttack","AC#W80",1)
+		Unlock("Exit_door")
+		OpenDoor("Exit_door")
+		EraseJournalEntry(@400020)
+		AddJournalEntry(@400023,QUEST)
+END
+
+IF
+	Global("Babau_Ambush","AC#W80",0)
+	OpenState("AR9717_Door2",TRUE)
+	NumDead("AC#WBBAU",0)  // Babau
+THEN
+	RESPONSE #100
+		SetGlobal("Babau_Ambush","AC#W80",1)
+		DisplayString(Myself,14381)  // Falle zugeschnappt
+		CloseDoor("AR9717_Door2")
+		Lock("AR9717_Door2")
+END
+
+IF
+	Global("AC_Nasmaerae_Free","AC#W80",1)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("AC#W_Nasmaerae_Free","GLOBAL",ONE_ROUND)
+		SetGlobal("AC_Nasmaerae_Free","AC#W80",2)
+END
+
+IF
+	GlobalTimerExpired("AC#W_Nasmaerae_Free","GLOBAL")
+	Global("AC_Nasmaerae_Free","AC#W80",2)
+	Global("AC_Cell_Open","AC#W80",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Nasmaerae_Free","AC#W80",3)
+		ActionOverride("AC#WMRL1",StartDialogNoSet([PC]))
+END
+
+IF
+	Global("AC_Nasmaerae_Free","AC#W80",4)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("AC#W_Nasmaerae_Free","GLOBAL",ONE_ROUND)
+		SetGlobal("AC_Nasmaerae_Free","AC#W80",5)
+END
+
+IF
+	GlobalTimerExpired("AC#W_Nasmaerae_Free","GLOBAL")
+	Global("AC_Nasmaerae_Free","AC#W80",5)
+	Global("AC_Cell_Open","AC#W80",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Nasmaerae_Free","AC#W80",6)
+		ActionOverride("AC#WMRL1",StartDialogNoSet([PC]))
+END
+
+IF
+	Global("AC_Nasmaerae_Free","AC#W80",8)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		Wait(1)
+		ClearAllActions()
+		FadeToColor([20.0],0)
+		Wait(1)
+		MoveViewPoint([3508.996],INSTANT)
+		ActionOverride(Player1,JumpToPoint([3508.996]))
+		ActionOverride(Player2,JumpToPoint([3508.996]))
+		ActionOverride(Player3,JumpToPoint([3508.996]))
+		ActionOverride(Player4,JumpToPoint([3508.996]))
+		ActionOverride(Player5,JumpToPoint([3508.996]))
+		ActionOverride(Player6,JumpToPoint([3508.996]))
+		ActionOverride("AC#WMRL1",JumpToPoint([3568.1177]))
+		Wait(1)
+		FadeFromColor([20.0],0)
+		Wait(1)
+		SetGlobal("AC_Nasmaerae_Free","AC#W80",9)
+		ActionOverride("AC#WMRL1",StartDialogNoSet([PC]))
+		EndCutSceneMode()
+END
+
+IF
+	Global("AC_Waukeen_Ambush","AC#W80",1)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		Wait(1)
+		ClearAllActions()
+		FadeToColor([20.0],0)
+		Wait(1)
+		MoveViewPoint([3535.541],INSTANT)
+		ActionOverride(Player1,JumpToPoint([3475.616]))
+		ActionOverride(Player2,JumpToPoint([3438.629]))
+		ActionOverride(Player3,JumpToPoint([3438.629]))
+		ActionOverride(Player4,JumpToPoint([3438.629]))
+		ActionOverride(Player5,JumpToPoint([3438.629]))
+		ActionOverride(Player6,JumpToPoint([3438.629]))
+		Wait(1)
+		FadeFromColor([20.0],0)
+		Wait(1)
+		SetGlobal("AC_Waukeen_Ambush","AC#W80",2)
+		EndCutSceneMode()
+END
+
+IF
+	OpenState("Door17",FALSE)
+	Global("AC_Marilith_Reveal","AC#W80",2)
+	Global("AC_Cell_Open","AC#W80",0)
+THEN
+	RESPONSE #100
+		OpenDoor("Door17")
+		SetGlobal("AC_Cell_Open","AC#W80",1)
+END
+
+IF
+	Global("AC_Cell_Open","AC#W80",0)
+	OpenState("Door17",TRUE)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Cell_Open","AC#W80",1)
+		ActionOverride("AC#WMRL1",Dialog([PC]))
+END
+
+IF
+	Global("Player1","AC#W80",1)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		SetGlobal("Player1","AC#W80",2)
+		Wait(1)
+		ActionOverride(Player1,StartDialog("ACPlayer",Player1))
+END
+
+IF
+	Global("Learned_Grazzt_song","AC#W80",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Learned_Grazzt_song","AC#W80",2)
+		ActionOverride(Player1,DisplayStringHead(Myself,@80003))
+END
+
+IF
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",1)
+	OpenState("AR9717_Door19",TRUE)
+	Global("OpenVerinDoor","AC#W80",0)
+THEN
+	RESPONSE #100
+		CloseDoor("AR9717_Door19")
+		Lock("AR9717_Door19")
+		SetGlobal("OpenVerinDoor","AC#W80",1)
+END
+
+IF
+	OR(2)
+		Dead("AC#W#VE1")  // Verin
+		Global("AC#W_VerinFight","GLOBAL",10)
+	OpenState("AR9717_Door19",FALSE)
+	Global("OpenVerinDoor","AC#W80",1)
+THEN
+	RESPONSE #100
+		SetGlobal("OpenVerinDoor","AC#W80",2)
+		Unlock("AR9717_Door19")
+		OpenDoor("AR9717_Door19")
+END
+
+IF
+	Global("AC#W_Game_Over","GLOBAL",1)
+THEN
+	RESPONSE #100
+		//Wait(1)
+		SetGlobal("AC#W_Game_Over","GLOBAL",2)
+		TextScreen("AC#W80GO")
+		//Kill(Player1)
+		//Kill(Player2)
+		//Kill(Player3)
+		//Kill(Player4)
+		//Kill(Player5)
+		//Kill(Player6)
+		GameOver(@80004)
+END
+

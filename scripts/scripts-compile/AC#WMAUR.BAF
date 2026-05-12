@@ -1,0 +1,54 @@
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	RandomNum(2,1)
+	Global("Invisible","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Invisible","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Improved Invisibility)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!StateCheck(Myself,STATE_BLUR)
+	Global("Invisible","LOCALS",1)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,WIZARD_BLUR)  // SPWI201.SPL (Blur)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(CLERIC_CLOAK_OF_FEAR)  // SPPR416.SPL (Cloak of Fear)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	RandomNum(3,1)
+THEN
+	RESPONSE #100
+		Spell(Myself,CLERIC_CLOAK_OF_FEAR)  // SPPR416.SPL (Cloak of Fear)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+		Continue()
+END
+

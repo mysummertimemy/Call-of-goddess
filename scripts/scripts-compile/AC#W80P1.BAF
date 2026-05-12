@@ -1,0 +1,6 @@
+IF
+	Clicked([ANYONE])
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@80000)  
+END

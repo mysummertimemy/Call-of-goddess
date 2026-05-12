@@ -1,0 +1,19 @@
+IF
+	HPLT(Myself,2)
+	Global("Gulga_Change","AC#W72",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Gulga_Change","AC#W72",1)
+		CreateVisualEffectObject("AC#W72EX",Myself)
+		ForceSpellRES("AC#W72G",Myself)  // No such index
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Range(LastSeenBy(Myself),5)
+	Delay(6)
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("AC#W72P",LastSeenBy(Myself))  // Säurestrahl
+END
+

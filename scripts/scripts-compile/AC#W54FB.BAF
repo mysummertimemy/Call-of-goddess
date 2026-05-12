@@ -1,0 +1,8 @@
+IF
+	True()
+THEN
+	RESPONSE #30
+		CreateVisualEffect("AC#W54AB",[2922.668])
+		Wait(6)
+END
+

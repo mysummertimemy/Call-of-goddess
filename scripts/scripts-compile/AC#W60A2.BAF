@@ -1,0 +1,20 @@
+IF
+	OR(4)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		HitBy([GOODCUTOFF],CRUSHING)
+		HPPercentLT(Myself,100)
+		GlobalGT("Abishai_attack","AC#W60",0)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+		IncrementGlobal("Abishai_attack","AC#W60",1)
+END
+
+IF
+	GlobalGT("Aphul_contact","AC#W60",9)
+THEN
+	RESPONSE #100
+		EscapeArea()
+END
+

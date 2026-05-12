@@ -1,0 +1,32 @@
+IF
+	Entered([ANYONE])
+	Global("FaceTrap","AC#W70",0)
+THEN
+	RESPONSE #100
+		SetGlobal("FaceTrap","AC#W70",1)
+		CreateVisualEffect("ICMAGICH",[773.815])
+		CreateVisualEffect("ICMAGICH",[805.808])
+		CreateVisualEffect("ICMAGICH",[1087.899])
+		CreateVisualEffect("ICMAGICH",[1155.810])
+		OpenDoor("DOOR01")
+		OpenDoor("DOOR02")
+		ScreenShake([966.1000],12)
+		Wait(1)
+		CreateVisualEffect("SPCOMEX1",[966.1000])
+		CreateVisualEffect("SPCOMEX2",[966.1000])
+		Wait(1)
+		ReallyForceSpellPointRES("AC#W70M",[737.1193])  // Meteor Swarm
+		ReallyForceSpellPointRES("AC#W70M",[1183.1197])  // Meteor Swarm
+		CreateVisualEffect("SPFLESHS",[1004.694])
+		CreateCreature("AC#WBLBO",[1004.694],S)  // I'm speaking of my husband, of course.
+		Wait(1)
+		CreateVisualEffect("SPFLESHS",[1006.697])
+		CreateCreature("AC#WBLBO",[1006.697],S)  // I'm speaking of my husband, of course.
+		Wait(1)
+		CreateVisualEffect("SPFLESHS",[1001.692])
+		CreateCreature("AC#WBLBO",[1001.692],S)  // I'm speaking of my husband, of course.
+		Wait(1)
+		CreateVisualEffect("SPFLESHS",[1002.699])
+		CreateCreature("AC#WBLBO",[1002.699],S)  // I'm speaking of my husband, of course.
+END
+

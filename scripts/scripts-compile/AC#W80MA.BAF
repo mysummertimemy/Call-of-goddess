@@ -1,0 +1,13 @@
+IF
+	See([PC])
+	Global("AC_Waukeen_Free","GLOBAL",1)
+	Global("AC#W80MarettaSpawn","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W80MarettaSpawn","GLOBAL",2)
+		ClearAllActions()
+		SmallWait(5)
+		StartCutSceneMode()
+		StartCutScene("AC#W80C2")
+END
+

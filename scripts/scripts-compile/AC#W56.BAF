@@ -1,0 +1,12 @@
+IF
+	CombatCounter(0)
+	Dead("AC#WNAB1")
+	Global("Nabassu_Dead","MYAREA",0)
+THEN
+	RESPONSE #100
+		Wait(1)
+		SetGlobal("Nabassu_Dead","MYAREA",1)
+		EraseJournalEntry(@400400)
+		AddJournalEntry(@400401,QUEST)
+END
+

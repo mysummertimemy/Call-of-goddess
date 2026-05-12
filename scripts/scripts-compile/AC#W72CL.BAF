@@ -1,0 +1,12 @@
+IF
+	Contains("AC#W72BN",Myself)  // Blutiger Knochen
+	Global("JobDone","MYAREA",0)
+THEN
+	RESPONSE #100
+		DestroyItem("AC#W72BN")  // Blutiger Knochen
+		SetGlobal("JobDone","MYAREA",1)
+		SetGlobal("AC#W_test_gluttony","GLOBAL",10)
+		PlaySound("EFF_P91")
+		DisplayString(Myself,@72000)  
+END
+

@@ -1,0 +1,54 @@
+IF
+	Global("AC#W_Verin_dispute","GLOBAL",2)
+	See([PC])
+	Range([PC],15)
+THEN
+	RESPONSE #100
+		Wait(1)
+		SetGlobal("AC#W_Verin_dispute","GLOBAL",3)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Global("Audience_Maretta","AC#W40",2)
+	See([PC])
+	Range([PC],15)
+THEN
+	RESPONSE #100
+		SetGlobal("Audience_Maretta","AC#W40",3)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Global("Rose_Quest","AC#W40",0)
+	PartyHasItem("AC#WABRS")  // Rose des Abgrunds
+	See([PC])
+	Range([PC],15)
+THEN
+	RESPONSE #100
+		SetGlobal("Rose_Quest","AC#W40",1)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Global("EnterCountingHouse","AC#W40",0)
+	PartyHasItem("AC#WPFHE")  // Kopf des Baatezu-Generals
+	See([PC])
+	Range([PC],15)
+THEN
+	RESPONSE #100
+		SetGlobal("EnterCountingHouse","AC#W40",1)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Global("AC#W_Bebilith_quest","GLOBAL",2)
+	Global("Bebilith_Warning","AC#W40",0)
+	See([PC])
+	Range([PC],15)
+THEN
+	RESPONSE #100
+		SetGlobal("Bebilith_Warning","AC#W40",1)
+		StartDialogueNoSet([PC])
+END
+

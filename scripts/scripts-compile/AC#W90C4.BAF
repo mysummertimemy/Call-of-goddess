@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		CutSceneId("ACWAUKE1")  // Waukeen
+		Wait(1)
+		ApplySpell(Player2,CLERIC_RESURRECTION)  // SPPR712.SPL (Auferstehung)
+		ApplySpell(Player3,CLERIC_RESURRECTION)  // SPPR712.SPL (Auferstehung)
+		ApplySpell(Player4,CLERIC_RESURRECTION)  // SPPR712.SPL (Auferstehung)
+		ApplySpell(Player5,CLERIC_RESURRECTION)  // SPPR712.SPL (Auferstehung)
+		ApplySpell(Player6,CLERIC_RESURRECTION)  // SPPR712.SPL (Auferstehung)
+		ApplySpell(Myself,GENIE_LIMITED_WISH_HEAL_ALL)  // SPIN923.SPL (Begrenzter Wunsch)
+		ActionOverride("ACWAUKE1",Dialogue([PC]))
+END
+

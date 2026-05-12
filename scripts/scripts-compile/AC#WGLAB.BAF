@@ -1,0 +1,1059 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//            Trar'gezal
+/////////////////////////////////////////////////////////////////////
+//        Version 1
+// Tanari, 20th level Nabassu
+// 
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+// Initial Set-Up
+/////////////////////////////////////////////////////////////////////
+IF
+	See([GOODCUTOFF])
+	Global("Prep","LOCALS",0)
+  THEN
+	RESPONSE #100
+	  SetGlobal("Prep","LOCALS",1)
+	  SetGlobal("MO_Paralyze","LOCALS",1)
+	  SetGlobal("MO_Confusion","LOCALS",1)
+  END
+  
+  // True Seeing
+  IF
+	  Allegiance(Myself,ENEMY)
+	  OR(7)
+		  Gender(NearestEnemyOf(Myself),ILLUSIONARY)
+		  StateCheck(NearestEnemyOf(Myself),STATE_INVISIBLE)
+		  StateCheck(NearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+		  StateCheck(SecondNearestEnemyOf(Myself),STATE_INVISIBLE)
+		  StateCheck(SecondNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+		  StateCheck(ThirdNearestEnemyOf(Myself),STATE_INVISIBLE)
+		  StateCheck(ThirdNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+	  !GlobalTimerNotExpired("GlabrezuSight","LOCALS")
+  THEN
+	  RESPONSE #100
+		  SetGlobalTimer("GlabrezuSight","LOCALS",TEN_ROUNDS)
+		  ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+  END
+  
+  /////////////////////////////////////////////////////////////////////
+  // Spell: Remove Magic
+  /////////////////////////////////////////////////////////////////////
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	See([GOODCUTOFF])
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #50
+	  SetGlobal("MO_CastRemoveMagic","LOCALS",1)
+	  Continue()
+	RESPONSE #50
+	  SetGlobal("MO_CastRemoveMagic","LOCALS",0)
+	  Continue()
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	Global("MO_CastRemoveMagic","LOCALS",1)
+	See(NearestEnemyOfType([GOODCUTOFF]))
+	OR(4)
+	  CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
+	  CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
+	  CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
+	  CheckSpellState(LastSeenBy(Myself),MANTLE)
+	OR(5)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
+	  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
+	  CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
+	  CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
+	!CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
+	!CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
+	CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  SetGlobalTimer("MO_RemoveMagicTimer","LOCALS",18)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	Global("MO_CastRemoveMagic","LOCALS",1)
+	See(SecondNearestEnemyOfType([GOODCUTOFF]))
+	OR(4)
+	  CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
+	  CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
+	  CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
+	  CheckSpellState(LastSeenBy(Myself),MANTLE)
+	OR(5)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
+	  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
+	  CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
+	  CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
+	!CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
+	!CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
+	CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  SetGlobalTimer("MO_RemoveMagicTimer","LOCALS",18)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	Global("MO_CastRemoveMagic","LOCALS",1)
+	See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+	OR(4)
+	  CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
+	  CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
+	  CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
+	  CheckSpellState(LastSeenBy(Myself),MANTLE)
+	OR(5)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
+	  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
+	  CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
+	  CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
+	!CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
+	!CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
+	CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  SetGlobalTimer("MO_RemoveMagicTimer","LOCALS",18)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	Global("MO_CastRemoveMagic","LOCALS",1)
+	See(FourthNearestEnemyOfType([GOODCUTOFF]))
+	OR(4)
+	  CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
+	  CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
+	  CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
+	  CheckSpellState(LastSeenBy(Myself),MANTLE)
+	OR(5)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
+	  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
+	  CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
+	  CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
+	!CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
+	!CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
+	CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  SetGlobalTimer("MO_RemoveMagicTimer","LOCALS",18)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	Global("MO_CastRemoveMagic","LOCALS",1)
+	See(FifthNearestEnemyOfType([GOODCUTOFF]))
+	OR(4)
+	  CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
+	  CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
+	  CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
+	  CheckSpellState(LastSeenBy(Myself),MANTLE)
+	OR(5)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
+	  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
+	  CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
+	  CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
+	!CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
+	!CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
+	CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  SetGlobalTimer("MO_RemoveMagicTimer","LOCALS",18)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	!GlobalTimerNotExpired("MO_RemoveMagicTimer","LOCALS")
+	Global("MO_CastRemoveMagic","LOCALS",1)
+	See(SixthNearestEnemyOfType([GOODCUTOFF]))
+	OR(4)
+	  CheckSpellState(LastSeenBy(Myself),PROTECTION_FROM_MAGICAL_WEAPONS)
+	  CheckSpellState(LastSeenBy(Myself),ABSOLUTE_IMMUNITY)
+	  CheckSpellState(LastSeenBy(Myself),IMPROVED_MANTLE)
+	  CheckSpellState(LastSeenBy(Myself),MANTLE)
+	OR(5)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+	  CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_DEFLECTION)
+	  CheckSpellState(LastSeenBy(Myself),SPELL_SHIELD)
+	  CheckSpellState(LastSeenBy(Myself),SI_DIVINATION)
+	  CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ABJURATION)
+	!CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TRAP)
+	!CheckSpellState(LastSeenBy(Myself),SCROLL_OF_PROTECTION_FROM_MAGIC)
+	CheckStatLT(LastSeenBy(Myself),1,SANCTUARY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  SetGlobalTimer("MO_RemoveMagicTimer","LOCALS",18)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)
+	  SetInterrupt(TRUE)
+  END
+  
+  /////////////////////////////////////////////////////////////////////
+  // Confusion
+  /////////////////////////////////////////////////////////////////////
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See([GOODCUTOFF])
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #50
+	  SetGlobal("MO_CastConfusion","LOCALS",1)
+	  Continue()
+	RESPONSE #50
+	  SetGlobal("MO_CastConfusion","LOCALS",0)
+	  Continue()
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	Global("MO_CastConfusion","LOCALS",1)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See(NearestEnemyOfType([GOODCUTOFF]))
+	!General(LastSeenBy(Myself),UNDEAD)
+	!General(LastSeenBy(Myself),PLANT)
+	!Race(LastSeenBy(Myself),DEMONIC)
+	!Race(LastSeenBy(Myself),TROLL)
+	!Race(LastSeenBy(Myself),SLIME)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_DISABLED)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-2,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),POTION_OF_CLARITY)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+	!CheckSpellState(Myself,WILD_MAGIC_AREA)
+	!CheckSpellState(Myself,DEAD_MAGIC_AREA)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Confusion","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	Global("MO_CastConfusion","LOCALS",1)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See(SecondNearestEnemyOfType([GOODCUTOFF]))
+	!General(LastSeenBy(Myself),UNDEAD)
+	!General(LastSeenBy(Myself),PLANT)
+	!Race(LastSeenBy(Myself),DEMONIC)
+	!Race(LastSeenBy(Myself),TROLL)
+	!Race(LastSeenBy(Myself),SLIME)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_DISABLED)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-2,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),POTION_OF_CLARITY)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+	!CheckSpellState(Myself,WILD_MAGIC_AREA)
+	!CheckSpellState(Myself,DEAD_MAGIC_AREA)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Confusion","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	Global("MO_CastConfusion","LOCALS",1)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+	!General(LastSeenBy(Myself),UNDEAD)
+	!General(LastSeenBy(Myself),PLANT)
+	!Race(LastSeenBy(Myself),DEMONIC)
+	!Race(LastSeenBy(Myself),TROLL)
+	!Race(LastSeenBy(Myself),SLIME)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_DISABLED)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-2,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),POTION_OF_CLARITY)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+	!CheckSpellState(Myself,WILD_MAGIC_AREA)
+	!CheckSpellState(Myself,DEAD_MAGIC_AREA)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Confusion","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	Global("MO_CastConfusion","LOCALS",1)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See(FourthNearestEnemyOfType([GOODCUTOFF]))
+	!General(LastSeenBy(Myself),UNDEAD)
+	!General(LastSeenBy(Myself),PLANT)
+	!Race(LastSeenBy(Myself),DEMONIC)
+	!Race(LastSeenBy(Myself),TROLL)
+	!Race(LastSeenBy(Myself),SLIME)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_DISABLED)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-2,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),POTION_OF_CLARITY)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+	!CheckSpellState(Myself,WILD_MAGIC_AREA)
+	!CheckSpellState(Myself,DEAD_MAGIC_AREA)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Confusion","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	Global("MO_CastConfusion","LOCALS",1)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See(FifthNearestEnemyOfType([GOODCUTOFF]))
+	!General(LastSeenBy(Myself),UNDEAD)
+	!General(LastSeenBy(Myself),PLANT)
+	!Race(LastSeenBy(Myself),DEMONIC)
+	!Race(LastSeenBy(Myself),TROLL)
+	!Race(LastSeenBy(Myself),SLIME)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_DISABLED)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-2,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),POTION_OF_CLARITY)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+	!CheckSpellState(Myself,WILD_MAGIC_AREA)
+	!CheckSpellState(Myself,DEAD_MAGIC_AREA)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Confusion","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	Global("MO_CastConfusion","LOCALS",1)
+	GlobalGT("MO_Confusion","LOCALS",0)
+	See(SixthNearestEnemyOfType([GOODCUTOFF]))
+	!General(LastSeenBy(Myself),UNDEAD)
+	!General(LastSeenBy(Myself),PLANT)
+	!Race(LastSeenBy(Myself),DEMONIC)
+	!Race(LastSeenBy(Myself),TROLL)
+	!Race(LastSeenBy(Myself),SLIME)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_DISABLED)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-2,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),POTION_OF_CLARITY)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	CheckStatLT(Myself,20,SPELLFAILUREMAGE)
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+	!CheckSpellState(Myself,WILD_MAGIC_AREA)
+	!CheckSpellState(Myself,DEAD_MAGIC_AREA)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Confusion","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  SpellNoDec(LastSeenBy(Myself),WIZARD_CONFUSION)  // SPWI401.SPL (Confusion)
+	  SetInterrupt(TRUE)
+  END
+  
+  /////////////////////////////////////////////////////////////////////
+  // Paralyze
+  /////////////////////////////////////////////////////////////////////
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	See([GOODCUTOFF])
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #50
+	  SetGlobal("MO_CastParalyze","LOCALS",1)
+	  Continue()
+	RESPONSE #50
+	  SetGlobal("MO_CastParalyze","LOCALS",0)
+	  Continue()
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	Global("MO_CastParalyze","LOCALS",1)
+	See(NearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	OR(5)
+	  Class(LastSeenBy(Myself),RANGER_ALL)
+	  Class(LastSeenBy(Myself),FIGHTER_ALL)
+	  Class(LastSeenBy(Myself),PALADIN)
+	  Class(LastSeenBy(Myself),THIEF)
+	  Kit(LastSeenBy(Myself),BARBARIAN)
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Silence","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	Global("MO_CastParalyze","LOCALS",1)
+	See(SecondNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	OR(5)
+	  Class(LastSeenBy(Myself),RANGER_ALL)
+	  Class(LastSeenBy(Myself),FIGHTER_ALL)
+	  Class(LastSeenBy(Myself),PALADIN)
+	  Class(LastSeenBy(Myself),THIEF)
+	  Kit(LastSeenBy(Myself),BARBARIAN)
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Silence","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	Global("MO_CastParalyze","LOCALS",1)
+	See(ThirdNearestEnemyOf(Myself))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	OR(5)
+	  Class(LastSeenBy(Myself),RANGER_ALL)
+	  Class(LastSeenBy(Myself),FIGHTER_ALL)
+	  Class(LastSeenBy(Myself),PALADIN)
+	  Class(LastSeenBy(Myself),THIEF)
+	  Kit(LastSeenBy(Myself),BARBARIAN)
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Silence","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	Global("MO_CastParalyze","LOCALS",1)
+	See(FourthNearestEnemyOf(Myself))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	OR(5)
+	  Class(LastSeenBy(Myself),RANGER_ALL)
+	  Class(LastSeenBy(Myself),FIGHTER_ALL)
+	  Class(LastSeenBy(Myself),PALADIN)
+	  Class(LastSeenBy(Myself),THIEF)
+	  Kit(LastSeenBy(Myself),BARBARIAN)
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Silence","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	Global("MO_CastParalyze","LOCALS",1)
+	See(FifthNearestEnemyOf(Myself))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	OR(5)
+	  Class(LastSeenBy(Myself),RANGER_ALL)
+	  Class(LastSeenBy(Myself),FIGHTER_ALL)
+	  Class(LastSeenBy(Myself),PALADIN)
+	  Class(LastSeenBy(Myself),THIEF)
+	  Kit(LastSeenBy(Myself),BARBARIAN)
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Silence","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+	  SetInterrupt(TRUE)
+  END
+  
+  IF
+	OR(2)
+	  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	  CheckStatGT(Myself,0,AURACLEANSING)
+	GlobalGT("MO_Paralyze","LOCALS",0)
+	Global("MO_CastParalyze","LOCALS",1)
+	See(SixthNearestEnemyOf(Myself))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	OR(5)
+	  Class(LastSeenBy(Myself),RANGER_ALL)
+	  Class(LastSeenBy(Myself),FIGHTER_ALL)
+	  Class(LastSeenBy(Myself),PALADIN)
+	  Class(LastSeenBy(Myself),THIEF)
+	  Kit(LastSeenBy(Myself),BARBARIAN)
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+	!HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+	!CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+	!CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+	!CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+	!CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+	!StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+	CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+	!CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+	!CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+	!StateCheck(Myself,STATE_POISONED)
+	!StateCheck(Myself,STATE_SILENCED)
+  THEN
+	RESPONSE #100
+	  SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+	  IncrementGlobal("MO_Silence","LOCALS",-1)
+	  SetInterrupt(FALSE)
+	  ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+	  SetInterrupt(TRUE)
+  END
+  
+  /////////////////////////////////////////////////////////////////////
+  // Attack
+  /////////////////////////////////////////////////////////////////////
+  IF
+	ActionListEmpty()
+	See(NearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+	CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+	CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	Range(LastSeenBy(Myself),5)
+	WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #25
+	  AttackOneRound(NearestEnemyOf(Myself))
+	RESPONSE #75
+      Continue()
+  END
+  
+  IF
+	ActionListEmpty()
+	See(SecondNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+	CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+	CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	Range(LastSeenBy(Myself),5)
+	WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #25
+	  AttackOneRound(SecondNearestEnemyOf(Myself))
+	RESPONSE #75
+      Continue()
+  END
+  
+  IF
+	ActionListEmpty()
+	See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+	CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+	CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	Range(LastSeenBy(Myself),5)
+	WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #25
+	  AttackOneRound(ThirdNearestEnemyOf(Myself))
+	RESPONSE #75
+      Continue()
+  END
+  
+  IF
+	ActionListEmpty()
+	See(FourthNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+	CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+	CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	Range(LastSeenBy(Myself),5)
+	WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #25
+	  AttackOneRound(FourthNearestEnemyOf(Myself))
+	RESPONSE #75
+      Continue()
+  END
+  
+  IF
+	ActionListEmpty()
+	See(FifthNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+	CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+	CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	Range(LastSeenBy(Myself),5)
+	WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #25
+	  AttackOneRound(FifthNearestEnemyOf(Myself))
+	RESPONSE #75
+      Continue()
+  END
+  
+  IF
+	ActionListEmpty()
+	See(SixthNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+	CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+	CheckStatLT(LastSeenBy(Myself),60,RESISTCRUSHING)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	Range(LastSeenBy(Myself),5)
+	WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #25
+	  AttackOneRound(SixthNearestEnemyOf(Myself))
+	RESPONSE #75
+      Continue()
+  END
+  
+  IF
+	ActionListEmpty()
+	See(NearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #100
+	  AttackOneRound(NearestEnemyOf(Myself))
+  END
+  
+  IF
+	ActionListEmpty()
+	See(SecondNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #100
+	  AttackOneRound(SecondNearestEnemyOf(Myself))
+  END
+  
+  IF
+	ActionListEmpty()
+	See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #100
+	  AttackOneRound(ThirdNearestEnemyOf(Myself))
+  END
+  
+  IF
+	ActionListEmpty()
+	See(FourthNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #100
+	  AttackOneRound(FourthNearestEnemyOf(Myself))
+  END
+  
+  IF
+	ActionListEmpty()
+	See(FifthNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #100
+	  AttackOneRound(FifthNearestEnemyOf(Myself))
+  END
+  
+  IF
+	ActionListEmpty()
+	See(SixthNearestEnemyOfType([GOODCUTOFF]))
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+	WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+	WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+  THEN
+	RESPONSE #100
+	  AttackOneRound(SixthNearestEnemyOf(Myself))
+  END
+  
+  /////////////////////////////////////////////////////////////////////
+  // Find them!
+  /////////////////////////////////////////////////////////////////////
+  IF
+	Heard([ENEMY],125)
+	!Detect([GOODCUTOFF])
+  THEN
+	RESPONSE #100
+	  MoveToObject(LastHeardBy(Myself))
+  END

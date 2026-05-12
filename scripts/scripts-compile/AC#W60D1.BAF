@@ -1,0 +1,59 @@
+IF
+	GlobalGT("BaatezuHead","AC#W60",0)
+THEN
+	RESPONSE #100
+		Kill(Myself)
+END
+
+IF
+	See([PC])
+	!GlobalTimerNotExpired("Cast_CallLightning","LOCALS")
+	HaveSpell(CLERIC_CALL_LIGHTNING)  // SPPR302.SPL (Call Lightning)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Cast_CallLightning","LOCALS",FOUR_ROUNDS)
+		Spell(LastSeenBy(Myself),CLERIC_CALL_LIGHTNING)  // SPPR302.SPL (Call Lightning)
+END
+
+IF
+	See([PC])
+	HaveSpell(CLERIC_INSECT_PLAGUE)  // SPPR517.SPL (Insect Plague)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),CLERIC_INSECT_PLAGUE)  // SPPR517.SPL (Insect Plague)
+END
+
+IF
+	Detect([PC])
+	!See([PC])
+	HaveSpell(CLERIC_INVISIBILITY_PURGE)  // SPPR309.SPL (Invisibility Purge)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOfType([PC]),CLERIC_INVISIBILITY_PURGE)  // SPPR309.SPL (Invisibility Purge)
+END
+
+IF
+	See([PC])
+	HaveSpell(CLERIC_CHARM_PERSON)  // SPPR204.SPL (Charm Person or Mammal)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),CLERIC_CHARM_PERSON)  // SPPR204.SPL (Charm Person or Mammal)
+END
+
+IF
+	See([PC])
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+
+IF
+	See([PC])
+	See([0.0.0.TANARI])
+THEN
+	RESPONSE #100
+		AttackReevaluate([0.0.0.TANARI],6)
+END
+

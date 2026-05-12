@@ -1,0 +1,126 @@
+IF
+	NumberOfTimesTalkedTo(0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+	HPLT(Myself,30)
+	OR(2)
+		!GlobalTimerNotExpired("OH_Cast","LOCALS")
+		CheckStatGT(Myself,0,AURACLEANSING)
+	HaveSpell(BLACKGUARD_ABSORB_HEALTH)  // SPCL102.SPL (Absorb Health)
+	See([GOODCUTOFF])
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_VISIBLE)
+	!General(LastSeenBy(Myself),UNDEAD)
+	!Race(LastSeenBy(Myself),GOLEM)
+	!HasItemEquiped("CLCK26",LastSeenBy(Myself))  // Cloak of Mirroring
+	CheckStatLT(LastSeenBy(Myself),55,RESISTMAGIC)
+	CheckStatLT(LastSeenBy(Myself),100,MAGICDAMAGERESISTANCE)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("OH_Cast","LOCALS",ONE_ROUND)
+		Spell(LastSeenBy(Myself),BLACKGUARD_ABSORB_HEALTH)  // SPCL102.SPL (Absorb Health)
+END
+
+IF
+	!GlobalTimerNotExpired("OH_Cast","LOCALS")
+	HaveSpell(CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Armor of Faith)
+	CheckStatLT(Myself,10,MAGICDAMAGERESISTANCE)
+	CheckStatLT(Myself,50,SPELLFAILUREPRIEST)
+	!StateCheck(Myself,STATE_SILENCED)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("OH_Cast","LOCALS",ONE_ROUND)
+		Spell(Myself,CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Armor of Faith)
+END
+
+IF
+	!GlobalTimerNotExpired("OH_Cast","LOCALS")
+	HaveSpell(CLERIC_PROTECT_FROM_EVIL)  // SPPR107.SPL (Protection From Evil)
+	See([GOODCUTOFF.0.0.0.0.0.MASK_EVIL])
+	CheckStatLT(Myself,50,SPELLFAILUREPRIEST)
+	!StateCheck(Myself,STATE_SILENCED)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("OH_Cast","LOCALS",ONE_ROUND)
+		Spell(Myself,CLERIC_PROTECT_FROM_EVIL)  // SPPR107.SPL (Protection From Evil)
+END
+
+IF
+	!GlobalTimerNotExpired("OH_Cast","LOCALS")
+	HaveSpell(AURA_OF_DESPAIR)  // SPCL103.SPL (Aura of Despair)
+	Range(NearestEnemyOf(Myself),15)
+	Range(SecondNearestEnemyOf(Myself),15)
+	Range(ThirdNearestEnemyOf(Myself),15)
+	CheckStatLT(Myself,50,SPELLFAILUREPRIEST)
+	!StateCheck(Myself,STATE_SILENCED)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("OH_Cast","LOCALS",ONE_ROUND)
+		Spell(Myself,AURA_OF_DESPAIR)  // SPCL103.SPL (Aura of Despair)
+END
+
+IF
+	!GlobalTimerNotExpired("OH_Cast","LOCALS")
+	HaveSpell(CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+	!Difficulty(EASIEST)
+	See([GOODCUTOFF.HUMANOID])
+	!Kit(LastSeenBy(Myself),INQUISITOR)
+	!Kit(LastSeenBy(Myself),UNDEADHUNTER)
+	!StateCheck(LastSeenBy(Myself),STATE_NOT_VISIBLE)
+	!StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+	CheckStatLT(LastSeenBy(Myself),50,RESISTMAGIC)
+	CheckStatGT(LastSeenBy(Myself),0,SAVEVSSPELL)
+	!CheckStat(LastSeenBy(Myself),1,OFFENSIVE_MODIFIER)
+	!CheckStatGT(LastSeenBy(Myself),0,MINORGLOBE)
+	!HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+	!HasItemEquiped("RING09",LastSeenBy(Myself))  // Edventar's Gift
+	!HasItemEquipedReal("NPSW01",LastSeenBy(Myself))  // Sword of Arvoreen +2
+	!HasItemEquipedReal("SW1H27",LastSeenBy(Myself))  // Arbane's Sword of Agility +2
+	!HasItemEquipedReal("SW2H06",LastSeenBy(Myself))  // Spider's Bane +2
+	!HasItemEquiped("SHLD25",LastSeenBy(Myself))  // Shield of Harmony +2
+	!HasItemEquipedReal("SPER07",LastSeenBy(Myself))  // Spear of the Unicorn +2
+	CheckStatLT(Myself,50,SPELLFAILUREPRIEST)
+	!StateCheck(Myself,STATE_SILENCED)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("OH_Cast","LOCALS",ONE_ROUND)
+		Spell(LastSeenBy(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+END
+
+IF
+	!GlobalTimerNotExpired("OH_Cast","LOCALS")
+	HaveSpell(ASSASSIN_POISON)  // SPCL423.SPL (Poison Weapon)
+	!Difficulty(EASIEST)
+	!CheckStat(Myself,4,OFFENSIVE_MODIFIER)
+	!StateCheck(Myself,STATE_SILENCED)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("OH_Cast","LOCALS",ONE_ROUND)
+		Spell(Myself,ASSASSIN_POISON)  // SPCL423.SPL (Poison Weapon)
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

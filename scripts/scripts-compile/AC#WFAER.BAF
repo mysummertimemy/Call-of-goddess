@@ -1,0 +1,10 @@
+IF
+	StealFailed([ANYONE])
+	Global("Faerthae_Steal","AC#W03",0)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		SetGlobal("Faerthae_Steal","AC#W03",1)
+		StartDialogueNoSet([PC])
+END
+

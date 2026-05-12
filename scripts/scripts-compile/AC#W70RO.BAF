@@ -1,0 +1,32 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Rose","AC#W70",0)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@70004)
+		SetGlobal("Rose","AC#W70",1)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Rose","AC#W70",1)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@70002)
+		ApplyDamage(LastTrigger,5,PIERCING)  
+		GiveItemCreate("AC#WABRS",LastTrigger,0,0,0)  // Rose des Abgrunds
+		TriggerActivation("Trigger_rose",FALSE)
+		AmbientActivate("Rose",FALSE)
+		SetGlobal("Rose","AC#W70",2)
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@70003)  
+END
+

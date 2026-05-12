@@ -1,0 +1,47 @@
+IF
+	See(NearestEnemyOf(Myself))
+	HPPercentLT(Myself,50)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!GlobalTimerNotExpired("Ethereal","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Ethereal","LOCALS",SIX_ROUNDS)
+		ReallyForceSpell(Myself,SUCCUBUS_ETHEREAL)  // SPWI927.SPL (Ätherisch)
+END
+
+IF
+	HPPercentLT(Myself,50)
+	StateCheck(Myself,STATE_INVISIBLE)
+	Range(NearestEnemyOf(Myself),20)
+THEN
+	RESPONSE #100
+		SetGlobal("running","LOCALS",1)
+		RunAwayFrom(NearestEnemyOf(Myself),30)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	See([GOODCUTOFF.0.0.0.0.MALE])
+	!Difficulty(EASIEST)
+	Range(LastSeenBy(Myself),30)
+	RandomNum(2,1)
+	!StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!StateCheck(LastSeenBy(Myself),STATE_SLEEPING)
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!GlobalTimerNotExpired("Charm","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Charm","LOCALS",THREE_ROUNDS)
+		SpellNoDec([GOODCUTOFF.0.0.0.0.MALE],SUCCUBUS_CHARM_MALE)  // SPWI930.SPL (Personen bezaubern)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

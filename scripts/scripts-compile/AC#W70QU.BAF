@@ -1,0 +1,71 @@
+IF
+	See(NearestEnemyOf(Myself))
+	DifficultyGT(NORMAL)
+	OR(2)
+		HPPercentLT(Myself,100)
+		Range(LastSeenBy(Myself),15)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Improved Invisibility)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	DifficultyLT(HARD)
+	OR(2)
+		HPPercentLT(Myself,100)
+		Range(LastSeenBy(Myself),15)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!GlobalTimerNotExpired("Invisible","LOCALS")
+	GlobalLT("InvisibleNumber","LOCALS",3)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Invisible","LOCALS",FOUR_ROUNDS)
+		IncrementGlobal("InvisibleNumber","LOCALS",3)
+		ApplySpell(Myself,WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Improved Invisibility)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!HasBounceEffects(LastSeenBy(Myself))
+	!Range(NearestEnemyOf(Myself),15)
+	RandomNum(3,1)
+	!GlobalTimerNotExpired("Barrage","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Barrage","LOCALS",TWO_ROUNDS)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Chromatic Orb)
+	RESPONSE #100
+		SetGlobalTimer("Barrage","LOCALS",TWO_ROUNDS)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_POWER_WORD_SLEEP)  // SPWI220.SPL (Power Word, Sleep)
+	RESPONSE #100
+		SetGlobalTimer("Barrage","LOCALS",TWO_ROUNDS)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_DEAFNESS)  // SPWI223.SPL (Deafness)
+	RESPONSE #100
+		SetGlobalTimer("Barrage","LOCALS",TWO_ROUNDS)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+	RESPONSE #100
+		SetGlobalTimer("Barrage","LOCALS",TWO_ROUNDS)
+		SpellNoDec(NearestEnemyOf(Myself),CLERIC_SILENCE_15_FOOT)  // SPPR211.SPL (Silence, 15' Radius)
+END
+
+IF
+	Range(NearestEnemyOf(Myself),15)
+	OR(2)
+		StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+		StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		RunAwayFrom(NearestEnemyOf(Myself),30)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

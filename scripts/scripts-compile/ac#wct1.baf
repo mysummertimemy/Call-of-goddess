@@ -1,0 +1,68 @@
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId("AC#WMAR1")
+        MoveViewPoint([1035.996],INSTANT)
+        ScreenShake([5.5],30)
+        CreateVisualEffect("SPFIREPI",[837.880])
+        Wait(1)
+        JumpToPoint([837.880])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        JumpToPoint([1035.996])
+        Wait(3)
+        EndCutSceneMode()
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player2)
+        Wait(1)
+        JumpToPoint([989.1046])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player3)
+        Wait(1)
+        JumpToPoint([1120.927])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player4)
+        Wait(1)
+        JumpToPoint([1054.1119])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player5)
+        Wait(1)
+        JumpToPoint([1184.987])
+END
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player6)
+        Wait(1)
+        JumpToPoint([1121.1054])
+END
+

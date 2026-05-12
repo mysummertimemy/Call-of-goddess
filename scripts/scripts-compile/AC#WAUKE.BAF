@@ -1,0 +1,142 @@
+IF
+	Delay(6)
+	AttackedBy([PC],DEFAULT)
+	Allegiance(Myself,NEUTRAL)
+	Global("Waukeen_Attacked","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Waukeen_Attacked","LOCALS",1)
+		DisplayStringHead(Myself,12672)  // What?! You attack me?!
+END
+
+IF
+	Global("AC_Waukeen_Free","GLOBAL",1)
+	Global("Follow","LOCALS",0)
+THEN
+	RESPONSE #100
+		MakeGlobal()
+		SetGlobal("Follow","LOCALS",1)
+END
+
+IF
+	Delay(3)
+	AreaCheck("AC#W40")
+	!See([0.0.0.TANARI])
+	CombatCounterLT(80)
+THEN
+	RESPONSE #100
+		CreateCreatureOffScreen("AC#W40WM",S)  // Mane
+		Continue()
+	RESPONSE #35
+		CreateCreatureOffScreen("AC#W40WC",S)  // Cambion
+		Continue()
+	RESPONSE #40
+		CreateCreatureOffScreen("AC#W40WS",S)  // Succubus
+		Continue()
+	RESPONSE #100
+		Continue()
+END
+
+IF
+	Global("AC#W80MarettaSpawn","GLOBAL",3)
+	AreaCheck("AC#W80")
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+	!Dead("AC#W80MA")
+THEN
+	RESPONSE #100
+		SetGlobal("StayAway","LOCALS",1)
+		MoveToPointNoInterrupt([2225.1122])
+END
+
+IF
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",1)
+	Dead("AC#W80MA")
+THEN
+	RESPONSE #100
+		SetGlobal("StayAway","LOCALS",0)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),10)
+	AreaCheck("AC#W80")
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		RunAwayFrom(NearestEnemyOf(Myself),150)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,49764)  // Sch�tzt mich!
+		RunAwayFrom(LastAttackerOf(Myself),150)
+END
+
+IF
+	See([PC])
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject([PC])
+END
+
+IF
+	!Range(Player1,8)
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+END
+
+IF
+	!Range(Player2,8)
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player2)
+END
+
+IF
+	!Range(Player3,8)
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player3)
+END
+
+IF
+	!Range(Player4,8)
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player4)
+END
+
+IF
+	!Range(Player5,8)
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+END
+
+IF
+	!Range(Player6,8)
+	Global("Follow","LOCALS",1)
+	Global("StayAway","LOCALS",0)
+THEN
+	RESPONSE #100
+		MoveToObject(Player6)
+END
+

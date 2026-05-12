@@ -1,0 +1,16 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,18)
+THEN
+	RESPONSE #100
+		ActionOverride("AC#W_TRT",StartDialogNoSet([PC]))
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,18)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@5201)  // ~You must move closer to the creature to converse with it.~ 
+END
+

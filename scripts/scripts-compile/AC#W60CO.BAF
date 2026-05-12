@@ -1,0 +1,7 @@
+IF
+	Entered([ANYONE])
+THEN
+	RESPONSE #100
+		ReallyForceSpellPointRES("AC#W60C",[1919.1048])  // Comet
+END
+

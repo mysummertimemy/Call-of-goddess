@@ -1,0 +1,21 @@
+IF
+	Global("ClosePortal","AC#W61",2)
+	PartyHasItem("AC#W61KY")  // Portalschlüssel
+THEN
+	RESPONSE #100
+		SetGlobal("ClosePortal","AC#W61",10)
+		AmbientActivate("Portal_ac#w61",TRUE)
+		SoundActivate("Portal_sound",TRUE)
+		TriggerActivation("TrAC#W40",TRUE)
+END
+
+IF
+	Global("ClosePortal","AC#W61",1)
+THEN
+	RESPONSE #100
+		SetGlobal("ClosePortal","AC#W61",2)
+		AmbientActivate("Portal_ac#w61",FALSE)
+		SoundActivate("Portal_sound",FALSE)
+		TriggerActivation("TrAC#W40",FALSE)
+END
+

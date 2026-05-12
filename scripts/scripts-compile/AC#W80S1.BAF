@@ -1,0 +1,27 @@
+IF
+	Global("HelenaPolymorph","AC#W80",0)
+THEN
+	RESPONSE #100
+		SetGlobal("HelenaPolymorph","AC#W80",1)
+		Polymorph(MAGE_FEMALE_ELF)
+END
+
+IF
+	OpenState("Door_Helena",TRUE)
+	Global("AC_Succubus_Free","AC#W80",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Succubus_Free","AC#W80",1)
+		Dialogue([PC])
+END
+
+IF
+	Global("AC_Succubus_Free","AC#W80",2)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Succubus_Free","AC#W80",3)
+		Polymorph(SIRINE)
+		Enemy()
+		SpellNoDec([GOODCUTOFF.0.0.0.0.MALE],SUCCUBUS_CHARM_MALE)  // SPWI930.SPL (Personen bezaubern)
+END
+

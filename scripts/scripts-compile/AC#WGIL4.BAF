@@ -1,0 +1,28 @@
+IF
+	NumTimesTalkedTo(0)
+	Detect([PC])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(LastSeenBy(Myself))
+END
+
+IF
+	AttackedBy([PC],DEFAULT)
+	Global("AC#WSTYX","GLOBAL",0)
+	Global("AttackedGildaar","AC#W44",0)
+THEN
+	RESPONSE #100
+		Wait(5)
+		SetGlobal("AttackedGildaar","AC#W44",1)
+		StartDialogueNoSet(LastSeenBy(Myself))
+END
+
+IF
+	Global("AC#W_AttackedMaretta","GLOBAL",1)
+	Global("Hostile","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Hostile","LOCALS",1)
+		Enemy()
+END
+

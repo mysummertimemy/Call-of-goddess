@@ -1,0 +1,117 @@
+IF
+	Global("Prep","MYAREA",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Prep","MYAREA",1)
+		TriggerActivation("Travel_normal",FALSE)
+		TriggerActivation("Travel_rose",FALSE)
+		AmbientActivate("Fieryoven",FALSE)
+		SoundActivate("Fiery_ovensound",FALSE)
+END
+
+IF
+	Global("CreateSword","AC#W76",1)
+THEN
+	RESPONSE #100
+		SetGlobal("CreateSword","AC#W76",2)
+		ActionOverride("Chest",CreateItem("AC#W901",1,1,1))
+END
+
+IF
+	Global("JobDone","MYAREA",0)
+	PartyHasItem("AC#W901")  // The Heads +3
+THEN
+	RESPONSE #100
+		SetGlobal("JobDone","MYAREA",1)
+		SetGlobal("AC#W_test_greed","GLOBAL",10)
+END
+
+IF
+	Global("JobDone","MYAREA",1)
+	Global("AC#W_test_pride","GLOBAL",10)
+	Global("AC#W_test_greed","GLOBAL",10)
+	Global("AC#W_test_lust","GLOBAL",10)
+	Global("AC#W_test_envy","GLOBAL",10)
+	Global("AC#W_test_gluttony","GLOBAL",10)
+	Global("AC#W_test_wrath","GLOBAL",10)
+	Global("AC#W_test_sloth","GLOBAL",10)
+THEN
+	RESPONSE #100
+		SetGlobal("JobDone","MYAREA",2)
+		OpenDoor("DOOR01")
+		TriggerActivation("Travel_rose",TRUE)
+		AmbientActivate("Fieryoven",TRUE)
+		TriggerActivation("Info_Exit",FALSE)
+		SoundActivate("Fiery_ovensound",TRUE)
+END
+
+IF
+	Global("JobDone","MYAREA",1)
+THEN
+	RESPONSE #100
+		SetGlobal("JobDone","MYAREA",2)
+		OpenDoor("DOOR01")
+		AmbientActivate("Fieryoven",TRUE)
+		TriggerActivation("Info_Exit",FALSE)
+		SoundActivate("Fiery_ovensound",TRUE)
+		TriggerActivation("Travel_normal",TRUE)
+END
+
+IF
+	Global("Greed_talks","AC#W76",10)
+THEN
+	RESPONSE #100
+		CreateCreatureObjectOffset("AC#W76DM",Player1,[-5.-5])  // D�mon
+		CreateVisualEffectObject("SPFLESHS","AC#W76DM")  // D�mon
+		SetGlobal("Greed_talks","AC#W76",20)
+END
+
+IF
+	PartyHasItem("AC#W76G1")  // Goldm�nze
+	Global("Greed_talks","AC#W76",0)
+THEN
+	RESPONSE #100
+		TakePartyItemAll("AC#W76G1")  // Goldm�nze
+		ActionOverride("Chest",DestroyItem("AC#W76G1"))  // Goldm�nze
+		GiveGoldForce(1000)
+		CreateCreatureObjectOffset("AC#W76B1",Player1,[30.30])  // Verarmter Bauer
+		CreateVisualEffectObject("SPFLESHS","AC#W76B1")  // Verarmter Bauer
+		SetGlobal("Greed_talks","AC#W76",1)
+END
+
+IF
+	Global("Greed_talks","AC#W76",2)
+THEN
+	RESPONSE #100
+		CreateCreatureObjectOffset("AC#W76B2",Player1,[-30.-15])  // Kranke Witwe
+		CreateVisualEffectObject("SPFLESHS","AC#W76B2")  // Kranke Witwe
+		SetGlobal("Greed_talks","AC#W76",3)
+END
+
+IF
+	Global("Greed_talks","AC#W76",4)
+THEN
+	RESPONSE #100
+		CreateCreatureObjectOffset("AC#W76B3",Player1,[15.30])  // Verzweifelter Vater
+		CreateVisualEffectObject("SPFLESHS","AC#W76B3")  // Verzweifelter Vater
+		SetGlobal("Greed_talks","AC#W76",5)
+END
+
+IF
+	Global("Greed_talks","AC#W76",6)
+THEN
+	RESPONSE #100
+		CreateCreatureObjectOffset("AC#W76B4",Player1,[20.-20])  // Versto�ene Waise
+		CreateVisualEffectObject("SPFLESHS","AC#W76B4")  // Versto�ene Waise
+		SetGlobal("Greed_talks","AC#W76",7)
+END
+
+IF
+	Global("Greed_talks","AC#W76",8)
+THEN
+	RESPONSE #100
+		CreateCreatureObjectOffset("AC#W76B5",Player1,[-10.-10])  // Kriegsveteran
+		CreateVisualEffectObject("SPFLESHS","AC#W76B5")  // Kriegsveteran
+		SetGlobal("Greed_talks","AC#W76",9)
+END
+

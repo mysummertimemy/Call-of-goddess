@@ -1,0 +1,94 @@
+IF
+	Die()
+THEN
+	RESPONSE #100
+		ReallyForceSpellDead(Myself,RED_HOLY_MIGHT)  // SPWI985.SPL (No such index)
+END
+
+IF
+	See([PC])
+	Global("Hello","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Hello","LOCALS",1)
+		DisplayStringHead(Myself,@1330)
+END
+
+IF
+	!See([ENEMY])
+	Global("Follow","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Follow","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+
+IF
+	See([PC])
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject([PC])
+END
+
+IF
+	!Range(Player1,15)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+END
+
+IF
+	!Range(Player2,15)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player2)
+END
+
+IF
+	!Range(Player3,15)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player3)
+END
+
+IF
+	!Range(Player4,15)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player4)
+END
+
+IF
+	!Range(Player5,15)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player1)
+END
+
+IF
+	!Range(Player6,15)
+	Global("Follow","LOCALS",1)
+THEN
+	RESPONSE #100
+		MoveToObject(Player6)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		Attack(LastAttackerOf(Myself))
+END
+

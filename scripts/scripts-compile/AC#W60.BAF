@@ -1,0 +1,46 @@
+IF
+	InParty("L#HPH")
+	Global("L#AC#HephernaanBloodwar","AC#W60",0)
+	THEN
+	RESPONSE #100
+	DisplayStringHead("L#HPH",@8103) // ~This is getting quite problematic, Bhaalspawn. I will continue hiding who I am, but you are playing a dangerous game here.~
+	SetGlobal("L#AC#HephernaanBloodwar","AC#W60",1)
+END
+
+IF
+	PartyHasItem("AC#WPFHE")
+	Global("BaatezuHead","AC#W60",0)
+THEN
+	RESPONSE #100
+		SetGlobal("BaatezuHead","AC#W60",1)
+		EraseJournalEntry(@470022)
+		AddJournalEntry(@470023,QUEST)
+		CreateCreature("AC#W60A1",[1479.739],14)  // Aphul
+		CreateCreature("AC#W60A2",[1474.654],11)  // Abishai
+		CreateCreature("AC#W60A2",[1373.835],11)  // Abishai
+END
+
+IF
+    Dead("AC#W60D1")  // Jünger Baalzebuls
+    Global("SpawnMezzoloth","AC#W60",0)
+    DifficultyGT(EASY)
+    LevelPartyGT(12)
+THEN
+    RESPONSE #100
+        SetGlobal("SpawnMezzoloth","AC#W60",1)
+        CreateCreatureDoor("AC#WMEZ6",[1231.461],NW)  // Mezzoloth
+        CreateCreatureDoor("AC#WMEZ6",[1091.572],SE)  // Mezzoloth
+        CreateCreatureDoor("AC#WMEZ6",[1092.729],NW)  // Mezzoloth
+END
+
+IF
+    Dead("AC#W60D1")  // Jünger Baalzebuls
+    Global("SpawnMezzoloth","AC#W60",0)
+    DifficultyGT(EASY)
+THEN
+    RESPONSE #100
+        SetGlobal("SpawnMezzoloth","AC#W60",1)
+        CreateCreatureDoor("AC#WMEZ6",[1091.572],SE)  // Mezzoloth
+        CreateCreatureDoor("AC#WMEZ6",[1092.729],NW)  // Mezzoloth
+END
+

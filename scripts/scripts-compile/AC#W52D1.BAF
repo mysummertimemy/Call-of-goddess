@@ -1,0 +1,10 @@
+/*
+IF
+	Opened([ANYONE])
+THEN
+	RESPONSE #100
+		GiveItemCreate("AC#W52H3",LastTrigger,0,0,0)   // Helm of Acid Resistance (identified)
+		DisplayStringNoName(Myself,@52002)   // You pour the acid out of the helmet over the metal, which immediately begins to dissolve.
+END
+*/
+

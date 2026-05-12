@@ -1,0 +1,101 @@
+IF
+	Global("EnteredArea","AC#W51",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredArea","AC#W51",1)
+		TriggerActivation("Trap1",FALSE)
+		TriggerActivation("Trap02",FALSE)
+		TriggerActivation("Trap3",FALSE)
+		TriggerActivation("Trap4",FALSE)
+		TriggerActivation("Trap5",FALSE)
+		TriggerActivation("Trap6",FALSE)
+		TriggerActivation("Trap7",FALSE)
+		TriggerActivation("Trap9",FALSE)
+		TriggerActivation("Trap10",FALSE)
+END
+
+IF
+	Global("EnteredArea","AC#W51",1)
+	Allegiance("AC#W#BEB",ENEMY) 
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredArea","AC#W51",2)
+		TriggerActivation("Trap1",TRUE)
+		TriggerActivation("Trap02",TRUE)
+		TriggerActivation("Trap3",TRUE)
+		TriggerActivation("Trap4",TRUE)
+		TriggerActivation("Trap5",TRUE)
+		TriggerActivation("Trap6",TRUE)
+		TriggerActivation("Trap7",TRUE)
+		TriggerActivation("Trap9",TRUE)
+		TriggerActivation("Trap10",TRUE)
+END
+
+
+IF
+	GlobalTimerExpired("AC#W_Wait_Nalfeshnee","GLOBAL")
+	Global("AC#W_TharundarSoul","GLOBAL",11)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_TharundarSoul","GLOBAL",12)
+		CreateCreatureDoor("AC#WNAL2",[722.627],9)  // Margrog
+		CreateCreatureDoor("AC#W#BE3",[714.619],9)  // Bebilith
+END
+
+IF
+	Global("AC#W_TharundarSoul","GLOBAL",10)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_TharundarSoul","GLOBAL",11)
+		SetGlobalTimer("AC#W_Wait_Nalfeshnee","GLOBAL",TWO_ROUNDS)
+END
+
+IF
+	Dead("AC#WNAL2")
+	Global("Killed_Margrog","AC#W51",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Killed_Margrog","AC#W51",1)
+		EraseJournalEntry(@470601)
+		EraseJournalEntry(@470700)
+		EraseJournalEntry(@470702)
+		EraseJournalEntry(@470703)
+		AddJournalEntry(@470704,QUEST_DONE)
+END
+
+IF
+	Dead("AC#W#BEB")
+	!PartyHasItem("AC#WPNTG")
+	Global("AC#W_Killed_Bebilith","GLOBAL",0)
+	Global("AC#W_Bebilith_Help","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Killed_Bebilith","GLOBAL",1)
+		AddJournalEntry(@400120,QUEST)
+END
+
+IF
+	Dead("AC#W#BEB")
+	PartyHasItem("AC#WPNTG")
+	Global("AC#W_Has_Pentacle","GLOBAL",0)
+	Global("AC#W_Bebilith_Help","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Has_Pentacle","GLOBAL",1)
+		EraseJournalEntry(@400120)
+		AddJournalEntry(@400121,QUEST)
+END
+
+IF
+	Dead("AC#W#BEB")
+	Global("AC#W_Bebilith_Help","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Bebilith_Help","GLOBAL",20)
+		TakePartyItem("AC#W51OR")
+		EraseJournalEntry(@510000)
+		AddJournalEntry(@510002,QUEST_DONE)
+END
+
+
+

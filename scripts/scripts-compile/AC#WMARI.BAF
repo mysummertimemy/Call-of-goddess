@@ -1,0 +1,48 @@
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("casttimer","LOCALS")
+	Global("cloud","LOCALS",0)
+THEN
+	RESPONSE #50
+		SetGlobalTimer("casttimer","LOCALS",ONE_ROUND)
+		SetGlobal("cloud","LOCALS",1)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("casttimer","LOCALS")
+	Global("image","LOCALS",0)
+THEN
+	RESPONSE #50
+		SetGlobalTimer("casttimer","LOCALS",ONE_ROUND)
+		SetGlobal("image","LOCALS",1)
+		Spell(Myself,WIZARD_PROJECT_IMAGE)  // SPWI703.SPL (Project Image)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("casttimer","LOCALS")
+	Global("dead","LOCALS",0)
+THEN
+	RESPONSE #50
+		SetGlobalTimer("casttimer","LOCALS",ONE_ROUND)
+		SetGlobal("dead","LOCALS",1)
+		Spell(Myself,WIZARD_ANIMATE_DEAD)  // SPWI501.SPL (Animate Dead)
+END
+
+IF
+	!See(NearestEnemyOf(Myself))
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		MoveToObject(NearestEnemyOf(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

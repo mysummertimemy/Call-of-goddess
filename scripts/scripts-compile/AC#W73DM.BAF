@@ -1,0 +1,40 @@
+IF
+	Range([PC],20)
+	NumTimesTalkedTo(0)
+	See([PC])
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Dead("AC#W73SL")  // Alter Mann
+	Global("Applause","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Applause","LOCALS",1)
+		SetGlobal("CheckedRing","LOCALS",1)
+		SetGlobal("CheckKill","LOCALS",1)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	GlobalTimerExpired("PlayerHasRing","GLOBAL")
+	Global("CheckedRing","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CheckedRing","LOCALS",1)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	GlobalTimerExpired("WaitForKill","GLOBAL")
+	!Dead("AC#W73SL")  // Alter Mann
+	Global("CheckKill","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CheckKill","LOCALS",1)
+		StartDialogueNoSet([PC])
+END
+

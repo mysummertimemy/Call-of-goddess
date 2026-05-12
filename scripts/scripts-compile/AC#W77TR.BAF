@@ -1,0 +1,9 @@
+IF
+	OR(2)
+		HPLT(Myself,0)
+		Die()
+THEN
+	RESPONSE #100
+		ReallyForceSpellDeadRES("AC#W77T",Myself)  // No such index
+END
+

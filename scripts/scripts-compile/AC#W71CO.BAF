@@ -1,0 +1,13 @@
+IF
+	Contains("AC#W71H1",Myself)  // Teil einer Halskette
+	Contains("AC#W71H2",Myself)  // Teil einer Halskette
+THEN
+	RESPONSE #100
+		DestroyItem("AC#W71H1")  // Teil einer Halskette
+		DestroyItem("AC#W71H2")  // Teil einer Halskette
+		PlaySound("EFF_P91")
+		CreateItem("AC#W71H3",1,1,1)  // Herz der Verdammten
+		Wait(2)
+		DisplayString(Myself,@71000)
+END
+

@@ -1,0 +1,93 @@
+IF
+	OpenState("DOOR01",TRUE)
+	Global("DoorOpened","AC#W52",0)
+THEN
+	RESPONSE #100
+		SetGlobal("DoorOpened","AC#W52",1)
+		TriggerActivation("Talk_traitor",FALSE)
+		TriggerActivation("Notacidproof_door",FALSE)
+		//TriggerActivation("Acid_damage",TRUE)
+END
+
+IF
+	Global("TraitorFree","AC#W52",0)
+	Delay(6)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#W994","AC#W_TRT")  // No such index
+		Continue()
+END
+
+IF
+	Delay(1)
+	HasItem("AC#W60AC",Player1)  // Mastery Orb
+THEN
+	RESPONSE #100
+		ApplyDamage(Player1,20,ACID)
+		Continue()
+END
+
+IF
+	Delay(1)
+	HasItem("AC#W60AC",Player2)  // Mastery Orb
+THEN
+	RESPONSE #100
+		ApplyDamage(Player2,20,ACID)
+		Continue()
+END
+
+IF
+	Delay(1)
+	HasItem("AC#W60AC",Player3)  // Mastery Orb
+THEN
+	RESPONSE #100
+		ApplyDamage(Player3,20,ACID)
+		Continue()
+END
+
+IF
+	Delay(1)
+	HasItem("AC#W60AC",Player4)  // Mastery Orb
+THEN
+	RESPONSE #100
+		ApplyDamage(Player4,20,ACID)
+		Continue()
+END
+
+IF
+	Delay(2)
+	HasItem("AC#W60AC",Player5)  // Mastery Orb
+THEN
+	RESPONSE #100
+		ApplyDamage(Player5,20,ACID)
+		Continue()
+END
+
+IF
+	Delay(2)
+	HasItem("AC#W60AC",Player6)  // Mastery Orb
+THEN
+	RESPONSE #100
+		ApplyDamage(Player6,20,ACID)
+		Continue()
+END
+
+IF
+    Global("HezrouSpawn","AC#W52",1)
+	DifficultyGT(EASY)
+THEN
+    RESPONSE #100
+        CreateCreature("AC#WHEZ1",[872.1001],NW)  // Hezrou
+        SetGlobal("HezrouSpawn","AC#W52",2)
+END
+
+IF
+    Global("HezrouSpawn","AC#W52",0)
+	DifficultyGT(EASIEST)
+THEN
+    RESPONSE #100
+        CreateCreature("AC#WHEZ1",[1237.751],SW)  // Hezrou
+        SetGlobal("HezrouSpawn","AC#W52",1)
+END
+
+

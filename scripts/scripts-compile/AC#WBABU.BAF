@@ -1,0 +1,132 @@
+IF
+	Global("Invisibility","LOCALS",0)
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WBIN",Myself)  // Unsichtbarkeit
+		SetGlobal("Invisibility","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf(Myself))
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("HeatMetal","LOCALS",0)
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+	OR(30)
+		HasItemEquiped("PLAT01",LastSeenBy(Myself))  // Plattenpanzer
+		HasItemEquiped("PLAT02",LastSeenBy(Myself))  // Fallorains Panzer +1
+		HasItemEquiped("PLAT04",LastSeenBy(Myself))  // Prunkharnisch
+		HasItemEquiped("PLAT05",LastSeenBy(Myself))  // Panzer der Finsternis +1
+		HasItemEquiped("PLAT07",LastSeenBy(Myself))  // Plattenpanzer
+		HasItemEquiped("PLAT08",LastSeenBy(Myself))  // Plattenpanzer
+		HasItemEquiped("PLAT09",LastSeenBy(Myself))  // Mithril-Feldharnisch +2
+		HasItemEquiped("PLAT10",LastSeenBy(Myself))  // Plattenpanzer +1
+		HasItemEquiped("PLAT11",LastSeenBy(Myself))  // Delvers Plattenpanzer +2
+		HasItemEquiped("PLAT12",LastSeenBy(Myself))  // Verdammnis-Plattenpanzer +3
+		HasItemEquiped("PLAT14",LastSeenBy(Myself))  // Prunkharnisch +1
+		HasItemEquiped("PLAT15",LastSeenBy(Myself))  // Stolz der Legion +2
+		HasItemEquiped("PLAT16",LastSeenBy(Myself))  // Rüstung des Hirsches +3
+		HasItemEquiped("PLAT17",LastSeenBy(Myself))  // T'rachies Plattenpanzer +5
+		HasItemEquiped("PLAT19",LastSeenBy(Myself))  // Prunkharnisch +2
+		HasItemEquiped("PLAT21",LastSeenBy(Myself))  // Enkidus Prunkharnisch +3
+		HasItemEquiped("PLAT23",LastSeenBy(Myself))  // Ritterrüstung +2
+		HasItemEquiped("CHAN01",LastSeenBy(Myself))  // Kettenhemd
+		HasItemEquiped("CHAN02",LastSeenBy(Myself))  // Kettenhemd +1
+		HasItemEquiped("CHAN03",LastSeenBy(Myself))  // Kettenhemd des Todes +2
+		HasItemEquiped("CHAN04",LastSeenBy(Myself))  // Schienenpanzer
+		HasItemEquiped("CHAN05",LastSeenBy(Myself))  // Schienenpanzer +1
+		HasItemEquiped("CHAN06",LastSeenBy(Myself))  // Mithril-Kettenhemd +4
+		HasItemEquiped("CHAN07",LastSeenBy(Myself))  // Kettenhemd +3
+		HasItemEquiped("CHAN08",LastSeenBy(Myself))  // Kettenhemd +2
+		HasItemEquiped("CHAN10",LastSeenBy(Myself))  // Kettenhemd des Narren +4
+		HasItemEquiped("CHAN11",LastSeenBy(Myself))  // Blutrotes Kettenhemd +5
+		HasItemEquiped("CHAN17",LastSeenBy(Myself))  // Schuppenpanzer der Asche +2
+		HasItemEquiped("CHAN18",LastSeenBy(Myself))  // Glaubensrüstung +3
+		HasItemEquiped("CHAN21",LastSeenBy(Myself))  // Kettenhemd +3
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("AC#HEAM",LastSeenBy(Myself))  // Agannazars Flamme
+		SetGlobal("HeatMetal","LOCALS",1)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+END
+
+IF
+	See(StrongestOf([PC]))
+	CheckStatGT(LastSeenBy(Myself),14,STR)
+	Allegiance(Myself,ENEMY)
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		ReallyForceSpell(LastSeenBy(Myself),WIZARD_RAY_OF_ENFEEBLEMENT)  // SPWI221.SPL (Strahl der Schwächung)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+	RESPONSE #100
+		Continue()
+END
+
+IF
+	See(StrongestOf([PC]))
+	GlobalLT("Invisibility","LOCALS",3)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	Allegiance(Myself,ENEMY)
+	Delay(6)
+THEN
+	RESPONSE #100
+		IncrementGlobal("Invisibility","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_INVISIBILITY)  // SPWI206.SPL (Unsichtbarkeit)
+		MoveToObject(LastSeenBy(Myself))
+		AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+	Delay(12)
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #50
+		ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Magie zerstören)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Fear","LOCALS",0)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #50
+		ReallyForceSpell(NearestEnemyOf(Myself),DEMON_FEAR)  // SPIN890.SPL (Dämonenfurcht)
+		SetGlobal("Fear","LOCALS",1)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		Attack(LastAttackerOf(Myself))
+END
+

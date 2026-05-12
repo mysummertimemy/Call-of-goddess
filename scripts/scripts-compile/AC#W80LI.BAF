@@ -1,0 +1,18 @@
+IF
+	NumTimesTalkedTo(0)
+	OpenState("DOOR13",TRUE)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+
+

@@ -1,0 +1,19 @@
+IF
+	Global("Retrieve_DevaSpark","AC#W80",10)
+THEN
+	RESPONSE #100
+		SetGlobal("Retrieve_DevaSpark","AC#W80",11)
+		ReallyForceSpell(Myself,CLERIC_ARMOR_OF_FAITH)  // SPPR111.SPL (Rüstung des Glaubens)
+		Wait(2)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	OpenState("Door_Deva",TRUE)
+	Global("AC_Deva_Free","AC#W80",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Deva_Free","AC#W80",1)
+		StartDialogueNoSet([PC])
+END
+

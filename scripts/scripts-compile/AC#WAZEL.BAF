@@ -1,0 +1,76 @@
+IF
+	PickPocketFailed([ANYONE])
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	Allegiance(Myself,NEUTRAL)
+	Global("AC#WMefisto_helps_Gildaar","GLOBAL",11)
+	Global("Azzelbath_Potion","AC#W4W",0)
+THEN
+	RESPONSE #100
+		CreateItem("AC#WSTYX",0,0,0)  // Bottle of Styx water
+		SetGlobal("Azzelbath_Potion","AC#W4W",1)
+END
+
+IF
+	PickPocketFailed([ANYONE])
+	Allegiance(Myself,ENEMY)
+	Global("Azzelbath_Steal","AC#W4W",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Azzelbath_Steal","AC#W4W",1)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	OR(2)
+		GlobalLT("AC#WMefisto_helps_Gildaar","GLOBAL",11)
+		Global("Azzelbath_Steal","AC#W4W",0)
+	Global("Azzelbath_Neutral","AC#W4W",0)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		RunAwayFrom(LastAttackerOf(Myself),30)
+		SetGlobal("Azzelbath_Neutral","AC#W4W",1)
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	HasItem("Minhp1",[ANYONE])  // No such index
+THEN
+	RESPONSE #100
+		DestroyItem("Minhp1")  // No such index
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+	OR(2)
+		GlobalGT("AC#WMefisto_helps_Gildaar","GLOBAL",10)
+		GlobalGT("Azzelbath_Steal","AC#W4W",0)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		RunAwayFrom(LastAttackerOf(Myself),30)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
