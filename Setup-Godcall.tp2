@@ -1,0 +1,2093 @@
+/*************************************************************************
+ * Call Of The Lost Goddess V 2.5
+ *
+ *
+ *
+ *
+ *************************************************************************/
+BACKUP ~godcall/backup~
+AUTHOR "Acifer"
+
+AUTO_EVAL_STRINGS
+AUTO_TRA ~godcall\language\%s~
+README ~godcall\Documentation\Godcall_Readme.pdf~
+
+ALWAYS
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SET bg2_chapter = 12
+  END ELSE BEGIN
+    OUTER_SET bg2_chapter = 0
+  END
+  OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+    OUTER_SET bg2_chapter = bg2_chapter + 1
+    OUTER_TEXT_SPRINT name_source ~bg2_chapter_%i%~
+    OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+  END
+
+
+  //either use cpmvars that have these variables set or add this variable declaration somewhere in your tp2 code
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SET wmp_xCoord_SoA = 0 //in relation to BG2/BG2:EE WORLDMAP.WMP add 0 px correction to X coordinate
+    OUTER_SET wmp_yCoord_SoA = 2283 //in relation to BG2/BG2:EE WORLDMAP.WMP add 2283 px correction to Y coordinate
+    OUTER_TEXT_SPRINT wmp_worldmap_ToB "worldmap" //when editing ToB worldmap use WORLDMAP.WMP instead of WORLDM25.WMP
+  END ELSE BEGIN
+    OUTER_SET wmp_xCoord_SoA = 0
+    OUTER_SET wmp_yCoord_SoA = 0
+    OUTER_TEXT_SPRINT wmp_worldmap_ToB "worldm25"
+  END
+END
+
+ALWAYS
+    //TRAs declared in LANGUAGE must be reloaded
+  LOAD_TRA ~godcall/language/%LANGUAGE%/setup-godcall.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/godcall-journal.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/godcall-items.tra~
+
+END
+
+LANGUAGE ~Deutsch~
+         ~german~
+         ~godcall/language/german/setup-godcall.tra~
+         ~godcall/language/german/godcall-journal.tra~
+         ~godcall/language/german/godcall-items.tra~
+         ~godcall/language/german/01_Quest_start_in_Athkatla.tra~
+         ~godcall/language/german/AC#001_WAUKEEN.tra~
+         ~godcall/language/german/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/german/AC#W01_Dialogues_Goldspires_outside.tra~
+         ~godcall/language/german/AC#W03_Goldspire_temple_interior.tra~
+         ~godcall/language/german/AC#W4A_Succubus_lair.tra~
+         ~godcall/language/german/AC#W4C_Gladiator_area.tra~
+         ~godcall/language/german/AC#W4D_Dretch_area.tra~
+         ~godcall/language/german/AC#W4G_Glabrezu_lair.tra~
+         ~godcall/language/german/AC#W4S_Succubus_child_area.tra~
+         ~godcall/language/german/AC#W4W_Azzelbath_weeping_goddess.tra~
+         ~godcall/language/german/AC#W4W_weeping_goddess_sidechars.tra~
+         ~godcall/language/german/AC#W06_8_Goldspire_tents.tra~
+         ~godcall/language/german/AC#W12_Sojourner_Portal.tra~
+         ~godcall/language/german/AC#W19_Infinite_Staircase_first_level.tra~
+         ~godcall/language/german/AC#W30_Infinite_Staircase.tra~
+         ~godcall/language/german/AC#W30_Modron_machine.tra~
+         ~godcall/language/german/AC#W40_Mefisto.tra~
+         ~godcall/language/german/AC#W40_Samora.tra~
+         ~godcall/language/german/AC#W41_Sodden_solar.tra~
+         ~godcall/language/german/AC#W42_Marettas_Beds.tra~
+         ~godcall/language/german/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/german/AC#W45_Nighthag_house.tra~
+         ~godcall/language/german/AC#W47_Nalfeshnee.tra~
+         ~godcall/language/german/AC#W50_abyssal_plains.tra~
+         ~godcall/language/german/AC#W51_Bebilith_Lair.tra~
+         ~godcall/language/german/AC#W52_traitor_prison.tra~
+         ~godcall/language/german/AC#W54_56_57.tra~
+         ~godcall/language/german/AC#W60_61_blood_war.tra~
+         ~godcall/language/german/AC#W70_chamber_of_temptation.tra~
+         ~godcall/language/german/AC#W71_test_of_lust.tra~
+         ~godcall/language/german/AC#W72_gluttony.tra~
+         ~godcall/language/german/AC#W73_envy.tra~
+         ~godcall/language/german/AC#W74_wrath.tra~
+         ~godcall/language/german/AC#W75_pride.tra~
+         ~godcall/language/german/AC#W76_greed.tra~
+         ~godcall/language/german/AC#W77_test of sloth.tra~
+         ~godcall/language/german/AC#W80.tra~
+         ~godcall/language/german/Belthazaar_drums.tra~
+         ~godcall/language/german/Book_of_fiends.tra~
+         ~godcall/language/german/CROMWELL.tra~
+         ~godcall/language/german/Goldspire_Main_Dialogues.tra~
+         ~godcall/language/german/planar_guild.tra~
+         ~godcall/language/german/Spellkey_merchant.tra~
+         ~godcall/language/german/Verin.tra~
+         
+         
+ LANGUAGE ~English~
+         ~english~
+         ~godcall/language/english/setup-godcall.tra~
+         ~godcall/language/english/godcall-journal.tra~
+         ~godcall/language/english/godcall-items.tra~
+         ~godcall/language/english/01_Quest_start_in_Athkatla.tra~
+         ~godcall/language/english/AC#001_WAUKEEN.tra~
+         ~godcall/language/english/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/english/AC#W01_Dialogues_Goldspires_outside.tra~
+         ~godcall/language/english/AC#W03_Goldspire_temple_interior.tra~
+         ~godcall/language/english/AC#W4A_Succubus_lair.tra~
+         ~godcall/language/english/AC#W4C_Gladiator_area.tra~
+         ~godcall/language/english/AC#W4D_Dretch_area.tra~
+         ~godcall/language/english/AC#W4G_Glabrezu_lair.tra~
+         ~godcall/language/english/AC#W4S_Succubus_child_area.tra~
+         ~godcall/language/english/AC#W4W_Azzelbath_weeping_goddess.tra~
+         ~godcall/language/english/AC#W4W_weeping_goddess_sidechars.tra~
+         ~godcall/language/english/AC#W06_8_Goldspire_tents.tra~
+         ~godcall/language/english/AC#W12_Sojourner_Portal.tra~
+         ~godcall/language/english/AC#W19_Infinite_Staircase_first_level.tra~
+         ~godcall/language/english/AC#W30_Infinite_Staircase.tra~
+         ~godcall/language/english/AC#W30_Modron_machine.tra~
+         ~godcall/language/english/AC#W40_Mefisto.tra~
+         ~godcall/language/english/AC#W40_Samora.tra~
+         ~godcall/language/english/AC#W41_Sodden_solar.tra~
+         ~godcall/language/english/AC#W42_Marettas_Beds.tra~
+         ~godcall/language/english/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/english/AC#W45_Nighthag_house.tra~
+         ~godcall/language/english/AC#W47_Nalfeshnee.tra~
+         ~godcall/language/english/AC#W50_abyssal_plains.tra~
+         ~godcall/language/english/AC#W51_Bebilith_Lair.tra~
+         ~godcall/language/english/AC#W52_traitor_prison.tra~
+         ~godcall/language/english/AC#W54_56_57.tra~
+         ~godcall/language/english/AC#W60_61_blood_war.tra~
+         ~godcall/language/english/AC#W70_chamber_of_temptation.tra~
+         ~godcall/language/english/AC#W71_test_of_lust.tra~
+         ~godcall/language/english/AC#W72_gluttony.tra~
+         ~godcall/language/english/AC#W73_envy.tra~
+         ~godcall/language/english/AC#W74_wrath.tra~
+         ~godcall/language/english/AC#W75_pride.tra~
+         ~godcall/language/english/AC#W76_greed.tra~
+         ~godcall/language/english/AC#W77_test of sloth.tra~
+         ~godcall/language/english/AC#W80.tra~
+         ~godcall/language/english/Belthazaar_drums.tra~
+         ~godcall/language/english/Book_of_fiends.tra~
+         ~godcall/language/english/CROMWELL.tra~
+         ~godcall/language/english/Goldspire_Main_Dialogues.tra~
+         ~godcall/language/english/planar_guild.tra~
+         ~godcall/language/english/Spellkey_merchant.tra~
+         ~godcall/language/english/Verin.tra~
+
+LANGUAGE ~Simplified Chinese by lzw104522773~
+         ~schinese~
+         ~godcall/language/schinese/setup-godcall.tra~
+         ~godcall/language/schinese/godcall-journal.tra~
+         ~godcall/language/schinese/godcall-items.tra~
+         ~godcall/language/schinese/01_Quest_start_in_Athkatla.tra~
+         ~godcall/language/schinese/AC#001_WAUKEEN.tra~
+         ~godcall/language/schinese/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/schinese/AC#W01_Dialogues_Goldspires_outside.tra~
+         ~godcall/language/schinese/AC#W03_Goldspire_temple_interior.tra~
+         ~godcall/language/schinese/AC#W4A_Succubus_lair.tra~
+         ~godcall/language/schinese/AC#W4C_Gladiator_area.tra~
+         ~godcall/language/schinese/AC#W4D_Dretch_area.tra~
+         ~godcall/language/schinese/AC#W4G_Glabrezu_lair.tra~
+         ~godcall/language/schinese/AC#W4S_Succubus_child_area.tra~
+         ~godcall/language/schinese/AC#W4W_Azzelbath_weeping_goddess.tra~
+         ~godcall/language/schinese/AC#W4W_weeping_goddess_sidechars.tra~
+         ~godcall/language/schinese/AC#W06_8_Goldspire_tents.tra~
+         ~godcall/language/schinese/AC#W12_Sojourner_Portal.tra~
+         ~godcall/language/schinese/AC#W19_Infinite_Staircase_first_level.tra~
+         ~godcall/language/schinese/AC#W30_Infinite_Staircase.tra~
+         ~godcall/language/schinese/AC#W30_Modron_machine.tra~
+         ~godcall/language/schinese/AC#W40_Mefisto.tra~
+         ~godcall/language/schinese/AC#W40_Samora.tra~
+         ~godcall/language/schinese/AC#W41_Sodden_solar.tra~
+         ~godcall/language/schinese/AC#W42_Marettas_Beds.tra~
+         ~godcall/language/schinese/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/schinese/AC#W45_Nighthag_house.tra~
+         ~godcall/language/schinese/AC#W47_Nalfeshnee.tra~
+         ~godcall/language/schinese/AC#W50_abyssal_plains.tra~
+         ~godcall/language/schinese/AC#W51_Bebilith_Lair.tra~
+         ~godcall/language/schinese/AC#W52_traitor_prison.tra~
+         ~godcall/language/schinese/AC#W54_56_57.tra~
+         ~godcall/language/schinese/AC#W60_61_blood_war.tra~
+         ~godcall/language/schinese/AC#W70_chamber_of_temptation.tra~
+         ~godcall/language/schinese/AC#W71_test_of_lust.tra~
+         ~godcall/language/schinese/AC#W72_gluttony.tra~
+         ~godcall/language/schinese/AC#W73_envy.tra~
+         ~godcall/language/schinese/AC#W74_wrath.tra~
+         ~godcall/language/schinese/AC#W75_pride.tra~
+         ~godcall/language/schinese/AC#W76_greed.tra~
+         ~godcall/language/schinese/AC#W77_test of sloth.tra~
+         ~godcall/language/schinese/AC#W80.tra~
+         ~godcall/language/schinese/Belthazaar_drums.tra~
+         ~godcall/language/schinese/Book_of_fiends.tra~
+         ~godcall/language/schinese/CROMWELL.tra~
+         ~godcall/language/schinese/Goldspire_Main_Dialogues.tra~
+         ~godcall/language/schinese/planar_guild.tra~
+         ~godcall/language/schinese/Spellkey_merchant.tra~
+         ~godcall/language/schinese/Verin.tra~
+//WIP
+/*
+LANGUAGE ~Italian (by OiseauRebelle)~
+         ~italian~
+         ~godcall/language/italian/setup-godcall.tra~
+         ~godcall/language/italian/godcall-journal.tra~
+         ~godcall/language/italian/godcall-items.tra~
+         ~godcall/language/italian/01_Quest_start_in_Athkatla.tra~
+         ~godcall/language/italian/AC#001_WAUKEEN.tra~
+         ~godcall/language/italian/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/italian/AC#W01_Dialogues_Goldspires_outside.tra~
+         ~godcall/language/italian/AC#W03_Goldspire_temple_interior.tra~
+         ~godcall/language/italian/AC#W4A_Succubus_lair.tra~
+         ~godcall/language/italian/AC#W4C_Gladiator_area.tra~
+         ~godcall/language/italian/AC#W4D_Dretch_area.tra~
+         ~godcall/language/italian/AC#W4G_Glabrezu_lair.tra~
+         ~godcall/language/italian/AC#W4S_Succubus_child_area.tra~
+         ~godcall/language/italian/AC#W4W_Azzelbath_weeping_goddess.tra~
+         ~godcall/language/italian/AC#W4W_weeping_goddess_sidechars.tra~
+         ~godcall/language/italian/AC#W06_8_Goldspire_tents.tra~
+         ~godcall/language/italian/AC#W12_Sojourner_Portal.tra~
+         ~godcall/language/italian/AC#W19_Infinite_Staircase_first_level.tra~
+         ~godcall/language/italian/AC#W30_Infinite_Staircase.tra~
+         ~godcall/language/italian/AC#W30_Modron_machine.tra~
+         ~godcall/language/italian/AC#W40_Mefisto.tra~
+         ~godcall/language/italian/AC#W40_Samora.tra~
+         ~godcall/language/italian/AC#W41_Sodden_solar.tra~
+         ~godcall/language/italian/AC#W42_Marettas_Beds.tra~
+         ~godcall/language/italian/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/italian/AC#W45_Nighthag_house.tra~
+         ~godcall/language/italian/AC#W47_Nalfeshnee.tra~
+         ~godcall/language/italian/AC#W50_abyssal_plains.tra~
+         ~godcall/language/italian/AC#W51_Bebilith_Lair.tra~
+         ~godcall/language/italian/AC#W52_traitor_prison.tra~
+         ~godcall/language/italian/AC#W54_56_57.tra~
+         ~godcall/language/italian/AC#W60_61_blood_war.tra~
+         ~godcall/language/italian/AC#W70_chamber_of_temptation.tra~
+         ~godcall/language/italian/AC#W71_test_of_lust.tra~
+         ~godcall/language/italian/AC#W72_gluttony.tra~
+         ~godcall/language/italian/AC#W73_envy.tra~
+         ~godcall/language/italian/AC#W74_wrath.tra~
+         ~godcall/language/italian/AC#W75_pride.tra~
+         ~godcall/language/italian/AC#W76_greed.tra~
+         ~godcall/language/italian/AC#W77_test of sloth.tra~
+         ~godcall/language/italian/AC#W80.tra~
+         ~godcall/language/italian/Belthazaar_drums.tra~
+         ~godcall/language/italian/Book_of_fiends.tra~
+         ~godcall/language/italian/CROMWELL.tra~
+         ~godcall/language/italian/Goldspire_Main_Dialogues.tra~
+         ~godcall/language/italian/planar_guild.tra~
+         ~godcall/language/italian/Spellkey_merchant.tra~
+         ~godcall/language/italian/Verin.tra~
+*/
+
+LANGUAGE ~Russian by darthalex2014 and Origanum8~
+         ~russian~
+         ~godcall/language/russian/setup-godcall.tra~
+         ~godcall/language/russian/godcall-journal.tra~
+         ~godcall/language/russian/godcall-items.tra~
+         ~godcall/language/russian/01_Quest_start_in_Athkatla.tra~
+         ~godcall/language/russian/AC#001_WAUKEEN.tra~
+         ~godcall/language/russian/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/russian/AC#W01_Dialogues_Goldspires_outside.tra~
+         ~godcall/language/russian/AC#W03_Goldspire_temple_interior.tra~
+         ~godcall/language/russian/AC#W4A_Succubus_lair.tra~
+         ~godcall/language/russian/AC#W4C_Gladiator_area.tra~
+         ~godcall/language/russian/AC#W4D_Dretch_area.tra~
+         ~godcall/language/russian/AC#W4G_Glabrezu_lair.tra~
+         ~godcall/language/russian/AC#W4S_Succubus_child_area.tra~
+         ~godcall/language/russian/AC#W4W_Azzelbath_weeping_goddess.tra~
+         ~godcall/language/russian/AC#W4W_weeping_goddess_sidechars.tra~
+         ~godcall/language/russian/AC#W06_8_Goldspire_tents.tra~
+         ~godcall/language/russian/AC#W12_Sojourner_Portal.tra~
+         ~godcall/language/russian/AC#W19_Infinite_Staircase_first_level.tra~
+         ~godcall/language/russian/AC#W30_Infinite_Staircase.tra~
+         ~godcall/language/russian/AC#W30_Modron_machine.tra~
+         ~godcall/language/russian/AC#W40_Mefisto.tra~
+         ~godcall/language/russian/AC#W40_Samora.tra~
+         ~godcall/language/russian/AC#W41_Sodden_solar.tra~
+         ~godcall/language/russian/AC#W42_Marettas_Beds.tra~
+         ~godcall/language/russian/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/russian/AC#W45_Nighthag_house.tra~
+         ~godcall/language/russian/AC#W47_Nalfeshnee.tra~
+         ~godcall/language/russian/AC#W50_abyssal_plains.tra~
+         ~godcall/language/russian/AC#W51_Bebilith_Lair.tra~
+         ~godcall/language/russian/AC#W52_traitor_prison.tra~
+         ~godcall/language/russian/AC#W54_56_57.tra~
+         ~godcall/language/russian/AC#W60_61_blood_war.tra~
+         ~godcall/language/russian/AC#W70_chamber_of_temptation.tra~
+         ~godcall/language/russian/AC#W71_test_of_lust.tra~
+         ~godcall/language/russian/AC#W72_gluttony.tra~
+         ~godcall/language/russian/AC#W73_envy.tra~
+         ~godcall/language/russian/AC#W74_wrath.tra~
+         ~godcall/language/russian/AC#W75_pride.tra~
+         ~godcall/language/russian/AC#W76_greed.tra~
+         ~godcall/language/russian/AC#W77_test of sloth.tra~
+         ~godcall/language/russian/AC#W80.tra~
+         ~godcall/language/russian/Belthazaar_drums.tra~
+         ~godcall/language/russian/Book_of_fiends.tra~
+         ~godcall/language/russian/CROMWELL.tra~
+         ~godcall/language/russian/Goldspire_Main_Dialogues.tra~
+         ~godcall/language/russian/planar_guild.tra~
+         ~godcall/language/russian/Spellkey_merchant.tra~
+         ~godcall/language/russian/Verin.tra~
+
+ LANGUAGE ~Spanish by ElGamerViejuno~
+         ~spanish~
+         ~godcall/language/spanish/setup-godcall.tra~
+         ~godcall/language/spanish/godcall-journal.tra~
+         ~godcall/language/spanish/godcall-items.tra~
+         ~godcall/language/spanish/01_Quest_start_in_Athkatla.tra~
+         ~godcall/language/spanish/AC#001_WAUKEEN.tra~
+         ~godcall/language/spanish/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/spanish/AC#W01_Dialogues_Goldspires_outside.tra~
+         ~godcall/language/spanish/AC#W03_Goldspire_temple_interior.tra~
+         ~godcall/language/spanish/AC#W4A_Succubus_lair.tra~
+         ~godcall/language/spanish/AC#W4C_Gladiator_area.tra~
+         ~godcall/language/spanish/AC#W4D_Dretch_area.tra~
+         ~godcall/language/spanish/AC#W4G_Glabrezu_lair.tra~
+         ~godcall/language/spanish/AC#W4S_Succubus_child_area.tra~
+         ~godcall/language/spanish/AC#W4W_Azzelbath_weeping_goddess.tra~
+         ~godcall/language/spanish/AC#W4W_weeping_goddess_sidechars.tra~
+         ~godcall/language/spanish/AC#W06_8_Goldspire_tents.tra~
+         ~godcall/language/spanish/AC#W12_Sojourner_Portal.tra~
+         ~godcall/language/spanish/AC#W19_Infinite_Staircase_first_level.tra~
+         ~godcall/language/spanish/AC#W30_Infinite_Staircase.tra~
+         ~godcall/language/spanish/AC#W30_Modron_machine.tra~
+         ~godcall/language/spanish/AC#W40_Mefisto.tra~
+         ~godcall/language/spanish/AC#W40_Samora.tra~
+         ~godcall/language/spanish/AC#W41_Sodden_solar.tra~
+         ~godcall/language/spanish/AC#W42_Marettas_Beds.tra~
+         ~godcall/language/spanish/AC#W44_Counting_House_Maretta.tra~
+         ~godcall/language/spanish/AC#W45_Nighthag_house.tra~
+         ~godcall/language/spanish/AC#W47_Nalfeshnee.tra~
+         ~godcall/language/spanish/AC#W50_abyssal_plains.tra~
+         ~godcall/language/spanish/AC#W51_Bebilith_Lair.tra~
+         ~godcall/language/spanish/AC#W52_traitor_prison.tra~
+         ~godcall/language/spanish/AC#W54_56_57.tra~
+         ~godcall/language/spanish/AC#W60_61_blood_war.tra~
+         ~godcall/language/spanish/AC#W70_chamber_of_temptation.tra~
+         ~godcall/language/spanish/AC#W71_test_of_lust.tra~
+         ~godcall/language/spanish/AC#W72_gluttony.tra~
+         ~godcall/language/spanish/AC#W73_envy.tra~
+         ~godcall/language/spanish/AC#W74_wrath.tra~
+         ~godcall/language/spanish/AC#W75_pride.tra~
+         ~godcall/language/spanish/AC#W76_greed.tra~
+         ~godcall/language/spanish/AC#W77_test of sloth.tra~
+         ~godcall/language/spanish/AC#W80.tra~
+         ~godcall/language/spanish/Belthazaar_drums.tra~
+         ~godcall/language/spanish/Book_of_fiends.tra~
+         ~godcall/language/spanish/CROMWELL.tra~
+         ~godcall/language/spanish/Goldspire_Main_Dialogues.tra~
+         ~godcall/language/spanish/planar_guild.tra~
+         ~godcall/language/spanish/Spellkey_merchant.tra~
+         ~godcall/language/spanish/Verin.tra~
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+// Godcall (main component)
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+BEGIN ~Call Of The Lost Goddess V 2.5~
+REQUIRE_PREDICATE (GAME_IS ~bg2ee eet~ && FILE_EXISTS ~engine.lua~) ~Requires BG2:EE or EET patched to 2.0 or higher.~  // Requires BG2:EE or EET patched to 2.0 or higher.
+DESIGNATED 0
+				 
+INCLUDE ~godcall/lib/extra_regexp_vars.tph~
+INCLUDE ~godcall/lib/cre_script_functions.tpa~
+INCLUDE ~godcall/lib/functions.tph~
+
+///////////////////////////////////////////////////////////////////////
+// Patching IDS files
+//
+///////////////////////////////////////////////////////////////////////
+
+INCLUDE ~godcall/lib/patches.tpa~
+///////////////////////////////////////////////////////////////////////
+// 2DA files
+//
+///////////////////////////////////////////////////////////////////////
+
+APPEND itemexcl.2da ~AC#W73RI 1~
+BUT_ONLY
+
+APPEND itemexcl.2da ~AC#WORMA 1~
+BUT_ONLY
+
+APPEND itemexcl.2da ~AC#WPTBD 1~
+BUT_ONLY
+
+APPEND itemexcl.2da ~AC#WSOPL 1~
+BUT_ONLY
+
+OUTER_SET strref = RESOLVE_STR_REF (@9000)
+APPEND itemdial.2da ~AC#WBKFD %strref% AC#WBKFD~
+BUT_ONLY
+
+// Adding Spawn groups to spawngrp.2da
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W01 150 AC#W01CD AC#W01CD AC#W01CF AC#W01CF AC#W01NM AC#W01NW AC#W01CD AC#W01CF"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W60 150 AC#W60M1 AC#W60M3 AC#W60M5 AC#W60M7 * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W6B 150 AC#W60M2 AC#W60M4 AC#W60M6 AC#W60M4 * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W3M 150 AC#W30FM Mepair01 Mepice01 Mepsmo01 * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W3S 150 AC#W30SA AC#W30SA AC#W30SA AC#W30SA * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W3G 150 AC#W30GT AC#W30GT AC#W30GT AC#W30GT * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W3R 150 AC#W30RA AC#W30RA AC#W30RA * * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W3P 150 AC#W30SP AC#W30SP AC#W30SP AC#W30SP * * * *"
+APPEND_COL ~spawngrp.2da~ "$ $ RDAC#W3D 150 AC#DRET1 AC#DRET1 AC#DRET1 AC#DRET1 AC#W30QU AC#W30QU * *"
+
+ACTION_IF NOT (FILE_EXISTS_IN_GAME ~fogarea.2da~) THEN BEGIN
+COPY ~%MOD_FOLDER%/2da/fogarea.2da~ ~override~
+END
+
+ACTION_IF NOT (FILE_EXISTS_IN_GAME ~fogpt.2da~) THEN BEGIN
+COPY ~%MOD_FOLDER%/2da/fogpt.2da~ ~override~
+END
+
+APPEND ~MastArea.2da~
+~AC#W01     value~ //Goldspires MasterArea
+UNLESS ~AC#W01~
+APPEND ~MastArea.2da~
+~AC#W12     value~
+UNLESS ~AC#W12~
+APPEND ~MastArea.2da~
+~AC#W19     value~
+UNLESS ~AC#W19~
+APPEND ~MastArea.2da~
+~AC#W30     value~
+UNLESS ~AC#W30~
+APPEND ~MastArea.2da~
+~AC#W40     value~
+UNLESS ~AC#W40~
+APPEND ~MastArea.2da~
+~AC#W50     value~
+UNLESS ~AC#W50~
+
+APPEND ~FOGAREA.2da~ ~AC#W19  0.80  75  178  149   89   178  149   89   25~
+UNLESS ~AC#W19~
+
+APPEND ~MASTAREA.2da~ ~AC#W54 value~
+APPEND ~FOGAREA.2da~ ~AC#W54  0.80  75  45  79   63   98  148   118   25~
+UNLESS ~AC#W54~
+
+APPEND ~MASTAREA.2da~ ~AC#W55 value~
+APPEND ~FOGAREA.2da~ ~AC#W55  0.80  75  74  121   99   132  186   156   25~
+APPEND ~fogpt.2da~ ~AC#W55      50      400         2938    2167    -20.0   -15.0~
+UNLESS ~AC#W55~
+
+APPEND ~MastArea.2da~
+~AC#W80     value~
+UNLESS ~AC#W80~
+APPEND ~MastArea.2da~
+~AC#W90     value~
+UNLESS ~AC#W90~
+
+// appending Entries for LeaveAreaLUAEntry correct to work
+APPEND ~ENTRIES.2DA~
+~AC#W80		349.449    *           *          *         *         *         *         *        *~ //Waukeen Prison LVL 1
+UNLESS ~AC#W80~
+APPEND ~ENTRIES.2DA~
+~AC#W40		489.560    *           *          *         *         *         *         *        *~ //Exit from counting house
+UNLESS ~AC#W40~
+APPEND ~ENTRIES.2DA~
+~AC#W54		2589.503    *           *          *         *         *         *         *        *~ //Exit AC#W50
+UNLESS ~AC#W54~
+APPEND ~ENTRIES.2DA~
+~AC#W55		333.1858    *           *          *         *         *         *         *        *~ //Exit AC#W50
+UNLESS ~AC#W55~
+APPEND ~ENTRIES.2DA~
+~AC#W50		530.1146    2183.1108           *          *         *         *         *         *        *~ //Exit AC#W50
+UNLESS ~AC#W50~
+
+// appending speldesc.2da for temple store description
+OUTER_SET strref = RESOLVE_STR_REF (@90000)
+APPEND speldesc.2da ~SPPR414 %strref%~
+BUT_ONLY
+OUTER_SET strref = RESOLVE_STR_REF (@90001)
+APPEND speldesc.2da ~SPPR113 %strref%~
+BUT_ONLY
+OUTER_SET strref = RESOLVE_STR_REF (@90002)
+APPEND speldesc.2da ~SPPR411 %strref%~
+BUT_ONLY
+OUTER_SET strref = RESOLVE_STR_REF (@90003)
+APPEND speldesc.2da ~SPPR610 %strref%~
+BUT_ONLY
+OUTER_SET strref = RESOLVE_STR_REF (@90004)
+APPEND speldesc.2da ~SPPR608 %strref%~
+BUT_ONLY
+
+//Textscreens
+COPY ~godcall/2da/AC#W30MS.2DA~         ~override~ REPLACE ~999999~ @9001
+COPY ~godcall/2da/ac#wmos9.2DA~         ~override~ REPLACE ~999999~ @9002
+COPY ~godcall/2da/AC#W80GO.2DA~         ~override~ REPLACE ~999999~ @9003
+
+///////////////////////////////////////////////////////////////////////
+// Animations:
+///////////////////////////////////////////////////////////////////////
+
+INCLUDE ~godcall/lib/godcall-animations.tpa~
+///////////////////////////////////////////////////////////////////////
+// ARE files
+//
+///////////////////////////////////////////////////////////////////////
+
+  // Adding new area type "EXTRAPLANAR" - NEW
+  OUTER_SET area_type_id = 512
+  OUTER_TEXT_SPRINT area_type_name ~EXTRAPLANAR~
+  COPY_EXISTING ~areatype.ids~ ~override~
+    COUNT_2DA_ROWS 2 numRows
+    SET id = 1
+    SET match = 0
+    FOR (row = 0; row < numRows && NOT match; ++row) BEGIN
+      READ_2DA_ENTRY row 0 2 value
+      READ_2DA_ENTRY row 1 2 name
+      PATCH_IF (IS_AN_INT ~value~) BEGIN
+        SET id = (value > id) ? value : id
+        SET match = (~%name%~ STRING_EQUAL ~%area_type_name%~)
+        PATCH_IF (match) BEGIN
+          SET area_type_id = value
+        END
+      END
+    END
+    PATCH_IF (NOT match) BEGIN
+      FOR (value = BIT0 ; value < BIT16 ; value <<= 1) BEGIN
+        PATCH_IF (value > id) BEGIN
+          SET area_type_id = value
+          SET value = BIT16
+        END
+      END
+      INSERT_2DA_ROW numRows 2 ~%area_type_id% %area_type_name%~
+    END
+    
+COPY ~godcall/are/copy~         ~override~
+
+COPY ~godcall/are/AC#W01.are~      ~override~  // Goldspires
+
+  SAY 0xfc8  @3005  // Info Waukeen statue
+  
+COPY ~godcall/are/AC#W04.are~      ~override~  // Goldspires - Level 2
+
+  SAY 0x748  @3006  // Info Doorway
+  SAY 0x80c  @3006  // Info Doorway
+  SAY 0x684  @3006  // Info Doorway
+
+COPY ~godcall/are/AC#W12.are~      ~override~  // Sojourner's portal
+  SAY 0x574  @3010  // info door
+COPY ~godcall/are/AC#W19.are~      ~override~  // Infinite Staircase starting platform
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  SAY 0xccc  @3008  // start of the Infinite Staircase
+COPY ~godcall/are/AC#W30.are~      ~override~  // Infinite Staircase main level
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  SAY 0xc00  @3000  // Info positive plane
+  SAY 0xd88  @3001  // Info planar guild
+  SAY 0x398c @3002  // Map note exit
+  SAY 0x39c0 @3003  // Map note abyss
+  SAY 0x39f4 @3004  // Map note modron machine
+  SAY 0x3a28 @3001  // Map note planar guild
+  SAY 0x1098 @3011  // Info blue buttons
+  SAY 0x115c @3011  // Info blue buttons
+  SAY 0x1530 @3011  // Info blue buttons
+  SAY 0x16b8 @3011  // Info blue buttons
+  SAY 0x146c @3012  // Info green buttons
+  SAY 0x177c @3012  // Info green buttons
+  SAY 0xfd4 @3013  // Info red button
+  SAY 0x1220 @3014  // Info yellow buttons
+  SAY 0x12e4 @3014  // Info yellow buttons
+  SAY 0x13a8 @3014  // Info yellow buttons
+  SAY 0x15f4 @3014  // Info yellow buttons
+
+COPY ~godcall/are/AC#W40.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  SAY 0x3108  @4000  // Info cursed luck
+  SAY 0x3418  @4001  // Info lord's pawns
+  SAY 0x31cc  @4002  // Info maretta's beds
+  SAY 0x3290  @4003  // Info sodden solar
+  SAY 0x3354  @4003  // Info sodden solar #2
+  SAY 0x3044  @4004  // info weeping goddess
+  SAY 0x5d00  @4005  // map note to staircase
+  SAY 0x5d68  @4001  // map note lord's pawns
+  SAY 0x5d9c  @4000  // map note cursed luck
+  SAY 0x5dd0  @4002  // map note maretta's beds
+  SAY 0x5f08  @4006  // map note to abyss
+  SAY 0x5f3c  @4007  // map note place of grazzt
+  SAY 0x5e38  @4003  // map note sodden solar
+  SAY 0x5e04  @4008  // map note place of trading
+  SAY 0x5e6c  @4009  // map note night hag's house
+  SAY 0x5ea0  @4010  // map note margrog's house
+  SAY 0x5ed4  @4011  // map note coutning house
+  SAY 0x5d34  @4012  // map note smithy
+  SAY 0x5f70  @4004  // map note weeping goddess
+  SAY 0x5fa4  @4013  // map note chamber of seduction
+  SAY 0x5fd8  @4014  // map note succubus' home (mephisto questline)
+  SAY 0x600c  @4015  // map note Zhaevielle's home (ormad sulpar questline)
+  SAY 0x6040  @4016  // map note Blood war recruitment center
+
+COPY ~godcall/are/AC#W41.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W42.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W43.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W44.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W45.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W46.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W47.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W48.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W49.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W4A.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W4B.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W4C.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W4D.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W4G.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W4S.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W4W.are~      ~override~  // Samora
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  SAY 0x794  @4019  // info trigger weeping goddess
+
+COPY ~godcall/are/AC#W50.are~      ~override~  // Soulfields
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  SAY 0x37a0  @5000  // map note tree of cowards
+
+COPY ~godcall/are/AC#W51.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W52.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W53.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  
+COPY ~godcall/are/AC#W54.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W55.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  
+COPY ~godcall/are/AC#W56.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W57.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  
+COPY ~godcall/are/AC#W60.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  
+COPY ~godcall/are/AC#W61.are~      ~override~
+  WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W70.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+  SAY 0x15f4  @7000  // info_axe
+  SAY 0x1530  @7001  // info_bag
+  SAY 0x13a8  @7002  // info heart
+  SAY 0x12e4  @7003  // info crown
+  SAY 0x9b4  @7004  // info marilith
+  SAY 0x1220  @7005  // info snake
+  SAY 0x115c  @7006  // info tankard
+  SAY 0x146c @7007  // info unknown
+
+COPY ~godcall/are/AC#W71.are~      ~override~  //
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W72.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W73.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W74.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W75.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W76.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W77.are~      ~override~  // Chamber of seduction
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+
+COPY ~godcall/are/AC#W80.are~      ~override~  // Waukeen prison lvl 1
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+COPY ~godcall/are/AC#W90.are~      ~override~  // Waukeen prison lvl 2
+    WRITE_SHORT 0x48 (THIS | area_type_id)  // Set EXTRAPLANAR area type
+    SAY 0x528 @8090  // info disgusting door
+///////////////////////////////////////////////////////////////////////
+// BAM
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/bam/copy~       ~override~
+COPY ~godcall/bam/bam_item_BG2EE~         ~override~
+  
+
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WABRD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1000.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#W_SD1.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1001.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#WANBD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1002.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WDVFD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1003.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#WIPSD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1004.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSKED.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1005.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WBOFD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1006.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W70KD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1007.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSGAD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1008.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSPED.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1009.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSPGD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1010.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSPND.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1011.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WPNTD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1012.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W08PD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1013.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#WPFHD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END 
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1014.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WBKFC.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1015.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W71D1.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1016.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W71D2.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1017.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WALED.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1018.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WCHD2.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1019.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WCLDD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1020.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WDVWD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1021.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WGLDD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1022.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WPIND.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1023.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WWAN2.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1024.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WMSHD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1025.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WPID1.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1026.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WPOGD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1027.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSKCD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1028.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WNIPD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1029.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#WHRND.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1030.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W4BDH.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1031.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W4BDM.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1032.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W01CD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1033.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#W4CDY.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1034.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#W4CD1.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1035.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W4CD2.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1036.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W4CD3.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN 
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1037.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W4CD4.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1038.pvrz~
+ END 
+ END
+
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W30LD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1039.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W61KD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1040.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W90RD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1041.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WCOID.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1042.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W73RD.bam~ ~override~   // Ring of protection +3
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1043.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WCHDD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1044.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W30BD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1045.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WDVSD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1046.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WDLAD.bam~ ~override~
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1047.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WSOPD.bam~ ~override~     //cry of despair armor desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1048.pvrz~
+ END 
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#W71LD.bam~ ~override~     //last rites divided heart desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1049.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WHARD.bam~ ~override~     //scanty stride suit desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1050.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WCTBD.bam~ ~override~     //clot buckler desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1051.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WFLBD.bam~ ~override~     // flesh and boils desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1052.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WHSRD.bam~ ~override~     // heart-shaped razor desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1053.pvrz~
+ END 
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WBLDD.bam~ ~override~     // blood seed desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1054.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WBLCD.bam~ ~override~     // Belt of Three Cyclops
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1055.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W60AD.bam~ ~override~     // acid puddle
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1056.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#WTRSD.bam~ ~override~     // trousers and suspenders desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1057.pvrz~
+ END
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#WHLCD.bam~ ~override~     // helmet of child's nightmare desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1058.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W70D2.bam~ ~override~     // Maretta's chamber of temptations key desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1059.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W01KD.bam~ ~override~     // Maretta's chamber of temptations key desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1060.pvrz~
+ END
+ END
+ 
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W80KD.bam~ ~override~     // Waukeen prison key desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1061.pvrz~
+ END
+ END
+ 
+  COPY ~godcall/bam/bam_desc_BG2EE/AC#W01XD.bam~ ~override~     // false chalice desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1062.pvrz~
+ END
+ END
+ 
+   COPY ~godcall/bam/bam_desc_BG2EE/AC#WWSHD.bam~ ~override~     // false chalice desc bam
+ LPF UPDATE_PVRZ_INDICES RET original_base_index new_base_index END
+ ACTION_IF (original_base_index >= 0 AND new_base_index >= 0) BEGIN
+ LAF INSTALL_PVRZ INT_VAR original_base_index new_base_index STR_VAR source_file = ~godcall/bam/bam_desc_BG2EE/MOS1063.pvrz~
+ END
+ END
+
+ COPY ~godcall/bam/bam_desc_BG2EE/AC#W52HT.bam~ ~override~
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+// add Music files
+///////////////////////////////////////////////////////////////////////
+INCLUDE ~godcall/lib/add_music_counting_house.tph~
+INCLUDE ~godcall/lib/add_music_waukeen.tph~
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+// Script files
+///////////////////////////////////////////////////////////////////////
+COPY_EXISTING ~BALDUR.BCS~ ~override~
+    // Patching thieves guild failure in baldurs.bcs
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("JosterReturn","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    // Patching thieves guild failure in baldurs.bcs
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("JosterPaid","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    // Patching keep failure in baldurs.bcs
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("KPPlotTime","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    // Patching planar sphere failure in baldurs.bcs
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("TeolMessenger","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    // Patching druid stronghold stuff in baldurs.bcs
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(Global("DruidADSpawn","GLOBAL",0)\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    //  Patching druid stronghold stuff #2 in baldurs.bcs
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("DruidADReturn","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+
+COPY_EXISTING ~JAHEIRA.BCS~ ~override~
+    // Patching various lovetalk triggers in Jaheira's script
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(!AreaType(DUNGEON)\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    // Patching various spawn triggers in Jaheira's script
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(!AreaCheck("AR2500")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    // Patching Meronia spawn triggers in Jaheira's script
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(Global("JaheiraHarperPlot","GLOBAL",0)\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+
+//Patching Nalia compaining about her keep
+COPY_EXISTING ~NALIA.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("ArrivedNaliaKeep","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+	 DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("NaliaMessenger","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("NaliaGraveyardTimer","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("IsaeaArrestTimer","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+
+// Patching various triggers in HaerDalis's script
+COPY_EXISTING ~HAERDALI.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("HaerDalisHaveGem","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("HaerDalisNoGem","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+EXTEND_TOP ~HAERDALI.BCS~ ~godcall/scripts/haerdalis_cant_use_feyri_item.baf~
+// Patching Aerie's script to prevent Qayle messenger reminder
+COPY_EXISTING ~AERIE.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("AerieRemindsQuayle","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+COPY_EXISTING ~AERIE.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("QuayleMessengerComes","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+EXTEND_TOP ~AERIE.BCS~ ~godcall/scripts/aerie_cant_use_feyri_item.baf~
+// Patching Anomen's script to prevent Terl's appearance
+COPY_EXISTING ~ANOMEN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(!Exists("Terl")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Minsc's script to prevent Imnesvale complaint
+COPY_EXISTING ~MINSC.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("MinscRemindsImnesvale","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Edwin's script to prevent Nether scroll quest
+COPY_EXISTING ~EDWIN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("EdwinScroll","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Edwin's script to complain nether scroll quest
+COPY_EXISTING ~EDWIN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("EdwinComplainAboutScroll","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Edwin's script to spawn Degardan
+COPY_EXISTING ~EDWIN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("DegardanSpawn","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Korgan's script to prevent madeen quest
+COPY_EXISTING ~KORGAN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("KorganRemindsMadeen","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Korgan's script to prevent book of Kazah quest
+COPY_EXISTING ~KORGAN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("KorganBook","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Korgan's script to prevent shagbag#1 quest
+COPY_EXISTING ~KORGAN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("FindShagbag","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Korgan's script to prevent shagbag#2 quest
+COPY_EXISTING ~KORGAN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("KorganContract","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Patching Korgan's script to prevent shagbag#2 quest
+COPY_EXISTING ~KORGAN.BCS~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+        SPRINT textToReplace ~\(GlobalTimerExpired("KorganRemindsValygar","GLOBAL")\)~
+        COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+        PATCH_IF (num_matches > 0) BEGIN
+            REPLACE_TEXTUALLY ~%textToReplace%~ ~!AreaType(%area_type_id%)
+            !AreaCheck("AC#W01")
+            !AreaCheck("AC#W04")\1~
+            PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+        END ELSE BEGIN
+            PATCH_WARN ~WARNING: could not find %textToReplace% in %SOURCE_FILESPEC%~
+        END
+    END
+BUT_ONLY
+// Plot Start
+EXTEND_TOP ~ar1000.bcs~ ~godcall/scripts/plotstart_ar1000.baf~
+
+// extending Cromwell's smithy: create Tarterian dragon armor if the party has the black dragon scales
+EXTEND_BOTTOM ~ar0334.bcs~ ~godcall/scripts/_ar0334.baf~
+
+// Compiling scripts that contain new music
+COMPILE ~godcall/scripts/AC#W44.baf~  EVAL
+COMPILE ~godcall/scripts/AC#W90.baf~  EVAL
+// Compile all scripts in folder "scripts" - scripts-compile
+COMPILE ~godcall/scripts/scripts-compile~
+
+//append Abyss elemental summon failure
+EXTEND_TOP ~WIZELSUM.bcs~ ~godcall/scripts/abyss_inner_planes_summon_failure.baf~
+EXTEND_TOP ~WIZELSU2.bcs~ ~godcall/scripts/abyss_inner_planes_summon_failure.baf~
+EXTEND_TOP ~SUMDJ01.bcs~ ~godcall/scripts/abyss_inner_planes_summon_failure.baf~
+EXTEND_TOP ~SERVSU.bcs~ ~godcall/scripts/abyss_inner_planes_summon_failure.baf~
+/*
+Patching missing scripts of summoned creatures:
+- Creatures from the Inner Planes will disappear in the Abyss w/o a spell key
+- summoning monsters / animals will spawn some enemy Tanar'ri instead
+*/
+ACTION_FOR_EACH summon IN
+    ELFIRPR
+    ELFIRPR2
+    ELFIRPR3
+    ELEARPR
+    ELEARPR2
+    ELEARPR3
+    STALKE
+    DJINNISU
+BEGIN
+    EXTEND_TOP ~%summon%.bcs~ ~godcall/scripts/abyss_inner_planes_summon_failure.baf~
+    COPY_EXISTING ~%summon%.cre~ ~override~
+        LPF CRE_insert_script_high STR_VAR arguments = ~%summon%~ END
+END
+
+// patching summoning animals
+ACTION_FOR_EACH summon IN
+    wolfdisu
+    dogwasu
+    wolfwwsu
+BEGIN
+    EXTEND_TOP ~%summon%.bcs~ ~godcall/scripts/abyss_summon_animals.baf~
+    COPY_EXISTING ~%summon%.cre~ ~override~
+        LPF CRE_insert_script_high STR_VAR arguments = ~%summon%~ END
+END
+
+// patching summoning monsters
+ACTION_FOR_EACH summon IN
+    ogrelesu
+    worgsu
+    dogwisu
+    hobgobsu
+    ogresu
+    ettercsu
+    ogregrsu
+    wolfwisu
+    jellmusu
+    basillsu
+    tasloisu
+    basilgsu
+    CARRIOSU
+    WYVERNSU
+BEGIN
+    EXTEND_TOP ~%summon%.bcs~ ~godcall/scripts/abyss_summon_monsters.baf~
+    COPY_EXISTING ~%summon%.cre~ ~override~
+        LPF CRE_insert_script_high STR_VAR arguments = ~%summon%~ END
+END
+
+// patch already existent scripts
+EXTEND_TOP ~SUMSHT02.bcs~ ~godcall/scripts/abyss_summon_animals.baf~
+EXTEND_TOP ~WYVERN.bcs~ ~godcall/scripts/abyss_summon_animals.baf~
+EXTEND_TOP ~NYMPH.bcs~ ~godcall/scripts/abyss_summon_nymph.baf~
+EXTEND_TOP ~EFREET01.bcs~ ~godcall/scripts/abyss_inner_planes_summon_failure.baf~
+EXTEND_TOP ~koboldsu.bcs~ ~godcall/scripts/abyss_summon_monsters.baf~
+EXTEND_TOP ~ogremasu.bcs~ ~godcall/scripts/abyss_summon_monsters.baf~
+
+//append Abyss with death gaze game over
+ACTION_FOR_EACH area IN
+    AC#w50
+    AC#w54
+    AC#w55
+    AC#w56
+BEGIN
+    EXTEND_TOP ~%area%.bcs~ ~godcall/scripts/Nabassu_death_gaze.baf~
+END
+
+//append Samora if the player attacked Maretta
+ACTION_FOR_EACH area IN
+    AC#w40
+    AC#w41
+    AC#w42
+    AC#w43
+    AC#w44
+    AC#w45
+    AC#w46
+    AC#w47
+    AC#w49
+    AC#w4A
+    AC#w4B
+    AC#w4C
+    AC#w4D
+    AC#w4G
+    AC#w4S
+    AC#w4W
+    AC#w50
+    AC#w51
+    AC#w52
+    AC#w53
+    AC#w54
+    AC#w55
+    AC#w56
+    AC#w57
+    AC#w60
+    AC#w61
+    AC#w70
+    AC#w71
+    AC#w72
+    AC#w73
+    AC#w74
+    AC#w75
+    AC#w76
+    AC#w77
+    AC#w80
+    AC#w90
+BEGIN
+    EXTEND_BOTTOM ~%area%.bcs~ ~godcall/scripts/rescue_timer_waukeen.baf~
+END
+
+//append Abyss mage&priest spell failure script to all abyss-area scripts
+ACTION_FOR_EACH area IN
+    AC#w40
+    AC#w41
+    AC#w42
+    AC#w43
+    AC#w44
+    AC#w45
+    AC#w46
+    AC#w47
+    AC#w49
+    AC#w4A
+    AC#w4B
+    AC#w4C
+    AC#w4D
+    AC#w4G
+    AC#w4S
+    AC#w4W
+    AC#w50
+    AC#w51
+    AC#w52
+    AC#w53
+    AC#w54
+    AC#w55
+    AC#w56
+    AC#w57
+    AC#w60
+    AC#w61
+    AC#w70
+    AC#w71
+    AC#w72
+    AC#w73
+    AC#w74
+    AC#w75
+    AC#w76
+    AC#w77
+    AC#w80
+    AC#w90
+BEGIN
+    EXTEND_BOTTOM ~%area%.bcs~ ~godcall/scripts/abyss_spell_effects.baf~
+    EXTEND_BOTTOM ~%area%.bcs~ ~godcall/scripts/abyss_cleric_spell_effects.baf~
+END
+
+//append Samora if Lava's Hephernaan is in party and changes to devil form
+ACTION_FOR_EACH area IN
+    AC#w40
+    AC#w41
+    AC#w42
+    AC#w43
+    AC#w44
+    AC#w45
+    AC#w46
+    AC#w47
+    AC#w49
+    AC#w4A
+    AC#w4B
+    AC#w4C
+    AC#w4D
+    AC#w4G
+    AC#w4S
+    AC#w4W
+    AC#w70
+BEGIN
+    EXTEND_BOTTOM ~%area%.bcs~ ~godcall/scripts/Hephernaan.baf~
+END
+
+///////////////////////////////////////////////////////////////////////
+// JOURNALS
+//
+///////////////////////////////////////////////////////////////////////
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  ADD_JOURNAL @100001 @100010 @100030 @100031 @100200 @100201 @100203 @100204 @100210 @110000 @110001 @110002 @110003 @110010 @110011 @110012 @110013 @110014 @110015 @110016 @110017 @110018 @110019 @110020 @110021 @190000 @190001 @190002 @400000 @400001 @400010 @400011 @400012 @400013 @400020 @400021 @400100 @400120 @400121 @400122 @400022 @400023 @400200 @400201 @400202 @400300 @400301 @400400 @400401 @400402 @400500 @400501 @400502 @400600 @400601 @400900 @410000 @410001 @410002 @410005 @410006 @410007 @410010 @410100 @410101 @410102 @410103 @410110 @410111 @440000 @440010 @440070 @440071 @460010 @460011 @460012 @470000 @470001 @470002 @470003 @470004 @470010 @470011 @470020 @470021 @470022 @470023 @470030 @470040 @470041 @470042 @470043 @470100 @470500 @470501 @470601 @470700 @470701 @470702 @470703 @470704 @500000 @510000 @510001 @510002 @540000 @540004 @540005 @600000 @600001 @800010 @800011
+END
+
+///////////////////////////////////////////////////////////////////////
+// Creatures 
+//
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/cre/copy~ ~override~
+
+INCLUDE ~godcall/lib/godcall-creatures.tph~
+
+///////////////////////////////////////////////////////////////////////
+// Pro files
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/pro~         ~override~
+
+///////////////////////////////////////////////////////////////////////
+// EFF
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/eff/copy~       ~override~
+COPY ~godcall/eff/AC#WWAN3.eff~        ~override~  // Display String effect for Nabassu's wand
+  SAY 0x1c @142
+///////////////////////////////////////////////////////////////////////
+// Spells
+///////////////////////////////////////////////////////////////////////
+ADD_PROJECTILE      ~godcall/pro/AC#WPOG.PRO~ // Fog cloud projectile
+COPY ~godcall/spl/AC#WPOG.spl~            ~override~  // cloud of grief
+  SAY NAME1 @100
+  SAY NAME1 @100
+  WRITE_SHORT   0x98 ~%AC#WPOG%~
+
+       SET %AC#WPOG% -=1
+
+      APPEND ~ClearAir.2da~
+      ~AC#GriefCloud     %AC#WPOG%~
+      UNLESS ~AC#GriefCloud~
+
+ADD_PROJECTILE      ~godcall/pro/AC#HEZRU.PRO~ // Hezrou stench projectile
+COPY ~godcall/spl/AC#HEZR.spl~            ~override~  // Hezrou stench
+  SAY NAME1 @1153
+  SAY 0xce @1154
+       WRITE_SHORT   0x98 ~%AC#HEZRU%~
+
+COPY ~godcall/spl/AC#HEZP.spl~            ~override~  // Hezrou protection from missilies
+
+ADD_PROJECTILE      ~godcall/pro/AC#W72GU.PRO~ // Gulga acid vomit projectile
+COPY ~godcall/spl/AC#W72P.spl~            ~override~  // Gulga acid vomit
+  SAY NAME1 @143
+  SAY NAME1 @143
+       WRITE_SHORT   0x98 ~%AC#W72GU%~
+       
+COPY ~godcall/spl/AC#W4BSH.spl~ ~override~
+
+COPY ~godcall/spl/AC#SPW2.spl~         ~override~ // protection from poison
+       SAY NAME1 @149
+       SAY NAME2 @149
+       SAY 0x50 @150
+
+COPY ~godcall/spl/AC#WBD1.spl~            ~override~  // Graz'zts diss song
+  SAY NAME1 @101
+  SAY NAME1 @101
+SAY 0x50 @102
+
+COPY ~godcall/spl/AC#WSMM.spl~            ~override~  // summon Modrons, Wizard's spell compendium Vol. 4, p896
+  SAY NAME1 @103
+  SAY NAME2 @103
+SAY 0x50 @104
+
+COPY ~godcall/spl/AC#WHSRZ.spl~            ~override~ // Blood Seed created
+  SAY NAME1 @153
+
+COPY ~godcall/spl/AC#WFB2.SPL~            ~override~ // Acid explosion
+  SAY NAME1 @152
+  
+COPY ~godcall/spl/AC#WFB3.SPL~            ~override~ // Acid explosion
+  SAY NAME1 @152
+
+COPY ~godcall/spl/AC#WDRB.spl~            ~override~ // Breath of despair
+  SAY NAME1 @151
+
+COPY ~godcall/spl/AC#HSON.spl~            ~override~ // Harpy song
+  SAY NAME1 @148
+
+COPY ~godcall/spl/AC#HEAM.spl~            ~override~ // Babau heat metal
+  SAY NAME1 @134
+
+COPY ~godcall/spl/ac#bebil.spl~            ~override~ // Bebilith burning web
+  SAY NAME1 @134
+  
+COPY ~godcall/spl/AC#WNAL.spl~            ~override~ // Nalfeshnee
+  SAY NAME1 @135
+
+COPY ~godcall/spl/AC#WVRP.spl~            ~override~ // Vrock spores attack
+  SAY NAME1 @105
+  
+COPY ~godcall/spl/AC#WVRS.spl~            ~override~ // Vrock screech spell
+  SAY NAME1 @106
+
+COPY ~godcall/spl/AC#WXAY.spl~            ~override~
+  SAY NAME1 @107
+
+COPY ~godcall/spl/AC#GLDRK.spl~            ~override/AC#GLDRK.spl~
+  SAY NAME1 @108
+  
+COPY ~godcall/spl/AC#GLDRK.spl~            ~override/AC#GDRK.spl~
+  SAY NAME1 @108
+  
+COPY ~godcall/spl/AC#WBDK.spl~            ~override~
+  SAY NAME1 @109
+
+COPY ~godcall/spl/AC#WCOS.spl~            ~override~ // Colorful shield spel Colors of his dreams
+  SAY NAME1 @156
+  
+COPY ~godcall/spl/AC#WDRD.spl~            ~override~ // Dripping darkblade sacrifice
+  SAY NAME1 @157
+
+COPY ~godcall/spl/AC#VARS.spl~            ~override~
+  SAY NAME1 @110
+
+COPY ~godcall/spl/AC#VARK.spl~            ~override~
+  SAY NAME1 @111
+  
+COPY ~godcall/spl/AC#WAER.spl~         ~override~ // Spell that prevents Aerie equipping the Fey'ri diadem
+       SAY 0x9e @154
+
+COPY ~godcall/spl/copy~       ~override~
+///////////////////////////////////////////////////////////////////////
+// Store-Files
+///////////////////////////////////////////////////////////////////////
+
+COPY ~godcall/sto/AC#W19SE.STO~        ~override~ // Selune merchant in area AC#W19
+  SAY NAME2 @144
+
+COPY ~godcall/sto/AC#W4BSM.STO~        ~override~ // blacksmith in Samora
+  SAY NAME2 @4012
+
+COPY ~godcall/sto/AC#W40S6.STO~        ~override~
+  SAY NAME2 @112
+
+COPY ~godcall/sto/AC#WPGSP.STO~        ~override~
+  SAY NAME2 @113
+
+COPY ~godcall/sto/AC#WPGIN.STO~        ~override~
+  SAY NAME2 @114
+
+COPY ~godcall/sto/AC#W03ST.STO~        ~override~
+  SAY NAME2 @115
+
+COPY ~godcall/sto/AC#WSPLK.STO~        ~override~
+  SAY NAME2 @116
+
+COPY ~godcall/sto/AC#WARC1.STO~        ~override~
+  SAY NAME2 @117
+
+COPY ~godcall/sto/AC#W#42A.STO~        ~override~ // S6M Succubus selling harmful spells
+  SAY NAME2 @118
+  
+COPY ~godcall/sto/AC#WMEND.STO~        ~override~ // Mystic Mirage Mercantile
+  SAY NAME2 @155
+
+COPY ~godcall/sto/AC#W30GN.STO~        ~override~
+  SAY NAME2 @119
+
+COPY ~godcall/sto/AC#WNIHG.STO~        ~override~
+  SAY NAME2 @120
+
+COPY ~godcall/sto/AC#W30BR.STO~        ~override~
+  SAY NAME2 @121
+  SAY 0xa4 @122
+  SAY 0xcc @123
+  SAY 0xe0 @124
+  SAY 0x108 @125
+  SAY 0x11c @126
+
+COPY ~godcall/sto/AC#W4WBK.STO~        ~override~  // Weeping goddess tavern
+  SAY NAME2 @4004
+  SAY 0xe0 @145
+  SAY 0xa4 @146
+  SAY 0xcc @147
+  SAY 0xb8 @139
+  SAY 0xf4 @136
+  SAY 0x108 @137
+
+COPY ~godcall/sto/AC#W#FAY.STO~        ~override~  // Lord's pawn tavern
+  SAY NAME2 @4001
+  SAY 0xe0 @136
+  SAY 0xa4 @137
+  SAY 0xcc @138
+  SAY 0xb8 @139
+  SAY 0xf4 @140
+
+COPY ~godcall/sto/AC#W41BK.STO~        ~override~
+  SAY NAME2 @127
+
+  SAY 0xa4 @128
+  SAY 0xcc @129
+  SAY 0xe0 @130
+  SAY 0x108 @131
+  SAY 0xb8 @126
+
+COPY ~godcall/sto/AC#WPGHL.STO~ ~override~   SAY 0xc @132
+
+COPY ~godcall/sto/AC#W07MR.STO~ ~override~
+
+COPY ~godcall/sto/ac#lucky.STO~        ~override/ac#lucky.STO~
+  SAY NAME2 @133
+///////////////////////////////////////////////////////////////////////
+// Dialogues
+// 
+///////////////////////////////////////////////////////////////////////
+  LOAD_TRA ~godcall/language/%LANGUAGE%/01_Quest_start_in_Athkatla.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#001_WAUKEEN.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W44_Counting_House_Maretta.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W01_Dialogues_Goldspires_outside.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W03_Goldspire_temple_interior.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4A_Succubus_lair.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4C_Gladiator_area.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4D_Dretch_area.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4G_Glabrezu_lair.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4S_Succubus_child_area.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4W_Azzelbath_weeping_goddess.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W4W_weeping_goddess_sidechars.tra~
+
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W06_8_Goldspire_tents.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W12_Sojourner_Portal.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W19_Infinite_Staircase_first_level.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W30_Infinite_Staircase.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W30_Modron_machine.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W40_Samora.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W40_Mefisto.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W41_Sodden_solar.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W42_Marettas_Beds.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W44_Counting_House_Maretta.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W45_Nighthag_house.tra~
+
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W47_Nalfeshnee.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W50_abyssal_plains.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W51_Bebilith_Lair.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W52_traitor_prison.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W54_56_57.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W60_61_blood_war.tra~
+
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W70_chamber_of_temptation.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W71_test_of_lust.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W72_gluttony.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W73_envy.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W74_wrath.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W75_pride.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W76_greed.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W77_test of sloth.tra~
+
+  LOAD_TRA ~godcall/language/%LANGUAGE%/AC#W80.tra~
+  
+  LOAD_TRA ~godcall/language/%LANGUAGE%/Belthazaar_drums.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/Book_of_fiends.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/CROMWELL.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE%/Goldspire_Main_Dialogues.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE/planar_guild.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE/Spellkey_merchant.tra~
+  LOAD_TRA ~godcall/language/%LANGUAGE/Verin.tra~
+
+COMPILE
+
+  ~godcall/Dialogues/dialogues-compile~
+
+///////////////////////////////////////////////////////////////////////
+// MOS
+///////////////////////////////////////////////////////////////////////
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  COPY ~godcall/mos/mos_bg2ee~   ~override~      // use larger mos textscreens for BG2EE
+END ELSE BEGIN // not Enhanced Edition
+  COPY ~godcall/mos/mos_oBG2~         ~override~      // use smaller mos textscreens for Vanilla BG2
+END
+
+///////////////////////////////////////////////////////////////////////
+// Ambient Sounds
+///////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////
+// WAV
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/wav/copy~       ~override~
+
+///////////////////////////////////////////////////////////////////////
+// VVC
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/vvc~       ~override~
+
+///////////////////////////////////////////////////////////////////////
+// Lightmap files
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/lightmaps~         ~override~
+///////////////////////////////////////////////////////////////////////
+// Searchmap files
+///////////////////////////////////////////////////////////////////////
+COPY ~godcall/searchmaps~         ~override~
+///////////////////////////////////////////////////////////////////////
+// Worldmap
+///////////////////////////////////////////////////////////////////////
+OUTER_SET include_saves = 0
+
+INCLUDE ~godcall/lib/godcall-worldmap.tpa~
+
+///////////////////////////////////////////////////////////////////////
+// Items
+///////////////////////////////////////////////////////////////////////
+
+COPY ~godcall/itm/copy~       ~override~
+
+INCLUDE ~godcall/lib/godcall-items.tph~
+
+///////////////////////////////////////////////////////////////////////
+// area graphics: tis files, pvrz files and some wed files
+///////////////////////////////////////////////////////////////////////
+
+COPY ~godcall/pvrz/copy~   ~override~      // PVRZ tiles for the Enhanced edition
+COPY ~godcall/are/wed_BG2EE~   ~override~      // some wed files using specific water overlays for the Enhanced edition
+
+// overlay files
+COPY ~godcall/tis/tis-overlays~         ~override~
+
+///////////////////////////////////////////////////////////////////////
+// Movies
+//
+///////////////////////////////////////////////////////////////////////
+  COPY ~godcall/movies/wbm~     ~movies~
+
+//////////////////////////////
+// NPC portraits //
+//////////////////////////////
+BEGIN ~Install portraits for the major NPCs of the mod~
+  REQUIRE_COMPONENT ~Setup-Godcall.tp2~ 0 ~This component requires the full version to be installed.~
+  DESIGNATED 50
+  COPY ~godcall/portraits/BG2EE~         ~override~
+
+//////////////////////////////
+// Voiceover //
+//////////////////////////////
+BEGIN ~Install AI voiceover for major NPCs of the mod (mostly in English)~
+  REQUIRE_COMPONENT ~Setup-Godcall.tp2~ 0 ~This component requires the full version to be installed.~
+  DESIGNATED 200 
+  LAF HANDLE_AUDIO
+  STR_VAR
+    audio_path = ~Godcall/wav/voiceover/all_languages~
+    END
+  LAF HANDLE_AUDIO
+  STR_VAR
+    audio_path = ~Godcall/wav/voiceover/%LANGUAGE%~
+    END
+  //COPY ~godcall/wav/voiceover/all_languages~    ~override~
+  //COPY ~godcall/wav/voiceover/%LANGUAGE%~    ~override~
+
