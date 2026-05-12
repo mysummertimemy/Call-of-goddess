@@ -1,0 +1,251 @@
+@0 = ~Hail, Goddess of Faerûn, and your savior <CHARNAME>, too. I am glad to have arrived in time, since you are in such a sudden hurry to get out of here.~ [AC#WMAR1] // sounds shitty! [AC#WMAB1]
+@1 = ~Save your politeness, demon spawn! I have endured the humiliation of you and your sisters long enough to know that you have not come to bid me farewell.~ [AC#WWAU8]
+@2 = ~Arrogance seems to be your constant companion, goddess! So tell me, what's your grand plan now? Incinerate me with your glare? Or mayhap morph me into a Larva with a mere flick of your wrist?~ [AC#WMAB2]
+@3 = ~It seems you will succeed at none of these things, Waukeen. You are utterly powerless and at the mercy of my wrath. And I have no intention of letting you go unchallenged.~
+@4 = ~For it would be best for all those involved if you and your liberators were to perish. So the glory of having thwarted the escape will fall to me alone, and at the same time I will have thwarted Graz'zt's plans.~
+@5 = ~What plans of Graz'zt are you talking about, demon? Explain yourself!~
+@6 = ~Foolish goddess, you really don't know why you're being brought here, do you? The plan of Graz'zt was to plant one of his corrupted children into your shell, allowing it to ascend to the rank of the gods! He would have snatched your divine soul from you and placed one of his daughters in the pantheon in your place.~
+@7 = ~So that's the only reason I've been kept here? Graz'zt is a fool if he thinks he can perform such a transformation without the approval of lord Ao!~
+@8 = ~It would not have been in my interest even if Graz'zt had succeeded. Many more possibilities arise from your death, which I will then blame on your heroic liberators! You have truly been a willing servant to me, <CHARNAME>. From the first time I saw you, I knew why you were here and how I could use you to accomplish my plans.~
+@9 = ~You have eliminated all my adversaries, especially that vicious Verin, on my behalf. Graz'zt will now regard *me* as his chosen one! But I have no more use for you now.~
+@10 = ~Prepare for death, goddess!~ [AC#WMAB3]
+@11 = ~Thanks to you I shall shine again as in past days!~
+@12 = ~I must continue on my way. May light and hope always accompany you. I share a small part of my celestial energy with you. I will continue to find my own way through this dungeon.~
+@13 = ~New jailers again? No, you're not. You are mortals! Not prisoners like me! Greetings, then. I am Maryel, a Deva, but currently a maltreated falcon in a narrow cage. Wings broken, deprived of freedom. What brings you to this dark place?~
+@14 = ~I am <CHARNAME> and in search of the goddess Waukeen.~
+@15 = ~This is none of your business.~
+@16 = ~I believe I saw you above in Samora.~
+@17 = ~Sorry, opened the wrong cell.~
+@18 = ~I'll be back later.~
+@19 = ~You are free and should leave this place now.~
+@20 = ~Salutations again, mortals.~
+@21 = ~I am in search of the goddess Waukeen.~
+@22 = ~Can you help me free Waukeen?~
+@23 = ~Regarding your spark...~
+@24 = ~What fiends will I encounter here?~
+@25 = ~A horde of Vrock has captured me and brought me here. My Deva spark, my most radiant possession, has been taken from me by a shabby Marilith.~
+@26 = ~What is a Marilith?~
+@27 = ~Mariliths... they are dreaded creatures, known for their cunning and dangerous weapon proficiencies. These six-armed demons are masters of the sword and guile. Their impressive fighting skills make them dangerous opponents. They use their six arms to wield several weapons at the same time, enabling them to carry out devastating attacks. It is advisable to observe their movements carefully and anticipate their attacks. Look for weak spots and try to corner them.~
+@28 = ~Yes? Did you find it?~
+@29 = ~I think so.~
+@30 = ~Not yet.~
+@31 = ~What a heavenly surprise! Thank you for your help! Just a moment...~
+@32 = ~Certainly, that's quite possible. However, please understand, I cannot recall our acquaintance, for my imprisonment here has taken its toll on my memory. What brings you to this dark place?~
+@33 = ~It is understandable that you have doubts as to whom you can trust. I do not condemn you.~
+@34 = ~Thank you for opening my prison cell door.~
+@35 = ~What will you do now?~
+@36 = ~Then you will be able to find your own way out of here.~
+@37 = ~A goddess is captured here, you say? I do not know her name, for my knowledge does not reach into the domains of all pantheons. But if she is imprisoned here, she certainly is in a bad state.~
+@38 = ~I was hoping you could show me the way to her cell.~
+@39 = ~Do you know where the goddess Waukeen might be?~
+@40 = ~I have not seen the goddess. It appears that many more poor souls are imprisoned in the darkness of this dungeon. The further you progress, the more unreal and disgusting this place turns.~
+
+@41 = ~I'm sorry, no, I can't help you. I too have a sacred mission to fulfill. Yet look at me: My wings broken, my will shattered.~
+@42 = ~I wish I could unfurl my wings and simply fly away from this place! In better times, my head radiated with bright light, my aura glowing like a star in the darkness. As I was caught, they took away my spark.~
+@43 = ~My light faded, and I felt robbed of divinity. If I could get that spark back, my energy would be replenished and I could continue my journey.~
+@44 = ~Where could the spark be now?~
+@45 = ~I don't know, but I sense that it is still nearby, in this dungeon.~
+@46 = ~I will search for your spark and bring it back to you.~
+@47 = ~So hurry on, brave heroes, and may the light always accompany you. My powers may be limited, but my prayers will accompany you on your mission.~
+@48 = ~So be it. May light and hope always accompany you. I will find my own way through this dungeon.~
+@49 = ~If you were able to bring back my spark, my power would be restored and I would be able to leave this place behind.~
+@50 = ~Oh, how kind of you to free me from my cell. But do not think that I am even grateful to you. You are nothing more than useful tools in my plan to subjugate Graz'zt once more!~
+@51 = ~I expected a slight bit of gratitude.~
+@52 = ~Then I'll lock you up again!~
+@53 = ~Oh, sorry, wrong cell.~
+@54 = ~Gratitude? For your disturbance of my venerable presence? You fools do not realize what power and majesty I once possessed. I did not ask for your help, and now you shall bear the consequences for interfering in my affairs!~
+@55 = ~It is too late for that now! I have spent centuries imagining what I would do to the person foolish enough to free me. Your end is near, and I will triumph over your corrupt bodies!~
+@56 = ~Greetings, <RACE>! Once a vibrant bard, I am now but a whisper of my former self, trapped in perpetual gloom, my soul touched by death.~
+@57 = ~What has happened to you?~
+@58 = ~Quick, get out of here!~
+@59 = ~Would you perform Graz'zt's diatribe one more time?~
+@60 = ~Farewell, for now.~
+@61 = ~No, no. This song is not made for further performances. It will be silent forever now, and that's a good thing.~
+@62 = ~The songs that once passed my lips are now lost in the silence of night. My hands, once skillful in waltzing across the strings of my yarting, have decayed to rotten bones. I am trapped in this endless cycle of torment, cursed to continue my art in death.~
+
+@63 = ~How did it come to this?~
+@64 = ~I raised my voice against Graz'zt, Lord of the Abyss. In a time when my soul still inhabited a mortal body, I wrote a hymn of resistance, a diatribe against the Demon Prince filled with joy and optimism. I dared to oppose him, to use my voice as a weapon.~
+@65 = ~In his endless malice, Graz'zt turned me into an undead servant, a zombie bard, doomed to mourn my sad fate in the depths of this fortress. My songs, once filled with happiness and hope, were corrupted by Graz'zt's curse.~
+@66 = ~The harmonies of my music are now imbued with an unbearable sadness. The melodies that pour through me are as if echoed from my lost soul. My voice, once full of life and passion, is now choked with sorrow and corruption. I am only able to sing sad melodies that reflect the misery and torment of the Abyss. My voice has become an instrument of despair, and my songs express the burden of my doomed existence.~
+@67 = ~I can set you free!~
+@68 = ~I would love to hear one of your sad songs.~
+@69 = ~Can you still remember how this diatribe against Graz'zt sounded?~
+@70 = ~You can leave your prison now.~
+@71 = ~I... don't know... can't... can't remember... am cursed....~
+@72 = ~Try hard, I'm sure you will remember!~
+@73 = ~No offense. You can leave your prison now, by the way.~
+@74 = ~Yes, now I remember the melody and the lyrics ... Do you really want to hear it? It's very... rude.~
+@75 = ~No, I'd rather not.~
+@76 = ~I don't mind that.~
+@77 = ~Then even more so!~
+@78 = ~Oh, Graz'zt, thine stupidity reins,
+Thy petty might, thy useless brains.
+Thy horn so bent, thy laughter shrill,
+no victory comes, despite thy will.~
+@79   = ~Thy hair as tangled as thy schemes,
+Thy smile reveals but rotting beams.
+Thou boast of might and prowess firm,
+Yet hide no more than a shrivelled worm.~
+@80   = ~Thy pride so grand, it swells and grows,
+Yet underneath, your spirit shows,
+A mind as void as darkest night,
+Each servant laughs, when out of sight.~
+@81   = ~Thou fool, thou think'st thyself divine,
+Yet on the gallows, thou shalt dine.
+Thy realm of terror soon shall fall,
+And all rejoice to witness it all.~
+@82   = ~A diatribe for Graz'zt, the Abyssal fool,
+The world rejoices, it will break thy rule.
+Thy end approaches, it's drawing near,
+So heed this song, prepare for fear!~
+@83 = ~...~
+@84 = ~It... is over... and nothing has happened?~
+@85 = ~The song has given us courage. Thank you!~
+@86 = ~You'll go unharmed here by singing this song. Graz'zt has no more power in this place.~
+@87 = ~Nice song. You can leave your cell now, by the way.~
+@88 = ~This is... encouraging news, although there will be no more consolation but a little relief and respite from my eternal gloom.~
+@89 = ~Then you should leave your cell now.~
+@90   = ~Within dungeon's bounds, ancient and cold,
+My song of sorrow, a tale untold.
+No whispers of hope, no breath of light,
+Just my mournful tune, breaking the night.
+
+The melody heavy, deep and bleak,
+Speaks of loss and hearts that ache and seek.
+Sounds piercing through the icy veil,
+A song of despair, destined to prevail.~
+@91   = ~Tears flow in bittersweet waves, they weep,
+My song narrates of souls forever lost, asleep.
+In darkness, the light's flicker wanes,
+For the song of sorrow and its strains.
+
+Hear my lament, my melancholy call,
+Lost in solitude, it never remains in thrall.
+A song of corruption, eternal dismay,
+As my heart quivers in the dungeon's array.~
+@92   = ~The shadow fades but time remains,
+A testament to sorrow's endless chains.
+Hear once more the last resounding toll,
+In the abyss of darkness, where I rest my soul.~
+@93 = ~Lovely song.~
+@94 = ~You may leave this place now.~
+@95 = ~Thank you.~
+@96 = ~Graz'zt has bound me to this place, my fate as a lost soul. Even if you were able to free me, I would only continue to exist in darkness, my mournful melodies fading into the vastness of the Abyss. My hope has long since been swallowed up by resignation. There is no salvation for me, no release from my curse. I am condemned to sing my sad tunes for all eternity. Your help cannot ease my agony, for even if you were to loosen my chains, my voice would always be filled with sorrow.~
+@97 = ~But you can leave this place now.~
+@98 = ~No. The truth is that there is no way out for me. Every attempt to leave this dungeon has only ended in further suffering and torment. Graz'zt has brought me here to fulfill my sad destiny, and I am doomed to remain here.~
+@99 = ~Then I will leave you alone again.~
+@100 = ~So farewell then and live your life for me, <RACE>. My hope is extinguished. I have resigned myself to my fate. It is better to lose myself here in the darkness than to return to the world as a broken soul.~
+@101 = ~You see that open door there? It's not real, no, it's an illusion, woven from my own fears and doubts. I try to walk through it, but it keeps reshaping itself, mocking me with its iron grin. The truth is hidden behind it, but my senses are blurred and I can't find a clear path.~
+@102 = ~I have freed you and demand a due reward!~
+@103 = ~The door is indeed open.~
+@104 = ~What are you talking about?~
+@105 = ~Leave me alone, you weirdo!~
+@106 = ~Look at me, stranger, look into my eyes, the windows of my shattered soul. In my folly there may be a spark of awareness, a key to freedom, or just another illusion. But be warned, for the paths of madness are dangerous and unpredictable. Go on if you have the courage, but do not get lost in the confusion of your mind.~
+@107 = ~You must have completely lost your mind!~
+@108 = ~Do you have anything useful to contribute to the situation?~
+@109 = ~Beware of the six-armed women, creatures from the other dimension. Their grace is of unearthly beauty, but their arms, their many arms, they reach for my brains and slice them into a thousand shreds. Their touch is like fire and ice at the same time, a feeling of ecstasy and pain that sets my mind on fire!~
+@110 = ~I watch them dance, the six-armed women, their movements a whirlwind of sensuality and madness. They lure me with their seductive chants, but I know their embrace would be my downfall. I try to resist their seductive power, but their glaring eyes pierce me like red-hot knives.~
+@111 = ~I'd better leave now before I lose my mind as well.~
+@112 = ~Farewell.~
+@113 = ~They whisper their secrets in my ears, they say that the world is nothing but an illusion. A labyrinth of deceptions that keeps us trapped. Every step we take is but a dance on the tightrope of madness. Oh, how they wrap their arms around me and lead me into darkness...~
+@114 = ~Every step we take is but a dance on the tightrope of madness...~
+@115 = ~Oh, even more food for the mistress's machine, I suppose?~
+@116 = ~Food? Machine? What are you talking about?~
+@117 = ~Die, you little fiend!~
+@118 = ~Well, the machine in the room across the hall. Making servants for mistress.~
+@119 = ~Who is your mistress? The succubus Maretta?~
+@120 = ~What are you doing with that corpse on the table?~
+@121 = ~Want to hit poor little vermin? Pah, mistress will punish you soon enough!~
+@122 = ~No, no. Succubus has no voice down here. Mistress and Maretta don't like each other, you know. But the mistress's name must not be mentioned, otherwise she'll get angry.~
+@123 = ~Tell me, otherwise... I'll be angry too...~
+@124 = ~Do you know how I can get out of here again?~
+@125 = ~Must prepare corpses for big machine. Hungry machine, you know... Mistress needs lots of food...~
+@126 = ~You're feeding corpses to a machine? I guess I'll have to put an end to that now!~
+@127 = ~Well, through the big wooden door in the north. Just need keys.~
+@128 = ~And who has a key?~
+@129 = ~Lady Maretta. But Maretta's not here, so you can't get out either. Well, now I've talked long enough, I have to go back to work.~
+@130 = ~Hello, brave heroes! Somebody please help a lady in distress and free me!~
+@131 = ~Of course, madam! Just a moment...~
+@132 = ~Why on earth do you think I would want to free you?~
+@133 = ~Oh, thank you! Please hurry up, gentlemen!~
+@134 = ~You don't want to help me? What cruel creatures you are!~
+@135 = ~Oh, thank you for my liberation, my hero!~
+@136 = ~Can you still protect me against those barbarians behind you?~
+@137 = ~Barbarians?~
+@138 =  ~Keep away from me!~
+@139 = ~Well, over there, your former friends! Just take a closer look!~
+@140 = ~Oh, thank you for my liberation, mylady!~
+@141 = ~It's about time to reward you handsomely...~
+@142 = ~You promised to get me out of here. Would you please hurry up a little?~
+@143 = ~Yes, be patient for a moment! I will free you immediately!~
+@144 = ~I've changed my mind. I'll leave you here in the cell.~
+@145 = ~It looks like you don't want to help me at all. But that doesn't matter anymore.~ [AC#WWAE6]
+@146 = ~How naive of you to place trust in my illusion, <CHARNAME>! You've battled your way through the Abyss, only to fall short of your ultimate goal!~
+@147 = ~You are not Waukeen? Then who are you?~
+@148 = ~You may have deceived me, but I will destroy you in direct combat at the latest!~
+@149 = ~You want a glimpse of my hideous glory? Be my guest!~
+@150 = ~All your raging is useless. You have failed, and the only benefit I will give you is to reveal my true nature to you...~
+@151 = ~Wonderful! You have indeed set me free! How generous of you! Now follow me, I know a safe way out of the dungeon!~ [AC#WWAE3]
+@152 = ~Go ahead, I'll follow you.~
+@153 = ~I have changed my mind. I will kill you.~
+@154 = ~Never and in no regard are you Waukeen!~
+@155 = ~The exit is right here, it's not far...~
+@156 = ~Then please hurry up a little!~
+@157  = ~The time for my salvation has finally arrived.~ [AC#WWAE1]
+@158 = ~You are here to free me, right? I am Waukeen - the goddess of coins you seek. Please hurry and get me out of here, for your intrusion will not have gone unnoticed. We must flee this place immediately.~ [AC#WWAE2]
+@159 = ~You are truly Waukeen? I had imagined you a little... differently.~
+@160 = ~Yes, of course I'll bring you out of here immediately!~
+@161 = ~You are the goddess of trade, aren't you? What kind of reward are you offering me for your freedom?~
+@162 = ~I'm not even thinking about liberating you.~
+@163 = ~I have my doubts as to whether you are truly the goddess Waukeen you claim to be. I do not trust you.~
+@164 = ~No, I won't be fooled by this stupid trick a second time. I have already freed a young woman here who turned out to be a fiend. Prove to me first that you're the one I'm looking for!~
+@165 = ~My divine power was completely stripped from me before my imprisonment. I am now nothing more than a powerless mortal. But we don't have time for long explanations. Come on, free me now, please!~
+@166 = ~So hurry up! Graz'zt's henchmen are surely already on their way down here! We don't have much time left!~ [AC#WWAE5]
+@167 = ~In fact, I will reward you richly for your efforts, be assured. Once I am free, you will soon be reaping in power and wealth! But first you must get me out of this shabby cell, quickly!~
+@168 = ~You have traveled all the way to Azzagrat and now, at the end of your journey, you decide not to help me? You can't be serious!~
+@169 = ~Just think of all the blessings my liberation will bring you! Fame, wealth, power and influence will be bestowed upon you, I will make sure of that.~
+
+@170 = ~No, I'm not changing my mind. I don't like you. You will have to find someone else to save you.~
+@171 = ~Alright, you've convinced me. I will try to open your cell door.~
+@172 = ~I'm afraid I can't prove to you that I'm Waukeen, but why should there be a reason to pretend? You'll just have to trust me.~
+@173 = ~Yet, you can prove it to me. I have an idea. Just tell me the name of your high priest, the man who sent me down here!~
+@174 = ~You are right. I will set you free.~
+@175 = ~I have decided not to help you. You must find someone else to get you out of here.~
+@176 = ~Pah! I should have known, <CHARNAME>. I have wasted my time with you for far too long. There is no mercy, no redemption - only your downfall!~ [AC#WWAE4]
+@177 = ~You want to test me? You dare to question a goddess?~
+@178 = ~Forgive me my doubts, but I want to be quite sure that you are the one I am looking for.~
+@179 = ~Well, that's a very simple question, don't you think? Go on, answer it for me!~
+@180 = ~Not necessary. I trust you.~
+@181 = ~This is ridiculous! You know for yourselves that I haven't had any contact with the material plane for many years! How am I supposed to be able to answer a question like that?~
+@182 = ~I can assure you that you know the person in question, for he has been your High Priest for a long time.~
+@183 = ~You are right. I trust you and will get you out of here as soon as possible.~
+@184 = ~Well, in that case... let me think for a moment...~
+@185 = ~My beloved High Priest's name is Tharundar Olehm, priest at the Abbey of Goldspires in Athkatla. Are you satisfied now?~
+@186 = ~You searched my mind for that name! You did not know it!~
+@187 = ~What have you just done to me, Goddess? You tapped into my mind to get the answer?~
+@188 = ~My head hurts.~
+@189 = ~I only did that to make sure you knew the right answer too. What benefit would it provide me if I gave the correct answer and you didn't know it yourself?~
+@190 = ~Well, I have answered your question. Please release me now.~
+@191 = ~No! You did not know the answer! You are not the goddess I am looking for!~
+@192 = ~Alright, you have convinced me. I will set you free.~
+@193 = ~The high priest of my faith is called Alaundo.~
+@194 = ~Hah! I knew it! That's wrong! You're not Waukeen at all!~
+@195 = ~The high priest of my faith is called Elminster.~
+@196 = ~The high priest of my faith is Gorion.~
+@197 = ~I will tear your flesh to shreds and feed it to my master! You shall never see the forsaken goddess! And now die, you little wretches!~ [AC#WWAE7]
+@198 = ~I am Nasmaerae, master of deception and loyal servant of Graz'zt, the demon lord. He will reward me richly for thwarting your pathetic attempt at liberation.~
+@199 = ~C'mon, face me! I will defeat you easily in a fair fight!~
+@200 = ~I doubt that. There won't be a fight anyway, even if I would enjoy feeding you your own beating heart. No, you will remain Graz'zt's prisoner here forever!~
+@201 = ~(Suddenly you notice a strange presence in your mind. You are confused at first, but within a split second you realize that Waukeen is searching your mind for a single word - the correct answer to your question: The name of her high priest. Your willingness to resist the unyielding mental insistence fades moment by moment, and your mind is on the verge of giving up the secret.)~
+@202 = ~(You can no longer resist the mental urge. Your mental resistance breaks down, and your thoughts reveal the name you seek.)~
+@203 = ~(With the last of your mental strength, you force yourself to focus your thoughts on a single word, the name Waukeen is searching for in your mind...)~
+@204 = ~Alaundo.~
+@205 = ~Elminster.~
+@206 = ~Gorion.~
+@207 = ~Tharundar Olehm.~
+@208 = ~(You feel completely exhausted after the mental duel, and Waukeen looks at you triumphantly.)~
+@209 = ~Wait, <CHARNAME>! There is a thoroughly evil aura about this person. She is not what she claims to be.~
+@210 = ~You there! I don't know what kind of being you are, but in any case, you deserve to stay locked up there! Your sinister intentions are plain for a paladin to perceive!~
+@211 = ~Your black heart is impossible to ignore for me, creature. You are not the goddess we seek. Your pretenses are useless.~
+@212 = ~Wait, <CHARNAME>, I have an idea. Waukeen, you only have to answer one question to prove to us that you really are the goddess. What is the name of the high priest of your church? It was he who sent us here, and you must know his name!~
+@213 = ~Wait, <CHARNAME>, let me speak to this creature. You there! Tell us the name of the head of your church, and we will consider releasing you!~
