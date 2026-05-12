@@ -1,0 +1,1350 @@
+@2000 = ~Pipe of the Abyss~
+@2001 = ~This is a small stone pipe shaped to resemble the head of a demon.
+
+When the pipe is used, it emits great puffs of deadly vapors out of the deepest layers of the Abyss. However, there is always the danger of inhaling the toxic fumes oneself.
+
+STATISTICS:
+
+Charge abilities:
+– Casts the spell "Cloudkill" once per day.
+– 5% risk of poisoning oneself for 5 rounds when using the pipe 
+
+Weight: 1~
+@2002 = ~Pipe of Sorrow~
+@2003 = ~It is told that this pipe was once created by a grim shaman who would smoke the ashes of his fallen enemies in this pipe. The smoke that emanated from the pipe contained the concentrated despair and grief of the dying and could thus influence the hearts and minds of the living. The fate of the shaman has disappeared into the mists of history. The pipe, however, lives on and can still be used to unleash the stifling power of despair.
+
+STATISTICS:
+
+Charge abilities:
+– Cloud of sorrow once per day: Anyone within this cloud suffers a -4 morale penalty on attack rolls and Saving Throws for 10 rounds (Save vs. Breath negates)
+  Duration: 3d8 turns
+  Area of Effect: 15-ft. radius
+
+Weight: 3~
+@2004 = ~Tarterian Dragon Scales~
+@2005 = ~The heavy scales are from a Tarterian dragon, a subspecies of the great wyrms that dwell in the evil plane of Carceri. Tarterian dragons are both guardians and prisoners of this plane. However, it is said that there are ways to free them from the curse which prevents them from leaving the Lower Planes. The creatures are extremely resistant to anything that would affect their movement and ability to handle due to the characteristics of their homeland. They are able to cast powerful spells that can trap or even imprison their opponents. Their breath weapon consists of a powerful shockwave that shatters both the body and the mind of their enemies, inflicting damage as well as a penalty to attack and Saving Throws. You were able to loot a considerable number of scales from the carcass of the Tarterian dragon ... maybe a skilled blacksmith could craft armor out of them.~
+@2006 = ~Tarterian Dragon Scale Armor~
+@2007 = ~Dragon scale armor is light of weight, strong, and resistant to various harmful forces. Because of these properties, it is much sought after, but finding, let alone slaying, a powerful ancient dragon is near impossible. One should be careful wearing it near dragons, however, particularly Tarterian dragons.
+
+STATISTICS:
+
+Equipped abilities:
+– The wearer is immune to everything, magical and otherwise, that affects mobility in any way. This includes Haste and Slow spells.
+– The wearer is immune to Imprisonment.
+
+Armor Class: 0
+Weight: 30~
+@2008 = ~Deva Spark~
+@2009 = ~A luminous aura that once belonged to a Deva.~
+@2010 = ~Putrid Healing Potion~
+@2011 = ~This healing potion, originally pure, has been so corrupted by the forces of the Abyss that the bottle now contains nothing but a putrid brew.~
+@2012 = ~Kayur,
+be vigilant on the steps of the Infinite Staircase for a <PRO_RACE> individual named <CHARNAME>. They will be approaching Azzagrat from the direction of Argentil. Do not permit <PRO_HIMHER> to proceed on <PRO_HISHER> journey under any circumstances! I will be awaiting at the designated meeting point with the second part of your reward. May the Black Sun be with you!
+G.~
+@2013 = ~Sore Defeat +3~
+@2014 = ~Forged centuries ago by a duergar blacksmith, the sword 'Sore Defeat' was crafted for a vainglorious warrior from Ruathym. Designed to enhance his prowess in dire battles, it activated its power when he was weakened. Despite its formidable abilities, the warrior met his end in a beholder den, overwhelmed by the devastating eye rays of these aberrations.
+
+STATISTICS:
+
+Equipped abilities: 
+– If the wearer's hit points drop below 25%, "Improved Haste" is cast on <PRO_HIMHER> for three rounds
+
+THAC0: -3
+Damage: 1d10+3 (slashing)
+Speed Factor: 7
+Proficiency Type: Two-handed Sword
+Type: Two-handed
+Requires:
+ 5 Strength
+ 
+Weight: 8~
+@2015 = ~Key to the Chamber of Temptations~
+@2016 = ~Using this key, you can unlock the door to an area beneath Samora called the "Chamber of Temptations". Maretta told you that a Rose of the Abyss blossoms there, and your task is to deliver it to her.~
+@2017 = ~Scholar's Note (Excerpt)~
+@2018 = ~In my insatiable curiosity, I have ventured into the depths of the chamber to uncover its secrets. The dark walls and enigmatic symbols hint at a meaning I can only guess at. This chamber seems to be a place of temptation, a place where the dark sides of mortal nature and its innermost desires are put to the test. 
+
+Each of the seven portals that open from the chamber represents a particular form of forbidden desire. Hence the strange wrought-iron symbols on the walls! The snake stands for envy, the money bag for avarice. The crown could stand for arrogance, but I'm not sure. The axe is certainly the symbol of wrath and fury.
+
+In my quest for knowledge and insight, I have exceeded the limits of my sanity. My body is rapidly declining and I feel the icy breath of death. But I will leave these notes as a warning and guide for those who come after me.~
+@2019 = ~False Pride +3~
+@2020 = ~Borne by a knight famed for his bravery and subsequent arrogance, this longsword embodied his conceited spirit. The blade was cursed by celestial forces to remind bearers that humility outshines hubris. The repentant knight concealed the sword, retreating to a life of penance within a monastery of Ilmater.
+
+The blade's allure proved irresistible to worthy wielders. Restless, the item seeks out those who embody its essence, never content with average warriors.
+
+STATISTICS:
+
+Combat abilities: 
+– 30% chance that the target is blinded for one round after a successful hit if it fails a Save vs. spells
+– By scoring a critical hit, the wielder gets struck by a Ray of Enfeeblement for three rounds if <PRO_HESHE> fails a Save vs. spells.
+
+THAC0: -3
+Damage: 1d8+3 (slashing)
+Speed Factor: 2
+Proficiency Type: Long Sword
+Type: One-handed
+
+Requires:
+ 17 Charisma
+
+Weight: 3~
+@2021 = ~Fool's Laughter~
+@2022 = ~A hoarse, hysterical laughter emanates from this bottle. A special lock keeps it perfectly closed, making it impossible for you to open it. There are several tales surrounding this strange item. The most common of them is that a cruel tyrant once had his court jester tortured by threatening to have him executed as soon as the jester stopped laughing. The laughter was then trapped in this bottle.~
+@2023 = ~Rose of the Abyss~
+@2023 = ~Rose of the Abyss~
+@2024 = ~This rose looks spiky and evil. You don't even know how to grasp it properly without hurting yourself. The fragrance emanating from the blossom smells sweet, but rather of decay and rot than of beguiling flowers.~
+@2025 = ~Bloody Bone~
+@2026 = ~A bloody bone that still has tendons and other tissue dangling from it. It seems as if the bone has been cooked to make it softer.~
+@2027 = ~Part of a Necklace~
+@2028 = ~This is part of a necklace.~
+@2029 = ~Last Rites~
+@2030 = ~This amulet is shaped to resemble a divided heart. Various rumors revolve around its origins, mostly about two lovers whose sad fate was sealed by an unexpected and heartbreaking twist. It is believed that this item was once created by priests of Wee Jas, a goddess who embodies death, magic and love.
+
+STATISTICS:
+
+Equipped abilities:
+– Magic resistance: +15%
+
+Charge abilities:
+Last Rites (special, once per day)
+– Resurrection 
+– Target is completely healed
+– The wearer's hit points are reduced to 1
+  Range: Unlimited
+  Area: 1 creature
+
+Weight: 1
+~
+@2031 = ~This powerful ring is twisted and warped. It grants an unnatural amount of protection against attacks of any kind. The ring appears to have been crafted under the influence of the demon lord Alrunes, known to his followers as the 'Beneficent Spirit'.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +3
+– Saving Throws: +3
+
+Weight: 0~
+@2032 = ~Clyddis' Drawing~
+@2033 = ~This sketch of a pentagram was cut out of the skin of the vrock Clyddis. He had scratched it there to illustrate the function of the fiery ovens in Samora. With the help of this sketch, you should be able to use the ovens in the right order to get into Waukeen's prison.~
+@2034 = ~Gehenna's Pepper Stove~
+@2035 = ~This shrub is native to the lower planes and grows Gehenna pepper.~
+@2036 = ~Helm of Acid Resistance (Full)~
+@2037 = ~This helmet is filled with the corrosive acid of the pools of Yemach. The acid will not harm the object, but you must be careful that the liquid does not spill out of the vessel and burn your hand.~
+@2038 = ~Helm of Acid Resistance~
+@2039 = ~Helm of Acid Resistance, 'Acid Ravager's Bane'
+This helmet was forged to withstand the breath weapon of black dragons, in particular an ancient wyrm of times long past that has made history as Acidragravagrex, or simply 'Acid Ravager'. To this day, the helmet bears the marks of past battles against the winged creatures. The helmet protects against acid.
+
+STATISTICS:
+
+Equipped abilities:
+– Resistance to acid: +80%
+– Protects against critical hits
+
+Weight: 3~
+@2040 = ~Got ya!~
+@2041 = ~Belthazaar's riddle~
+@2042 = ~A hand, mixed with blood, the gentle blow of fate,
+Unlocks the gates of peril, where dark graves await.
+A touch of blood, flesh trembles and then,
+With this hand as key, reveal the Glabrezu's den.
+Then, oh mortal, the door shall swing wide,
+Into Glabrezu's realm, where fates coincide.
+Now, mortal, take the step, solve with care,
+For in Glabrezu's gaze, prove thy mettle fair, both day and night's glare.~
+@2043 = ~The Time of Troubles~
+@2044 = ~The Time of Troubles
+In the Year of Shadows, 1358 Dale Reckoning, Faerûn was shaken by sinister turmoil. The heavens themselves turned pale as the gods of the Forgotten Realms were forced to leave their holy halls and take the form of mortals. An era of chaos and disorder descended upon the land.
+
+The theft of an artifact of mighty splendor derailed the course of divine destiny. So it happened that the gods became vulnerable and their powers waned. Their faithful servants, pious priests and honorable paladins, were stripped of their divine gifts as their patrons could no longer grant them power. A void of guidance and protection opened up, and the people of Faerûn found themselves abandoned in the midst of the maelstrom.
+
+In those wild times, the gods desperately seized the chance to regain their power and free themselves from their predicament. Violent battles broke out between the gods themselves, between their followers, and between mortal factions seeking the favor of their gods. New gods rose to fill the gap, while others faded from their former glory or were destroyed.
+
+But the world of Faerûn itself was marked by the turmoil of this time. The paths of magic were shaken, and a shadow settled over the once powerful currents. Sages and wizards struggled to fathom the mystery, and the land sank into an aura of uncertainty.
+As the veils of sorrow began to lift, the gods managed to return to their divine glory. But the Time of Troubles had left its mark that would linger for a long time. Some gods, once powerful and exalted, had fallen or changed their spheres. New gods had taken their place to fill the blanks, and their names were now uttered on mortal lips.
+
+The people of Faerûn were scarred by the experiences of the Time of Troubles. Some had changed their faiths and beliefs, while others were lost in the chaos, broken by the pain of change. Yet some found new strength and purpose by turning to the ascended gods and seeking their favor.~
+@2045 = ~About the Absence of Waukeen~
+@2046 = ~About the Absence of Waukeen
+Written by Brother Aldric, devoted Priest of the Coinmaiden
+
+In these dire times that have befallen Faerûn, we find ourselves facing the loss of the divine presence of our beloved Mistress of Coin. She, the radiant sun of trade, once blessed us with her presence, but has vanished as if her light had extinguished, enveloping the temple of wealth in darkness.
+
+Oh, how we yearn for her warming radiance and the abundance she once brought into our hearts and treasuries! Her presence was an inspiration for all who served her, and her favor caused our markets to bloom like a magnificent field of flowers. Yet now, our merchants are plagued by doubt, and our storehouses stand empty, for without Waukeen's luminous presence, we drift aimlessly like ships without a compass, lost on a stormy sea.
+
+We, the faithful followers of the Merchants' Friend, fervently pray to her, pleading for her return and seeking signs that she has not forsaken us. But the silence of the heavens speaks volumes, and our prayers seem to echo against the icy void. Despair seizes us, and we are trapped in uncertainty, wondering when Our Lady of Gold will reappear in her full glory.
+
+We recall tales of bygone eras, when the world was shrouded in dark hours, yet the deities bestowed their blessings upon us. Hope flickers in our hearts as we are reminded of the words of the wise, that the light of divinity will always rise again to dispel the shadows.
+
+Thus, in this book of remembrance, let us reaffirm our unwavering devotion to Waukeen, the Merchants' Friend. We honor her in our prayers, in our songs, and in our relentless pursuit of prosperity. May she hear us and once again illuminate the lands of Faerûn with her radiant presence, so that the splendor of trade and wealth fills our souls.~
+@2047 = ~About the Goldspires~
+@2048 = ~The Goldspires - a sanctuary of splendor and abundance
+  
+Outside of the bustling walls of the city of Athkatla rises a proud temple called the Goldspires, heralding the splendor and riches of Waukeen's divine rule. Like rays of sunshine reaching for the heavens, these towers rise majestically, catching the light and presenting it as a radiant testament to the favor of the goddess.
+
+The faithful gather here to offer their prayers and sacrifices, and to seek the blessing of the Merchants' Friend. The priests, dressed in robes of precious beauty, celebrate solemn rites and bless those who strive for prosperity and success in their endeavors. The scent of incense and spices fills the air and mingles with the sounds of prayers and chants that fill the walls.
+
+But the Goldspires are more than just a temple. They are a center of trade and support for the faithful. Trade registers are kept here, contracts are preserved and valuable information about markets and business is collected. The wisdom of merchants and traders is brought together here to guide the faithful and promote trade.
+
+Let us praise and honor the Goldspires, for they embody the splendor and abundance that Waukeen, the divine mistress of trade, represents. May the gates of this sacred place be forever open to welcome those seeking trade and show them the way to success.~
+@2049 = ~Soul Token~
+@2050 = ~In Samora, the city of sin, no money is spent on gambling, but rather tokens that the players must purchase at the cost of their life force. These "soul tokens" can be used to participate in the various types of games on offer.~
+@2051 = ~Deva Feather~
+@2052 = ~This is the feather of a Deva. It is shining brilliantly and purely out of your backpack. Maretta wants you to deliver this item to her residence in the Counting House.~
+@2053 = ~Deva Wing~
+@2054 = ~This is the severed wing of a Deva.~
+@2055 = ~Potion of Acid Protection~
+@2056 = ~Whoever ingests this potion develops a magical resistance to any kind of acid. Any damage caused by acid is reduced by 50%. Resistance to acid applies alongside any other forms of resistance a person possesses. The effect lasts for 10 turns, or until dispelled.~
+@2057 = ~Arena Key Part~
+@2058 = ~This is a part of a strangely shaped key.~
+@2059 = ~Arena Key~
+@2060 = ~This odd key can be used to open the locked bone door in the gladiator arena in Samora.~
+@2061 = ~Manual of Physical Humiliation~
+@2062 = ~Like other manuals of this type, the cover is made of thick leather and elaborately decorated, though the book looks unattractively twisted, as if writhing in pain. 
+
+STATISTICS:
+
+– The reader of the book gains +1 to Dexterity, but loses one point each to Strength and Constitution.
+– Special: The book is consumed upon use
+– Usage: Place into quick item slot
+
+Weight: 25~
+@2063 = ~Dexterity has been permanently increased by 1 point, Strength and Constitution have been permanently reduced by 1 point.~
+@2064 = ~Manual of the Tough Fool~
+@2065 = ~Like other manuals of this type, the cover is made of thick leather and elaborately decorated, but the book looks unattractively twisted, as if it were writhing in pain. 
+
+STATISTICS:
+
+– The reader of the book gains +1 Constitution, but loses one point each to Dexterity and Intelligence. 
+– Special: The book is consumed upon use
+– Usage: Place into quick item slot
+
+Weight: 25~
+@2066 = ~Constitution has been permanently increased by 1 point, Dexterity and Intelligence have been permanently reduced by 1 point.~
+@2067 = ~Zhelamiss' Soul Contract~
+@2068 = ~This paper bears phrases in an unfamiliar language. A vivid red mark, clearly made with blood, adorns the lower left corner. This contract seals the soul pact between Ormad Sulpar and the Nighthag Zhelamiss. Ormad is very keen to get the contract back as he would like to keep his soul. You are to bring him the document to the "Sodden Solar".~
+@2069 = ~Zaehvielle's Soul Contract~
+@2070 = ~This paper bears phrases in an unfamiliar language. A vivid red mark, clearly made with blood, adorns the lower left corner. This contract seals the soul pact between Ormad Sulpar and the succubus Zaehvielle. Ormad is very keen to get the contract back as he would like to keep his soul. You are to bring him the document to the "Sodden Solar".~
+@2071 = ~Belthazaar's Soul Contract~
+@2072 = ~This paper bears phrases in an unfamiliar language. A vivid red mark, clearly made with blood, adorns the lower left corner. This contract seals the soul pact between Ormad Sulpar and the Glabrezu Belthazaar. Ormad is very keen to get the contract back as he would like to keep his soul. You are to bring him the document to the "Sodden Solar".~
+@2073 = ~Book of Fiends~
+@2074 = ~The book has a binding made from the tanned skin of some fiend's face and scowls at you. Two pairs of leathery red eyes scrutinize you critically and seem to follow your movements. The book stinks horribly of leather and urine and seems to be very old.~
+@2075 = ~Shield of the Faithless +4~
+@2076 = ~The Shield of the Faithless is a powerful, enchanted shield once carried by Andelar, a great paladin of ages past. During a battle against a fiend, the shield broke and fell from his arm, giving Andelar his lethal injury. He had just enough strength left to utter a curse with his last breath. Instead of taking responsibility for his failure in battle, he blamed the shield and cursed it for failing its owner in his time of greatest need. Since that time, the Shield of the Faithless has betrayed every warrior who has carried it. The shield is made of sturdy wood and framed by a mithril rim. 
+
+When worn by a warrior or priest, the shield initially grants a +4 bonus to Armor Class.
+However, if the shield is used in combat against enemies, it has a 5% chance of failing per hit received and becomes a cursed shield -4. If the wearer's health falls below 25%, the chance of the shield failing increases to 10%.
+The bearer cannot discard the cursed shield unless a priest casts a Remove Curse spell on <PRO_HIMHER>.
+
+  
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +4
+– Each hit has a 5% chance to curse the shield, changing its armor class to -4. If the wearer's health drops below 25%, this chance increases to 10%.
+
+Requires:
+ 9 Strength
+
+Weight: 3~
+@2077 = ~The Shield of the Faithless -4(cursed)~
+@2078 = ~The Shield of the Faithless is a powerful, enchanted shield once carried by Andelar, a great paladin of ages past. During a battle against a fiend, the shield broke and fell from his arm, giving Andelar his lethal injury. He had just enough strength left to utter a curse with his last breath. Instead of taking responsibility for his failure in battle, he blamed the shield and cursed it for failing its owner in his time of greatest need. Since that time, the Shield of the Faithless has betrayed every warrior who has carried it. The shield is made of sturdy wood and framed by a mithril rim. 
+
+When worn by a warrior or priest, the shield initially grants a +4 bonus to Armor Class.
+However, if the shield is used in combat against enemies, it has a 5% chance of failing per hit received and becomes a cursed shield -4. If the wearer's health falls below 25%, the chance of the shield failing increases to 10%.
+The bearer cannot discard the cursed shield unless a priest casts a Remove Curse spell on <PRO_HIMHER>.
+
+
+
+STATISTICS:
+
+Equipped abilities:
+– May only be removed with a Remove Curse spell
+– Armor Class: -4
+
+Requires:
+ 9 Strength
+
+Weight: 3~
+@2079 = ~Skull with Backbone~
+@2080 = ~Staff of the Skull~
+@2081 = ~A human skull with a spinal column. The sinews that hold the vertebrae together are not yet decomposed and provide stability.~
+@2082 = ~Staff of the Skull
+
+STATISTICS:
+
+Special abilities: User can summon a group of skeletons once per day
+Weight: 1
+~
+@2083 = ~Badge Against the Evil Eye~
+@2084 = ~This badge depicts a large eye. It is intended to prevent demons in the Abyss from becoming aware of the spell caster during summoning spells and appearing instead of the summoned creature. In most cases, summoned demons are hostile and attack the caster without hesitation. To successfully cast a summoning spell, it is sufficient for the item to be placed in the spellcaster's inventory. <PRO_HESHE> does not need to equip it.
+
+STATISTICS:
+
+Special: Prevents hostile demons from appearing in place of summoned creatures
+Usage: Place in the caster's inventory
+
+Weight: 1~
+@2085 = ~Power Key: Evil Planes~
+@2086 = ~A strange creature is depicted on the badge. This item is a Power Key that allows clerics of evil alignment to cast divine spells in the Abyss. Although the Abyss itself is an evil plane of existence, the use of such a Power Key is necessary for divine spellcasters in order for a clerical spell to actually work. To successfully cast a spell, it is sufficient for the item to be in the cleric's inventory. <PRO_HESHE> does not need to equip it.
+
+STATISTICS:
+
+Special: Prevents the failure of divine spells cast by evil-aligned clerics
+Usage: Place in the caster's inventory
+
+Weight: 1~
+@2087 = ~Power Key: Neutral Planes~
+@2088 = ~The symbol of an unknown deity is depicted on the badge. It is a Power Key that allows neutral aligned clerics to cast divine spells in the Abyss. Due to the distance of the Abyss from the neutral Outer Planes, the use of such a Power Key is mandatory to ensure that a cast divine spell does not fail. To successfully cast a spell, it is sufficient that the item is in the cleric's inventory, <PRO_HESHE> does not need to equip it.
+
+STATISTICS:
+
+Special: Prevents the failure of divine spells cast by neutral-aligned clerics
+Usage: Place in the caster's inventory
+
+Weight: 1~
+@2089 = ~Power Key: Good Planes~
+@2090 = ~This statuette represents a Deva. It is a Power Key that allows good aligned clerics to cast divine spells in the Abyss. Due to the distance of the Abyss from the good outer planes, the use of such a Power Key is mandatory to ensure that a cast divine spell does not fail. To cast a spell successfully, it is sufficient that the item is in the cleric's inventory, <PRO_HESHE> does not need to equip it.
+
+STATISTICS:
+
+Special: Prevents the failure of divine spells cast by good-aligned clerics
+Usage: Place in the caster's inventory
+
+Weight: 1~
+@2091 = ~Spell Key: Inner planes~
+@2092 = ~With the help of this spell key, the user is able to cast spells that relate to the Inner Planes. Since the Outer Planes, such as the Abyss, have no direct connection to the Inner Planes, spellcasters need to use items to link to them. In this particular case, this item depicts the grimace of an earth elemental's head. 
+The spell key cannot be equipped, but should be kept in the inventory of the person who wishes to cast elemental spells.
+
+STATISTICS:
+
+Special: Prevents the failure of elemental spells that rely on the Inner Planes such as 'Conjure Elemental'
+Usage: Place in the caster's inventory
+
+Weight: 6~
+@2093 = ~Devablood~
+@2094 = ~This liquid is stored in a red vial. It is actually the blood of a Deva, extracted and collected during a special ritual. The liquid deals 5d6 points of acid damage when thrown at another creature. The vial can be thrown about 20 feet and must hit a target to be effective. Since it is not a magic item, technically, magic resistance does not protect against the effects of the liquid.
+
+STATISTICS:
+
+Damage: 5d6 (Acid; Save vs. Breath for half)
+
+Range: 40 ft.
+
+Weight: 1~
+@2095 = ~Demon Horn~
+@2096 = ~The horn of a Tanar'ri demon, severed from the remaining part of the fiend with a powerful blow. It appears to be able to open a portal to a Tanar'ri-hunting fiend.~
+@2097 = ~Pepper Pod~
+@2098 = ~Gehenna Pepper~
+@2099 = ~This large red bell pepper, which you are not familiar with, exudes a fiery, penetrating aroma.~
+@2100 = ~This pepper does not originate from the Realms, but from another, darker part of the Multiverse, the plane of Gehenna, homeland of fiends and demons. Accordingly, the spiciness of this pepper is beyond any mortal's imagination.~
+@2101 = ~Bebilith's Sphere~
+@2102 = ~This orb should be placed at Graz'zt's statue in Samora on behalf of the Bebilith. Doing so will allow the demon to teleport into the city and wreak havoc. This could work to your advantage should you ever need to flee Samora in a hurry.~
+@2103 = ~Prison Key~
+@2104 = ~This key was in the possession of the succubus Maretta. It can be used to open the entrance to Waukeen's prison.~
+@2105 = ~Portal Key~
+@2106 = ~This key enables you to return to the city of Samora.~
+@2107 = ~Pentacle~
+@2108 = ~An inverted pentagram, a five-pointed star, is attached to this amulet. While upward-facing pentagrams are often used as a sign of protection, the inverted form is favored by creatures of the lower planes. It is said that amulets of this type can be used to gain access to forbidden areas. This particular amulet appears to be linked to the green fiery ovens present in Samora. The Succubus Maretta in the Counting House wishes to recover it.
+
+STATISTICS:
+
+Equipped abilities:
+– The wearer is immune to fear 
+– 'Neutralize Poison' once per day.
+
+Weight: 1~
+@2109 = ~An inverted pentagram, a five-pointed star, is attached to this amulet. This special amulet is designed to allow you to pass through the fiery ovens in Graz'zt's realm. It will grant you access to Waukeen's prison if you know how to use it properly.
+
+  STATISTICS:
+
+Equipped abilities:
+– The wearer is immune to fear 
+– 'Neutralize Poison' once per day.
+
+Weight: 1~
+@2110 = ~Head of the Baatezu General~
+@2111 = ~This was the head of the Baatezu general Gazgothan, a Cornugon devil. He is lucky that you cut off his head, for far worse things would have happened to him had he returned to the Nine Hells with news of his defeat. You are to bring the head to Samora as a trophy to prove your victory over the enemies of the Demon City. This will certainly increase your reputation in the city.~
+@2112 = ~Ornate Chalice~
+@2113 = ~This chalice looks precious at first glance. However, a closer look reveals that the gemstones are merely cut glass and the metal is made of an inferior alloy.~
+@2114 = ~Summon Modrons~
+@2115 = ~Summon Modrons
+(Conjuration/Summoning)
+
+Level: 3
+Range: Line of sight of the caster
+Duration: 4 turns
+Casting time: 3
+Area of effect: 50 foot radius
+Saving throw: None
+
+Within one round of casting this spell, the caster summons 4 Monodrone Modrons (extraplanar creatures from the outer plane of Mechanus).
+The Monodrones appear anywhere within the spell's area of effect, as determined by the caster. They attack the caster's enemies to the best of their ability until the caster either orders them to stop attacking, the spell's duration expires, or the creatures are killed. These creatures do not check morale, but they will vanish when killed. If there is no opponent to fight, the Modrons can perform other services if the caster can communicate with them and they are capable of doing so physically. This spell was made famous by the mage Argramund of the Rock, whose current whereabouts are unknown.
+
+Monodrone
+Intelligence: Semi (2-4)
+Armor class: 7
+Hit dice: 1+1
+Thac0: 19 or 20
+No. of attacks: 1
+Damage/attack: 1d4
+XP value: 120
+
+Combat: Monodrones are immune to illusions or magic that affect the mind, such as charm, domination, hold, paralysis, and sleep. Fear and other emotion spells are similarly ineffective against a modron, as are attacks drawing upon the Positive and Negative Energy Planes (including life-draining powers) and the abilities of Illithids and other psionic beings.~
+
+@2116 = ~Sealed Message~
+@2117 = ~This vessel consists of two parts sealed together in a manner unbeknownst to you. It is beyond your ability to open it. You have been ordered to deliver the container to a creature named "Aphul" on behalf of the Nalfeshnee Margrog. The creature is waiting at the Infinite Staircase not far from the doorway that leads to Samora.~
+@2118 = ~Larva~
+@2119 = ~You bought this Larva from the Nighthag Zhelamiss. The Nalfeshnee Margrog wishes to obtain it before he will tell you anything about Waukeen's whereabouts.~
+@2120 = ~Pledge~
+@2121 = ~The pawn ticket entitles you to obtain a Larva. You have received it from the Nighthag Zhelamiss and should bring it to her servant Saarixal, who is waiting at the exit of her abode next to the Larvae.~
+@2122 = ~Spell Key: Alteration~
+@2123 = ~This spell key enables mages to securely cast spells of the Alteration school in the Abyss, which otherwise run a high risk of backfiring and producing an unpleasant result for the user.
+
+STATISTICS:
+
+Special: Enables the caster to cast Alteration spells hazard-free in the Abyss.
+Usage: Place in the caster's inventory
+
+Weight: 6~
+@2124 = ~Holy Coin of Waukeen~
+@2125 = ~You have received this amulet from the goddess Waukeen in gratitude for her liberation from the clutches of the demon prince Graz'zt. The powerful item was taken from the legendary cloak of coins that the goddess always wears wrapped around her shoulders as the Lady of Wealth. One of those coins has been shaped by her very own will into this magnificent amulet and presented to you as a gift.
+
+STATISTICS:
+
+Equipped abilities: 
+– Magic Resistance: +20%
+– Saving Throws: +2
+– Charisma: +2 
+– Deathward: Protects against the effects of spells such as 'Wail of the Banshee' and 'Power Word: Death' 
+– Once per day, the wearer can create 1d100 gold coins
+
+Weight: 1~
+@2126 = ~Human Heart~
+@2127 = ~This is the heart of a human being. It appears to be fresh, as the blood has not yet coagulated.~
+@2128 = ~Cell Key~
+@2129 = ~This key, which you have taken from the Marilith Nasmaerae, opens all the prison cells in Graz'zt's dungeon.~
+@2130 = ~Maretta's Key~
+@2131 = ~This key once belonged to the succubus Maretta, the mistress of Samora. It likely opens the door to the exit from Graz'zt's dungeon.~
+@2132 = ~Goldspires Safe Key~
+@2133 = ~You stole this key from Faerthae Garblueth, the priestess on duty at the Goldspires. You should bring it to a thief named Maendir.~
+@2134 = ~Alembic of Vitalization~
+@2135 = ~An alembic is an alchemical device for producing essences. The central body of this alembic consists of a copper cauldron. Once a day, the magic of the object comes to life. With a gentle bubbling sound, it collects the vital energies from its surroundings and distils them in its interior. The energies merge into a healing potion that is ready to be used by an adventurer every day.
+
+STATISTICS:
+
+Charge abilities:
+– Creates a concentrated healing potion once per day.
+
+Weight: 15~
+@2136 = ~Alembic~
+@2137 = ~A copper pot for producing an unknown essence.~
+@2138 = ~Charm of Darkness~
+@2139 = ~This charm, formerly owned by the Nighthag Zhelamiss, is typical of those carried by all Nighthags. Crafted in the Gray Waste, it heals any illness of its owner and grants a +2 bonus to all Saving Throws. Nighthags use these charms to turn ethereal and invade the dreams of mortals, often suffocating their sleeping victims. The creation of such an amulet requires a month and 100 souls, making them highly valued and fiercely reclaimed if stolen. Beings of good alignment cannot use this item.
+
+STATISTICS:
+
+– Saving throws: +2
+– Protects against disease
+– Wearer can become ethereal once per day for three rounds. In this state, <PRO_HESHE> is subject only to magical or special attacks, including those by weapons of +1 or better enchantment, or by creatures otherwise able to affect those struck only by magical weapons. While being ethereal <PRO_HESHE> also gains 25% resistance to magic damage.
+
+Weight: 1~
+@2140 = ~Robe of the Eyes~
+@2141 = ~This valuable garment looks odd, as it is adorned with numerous eyes woven from fabric and sewn onto the robe in all directions. The wearer is thus able to look at all directions simultaneously.
+Astral or ethereal beings cannot be spotted with this robe. However, creatures camouflaged by spells or hidden in shadows are easily detected, making it impossible to ambush or surprise a character wearing a Robe of Eyes. The wearer of the robe is protected against all effects that cause blindness.
+Finally, the robe allows the wearer to activate one of the eyepatches by using it either to investigate the surroundings or to cast a True Sight spell. By using up one of the eyes attached to the robe, a charge is spent. If there are no more eyes available to activate the spell, the wearer can continue to wear the robe, but loses the ability to use the respective spells.
+
+
+STATISTICS:
+
+Equipped abilities:
+– Wearer is protected from backstabbing attacks
+– Wearer is immune to blindness
+
+Charge abilities:
+– Wearer can cast the spell "True Sight" (like the 6th level mage spell of the same name)
+– Wearer can cast the spell "Wizard Eye" (like the 4th level mage spell of the same name)
+
+Weight: 4~
+@2142 = ~Maggot Hide~
+@2143 = ~The Maggot Hide is a suit of leather armor covered with maggots that writhe in endless spirals over the wearer's body. 
+
+The armor grants increased resistance, but it also entails constant decay and foulness. Maggots start to invade the wearer's skin, writhing in his veins and consuming his flesh, causing the armor's owner to become sickly and loathsome to behold. 
+
+STATISTICS:
+
+Equipped abilities:
+– +20% resistance vs. crushing, piercing, slashing and missile attacks 
+– If the wearer is hit, the opponent suffers 5 points of damage from maggot bites and, on a failed Saving Throw vs. death, is infected with a disease that inflicts 5 points of damage per round for the following five rounds
+– Charisma: -2
+– Constitution: -2
+
+Armor Class: 4 (2 vs. slashing, 3 vs. piercing and missile)
+Requires:
+ 6 Strength
+
+Weight: 7~
+@2144 = ~Skull Mace~
+@2145 = ~Forged from tragedy, this mace embodies corruption. Once a paladin fell battling demons in Thanatos, a vile layer of the Abyss. His skull, severed and cursed in dark rituals, now forms this wicked weapon.
+
+From then on, this weapon could be used to draw strength from the target and transfer it to the wielder. In addition, the skull bites its victim on a successful hit, causing not much damage but an unpleasant bite nonetheless.
+
+STATISTICS:
+
+Combat abilities: 
+– Drains one point of strength from the target and transfers it to the wielder on 25% of hits (cumulative, for five rounds)
+
+THAC0: -3
+Damage: 1d6+3 ( crushing), +1 piercing
+Speed Factor: 7
+Proficiency Type: Mace
+Type: One-handed
+Requires:
+ 10 Strength
+
+Weight: 3~
+@2146 = ~Potion of Redemption~
+@2147 = ~This dark, shimmering potion is infused with a mysterious aura of floating, glowing bubbles. It is rumored to be an essence infused with the tears of Aasimon, explaining the luminous nature of the liquid. The elixir has a sweet but bitter note. It has the ability to cure drained life force. A character who drinks the potion can regain lost levels and remove the associated negative effects.
+
+STATISTICS:
+
+– Casts "Lesser Restoration"~
+@2148 = ~Horn of Goodwill~
+@2149 = ~Forged in the glittering Fochlucan High Academy of Silverymoon, this bronze horn, featuring a mouthpiece shaped from a unicorn’s horn, is more than a mere musical instrument. Crafted by visionary bards with magical ingredients, it embodies pure goodness. When played, its melodies produce a radiant shield that protects against evil.
+
+STATISTICS:
+
+Charge abilities:
+– Blowing the horn creates the effect 'Protection from Evil' once per day
+  Duration: 1 turn per level 
+  Area of Effect: 15-ft. radius
+  
+Weight: 3~
+@2150 = ~Summoner's Amulet~
+@2151 = ~Amulet of Protection +2, 'Summoner's Amulet'
+Countless ages past, in a time when the veil between realms was but a whisper and arcane currents surged unbridled, the esteemed summoner Kaelarion forged the Summoner's Amulet. It was employed by Kaelarion to guide circles of mages in safely navigating the delicate pathways between planes. Yet, fate bore ill when, amidst a perilous summoning of a Glabrezu, betrayal by his own apprentice led to Kaelarion's demise. The demon, in a cruel act of reciprocity, ensnared the treacherous apprentice and the amulet, dragging both into the dark depths of the Abyss.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +2
+– Saving Throws: +2
+– The wearer is permanently protected from evil
+
+Weight: 1~
+@2152 = ~Cone of the World Tree~
+@2153 = ~This cone is believed to be a seed of the World Tree, but only a resident of this location could testify to that with certainty. In any case, the cone grants the user a considerable amount of vitality when consumed, which is reflected in a temporary boost of hit points. The cone can be used once per day, as the seeds grow back overnight.
+
+STATISTICS:
+
+Charge abilities:
+– Hit Points: +10% (base only) once per day
+Duration: 10 rounds
+
+Weight: 1~
+@2154 = ~Potion of Agonizing Memory~
+@2155 = ~This cloudy, foul-smelling potion brings back lost, short-lived memories. This allows spellcasters to recall spells they have already cast and be able to cast them again. However, the potion is not exactly digestible; on the contrary, it is extremely poisonous. In addition, the memories, depending on what they are, can cause temporary states of confusion.
+
+STATISTICS:
+
+– Restores a spell of the 8th or lower level
+– User is poisoned for 10 seconds, taking 2 points of damage per second
+– User is confused for three rounds (Save vs. Spells negates)
+
+Weight: 1~
+@2156 = ~Daemevera's Infant~
+@2157 = ~This is the child of the succubus Daemevera, itself a sort of demon, who will most likely mature into an Alu-Fiend at a later stage. It stares at you grimly and full of malice out of its bright blue eyes. You are to bring the infant to Mefisto in exchange for him revealing a way to get rid of the Cyric priest Gildaar.~
+@2158 = ~Daemevera's Key~
+@2159 = ~This is a strange key that could be a mixture of whip and rattle.~
+@2160 = ~Bottle of Styx Water~
+@2161 = ~The bottle that contains the dark water of Styx appears to be a simple bottle - with no sign of its supernatural origins or its power of oblivion. 
+The flask itself is made of transparent glass. Inside is an opaque, dark liquid; an obscure, jet-black water that sloshes calmly and lazily in the bottle. The water seems to swallow even the light, and it is impossible to see its bottom. This is the water of the river Styx, the river that runs through the Lower Planes. Exposure to the liquid can cause incurable amnesia, and those who drink it or come into contact with it run the risk of losing their own memories and identities.~
+@2162 = ~Drum of the Abyss~
+@2163 = ~The Drum of the Abyss is crafted from the very essence of the Abyss. This kettledrum, made from dark, hardened leather, features a base adorned with the severed head of a wolf, locked in a perpetual grimace of agony. Its eyes, glowing a sinister yellow, are surrounded by fur marked with twisted runes that bind it to the Abyss.
+
+Every six days, the drum can summon the Glabrezu Belthazaar by striking it to produce a thunderous, abyssal boom. As the drum is played, the wolf’s head illuminates, and shadows coil around it, heralding Belthazaar's arrival. However, Belthazaar is cunning and willful, seeking to further his dark schemes rather than bow to any summoner’s will.
+
+STATISTICS:
+
+Charge abilities:
+– Summon the Glabrezu Belthazaar, which serves the summoner for one minute but cannot be controlled directly 
+– The instrument may be used daily, but Belthazaar will only answer the call every sixth day
+
+Weight: 1~
+@2164 = ~Drum~
+@2165 = ~A Strange Looking Kettledrum.~
+@2166 = ~Belthazaar's Dagger~
+@2167 = ~This dagger was given to you by the Glabrezu Belthazaar. You are to get Ormad Sulpar to cut himself with this dagger.~
+@2168 = ~Pillow of the Nighthag~
+@2169 = ~You shall bring this pillow to Ormad Sulpar. If he covers his face with it, he will suffocate. His soul will then finally belong to the Nighthag Zhelamiss, who has promised you a reward for this evil deed.~
+@2170 = ~Potion of Ten thousand Souls~
+@2171 = ~The Potion of Ten Thousand Souls is a dark and dangerous elixir brewed by the Nighthag Zhelamiss. The bottle is deep black in color, and its interior seems to be an endless swirl of shadowy mist. It is stored in a glass vial whose surface is riddled with tiny cracks, as if barely able to withstand the immense pressure of the souls trapped inside. The vial is sealed with a silver cap engraved with strange and disturbing symbols. The potion is a dangerous source of power and knowledge. Upon consuming this elixir, the user immediately gains 10,000 experience points, which is an enormous boost to their abilities and skills. This influx of knowledge and experience can enable a character to advance and outgrow themselves in ways previously unimaginable. However, the power of the potion comes at a price. The 10,000 experience points that the user receives are not taken from nowhere. They have been extracted from the souls of ten thousand deceased people who were cruelly captured by the Nighthag and then distilled into the potion. These souls are now trapped in the elixir forever and scream silently for release. When you consume the potion, the souls and all the experiences they have had in life are absorbed into you.
+
+It is up to each consumer to decide whether they will be plagued by a deep sense of guilt and darkness, knowing that the souls of the deceased have been sacrificed for their own power and benefit.
+
+STATISTICS:
+– Immediately grants the user 10,000 experience points
+
+Weight: 1~
+@2172 = ~has received 10,000 experience points.~
+@2173 = ~Gildaar's Note~
+@2174 = ~Gildaar,
+the rescue operation for the goddess seems to be getting started. According to the conversations I listened to, a <PRO_RACE> named <CHARNAME> is leading the rescuers up the Infinite Staircase to reach the city of Samora in Azzagrat. Make sure the party does not succeed, and I will reward you richly once I have become the mistress of the abbey, when the codger Tharundar Olehm will no longer have the favor of his faithful.~
+@2175 = ~Pinecone~
+@2176 = ~A large, strong-smelling pine cone. It weighs heavily in the hand.~
+@2177 = ~Death Rod~
+@2178 = ~The skull of a Nabassu is attached to this staff. Despite the fact that the spot where the demon's eyeballs once were appears hollow and empty, the skull seems to lock beings with its gaze. The stick was created in the endless, chaotic depths of the Abyss, where darkness and evil reign. Its origins and the story of its creation are shrouded in darkness and horror.
+
+STATISTICS:
+
+– Can once per day turn a humanoid creature that has no more than 8 Hit Dice into a Ghast if it fails its Save vs. Death at the end of a round.
+– Humanoid creatures with 9 or more hit dice are not affected by the rod. 
+– Creatures other than humanoids, such as aberrations, undead or dragons, are also unaffected by the rod's effect.
+
+ Range: 5 feet
+ Duration: Permanent 
+ Area: 1 creature
+ Saving throw: Yes (vs Death)
+Requires:
+ 9 Intelligence
+
+Weight: 1~
+@2179 = ~Diadem of the Fey'ri~
+@2180 = ~This diadem, forged by the Fey'ri - demonic hybrids of Tanar'ri and elves - contains a red jewel infused with the blood of many sacrificed Fey'ri. It grants the wearer black wings and numerous resistances, mirroring the demonic heritage of its creators.
+
+These traits are extremely repulsive to most inhabitants of the Realms. Good characters must pass a Saving Throw vs. Polymorph when donning the item, otherwise they will be affected by the diadem's demonic influence and shift their alignment to chaotic evil.
+
+The diadem can only be worn by Elves and Half-elves. It is believed that the Fey'ri use this item to pull more of their elven kin to the demonic side.
+
+STATISTICS:
+
+Equipped abilities: 
+– Charisma: -5
+– The wearer grows black wings that make him look like a creature of the Abyss
+– Fire resistance: +50
+– Electricity resistance: +50
+– Poison resistance: +50
+– Fey item: Can only be used by Elves and Half-elves
+– Good characters turn chaotic evil the first time they equip the diadem if they fail a Save vs. Polymorph
+– Does not protect against critical hits
+
+Weight: 2~
+@2181 = ~Cry of Despair~
+@2182 = ~This plate mail is fashioned to resemble the grimace of a fiend.
+
+STATISTICS:
+
+Equipped abilities: 
+– When struck in combat, the armor casts Cloak of Fear on the wearer in 5% of cases
+Armor class: 0
+AC bonus:
+ -3 vs. missile weapons
+ -3 vs. piercing weapons
+ -4 vs. slashing weapons
+Requires: 
+ 15 Strength
+
+Weight: 35~
+@2183 = ~Val'kreen's House Insignia~
+@2184 = ~Val'kreen's Insignia of House Dlardrageth~
+@2185 = ~This circular plaque is adorned with a winged creature. Inscribed on the back it says: 'Insignia Property of Val'kreen, Fey'ri'.~
+@2186 = ~This insignia represents the sign of House Dlardrageth, a dynasty of demonic elves also known as Fey'ri. These creatures are a hybrid of Tanar'ri and elves. They no longer share much with their elven ancestors, as they are considered cruel and ruthless. The inscription on the back reads: 'Insignia property of Val'kreen, Fey'ri'.~
+@2187 = ~Devilsplitter~
+@2188 = ~This halberd was made for a single purpose: To annihilate the denizens of the Nine Hells, who name themselves Baatezu and are usually called devils by mortals. The crude but effective weapon was enchanted by the Tanar'ri smiths of the Abyss to deal extra damage against their arch-enemies.
+
+STATISTICS:
+
+THAC0: +3
+Damage: 1d10+3, +6 vs. Baatezu
+Damage type: Piercing
+Speed Factor: 6
+Proficiency Type: Halberd
+Type: Two-handed
+Requires:
+ 13 Strength
+
+Weight: 12~
+@2189 = ~Meatshaper +3~
+@2190 = ~This club is covered in human flesh, which has been laced together with the tendons of another, unknown creature to form a weapon. Like all clubs, the weapon does not inflict too much damage, but it is capable of deforming the victim's shape with each blow, resulting in severe pain and a permanent drain on dexterity and charisma that can only be reversed by dispel magic.
+
+STATISTICS:
+
+Combat abilities:
+– Each successful hit deforms the victim's shape, causing a cumulative loss of both one point of Dexterity and Charisma if the victim fails a Save vs. Polymorph. This alteration is permanent until successfully dispelled. If one of the attributes drops to 0, the victim disintegrates into a fleshy mass and dies.
+
+THAC0: +3
+Damage: 1d6+3
+Damage type: Crushing
+Speed Factor: 4
+Proficiency Type: Club
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+@2191 = ~Heart Piercer~
+@2192 = ~Weapons have been forged in the dark forges of the Abyss since the dawn of time to torture and harass mortals, and this spear known as the 'Heart Piercer' is no exception. It is rumored that the spear was forged from dark iron and imbued with the power of trapped souls through bloody rituals. The tooth of a powerful and fallen demon was used as the spearhead to complement the deadly weapon.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target starts bleeding and takes an additional 2d4 piercing damage (Save vs. Death negates)
+
+THAC0: +3
+Damage: 1d6+3 (piercing)
+Speed Factor: 3
+Proficiency Type: Spear 
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+@2193 = ~Selûne's Everburning Stars~
+@2194 = ~These silver bracers, known as Selûne's Everburning Stars, are said to guide and protect those who wear them through the darkest of nights, shielding them from even the most perilous shadows. Legend holds that the gems adorning both bracers are crystallized tears shed by Our Lady of Silver herself.
+
+STATISTICS:
+
+Charge abilities:
+– Aid (as the 2nd level cleric spell) once per day
+– Kills one targeted shadow once per day 
+
+Equipped abilities:
+– Protection from Blindness
+– Protection from the spell "Globe of Darkness"
+– Armor Class and Saving Throws: +2 vs. Shadows
+
+Weight: 1~
+@2195 = ~Cup~
+@2196 = ~Cup of Selûne~
+@2197 = ~This beautiful cup has stars symbols engraved into it.
+
+Weight: 2~
+@2198 = ~This is a sacred cup of Selûne. Drinking from it may grant protection of the Moonmaiden.
+
+STATISTICS:
+
+Charge abilities:
+– Drinking from the Cup of Selûne randomly grants one of the two effects: Protection from Evil or Sanctuary
+
+Weight: 2~
+@2199 = ~Staff of Sweet Decay~
+@2200 = ~This staff used to belong to a former lover of Graz'zt. While this weapon once might have been an icon of nature's power, today it is but a twisted caricature of its past self. It is covered with some strange, sweet-smelling mucus. The few leaves that used to sprout from it are of unhealthy colors. There is some mycelium growing on the lower part of the staff.
+  
+It is said that the sweet toxins oozing from the staff can be quite intoxicating, allowing the one that wields it to have a certain charm and the mycelium may help to summon myconids.
+  
+STATISTICS:
+
+Charge abilities:
+– Summon Fungus once per day
+
+Equipped abilities: 
+– Charisma: +1
+– Luck: +1
+
+THAC0: +3
+Damage: 1d6+3, +1 Acid
+Damage type: crushing
+Speed Factor: 1
+Proficiency Type: Quarterstaff
+Type: Two-handed
+Requires:
+ 5 Strength
+
+Weight: 2~
+@2201 = ~Helmet of the Assassin-Knight~
+@2202 = ~This helmet was once used by a knight Vlasnisz, that left his brotherhood after his brothers turned their back on him when he dedicated his life to avenging his beloved, Vracl, viciously killed by a knightess he simply couldn't love.
+ 
+Vlasnisz decided that this murder could never be forgotten or forgiven. He became a beast himself, but... without his beloved one, he simply couldn't take any other path.
+
+STATISTICS:
+
+Equipped abilities:
+– THAC0: +1 (melee only)
+– Backstab multiplier: +1
+– Protects against critical hits
+– May only be removed with a Remove Curse spell
+
+Weight: 2~
+@2203 = ~Fed-on-Blood +2~
+@2204 = ~Known as Fed-on-Blood, this voracious medium shield is steeped in legend. It is said that when the shield's panels are drenched in the blood of its wielder, it gains unparalleled strength, providing formidable protection against a myriad of threats.
+  
+STATISTICS:
+
+Equipped abilities:
+– Intelligence: +1
+– Armor Class: +3
+
+Combat abilities:
+– When the shield's wielder's hitpoints drop below 25% of their maximum hitpoints, the wielder gains an additional +2 armor class bonus as well as +1/2 attack per round
+
+Requires:
+ 12 Strength
+
+Weight: 5~
+@2205 = ~Flashflask~
+@2206 = ~This container was used to collect lightning. Rumor has it that gnomes of Lanthan perform this dangerous task by flying their skyships directly into a thunderstorm to catch the lightning. When the vessel is opened, the lightning is unleashed. Up to six targets can be hit in this way. Once all the lightning has escaped from the vessel, it is useless. It takes at least a little understanding of how the item works and a fair amount of dexterity to understand the complicated mechanism for opening and closing the vessel; after all, the gnomes who designed such an item are not considered skilled tinkerers without reason.
+
+STATISTICS:
+
+Charge abilities:
+– Six Lightning Bolts
+  Damage: 3d6 electrical (Save vs. Wand for half)
+  Range: 100 ft.
+  Area of Effect: Path of bolts
+
+Requires:
+ 9 Intelligence
+ 13 Dexterity
+
+Weight: 1~
+@2207 = ~Doomed Loser~
+@2208 = ~The 'Doomed Loser' is a bastard sword forged by a human swordsmith who sought to create the ultimate weapon. Overconfident in his skills, he enlisted demonic aid to perfect the sword, which boasted formidable power and unmatched precision. However, during its first failure in combat, the sword declared itself 'Doomed Loser' and vanished, teleporting randomly across the Multiverse after its wielder's initial miss.
+
+Since then, the sword has followed a strange pattern. It appears and then disappears as soon as its wielder misses in combat or makes a critical mistake, seeking a more 'worthy' wielder who can master the art of the sword. Since all mortals make mistakes at times, it is obvious that the blade has not yet found a wielder it will stay with. The list of former owners is as long as the enemies who have been slain with this blade. A wise warrior should consider carefully before making use of the weapon's abilities, as there is a high chance of suddenly finding <PRO_HIMHER>self without a weapon in battle if he fails.
+
+STATISTICS:
+
+Combat abilities:
+– When the wielder misses in combat, the sword disappears from the wielder's hands and teleports to another random location in the Multiverse.
+
+THAC0: +5
+Damage: 2d4+5
+Damage type: Slashing
+Speed Factor: 3
+Proficiency Type: Bastard Sword
+Type: One-handed
+Requires:
+ 11 Strength
+
+Weight: 5~
+@2209 = ~The Burning Vision~
+@2210 = ~If the legends are true, this ring was once a pretty common ring of infravision. This specific ring was however worn by a human ranger who was taken into the Nine Hells, where he was burned alive by evil beasts that call that place home. It is said that as he screamed, his pain mixed with the fire and cracked the ring. Its magic started to burn and changed the nature of the ring forever.
+
+STATISTICS:
+
+Equipped abilities:
+– Infravision up to 120 ft.
+– Fire Resistance: +10%
+– Cold Resistance: +10%
+
+– Whenever the one that wears the ring kills anyone, <PRO_HESHE> receives +6% Fire and Cold Resistance for 3 rounds; there is also a 25% chance that the ring's owner will receive +1 Saving Throw vs. Death for the same duration
+
+Weight: 0~
+@2211 = ~Heads +3~
+@2212 = ~This short sword +3, just like its twin sword "Tails", belonged to the chosen ones of a deity of wealth called Kol Korran. Kol Korran is worshipped by honest merchants and traders, but also by thieves and tricksters who engage in dishonorable business. There are many tales about these swords. Some say that they were forged from a large gold coin of the Lord of World and Wealth, which originated from his personal treasury. This coin was split in two in the middle, creating the two dichotomous blades "Heads" and "Tails".
+Although this sword has a powerful enchantment on its own, it is bound to its twin sword "Tails". If it is wielded separately, it betrays its wielder and "devours" his gold. The sword always feels warm to the touch.
+
+If legends are to be trusted, both swords were stolen by some demonic entities.
+ 
+STATISTICS:
+
+Equipped abilities:
+- Luck: +1
+- Charisma: +2
+- Armor Class and Saving Throws: +2 (vs. thieves)
+- Each successful hit made against the wielder of this weapon destroys 10 gold pieces unless the wielder has also equipped the twin blade: Tails +3
+
+Combat abilities:
+- Strikes as a +4 weapon
+
+THAC0: +3
+Damage: 1d6+3, +1 fire damage
+Damage type: piercing
+Speed Factor: 1
+Proficiency Type: Short Sword
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 2
+~
+@2213 = ~Tails +3~
+@2214 = ~This short sword +3, just like its twin sword "Heads", belonged to the chosen ones of a deity of wealth called Kol Korran. Kol Korran is worshipped by honest merchants and traders, but also by thieves and tricksters who engage in dishonorable business. There are many tales surrounding these swords. Some say that they were forged from a large gold coin of the Lord of World and Wealth, which originated from his personal treasury. This coin was split in two in the middle, creating the two dichotomous blades "Heads" and "Tails".
+Although this sword alone already has a powerful enchantment, it is bound to its twin sword "Heads". If it is wielded separately, it betrays its wielder and "devours" his gold. The sword always feels warm to the touch.
+
+If legends are to be trusted, both swords were stolen by some demonic entities.
+ 
+STATISTICS:
+
+Equipped abilities:
+- Lore: +12
+- Intelligence: +2
+- Armor Class and Saving Throws: +2 (vs. thieves)
+- Each successful hit made against the wielder of this weapon destroys 10 gold pieces unless the wielder has also equipped the twin blade: Heads +3
+
+Combat abilities:
+- Strikes as a +4 weapon
+
+THAC0: +3
+Damage: 1d6+3, +1 magic damage
+Damage type: piercing
+Speed Factor: 1
+Proficiency Type: Short Sword
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 2
+~
+@2215 = ~Idiot's Ioun Stone~
+@2216 = ~This impressive looking Ioun Stone is cursed. When equipped, it reduces the wearer's intelligence to the level of a fool.
+
+STATISTICS:
+
+Equipped abilities:
+– Intelligence set to 1
+
+Weight: 0~
+@2217 = ~Silver-Plated Bolt~
+@2218 = ~Silver-plated bolts are regular crossbow bolts that are plated with silver, but not made entirely of silver. Silver is usually a soft metal, which means that a sword or arrowhead made of pure silver would quickly break or splinter in combat. However, coating a weapon with silver provides the advantages of iron or steel's durability, but the properties of silver when needed.
+Some monsters that are immune or resistant to non-magical weapons are vulnerable to silver weapons. These include demons and devils, certain undead or even fey creatures such as nighthags. These resistances can be overcome with a silver-plated weapon. Followers of Selûne, though, create these crossbow bolts for a very different purpose: To fight lycanthropes such as were-rats and werewolves.
+
+STATISTICS:
+
+Combat abilities:
+– Strikes like a +5 magical weapon vs. lycanthropes, undead and fiends of the lower planes such as Baatezu (devils) and Tanar'ri (demons)
+
+Damage: 1d8 (missile)
+Launcher: Crossbow
+
+Weight: 0~
+@2219 = ~Riven's Poem~
+@2220 = ~The Infinite Staircase
+
+A poem by Riven Windwalker, Bard in service of the Moonmaiden
+
+"In endless steps that climb so high,
+a staircase rises into the sky.
+The moon, a light in the dark of night,
+reveals secrets hidden from sight.
+
+A dance of planes, a realm untamed,
+through the night, where all's unnamed.
+Each step, an echo of times of old,
+tells stories with secrets yet untold.
+
+The Infinite Staircase, a path so vast,
+beckons with promises, a riddle cast.
+But in the silence, in this abyssal hue,
+echoes dissipate, and spirits renew.
+
+Moon and stars, as guides so bright,
+lead the traveler through endless night.
+May these steps, across time and space,
+lead to peace, to calm, to a better place."
+~
+@2221 = ~Ring of Protection +3~
+@2222 = ~If wrath doesn't cut it, try peacefulness instead.~
+@2223 = ~Diadem~
+@2224 = ~This headpiece is decorated with a red jewel.~
+@2225 = ~Venom Slicer~
+@2226 = ~This powerful scimitar was forged in a layer of the Abyss known as the 'Driller's Hives'. Within it reigns Tharzax, the demon lord of poison. His most loyal champions have been given scimitars of this kind to spread the word of the Lord of Poison across the Multiverse.
+
+STATISTICS:
+
+Combat abilities:
+– Hit target suffers 1 point of poison damage per second for 6 seconds (Save vs. Poison negates)
+
+THAC0: +3
+Damage: 1d8+3 (slashing)
+Speed Factor: 2
+Proficiency Type: Scimitar/Wakizashi/Ninjato
+Type: One-handed
+Requires:
+ 10 Strength
+
+Weight: 1~
+@2227 = ~Verin's Notes~
+@2228 = ~This scroll contains some notes that Verin apparently wrote. They are in an elegant, yet wicked-looking handwriting. A few entries catch your eye:
+- 'Maretta, scheming and seductive, rules Samora with an iron hand. She hides her true intentions behind a veil of temptation and deception and will soon betray Graz'zt. Secretly pays homage to another demon lord, but which one? Orcus, mayhap?'
+- 'Mefisto, the cunning town crier, knows Samora's darkest secrets. His words are like daggers, sharpened with lies and intrigue. He dances to the tune of power. But at the moment he seems loyal to Graz'zt. I told him to keep an eye out for strangers in the city looking for Graz'zt's captive. He mentioned two mortals here: A human named Gildaar and a <PRO_RACE> named <CHARNAME>. He's watching both of them and will report back to me before either becomes dangerous.'
+'Margrog, the Nalfeshnee merchant, harbors the poison of betrayal in his dark eyes. Deals in souls like a butcher deals in meat. His apparent loyalty is but a veil for his selfish ambitions. Not trustworthy.'
+'The captivity of Waukeen is a source of instability in Samora. We must ensure that she is kept from being freed. Our efforts are weakening her divine presence, but she is still a potential threat.'
+'<CHARNAME> is of uncommon determination and strength. I should keep an eye on <PRO_HIMHER>, for <PRO_HISHER> fate could be critical to ours. Has <PRO_HESHE> arrived to free Waukeen? Or to join Maretta in snatching Graz'zt from Samora?'
+~
+@2229 = ~Bloodblade~
+@2230 = ~This dagger is coated with the sap of the Ironmaw tree. The Ironmaw tree is a plant of the Lower Planes that grows primarily in the Abyss. The sap of the tree prevents bleeding wounds from closing up quickly - the victim continues bleeding for a long time. The blade is permanently covered in fresh, dripping blood, testifying to its regular use as an instrument of killing.
+
+STATISTICS:
+
+Combat abilities:
+– Target starts bleeding for 2 extra damage every round until 10 Hit Points of damage done
+
+THAC0: +3
+Damage: 1d4+3 (piercing)
+Speed Factor: 0
+Proficiency Type: Dagger
+Type: One-handed
+Requires:
+ 3 Strength
+
+Weight: 0
+~
+@2231 = ~Protection from Poison~
+@2232 = ~Protection from Poison 
+(Abjuration)
+
+Level: 2
+Range: Creature touched
+Duration: 10 rounds 
+Casting Time: 3
+Area of Effect: Creature touched
+Saving Throw: None
+
+By using this spell, the chosen creature gains immunity to poisons and venoms administered via contact with the skin, ingestion, sting, bite or weapon. Toxins of other types continue to affect the creature normally. Any poisons already in the body when the spell is cast are also unaffected by this spell.~
+@2233 = ~Wand of Courage~
+@2234 = ~A Wand of Courage instills courage in the spell's recipients, raising their morale to its highest. The recipients' morale will gradually reset to normal as the duration runs out. If the recipients are affected by magical fear, they will regain their composure. Like all wands, the Wand of Courage can only be used a limited number of times before it is destroyed.
+
+STATISTICS:
+
+Charge abilities:
+– Casts 'Resist Fear'
+  Range: 100 ft.
+  Target: One creature
+  Area of Effect: 15-ft. radius
+  Duration: 1 hour
+
+Requires:
+ 9 Intelligence
+
+Weight: 1~
+@2235 = ~Amulet of Fear Resistance~
+@2236 = ~Amulet of Fear Resistance
+This heart-shaped amulet boosts the wearer's morale and protects <PRO_HIMHER> from all the effects of fear. Items of this kind are made in countless different variants in many different Planes of Existence; after all, in the Multiverse there is always a reason to run away from something or someone out of sheer fear.
+
+STATISTICS:
+
+Equipped abilities:
+– The wearer of the amulet is protected from all fear
+
+Weight: 1~
+@2237 = ~Rust Spreader +3~
+@2238 = ~Rust Spreader +3
+
+Named the Rust Spreader, this wakizashi possesses a sinister reputation for good reason. Each strike from this nefarious blade carries with it the ability to spread a creeping rust, weakening not only foes but also the wielder themselves.
+
+STATISTICS:
+
+Equipped abilities:
+– Acid Resistance: +5%
+
+Combat abilities:
+– Each successful hit has a 18% chance to apply an Armor Class penalty on the target, by weakening the Armor Class by 1 point for 2 rounds (no Saving Throw)
+– Each successful hit has a 4% chance to apply the same Armor Class penalty on the wielder of this weapon (no Saving Throw)
+– Each successful hit has a 90% chance to deal an additional 3d4 damage to Iron Golems
+
+THAC0: +3
+Damage: 1d8+3 (piercing)
+Speed Factor: 2
+Proficiency Type: Scimitar/Wakizashi/Ninjato
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 2
+~
+@2239 = ~Clot Buckler~
+@2240 = ~Clot Buckler
+
+This peculiar buckler resembles a massive clot of blood with a handle affixed to it. It's difficult to imagine who or what would willingly wield such an item. Nonetheless, someone must have, given the handle's attachment to this peculiar object.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +1, +3 vs. Bludgeon/Crushing
+– No protection against piercing and missile attacks
+– Charisma: -2
+– Backstab Multiplier: +1
+
+Weight: 2~
+@2241 = ~Flesh and Boils +4~
+@2242 = ~Flesh and Boils +4
+
+This strange club is known as the 'Flesh and Boils'. It looks like a weird piece of meat covered in an acidic boil. As odd as it may seem, it can be quite useful in some situations. But how dependable can a piece of meat be?
+
+STATISTICS:
+
+Equipped abilities:
+– Charisma: -1
+– Saves vs. Spells bonus: +1 
+
+Combat abilities:
+– Each successful hit has a 4% chance to explode and deal 6d10 damage to the target, however, the explosion will also permamently destroy this weapon 
+
+THAC0: +4
+Damage: 1d6+4 (crushing)
+Speed Factor: 4
+Proficiency Type: Club
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 3~
+@2243 = ~Heart-Shaped Razor +3~
+@2244 = ~Heart-Shaped Razor +3
+
+This small razor's blade is crafted in the shape of a heart, adding an unsettling touch to its already gruesome nature. Discovered amidst the remains of a dissected body, its sharpness suggests its previous use in cutting veins, skin, and organs. With its dark origins and chilling inscription - 'You cannot crush the heart that's already missing' - this blade exudes both power and nightmarish allure.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +1 vs. crushing attacks
+
+Combat abilities:
+– When the target is killed with this weapon, the wielder gains 'Blood Seed', a seam of coagulated blood, that may be consumed to regain 20 Hit Points, as well as increase Strength by 1 point for 1 turn (if unused, the seed will disappear after 8 hours)
+
+THAC0: +3
+Damage: 1d4+3, additional +1 vs. Humanoids
+Damage type: piercing
+Speed Factor: 0
+Proficiency Type: Dagger
+Type: One-handed
+Requires:
+ 3 Strength
+
+Weight: 1~
+@2245 = ~Blood Seed~
+@2246 = ~The Blood seed has been created by the item Heart-Shaped Razor when a target is killed by this weapon. It may be consumed to regain 20 Hit Points, as well as to increase strength by 1 point for 1 turn. If unused, the seed will disappear after 8 hours.
+
+STATISTICS:
+
+Special: 
+– Heals 20 Hit Points
+– Increases strength by 1 point for 1 turn
+– Disappears after 8 hours.
+
+Weight: 0~
+@2247 = ~Toadstool Cloak~
+@2248 = ~This cursed cloak is known as the Toadstool Cloak and shines so bright that it's pretty hard for its users to hide. Yes, it's fashionable, yes, it looks pretty good, but is it worth the price? Many would, without hesitation, say no.
+
+STATISTICS:
+
+Equipped abilities:
+– Charisma: +1
+– Hide in Shadows: -10%
+– Armor Class penalty: -1
+– May only be removed with a Remove Curse spell
+
+Weight: 3~
+@2249  = ~Magnetic Ioun Stone~
+@2250  = ~Magnetic Ioun Stone
+
+While most Ioun stones are known for their powerful and quite helpful properties, this stone attracts all projectiles, so it's hard to call it helpful or useful at all. It must have been created as some kind of prank. Possibly a deadly prank.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class vs. Missiles penalty: -3 
+– May only be removed with a Remove Curse spell
+
+Weight: 0~
+@2251  = ~Golden Fools~
+@2252  = ~These bracelets may look beautiful, but they are cursed. They were probably created to lure in potential victims and then feed on their curiosity and carelessness.
+
+STATISTICS:
+
+Equipped abilities:
+– Each time enemies succefully hit the item's owner, they lose 1 gold piece
+– May only be removed with a Remove Curse spell
+
+Weight: 1~
+@2253 = ~Scanty Stride Suit~
+@2254 = ~This leather harness was enchanted to protect its owner just as light armor. In the same time, it does not block any movement, so it can be even used by rogues and bards without fear that it will ever limit them in their arts. While it is quite revealing, this accessory's properties may be appreciated by all those that value mobility, and... explicit and unapologetic directness.
+
+The harness, however, does not protect well from frosty weather and accepts only wearers in a good physical shape. When worn, it will cling to its owner and shall present them in all their glory. It can be taken off only with the use of magic.
+
+STATISTICS:
+
+Charge abilities:
+– May cast Charm once per day
+– May cast Khelben's Warding Whip once per day
+
+Equipped abilities:
+– Charisma: +1
+– Dexterity: +1
+– Cold Resistance: -20%
+– Spellcasting is not disabled
+– May only be removed with a Remove Curse spell
+
+Armor Class: 4 (2 vs. slashing, 3 vs. piercing and missile)
+Requires:
+ 6 Strength
+ 14 Constitution  
+
+Weight: 3~
+@2255 = ~Concentrated Acid~
+@2256 = ~This is extremely corrosive acid that burns through skin, leather and metal in the blink of an eye.~
+@2257 = ~Belt of the Three Cyclops~
+@2258 = ~On a remote island in the midst of the Singing Rocks off the coast of Calimshan once lived a triad of cyclops known for their immense strength and sinister machinations. The three cyclops were feared by sailors passing by the island, as they would hurl massive boulders at passing ships, sinking more than one.
+
+One day, the three cyclops were killed by brave adventurers. They took their eyes as a trophy to claim their reward. A clever Lantan gnome named Bilgim the Skillful decided to incorporate the eyes into a magical belt to breathe new life into their unique abilities. The gnome worked on the belt for months, eventually reinforcing it with the eyes of the three cyclops and using a great deal of magic to create a belt to suit him.
+
+Since then, the Belt of the Three cyclops has had many owners, from brave heroes to unscrupulous villains who wanted to use its power for their own ends.
+
+STATISTICS:
+
+Equipped abilities:
+– Strength: +1
+– Wearer is immune to Charm
+
+Charge abilities:
+– "Detect Invisibility" once per day
+
+Weight: 2~
+@2259 = ~Club +4, The Noble Cob~
+@2260 = ~The Noble Cob is a club decorated with bronze bands which, according to local tales, was carried by a nobleman from Calimshan as a sign of power. Once a day, the mace can rain down a shower of sparkling metal shavings on everyone within its range. This proved to be particularly effective against lurking assassins in intrigue-ridden Calimshan, but benefits the bearer in any of the lands along the Sword Coast.
+
+STATISTICS:
+
+Equipped abilities:
+– Save vs. Breath: +3
+
+Charge abilities:
+– Glitterdust once per day
+
+THAC0: +4
+Damage: 1d6+4 (crushing)
+Speed Factor: 1
+Proficiency Type: Club
+Type: One-handed
+Requires:
+ 5 Strength
+
+Weight: 1~
+@2261 = ~Bolt of the Graceful Queen +1~
+@2262 = ~These powerful bolts are coated with an enchantment that makes them particularly effective against enemies of righteousness. The “Graceful Queen” after whom the bolts were named is said to have been an ancient ruler of order, some say a follower of Ilmater, who perished in the Year of Sundered Webs in the wake of the magical chaos that reigned at this time.
+
+STATISTICS:
+
+THAC0: +1
+Damage: 1d8 (missile), +3 vs. non-lawful creatures
+Launcher: Crossbow
+
+Weight: 0~
+@2263 = ~Helmet of Childish Nightmare~
+@2264 = ~This helmet was used by followers of a cult of primordial beings to determine suitable disciples. In deep, lightless caverns, their dark priests performed initiation rites in which young aspirants had to wear the Helmet of Childish Nightmare to prove their suitability. The helmet, shrouded in ancient shadows, granted the wearer the power to summon a shadow once a day to serve the will of the helmet wearer. However, unsuitable candidates were overcome by fear, torn apart by the undead and their souls dragged into the darkness. Whether the cult disappeared again due to a lack of new followers or for other reasons has been lost to time.
+
+STATISTICS:
+
+Equipped abilities:
+– Infravision up to 120 ft.
+– Armor Class: +1
+– Protects against critical hits
+
+Charge abilities:
+– Summon a shadow once per day for 1 turn
+
+Weight: 2~
+@2265 = ~Trousers and Suspenders of the Bare-Chested Brute +1~
+@2266 = ~Created in the dusty alleys of Rel Astra, a city in a distant realm, this rough and tough armor consists of nothing but worn leather pants and sturdy suspenders. Once worn by a hulking brute who liked to engage in tavern brawls, the leather pants, marked with countless scars and stains, offered their wearer surprising mobility and protection from the blows and slashes of his opponents. The suspenders, firm and reliable, held the armor in place and protected the wearer from unexpected attacks. However, the true strength of this unconventional armor lay not in its outward appearance, but in the unwavering ferocity of its wearer, whose punches rained down on his opponents with merciless precision and speed.
+
+STATISTICS:
+
+Equipped abilities:
+– THAC0: +1
+
+Combat abilities:
+– 1 extra attack per round 
+
+Armor Class: 7 (9 vs. piercing and missile)
+Requires:
+ 4 Strength
+
+Weight: 3~
+@2267 = ~Dripping Darkblade +2~
+@2268 = ~This blade, steeped in some dark traditions of Kara-Tur, grows more powerful through the sacrifice of one's life force. When its wielder pierces <PRO_HISHER> own flesh, it transforms into an enhanced katana for one hour, a perilous gift from an ancient warlord who sought to conquer death itself.
+
+STATISTICS:
+
+Charge abilities:
+– Blood Sacrifice: Once per day, the wielder may sacrifice 4d10+5 of <PRO_HISHER> hitpoints to render the blade to a Katana +4 for the duration of one hour. The magically created weapon cannot be dropped and reverts to its original state after one hour.
+
+THAC0: +2
+Damage: 1d10+2 (slashing)
+Speed Factor: 1
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 3~
+// +3
+@2269 = ~Dripping Darkblade +3~
+@2270 = ~This blade is dripping with blood - your own blood. You have sacrificed a considerable amount of it to enhance the blade's power for the next hour.
+
+STATISTICS:
+
+THAC0: +3
+Damage: 1d10+3 (slashing)
+Speed Factor: 1
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 3~
+
+// +4
+@2271 = ~Dripping Darkblade +4~
+@2272 = ~This blade is dripping with blood - your own blood. You have sacrificed a considerable amount of it to enhance the blade's power for the next hour.
+
+STATISTICS:
+
+THAC0: +4
+Damage: 1d10+4 (slashing)
+Speed Factor: 1
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 3~
+// +5
+@2273 = ~Dripping Darkblade +5~
+@2274 = ~This blade is dripping with blood - your own blood. You have sacrificed a considerable amount of it to enhance the blade's power for the next hour.
+
+STATISTICS:
+
+THAC0: +5
+Damage: 1d10+5 (slashing)
+Speed Factor: 1
+Proficiency Type: Katana
+Type: One-handed
+Requires:
+ 6 Strength
+
+Weight: 3~
+@2275 = ~The Colors of His Dreams +2~
+@2276 = ~This shield is adorned with various colored stained glass pieces and minor gemstones that gleam in many different colors. It is very effective at dazzling an opponent, but as a downside the shield is quite heavy.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +3, an extra +1 vs. missile attacks
+
+Charge abilities:
+– Can unleash a color spray once per day that blinds everyone in the area of effect for one round (Save vs. Spell negates)
+
+Requires:
+ 15 Strength
+
+Weight: 12~
+@2277 = ~Waukeen's Defender +2~
+@2278 = ~This was the personal shield of Tharundar Olehm, High Priest of Waukeen. He has bestowed it upon you in gratitude for saving his soul from the Nalfeshnee Margrog. A series of similar shields can be found throughout Faerûn in temples of Waukeen, yet rarely of this high quality and enchantment. The shield is adorned with the symbol of Waukeen's golden visage.
+
+STATISTICS:
+
+Equipped abilities:
+– Armor Class: +3
+– Saving Throws: +2
+– Magic Resistance: 10%
+
+Requires:
+ 4 Strength
+
+Weight: 4~
+
+
+
+
+
+
+
