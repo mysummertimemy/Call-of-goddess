@@ -1,0 +1,496 @@
+/////////////////////////////////////////////////////////////////////
+// Change Allegiance
+/////////////////////////////////////////////////////////////////////
+IF
+  !Allegiance(Myself,ENEMY)
+  AttackedBy([ANYTHING],DEFAULT)
+THEN
+  RESPONSE #100
+    Enemy()
+END
+
+/////////////////////////////////////////////////////////////////////
+// Prep
+/////////////////////////////////////////////////////////////////////
+IF
+  See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+  DifficultyGT(HARD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_WebCast","LOCALS",60)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ReallyForceSpell(Myself,WIZARD_WEB)
+    SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+  See([GOODCUTOFF])
+  Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+  Difficulty(HARD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_WebCast","LOCALS",60)
+    ReallyForceSpell(Myself,WIZARD_WEB)
+    SetGlobal("Prep","LOCALS",1)
+END
+
+IF 
+  See("AC#WNAL2")
+  !Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+  DifficultyGT(HARD)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_WebCast","LOCALS",60)
+    ApplySpell(Myself,WIZARD_IMPROVED_HASTE)
+    ReallyForceSpell(Myself,WIZARD_WEB)
+    SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+  See("AC#WNAL2")
+  !Allegiance(Myself,ENEMY)
+  Global("Prep","LOCALS",0)
+  DifficultyGT(NORMAL)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_WebCast","LOCALS",60)
+    ReallyForceSpell(Myself,WIZARD_WEB)
+    SetGlobal("Prep","LOCALS",1)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Refresh Web
+/////////////////////////////////////////////////////////////////////
+IF
+  GlobalTimerExpired("MO_WebCast","LOCALS")
+  Allegiance(Myself,ENEMY)
+  Detect([GOODCUTOFF])
+  DifficultyGT(NORMAL)  
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_WebCast","LOCALS",60)
+    SetInterrupt(FALSE)
+    ReallyForceSpell(Myself,WIZARD_WEB)
+    SetInterrupt(TRUE)
+END
+/////////////////////////////////////////////////////////////////////
+// Flaming Web
+/////////////////////////////////////////////////////////////////////
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(NearestEnemyOfType([GOODCUTOFF])) 
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(SecondNearestEnemyOfType([GOODCUTOFF])) 
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(ThirdNearestEnemyOfType([GOODCUTOFF])) 
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(FourthNearestEnemyOfType([GOODCUTOFF])) 
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(FifthNearestEnemyOfType([GOODCUTOFF])) 
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+
+IF
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See(SixthNearestEnemyOfType([GOODCUTOFF])) 
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+
+IF
+  !Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+  See("AC#WNAL2")
+  !StateCheck(LastSeenBy(Myself),STATE_IMMOBILE)
+  CheckStat(LastSeenBy(Myself),0,WEB)
+  CheckStatGT(LastSeenBy(Myself),-2,SAVEVSDEATH)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    SetInterrupt(FALSE)
+    ForceSpellRES("AC#BEBIL",LastSeenBy(Myself))  // Flaming Web
+    SetInterrupt(TRUE)
+END
+  
+
+/////////////////////////////////////////////////////////////////////
+// Planeshift
+/////////////////////////////////////////////////////////////////////
+IF
+  See(NearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_PhaseTimer","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)   
+    ForceSpell(Player1,PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+    ForceSpell(Player2,PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+    ForceSpell(Player3,PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+    ForceSpell(Player4,PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+    ForceSpell(Player5,PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+    ForceSpell(Player6,PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+END
+
+IF 
+  See("AC#WNAL2")
+  !Allegiance(Myself,ENEMY)
+  !GlobalTimerNotExpired("MO_PhaseTimer","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_PhaseTimer","LOCALS",3)
+    CreateVisualEffectObject("SPSPEV",Myself)  
+    ForceSpell("AC#WNAL2",PHASE_SPIDER_TELEPORT)  // SPWI994.SPL (Dimension Door)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attack
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  See(MostDamagedOf([PC]))
+  Allegiance(Myself,ENEMY)
+  HPPercentLT(LastSeenBy(Myself),81)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(LastSeenBy(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(MostDamagedOf([PC]))
+  Allegiance(Myself,ENEMY)
+  HPPercentLT(LastSeenBy(Myself),81)
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See("AC#WNAL2")
+  !Allegiance(Myself,ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs("AC#WNAL2",MAINHAND)
+  WeaponCanDamage("AC#WNAL2",MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound("AC#WNAL2")
+END

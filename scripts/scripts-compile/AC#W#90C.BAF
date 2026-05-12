@@ -1,0 +1,16 @@
+IF
+	Contains("AC#W#HEA",Myself) // menschliches Herz
+	OpenState("DOOR01",FALSE)
+THEN
+	RESPONSE #100
+		DestroyItem("AC#W#HEA") // menschliches Herz
+		PlaySound("EFF_P92")
+		ScreenShake([20.45],15)
+		Wait(2)
+		DisplayString(Myself,@100091) // Der seltsame Schlund schlieﬂt sich kurz und scheint das Organ gierig zu verschlingen. Kurz darauf kommt Bewegung in die amorphe Masse vor Euch, und das Gewebe gibt den weiteren Weg frei.
+		OpenDoor("DOOR01")
+		TriggerActivation("Info1",FALSE)
+END
+
+
+

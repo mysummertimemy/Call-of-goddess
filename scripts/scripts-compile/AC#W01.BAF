@@ -1,0 +1,144 @@
+IF
+	Global("EnteredArea","AC#W01",0)  // Goldspires
+THEN
+	RESPONSE #100
+		FadeToColor([0.0],0)
+		SetGlobal("EnteredArea","AC#W01",1)  // Goldspires
+		StartMovie("AC#MVW01")
+		SpawnPtDeactivate("Spawn_peasant_01")
+		SpawnPtDeactivate("Spawn_peasant_02")
+		SpawnPtDeactivate("Spawn_peasant_03")
+		AmbientActivate("Waukeen_glow",FALSE)
+		AmbientActivate("Waukeen_glow02",FALSE)
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Global("AC#WCelebration","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WCelebration","GLOBAL",2)
+		CreateCreature("AC#W01TH",[1327.1432],3)  // Tharundar Olehm
+		CreateCreature("AC#W01C1",[1181.1324],13)  // Amnischer H�ndler
+		CreateCreature("AC#W01C2",[1402.1522],9)  // Amnischer H�ndler
+		CreateCreature("AC#W01C3",[1276.1484],5)  // Edelfrau
+		CreateCreature("AC#W01C4",[1169.1377],12)  // Edelmann
+		CreateCreature("AC#W01C5",[1250.1463],3)  // Edelmann
+		CreateCreature("AC#W01C6",[1219.1301],3)  // Edelfrau
+		CreateCreature("AC#W01C7",[1304.1554],3)  // Edelfrau
+		CreateCreature("AC#W01C8",[1452.1558],3)  // Edelfrau
+		CreateCreature("AC#W01CA",[1123.1323],3)  // Edelmann
+		CreateCreature("AC#W01CB",[1283.1549],3)  // Edelmann
+		CreateCreature("AC#W01CC",[1503.1487],3)  // Edelmann
+		SpawnPtActivate("Spawn_peasant_01")
+		SpawnPtActivate("Spawn_peasant_02")
+		SpawnPtActivate("Spawn_peasant_03")
+		SpawnPtSpawn("Spawn_peasant_01")
+		SpawnPtSpawn("Spawn_peasant_02")
+		SpawnPtSpawn("Spawn_peasant_03")
+		CreateCreature("AC#W01HA",[1287.1353],3)  // Halanna
+		CreateCreature("AC#W01P1",[1503.1487],3)  // Barasta Cleeith
+		AmbientActivate("Waukeen_glow",TRUE)
+		AmbientActivate("Waukeen_glow02",TRUE)
+		Wait(1)
+		ActionOverride(Player1,JumpToPoint([1294.1353]))
+		ActionOverride(Player1,JumpToPoint([1294.1353]))
+		ActionOverride(Player2,JumpToPoint([1330.1380]))
+		ActionOverride(Player3,JumpToPoint([1353.1394]))
+		ActionOverride(Player4,JumpToPoint([1394.1423]))
+		ActionOverride(Player5,JumpToPoint([1419.1454]))
+		ActionOverride(Player6,JumpToPoint([1293.1361]))
+		MoveViewPoint([1293.1361],INSTANT)
+		FadeFromColor([30.0],0)
+		Wait(2)
+		ActionOverride("AC#W01TH",StartDialogNoSet(Player1))
+END
+
+IF
+	Global("AC#WCelebration","GLOBAL",10)
+	Global("GoldspiresFinished","AC#W01",0)  // Goldspires
+THEN
+	RESPONSE #100
+		FadeToColor([15.0],0)
+		SetGlobal("GoldspiresFinished","AC#W01",1)  // Goldspires
+		Wait(3)
+		TextScreen("ac#wmos9")
+		Wait(1)
+		DayNight(MIDNIGHT)
+		FadeFromColor([30.0],30)
+END
+
+IF
+	GlobalGT("GoldspiresFinished","AC#W01",0)
+	Global("NewMerchant","AC#W01",0)
+THEN
+	RESPONSE #100
+		SetGlobal("NewMerchant","AC#W01",1)
+		CreateCreature("AC#WBOY1",[1061.1715],NW)  // Boy
+		CreateCreature("AC#WAEND",[1020.1655],SSE)  // Amnian Guard
+		CreateCreature("AC#WMEND",[1814.1739],NW)  // Merchant
+END
+
+IF
+	//Global("AC#W01_Spicy","GLOBAL",2)
+	!InMyArea("AC#W01S1")  // Masun
+	!Dead("AC#W01S1") 
+	GlobalLT("AC#W01_Spicy","GLOBAL",20)
+	Global("Second_Spice_Merchant","AC#W01",0)  // Goldspires
+THEN
+	RESPONSE #100
+		SetGlobal("Second_Spice_Merchant","AC#W01",1)  // Goldspires
+		CreateCreature("AC#W01S1",[1119.744],0)  // Masun
+END
+
+IF
+	//Global("AC#W01_Spicy","GLOBAL",2)
+	!InMyArea("AC#W01S1")  // Masun
+	!Dead("AC#W01S1") 
+	GlobalLT("AC#W01_Spicy","GLOBAL",20)
+	Global("Second_Spice_Merchant","AC#W01",1)  // Goldspires
+THEN
+	RESPONSE #100
+		SetGlobal("Second_Spice_Merchant","AC#W01",2)  // Goldspires
+		CreateCreature("AC#W01S1",[1119.744],0)  // Masun
+END
+
+IF
+	Global("AC#WTHF1","GLOBAL",1)
+	GlobalTimerExpired("AC#W_Wait_Thief","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WTHF1","GLOBAL",2)
+		CreateCreature("AC#WTHF1",[2293.1299],0)  // Maendir
+END
+
+IF
+	InMyArea("AC#WTHFS")  // Maendir
+	Global("AC#WTHF1","GLOBAL",3)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WTHF1","GLOBAL",4)
+		ActionOverride("AC#WTHFS",MakeUnselectable(100))
+		ApplySpellRES("AC#W776","AC#WTHFS")  // No such index
+END
+
+IF
+	Global("AC#WTHF1","GLOBAL",4)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WTHF1","GLOBAL",5)
+		CreateCreatureObjectOffset("AC#W01TW","AC#WTHFS",[10.10])  // Waukeen-Priester
+END
+
+IF
+	Global("AC_Lucky","AC#W01",1)  // Goldspires
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Lucky","AC#W01",2)  // Goldspires
+		StartCutSceneMode()
+		ClearAllActions()
+		CreateCreatureDoor("aclestiu",[2135.1706],9)  // Lestiulus
+		Wait(1)
+		EndCutSceneMode()
+END
+

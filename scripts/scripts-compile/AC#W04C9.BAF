@@ -1,0 +1,43 @@
+//script that teleports the party from goldspires inside (AC#W04) to outside (AC#W01)
+IF
+	True()
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		FadeToColor([20.0],0)
+		Wait(2)
+		ActionOverride(Player1,LeaveAreaLUAPanic("AC#W01","",[658.979],3))
+		ActionOverride(Player1,LeaveAreaLUA("AC#W01","",[658.979],3))
+		ActionOverride(Player2,LeaveAreaLUA("AC#W01","",[2129.1499],3))
+		ActionOverride(Player3,LeaveAreaLUA("AC#W01","",[1324.1962],3))
+		ActionOverride(Player4,LeaveAreaLUA("AC#W01","",[658.979],3))
+		ActionOverride(Player5,LeaveAreaLUA("AC#W01","",[658.979],3))
+		ActionOverride(Player6,LeaveAreaLUA("AC#W01","",[658.979],3))
+		MultiPlayerSync()
+		Wait(1)
+		SetGlobal("AC#WCelebration","GLOBAL",1)
+		EndCutSceneMode()
+END
+
+/*
+IF
+	True()
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		FadeToColor([20.0],0)
+		Wait(2)
+		ActionOverride(Player1,LeaveAreaLUAPanic("AC#W01","",[1294.1353],3))
+		ActionOverride(Player1,LeaveAreaLUA("AC#W01","",[1294.1353],3))
+		ActionOverride(Player2,LeaveAreaLUA("AC#W01","",[1330.1380],3))
+		ActionOverride(Player3,LeaveAreaLUA("AC#W01","",[1353.1394],3))
+		ActionOverride(Player4,LeaveAreaLUA("AC#W01","",[1394.1423],3))
+		ActionOverride(Player5,LeaveAreaLUA("AC#W01","",[1419.1454],3))
+		ActionOverride(Player6,LeaveAreaLUA("AC#W01","",[1293.1361],3))
+		MultiPlayerSync()
+		Wait(1)
+		SetGlobal("AC#WCelebration","GLOBAL",1)
+		//FadeFromColor([30.0],0)
+		EndCutSceneMode()
+END
+*/

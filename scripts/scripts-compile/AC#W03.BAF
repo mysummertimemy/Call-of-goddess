@@ -1,0 +1,12 @@
+IF
+	!Global("AC#W01_ThiefAccused","GLOBAL",10)
+	Global("Key_stolen","AC#W03",0)
+	PartyHasItem("AC#WTHF1")  // Tresorschl�ssel
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W01_ThiefAccused","GLOBAL",1)
+		SetGlobal("Key_stolen","AC#W03",1)
+		AddJournalEntry(@100201,QUEST)  
+		EraseJournalEntry(@100200)  
+END
+

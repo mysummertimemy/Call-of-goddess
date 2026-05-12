@@ -1,0 +1,30 @@
+IF
+	Global("Vargouille_Scream","LOCALS",0)
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		SetGlobal("Vargouille_Scream","LOCALS",1)
+		DisplayString(Myself,@50006)
+		ReallyForceSpellRES("AC#VARS",LastSeenBy(Myself)) // Vargouille_Scream
+END
+
+IF
+	//See([PC])
+	//OR(2)
+	Delay(6)
+	See(NearestEnemyOf(Myself))
+	//StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	//StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+	Global("Vargouille_Scream","LOCALS",1)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#VARK",LastSeenBy(Myself)) // Vargouille_Kiss
+		SetGlobal("Vargouille_Scream","LOCALS",2)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END

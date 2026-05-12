@@ -1,0 +1,17 @@
+IF
+	Global("AC#W_Ormad_Quest","GLOBAL",3)
+	Global("CreateContract","AC#W4A",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CreateContract","AC#W4A",1)
+		CreateItem("AC#WORM2",1,0,0)  // Zaehvielles Seelenvertrag
+END
+
+IF
+	NumTimesTalkedTo(0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+

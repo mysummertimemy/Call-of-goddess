@@ -1,0 +1,17 @@
+IF
+	RandomNum(5,1)
+THEN
+	RESPONSE #100
+		Face(NW)
+		SwingOnce()
+		PlaySound("AC#WANVI")
+END
+
+IF
+	RandomNum(5,3)
+THEN
+	RESPONSE #100
+		Face(S)
+		NoAction()
+END
+

@@ -1,0 +1,9 @@
+IF
+	NumTimesTalkedTo(0)
+	Allegiance(Myself,GOODBUTBLUE)
+THEN
+	RESPONSE #100
+		Wait(2)
+		StartDialogueNoSet([PC])
+END
+

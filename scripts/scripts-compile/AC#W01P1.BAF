@@ -1,0 +1,7 @@
+IF
+	Global("AC#WCelebration","GLOBAL",10)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

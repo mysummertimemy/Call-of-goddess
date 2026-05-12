@@ -1,0 +1,22 @@
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+	Allegiance(Myself,ENEMY)
+	Global("HelpTent","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("HelpTent","LOCALS",1)
+		DisplayStringHead(Myself,@100090) // Als Ihr das Tentakel angreift, kommt pl�tzlich Bewegung in die fleischige Masse...
+		CreateCreatureObjectOffset("AC#ELBL1",Myself,[15.15]) // Blood elemental 
+		CreateCreatureObjectOffset("AC#ELBL1",Myself,[-15.-15]) // Blood elemental 
+END
+
+
+

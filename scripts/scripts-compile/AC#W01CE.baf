@@ -1,0 +1,15 @@
+IF
+	Global("FaceTharundar","LOCALS",0)
+THEN
+	RESPONSE #100
+	    //Wait(1)
+	    FaceObject("AC#W01TH") // Tharundar
+		SetGlobal("FaceTharundar","LOCALS",1)
+END
+
+IF
+	Global("AC#WCelebration","GLOBAL",10)
+THEN
+	RESPONSE #100
+        EscapeArea()
+END

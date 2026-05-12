@@ -1,0 +1,32 @@
+IF
+	Global("AC#W_Annia_Staircase","GLOBAL",10)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,GOODBUTBLUE)
+END
+
+IF
+	DifficultyGT(NORMAL)
+	HasItem("REGHP2",Myself)  // Ring
+THEN
+	RESPONSE #100
+		DestroyItem("REGHP2")  // Ring
+END
+
+IF
+	See("AC#DRET4")  // Dretch
+	Global("AC#W_Annia_Staircase","GLOBAL",10)
+THEN
+	RESPONSE #100
+		Attack("AC#DRET4")  // Dretch
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("AC#W_Annia_Staircase","GLOBAL",10)
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+

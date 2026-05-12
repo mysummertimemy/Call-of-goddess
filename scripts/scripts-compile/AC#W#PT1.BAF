@@ -1,0 +1,37 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,17)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SaveGame(0)
+		SmallWait(5)
+		StartCutSceneMode()
+		MoveViewObject(LastTrigger,INSTANT)
+		DisplayStringNoName(Myself,@100000) // Ihr ber�hrt mit Eurer Hand den Spiegel, und das Glas scheint sich pl�tzlich zu verfl�ssigen. Dann werdet Ihr in den Spiegel hineingezogen...
+		Wait(2)
+		FadeToColor([30.0],0)
+		CreateVisualEffect("AC#WMIRR",[657.244])
+		Wait(3)
+		ActionOverride(Player1,LeaveAreaLUAPanic("AC#W19","",[1403.1821],0))
+		ActionOverride(Player1,LeaveAreaLUA("AC#W19","",[1403.1821],0))
+		ActionOverride(Player2,LeaveAreaLUA("AC#W19","",[1403.1821],0))
+		ActionOverride(Player3,LeaveAreaLUA("AC#W19","",[1403.1821],0))
+		ActionOverride(Player4,LeaveAreaLUA("AC#W19","",[1403.1821],0))
+		ActionOverride(Player5,LeaveAreaLUA("AC#W19","",[1403.1821],0))
+		ActionOverride(Player6,LeaveAreaLUA("AC#W19","",[1403.1821],0))
+		ActionOverride(Player1,Wait(2))
+		ActionOverride(Player1,MultiPlayerSync())
+		ActionOverride(Player1,FadeFromColor([30.0],0))
+		EndCutSceneMode()
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,17)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702) // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+
+

@@ -1,0 +1,50 @@
+IF
+	NumTimesTalkedTo(0)
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("AC_Lucky","AC#W01",3)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		ClearAllActions()
+		FaceObject("AC#LUCKY")
+		Wait(1)
+		ForceSpell("AC#LUCKY",WIZARD_FINGER_OF_DEATH)  // SPWI713.SPL (Finger des Todes)
+		Wait(1)
+		Kill("AC#LUCKY")
+		SetGlobal("AC_Lucky","AC#W01",5)
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("AC_Lucky","AC#W01",4)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		ClearAllActions()
+		FaceObject("AC#LUCKY")
+		Wait(1)
+		ForceSpell("AC#LUCKY",WIZARD_POLYMORPH_OTHER)  // SPWI415.SPL (Andere verwandeln)
+		Wait(1)
+		ActionOverride("AC#LUCKY",Polymorph(SQUIRREL))
+		SetGlobal("AC_Lucky","AC#W01",6)
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("AC_Lucky","AC#W01",7)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		Wait(1)
+		ReallyForceSpell(Myself,WIZARD_DIMENSION_DOOR)  // SPWI402.SPL (Dimensionstor)
+		Wait(2)
+		ActionOverride("AC#LUCKY",EscapeArea())
+		SetGlobal("AC_Lucky","AC#W01",8)
+		DestroySelf()
+END
+

@@ -1,0 +1,24 @@
+IF
+	Global("AC#W_AcidSwampQuest","GLOBAL",10)
+	Global("Die","LOCALS",0)
+	HitBy([GOODCUTOFF],CRUSHING)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("Die","LOCALS",1)
+		DisplayStringHead(Myself,@52000)  
+		Wait(1)
+		Kill(Myself)
+END
+
+/*
+IF
+	NumTimesTalkedTo(0)
+	Detect([PC])
+	Range([PC],17)
+THEN
+	RESPONSE #100
+		StartDialogNoSet(LastSeenBy(Myself))
+END
+*/
+

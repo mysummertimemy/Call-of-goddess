@@ -1,0 +1,192 @@
+IF
+    Allegiance(Myself,ENEMY)
+    OR(7)
+        Gender(NearestEnemyOf(Myself),ILLUSIONARY)
+        StateCheck(NearestEnemyOf(Myself),STATE_INVISIBLE)
+        StateCheck(NearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+        StateCheck(SecondNearestEnemyOf(Myself),STATE_INVISIBLE)
+        StateCheck(SecondNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+        StateCheck(ThirdNearestEnemyOf(Myself),STATE_INVISIBLE)
+        StateCheck(ThirdNearestEnemyOf(Myself),STATE_IMPROVEDINVISIBILITY)
+    !GlobalTimerNotExpired("GlabrezuSight","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobalTimer("GlabrezuSight","LOCALS",TEN_ROUNDS)
+        ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HPPercentLT(Myself,50)
+    Global("Mirrorimage","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("Mirrorimage","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    Global("Hold","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Hold","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+    Global("Mezzo_Behavior","LOCALS",0)
+    Heard([ANYONE],301)
+THEN
+    RESPONSE #100
+        SetGlobal("Mezzo_Behavior","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Cloudkill_cast","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    GlobalTimerExpired("Cloudkill_timer","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("Cloudkill_cast","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+END
+
+IF
+    Global("Mezzo_Behavior","LOCALS",0)
+    Global("Cloudkill_cast","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        Shout(301)
+        SetGlobal("Mezzo_Behavior","LOCALS",1)
+        SetGlobal("Cloudkill_cast","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    OR(3)
+        See(NearestEnemyOfType([PC.0.0.BARD_ALL]))
+        See(NearestEnemyOfType([PC.0.0.LONG_BOW]))
+        See(NearestEnemyOfType([PC.0.0.SORCERER]))
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    Global("Animate_dead","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Animate_dead","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(LastSeenBy(Myself),WIZARD_ANIMATE_DEAD)  // SPWI501.SPL (Animate Dead)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Range(LastSeenBy(Myself),8)
+    Global("Darkness","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("Darkness","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ReallyForceSpellRES("AC#GLDRK",NearestEnemyOf(Myself))  // Globe of Darkness
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Mezzo_Behavior","LOCALS",1)
+THEN
+    RESPONSE #100
+        SetGlobal("Mezzo_Behavior","LOCALS",2)
+        SetGlobalTimer("Cloudkill_timer","LOCALS",ONE_TURN)
+        AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("DispelMagic","LOCALS",1)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    GlobalTimerExpired("DispelMagic","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("DispelMagic","LOCALS",2)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(LastSeenBy(Myself),CLERIC_DISPEL_MAGIC)  // SPPR303.SPL (Dispel Magic)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("DispelMagic","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    !GlobalTimerNotExpired("DispelMagic","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("DispelMagic","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        SetGlobalTimer("DispelMagic","LOCALS",ONE_TURN)
+        ForceSpell(LastSeenBy(Myself),CLERIC_DISPEL_MAGIC)  // SPPR303.SPL (Dispel Magic)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !StateCheck(LastSeenBy(Myself),STATE_CHARMED)
+    !StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+    !StateCheck(LastSeenBy(Myself),STATE_STUNNED)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    Global("Charmed","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Charmed","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Charm Person)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    Global("Sleep","LOCALS",0)
+    OR(2)
+        CheckStatLT(LastSeenBy(Myself),6,LEVEL)
+        HPLT(LastSeenBy(Myself),35)
+THEN
+    RESPONSE #100
+        SetGlobal("Sleep","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(LastSeenBy(Myself),WIZARD_SLEEP)  // SPWI116.SPL (Sleep)
+END
+
+IF
+    See([PC])
+    CheckStatLT(LastSeenBy(Myself),100,RESISTFIRE)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+    Global("Flamestrike","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Flamestrike","LOCALS",1)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ForceSpell(LastSeenBy(Myself),CLERIC_FLAME_STRIKE)  // SPPR503.SPL (Flame Strike)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Teleport","LOCALS",1)
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+        SetGlobal("Teleport","LOCALS",2)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        AttackOneRound(LastSeenBy(Myself))
+END
+

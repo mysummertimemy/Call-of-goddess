@@ -1,0 +1,9 @@
+IF
+	Global("AC#W_Ormad_Quest","GLOBAL",3)
+	Global("CreateContract","AC#W4A",0)
+	Dead("AC#W4ASU") // Zaehvielle, Succubus
+THEN
+	RESPONSE #100
+		SetGlobal("CreateContract","AC#W4A",1)
+		ActionOverride("Container1",CreateItem("AC#WORM2",0,0,0))  // Zaehvielle's contract
+END

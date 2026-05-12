@@ -1,0 +1,27 @@
+IF
+	Range([PC],6)
+	Global("AC#W01_Spicy","GLOBAL",0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("AC#W01_Spicy","GLOBAL",10)
+	See([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W01_Spicy","GLOBAL",11)
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("AC#W01_Spicy","GLOBAL",2)
+	See([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W01_Spicy","GLOBAL",3)
+		StartDialogNoSet([PC])
+END
+

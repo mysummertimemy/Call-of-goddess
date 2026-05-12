@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		FadeToColor([10.0],0)
+		Wait(2)
+		CreateCreature("AC#W04S2",[1436.994],SW)  // Sariila Tebrentan
+		CreateCreature("AC#W04G1",[1469.911],SW)  // Guardian
+		CreateCreature("AC#W04G2",[1551.966],SW)  // Guardian
+		Wait(1)
+		FadeFromColor([10.0],0)
+		SetGlobal("Traitor_Cutscene","AC#W04",2)
+		ActionOverride("AC#W04S2",StartDialogueNoSet([PC]))
+END
+

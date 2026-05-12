@@ -1,0 +1,16 @@
+IF
+    GlobalGT("GoldspiresFinished","AC#W01",0)
+THEN
+    RESPONSE #100
+        DestroySelf()
+END
+
+IF
+    NumberOfTimesTalkedTo(0)
+    See(Player1)
+    Range(Player1,6)
+THEN
+    RESPONSE #100
+        StartDialogueNoSet(Player1)
+END
+

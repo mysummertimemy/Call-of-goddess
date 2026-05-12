@@ -1,0 +1,12 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("AC#WTHF1")  // Maendir
+		DisplayStringHead(Myself,@10000)  
+		ActionOverride("AC#WTHF1",Wait(1))
+		CreateVisualEffectObject("SPFLESHS",Myself)
+		ActionOverride("AC#WTHF1",ChangeAnimationNoEffect("AC#WTHFS"))  // Maendir
+		EndCutSceneMode()
+END
+

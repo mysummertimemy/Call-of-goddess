@@ -1,0 +1,91 @@
+IF
+    Detect([PC])
+    !See([PC])
+    Global("Detect_Invisibility","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Detect_Invisibility","LOCALS",1)
+        ReallyForceSpell(Myself,WIZARD_DETECT_INVISIBILITY)  // SPWI203.SPL (Unsichtbares entdecken)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Bar-Lgura_Darkness","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ReallyForceSpellRES("AC#GLDRK",NearestEnemyOf(Myself))  // Kugel der Dunkelheit
+        SetGlobal("Bar-Lgura_Darkness","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HPPercentLT(Myself,25)
+    !StateCheck(Myself,STATE_INVISIBLE)
+    Global("Invisibility","LOCALS",1)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobal("Invisibility","LOCALS",2)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ApplySpell(Myself,WIZARD_INVISIBILITY)  // SPWI206.SPL (Unsichtbarkeit)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    HPPercentLT(Myself,50)
+    !StateCheck(Myself,STATE_INVISIBLE)
+    Global("Invisibility","LOCALS",0)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #100
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        SetGlobal("Invisibility","LOCALS",1)
+        ApplySpell(Myself,WIZARD_INVISIBILITY)  // SPWI206.SPL (Unsichtbarkeit)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    Delay(18)
+    !StateCheck(LastSeenBy(Myself),STATE_PANIC)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #20
+        ReallyForceSpell(LastSeenBy(Myself),WIZARD_DISPEL_MAGIC)  // SPWI302.SPL (Magie zerstören)
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        AttackOneRound(LastSeenBy(Myself))
+    RESPONSE #80
+        AttackOneRound(LastSeenBy(Myself))
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        Continue()
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    !StateCheck(LastSeenBy(Myself),STATE_PANIC)
+    Delay(12)
+    !GlobalTimerNotExpired("BD_Cast","LOCALS")
+THEN
+    RESPONSE #80
+        SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+        ReallyForceSpell(LastSeenBy(Myself),DEMON_FEAR)  // SPIN890.SPL (Dämonenfurcht)
+        AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+    AttackedBy([GOODCUTOFF],DEFAULT)
+    !Allegiance(Myself,ENEMY)
+THEN
+    RESPONSE #100
+        Enemy()
+END
+
+IF
+    ActionListEmpty()
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

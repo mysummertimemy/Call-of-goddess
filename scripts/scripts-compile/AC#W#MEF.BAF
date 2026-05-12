@@ -1,0 +1,17 @@
+IF
+	Global("Mefisto_Talk","AC#W40",2)
+	!See("AC#W40BR")  // Gorzengral
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+		OR(2)
+		GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+		GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

@@ -1,0 +1,103 @@
+IF
+	Global("AC#W_Ormad_Quest","GLOBAL",3)
+	Global("CreateContract","AC#W45",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CreateContract","AC#W45",1)
+		GiveItemCreate("AC#WORM1",Myself,1,0,0)  // Zhelamiss' Seelenvertrag
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("AC#W_AttackedNighthag","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_AttackedNighthag","GLOBAL",1)
+		CreateCreatureObjectDoor("AC#WSHA2",Myself,10,10,10)  // Saarixal
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HPPercentLT(Myself,50)
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!GlobalTimerNotExpired("Ethereal","LOCALS")
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Ethereal","LOCALS",THREE_ROUNDS)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+		ReallyForceSpell(Myself,SUCCUBUS_ETHEREAL)  // SPWI927.SPL (Ätherisch)
+END
+
+IF
+	StateCheck(Myself,STATE_INVISIBLE)
+	OR(3)
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),6)
+END
+
+IF
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+	GlobalLT("Enfeeblement","LOCALS",4)
+	OR(3)
+		See(NearestEnemyOfType([0.0.0.FIGHTER_ALL]))
+		See(NearestEnemyOfType([0.0.0.PALADIN_ALL]))
+		See(NearestEnemyOfType([0.0.0.RANGER_ALL]))
+	CheckStatGT(LastSeenBy(Myself),10,STR)
+	RandomNum(3,1)
+THEN
+	RESPONSE #100
+		ForceSpell(LastSeenBy(Myself),WIZARD_RAY_OF_ENFEEBLEMENT)  // SPWI221.SPL (Strahl der Schwächung)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+		IncrementGlobal("Enfeeblement","LOCALS",1)
+END
+
+IF
+	!GlobalTimerNotExpired("SpellCastTimer","LOCALS")
+	GlobalLT("Missile","LOCALS",6)
+		RandomNum(3,2)
+	OR(5)
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+THEN
+	RESPONSE #100
+		ReallyForceSpell(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magisches Geschoss)
+		SetGlobalTimer("SpellCastTimer","LOCALS",ONE_ROUND)
+		IncrementGlobal("Missile","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!HasBounceEffects(LastSeenBy(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_SLEEPING)
+	RandomNum(3,3)
+	!GlobalTimerNotExpired("SleepTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("SleepTimer","LOCALS",ONE_ROUND)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_POWER_WORD_SLEEP)  // SPWI220.SPL (Wort der Macht: Schlaf)
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

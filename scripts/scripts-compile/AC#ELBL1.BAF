@@ -1,0 +1,46 @@
+IF
+	Global("WaukeenFree","AC#W90",1)
+	AreaCheck("AC#W90")
+THEN
+	RESPONSE #100
+		Kill(Myself)
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!Name("ACWAUKE2",LastSeenBy(Myself))  // Waukeen
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),30)
+END
+
+IF
+	See(SecondNearestEnemyOf(Myself))
+	!Name("ACWAUKE2",LastSeenBy(Myself))  // Waukeen
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),30)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		Attack(LastAttackerOf(Myself))
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		RandomWalk()
+END
+

@@ -1,0 +1,56 @@
+IF
+	NumberOfTimesTalkedTo(0)
+	Detect([PC])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(LastSeenBy(Myself))
+END
+
+IF
+	OR(3)
+		SpellCast([PC],WIZARD_DETECT_EVIL)  // SPWI202.SPL (Detect Evil)
+		SpellCastPriest([PC],CLERIC_DETECT_EVIL)  // SPPR104.SPL (Detect Evil)
+		SpellCastInnate([PC],PALADIN_DETECT_EVIL)  // SPCL212.SPL (Detect Evil)
+	GlobalGT("AC_Nasmaerae_Free","AC#W80",0)
+	NumTimesTalkedToGT(0)
+	Global("NasmaeraeIlluDetect","AC#W80",0)
+	Detect([PC])
+THEN
+	RESPONSE #100
+		DisplayString(Myself,1110)  // Chaotic Evil
+		SetGlobal("NasmaeraeIlluDetect","AC#W80",1)
+		StartDialogueNoSet(Player1)
+END
+
+IF
+	OR(3)
+		SpellCast([PC],WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+		SpellCastPriest([PC],CLERIC_TRUE_SIGHT)  // SPPR505.SPL (True Seeing)
+		SpellCastInnate([PC],INQUIS_TRUE_SIGHT)  // SPCL232.SPL (True Sight)
+	GlobalGT("AC_Nasmaerae_Free","AC#W80",0)
+	NumTimesTalkedToGT(0)
+	Global("NasmaeraeIlluDetect","AC#W80",0)
+	Detect([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("NasmaeraeIlluDetect","AC#W80",1)
+		StartDialogueNoSet(Player1)
+END
+
+IF
+	Global("AC_Waukeen_Ambush","AC#W80",2)
+	Detect(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_Waukeen_Ambush","AC#W80",3)
+		StartDialogueNoSet(Player1)
+END
+
+IF
+	Global("AC_Marilith_Reveal","AC#W80",1)
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("AC#WMAR",Myself)  // No such index
+		SetGlobal("AC_Marilith_Reveal","AC#W80",2)
+END
+
