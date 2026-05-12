@@ -1,0 +1,259 @@
+IF
+	InMyArea(Player1)
+	OR(2)
+		Class(Player1,CLERIC_ALL)
+		Class(Player1,DRUID_ALL)
+	Alignment(Player1,MASK_GOOD)
+	!HasItem("AC#WSPKG",Player1)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WCLG",Player1)  // Neutral gut
+		Continue()
+END
+
+IF
+	InMyArea(Player1)
+	OR(2)
+		Class(Player1,CLERIC_ALL)
+		Class(Player1,DRUID_ALL)
+	Alignment(Player1,MASK_EVIL)
+	!HasItem("AC#WSPKE",Player1)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcle",Player1)  // Neutral b�se
+		Continue()
+END
+
+IF
+	InMyArea(Player1)
+	OR(2)
+		Class(Player1,CLERIC_ALL)
+		Class(Player1,DRUID_ALL)
+	Alignment(Player1,MASK_GENEUTRAL)
+	!HasItem("AC#WSPKN",Player1)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcln",Player1)  // Neutral
+		Continue()
+END
+
+IF
+	InMyArea(Player2)
+	OR(2)
+		Class(Player2,CLERIC_ALL)
+		Class(Player2,DRUID_ALL)
+	Alignment(Player2,MASK_GOOD)
+	!HasItem("AC#WSPKG",Player2)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WCLG",Player2)  // Neutral gut
+		Continue()
+END
+
+IF
+	InMyArea(Player2)
+	OR(2)
+		Class(Player2,CLERIC_ALL)
+		Class(Player2,DRUID_ALL)
+	Alignment(Player2,MASK_EVIL)
+	!HasItem("AC#WSPKE",Player2)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcle",Player2)  // Neutral b�se
+		Continue()
+END
+
+IF
+	InMyArea(Player2)
+	OR(2)
+		Class(Player2,CLERIC_ALL)
+		Class(Player2,DRUID_ALL)
+	Alignment(Player2,MASK_GENEUTRAL)
+	!HasItem("AC#WSPKN",Player2)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcln",Player2)  // Neutral
+		Continue()
+END
+
+IF
+	InMyArea(Player3)
+	OR(2)
+		Class(Player3,CLERIC_ALL)
+		Class(Player3,DRUID_ALL)
+	Alignment(Player3,MASK_GOOD)
+	!HasItem("AC#WSPKG",Player3)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WCLG",Player3)  // Neutral gut
+		Continue()
+END
+
+IF
+	InMyArea(Player3)
+	OR(2)
+		Class(Player3,CLERIC_ALL)
+		Class(Player3,DRUID_ALL)
+	Alignment(Player3,MASK_EVIL)
+	!HasItem("AC#WSPKE",Player3)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcle",Player3)  // Neutral b�se
+		Continue()
+END
+
+IF
+	InMyArea(Player3)
+	OR(2)
+		Class(Player3,CLERIC_ALL)
+		Class(Player3,DRUID_ALL)
+	Alignment(Player3,MASK_GENEUTRAL)
+	!HasItem("AC#WSPKN",Player3)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcln",Player3)  // Neutral
+		Continue()
+END
+
+IF
+	InMyArea(Player4)
+	OR(2)
+		Class(Player4,CLERIC_ALL)
+		Class(Player4,DRUID_ALL)
+	Alignment(Player4,MASK_GOOD)
+	!HasItem("AC#WSPKG",Player4)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WCLG",Player4)  // Neutral gut
+		Continue()
+END
+
+IF
+	InMyArea(Player4)
+	OR(2)
+		Class(Player4,CLERIC_ALL)
+		Class(Player4,DRUID_ALL)
+	Alignment(Player4,MASK_EVIL)
+	!HasItem("AC#WSPKE",Player4)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcle",Player4)  // Neutral b�se
+		Continue()
+END
+
+IF
+	InMyArea(Player4)
+	OR(2)
+		Class(Player4,CLERIC_ALL)
+		Class(Player4,DRUID_ALL)
+	Alignment(Player4,MASK_GENEUTRAL)
+	!HasItem("AC#WSPKN",Player4)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcln",Player4)  // Neutral
+		Continue()
+END
+
+IF
+	InMyArea(Player5)
+	OR(2)
+		Class(Player5,CLERIC_ALL)
+		Class(Player5,DRUID_ALL)
+	Alignment(Player5,MASK_GOOD)
+	!HasItem("AC#WSPKG",Player5)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WCLG",Player5)  // Neutral gut
+		Continue()
+END
+
+IF
+	InMyArea(Player5)
+	OR(2)
+		Class(Player5,CLERIC_ALL)
+		Class(Player5,DRUID_ALL)
+	Alignment(Player5,MASK_EVIL)
+	!HasItem("AC#WSPKE",Player5)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcle",Player5)  // Neutral b�se
+		Continue()
+END
+
+IF
+	InMyArea(Player5)
+	OR(2)
+		Class(Player5,CLERIC_ALL)
+		Class(Player5,DRUID_ALL)
+	Alignment(Player5,MASK_GENEUTRAL)
+	!HasItem("AC#WSPKN",Player5)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcln",Player5)  // Neutral
+		Continue()
+END
+
+IF
+	InMyArea(Player6)
+	OR(2)
+		Class(Player6,CLERIC_ALL)
+		Class(Player6,DRUID_ALL)
+	Alignment(Player6,MASK_GOOD)
+	!HasItem("AC#WSPKG",Player6)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WCLG",Player6)  // Neutral gut
+		Continue()
+END
+
+IF
+	InMyArea(Player6)
+	OR(2)
+		Class(Player6,CLERIC_ALL)
+		Class(Player6,DRUID_ALL)
+	Alignment(Player6,MASK_EVIL)
+	!HasItem("AC#WSPKE",Player6)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcle",Player6)  // Neutral b�se
+		Continue()
+END
+
+IF
+	InMyArea(Player6)
+	OR(2)
+		Class(Player6,CLERIC_ALL)
+		Class(Player6,DRUID_ALL)
+	Alignment(Player6,MASK_GENEUTRAL)
+	!HasItem("AC#WSPKN",Player6)
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		ApplySpellRES("ac#wcln",Player6)  // Neutral
+		Continue()
+END
+
+IF
+	!GlobalTimerNotExpired("AC#W_PriestFail","GLOBAL")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("AC#W_PriestFail","GLOBAL",ONE_ROUND)
+		Continue()
+END

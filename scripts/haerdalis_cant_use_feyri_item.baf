@@ -1,0 +1,7 @@
+IF
+	Global("AC#W_CantUseFeyri","LOCALS",0)
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#WHRD",Myself)  // Add Spell that prevents Haer'Dalis equipping the Fey'ri diadem
+		SetGlobal("AC#W_CantUseFeyri","LOCALS",1)
+END

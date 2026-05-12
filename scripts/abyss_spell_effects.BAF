@@ -1,0 +1,160 @@
+IF
+	GlobalGT("AC#W_AbyssSpellFailed","GLOBAL",0)
+	Global("AC#W_SpellFailureWarning","GLOBAL",0)
+THEN
+	RESPONSE #50
+		SetGlobal("AC#W_SpellFailureWarning","GLOBAL",1)
+		AddJournalEntry(@400500,QUEST)
+END
+
+IF
+	SpellCast([PC],WIZARD_SHOCKING_GRASP)  // SPWI115.SPL (Schockgriff)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplyDamage(LastTrigger,20,ELECTRICITY)
+		ActionOverride(LastTrigger,DestroyItem("SGRASP01"))  // Schockgriff
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_BURNING_HANDS)  // SPWI103.SPL (Brennende H�nde)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplyDamage(LastTrigger,20,FIRE)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_STRENGTH)  // SPWI214.SPL (St�rke)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_RAY_OF_ENFEEBLEMENT)  // SPWI221.SPL (Strahl der Schw�chung)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_VOCALIZE)  // SPWI219.SPL (Stummer Zauber)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpellRES("AC#WDEF",LastTrigger)  // Deafness
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_HASTE)  // SPWI305.SPL (Hast)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpellRES("AC#WDEF",LastTrigger)  // Deafness
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_POLYMORPH_SELF)  // SPWI416.SPL (Selbstverwandlung)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,ZOMBIE_CHANGE)  // SPIN900.SPL (Zombieverwandlung)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_OTILUKES_RESILIENT_SPHERE)  // SPWI413.SPL (Otilukes Elastische Kugel)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_OTILUKES_RESILIENT_SPHERE)  // SPWI413.SPL (Otilukes Elastische Kugel)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_EYE)  // SPWI425.SPL (Zauberauge)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #100
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_BLINDNESS)  // SPWI106.SPL (Blindheit)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_FIRE_SHIELD_BLUE)  // SPWI403.SPL (Feuerschild)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplyDamage(LastTrigger,20,COLD)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_FIRE_SHIELD_RED)  // SPWI418.SPL (Feuerschild (Rot))
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplyDamage(LastTrigger,20,FIRE)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_FLESH_TO_STONE)  // SPWI604.SPL (Fleisch zu Stein)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_BREACH)  // SPWI513.SPL (Bresche)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,DRAGON_WING_BUFFET)  // SPIN695.SPL (Fl�gelschlag)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_DISINTEGRATE)  // SPWI616.SPL (Aufl�sung)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_DISINTEGRATE)  // SPWI616.SPL (Aufl�sung)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_FLESH_TO_STONE)  // SPWI604.SPL (Fleisch zu Stein)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_FLESH_TO_STONE)  // SPWI604.SPL (Fleisch zu Stein)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+
+IF
+	SpellCast([PC],WIZARD_STONE_TO_FLESH)  // SPWI625.SPL (Stein zu Fleisch)
+	!HasItem("AC#W_SK1",LastTrigger)
+THEN
+	RESPONSE #50
+		DisplayStringHead(LastTrigger,@50000)  // Euer Zauber wurde in der Abyss korrumpiert.
+		ApplySpell(LastTrigger,WIZARD_FLESH_TO_STONE)  // SPWI604.SPL (Fleisch zu Stein)
+		IncrementGlobal("AC#W_AbyssSpellFailed","GLOBAL",1)
+END
+

@@ -1,0 +1,28 @@
+IF
+	InParty("L#HPH")
+	CombatCounter(0)
+	PartyHasItem("L#HPHA3")
+	Global("L#HPHYouSeriouslyChanged","GLOBAL",0)
+	THEN
+	RESPONSE #100
+	StartCutSceneMode()
+	SmallWait(1)
+	MoveViewObject("L#HPH",INSTANT)
+	SmallWait(1)
+	DisplayStringHead("L#HPH",@8104)
+	Wait(3)
+	CreateCreatureObjectOffset("AC#WHOGB","L#HPH",[15.15])
+	SmallWait(1)
+	CreateVisualEffectObject("SPDIMNDR","AC#WHOGB")
+	Wait(2)
+	DisplayStringHead("AC#WHOGB",@8105)
+	Wait(3)
+	ActionOverride("L#HPH",LeaveParty())
+	Kill("L#HPH")
+	Wait(2)
+	DisplayStringHead("AC#WHOGB",@8106)
+	Wait(2)
+	SetGlobal("L#HPHYouSeriouslyChanged","GLOBAL",1)
+	EndCutSceneMode()
+	ActionOverride("AC#WHOGB",Enemy())
+	END

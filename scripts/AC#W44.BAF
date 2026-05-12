@@ -1,0 +1,243 @@
+IF
+	Global("AC#W_Rose_Abyss","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Rose_Abyss","GLOBAL",2)
+		Wait(1)
+		StartCutSceneMode()
+		FadeToColor([20.0],0)
+		Wait(2)
+		ActionOverride(Player1,LeaveAreaLUAPanicEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player1,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player2,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player3,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player4,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player5,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player6,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player1,Wait(2))
+		ActionOverride(Player1,MultiPlayerSync())
+		ActionOverride(Player1,FadeFromColor([20.0],0))
+		ActionOverride(Player1,EndCutSceneMode())
+		ActionOverride(Player1,EraseJournalEntry(@470501))
+		ActionOverride(Player1,EraseJournalEntry(@470502))
+		ActionOverride(Player1,AddJournalEntry(@440070,QUEST))
+END
+
+IF
+	Global("AC#W_Verin_dispute","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Verin_dispute","GLOBAL",2)
+		Wait(1)
+		StartCutSceneMode()
+		FadeToColor([20.0],0)
+		Wait(2)
+		ActionOverride(Player1,LeaveAreaLUAPanicEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player1,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player2,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player3,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player4,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player5,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player6,LeaveAreaLUAEntry("AC#W40","ENTRY1",[0.0],14))
+		ActionOverride(Player1,Wait(2))
+		ActionOverride(Player1,MultiPlayerSync())
+		ActionOverride(Player1,FadeFromColor([20.0],0))
+		ActionOverride(Player1,EndCutSceneMode())
+END
+
+
+IF
+	Global("SetMusic","AC#W44",0)
+	THEN
+	RESPONSE #100
+	SetMusic(NIGHT,%AC#WBAT%)
+	SetMusic(DAY,%AC#WBAT%)
+	SetGlobal("SetMusic","AC#W44",1)
+	Continue()
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("OpenDoor","AC#W44",0)
+THEN
+	RESPONSE #100
+		SetGlobal("OpenDoor","AC#W44",1)
+		Unlock("DOOR01")
+		OpenDoor("DOOR01")
+END
+
+IF
+	Global("AC#WSTYX","GLOBAL",10)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WSTYX","GLOBAL",11)
+		CreateCreatureObject("AC#W44S1","AC#WGIL4",0,0,0)
+		CreateCreatureObject("AC#W44S1","AC#WGIL4",0,0,0)
+		CreateCreatureObject("AC#W44S1","AC#WGIL4",0,0,0)
+END
+
+IF
+	Global("AC#WSTYX","GLOBAL",1)
+	Global("GildaarAppears","AC#W44",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WSTYX","GLOBAL",0)
+END
+
+IF
+	GlobalTimerExpired("GildaarTimer","AC#W44")
+	Global("InterruptGildaar","AC#W44",2)
+	Global("AC#WSTYX","GLOBAL",0)
+	Global("AttackedGildaar","AC#W44",0)
+THEN
+	RESPONSE #100
+		SetGlobal("InterruptGildaar","AC#W44",3)
+		ActionOverride("AC#WGIL4",StartDialogueNoSet([PC]))	
+END
+
+IF
+	Global("InterruptGildaar","AC#W44",1)
+THEN
+	RESPONSE #100
+		SetGlobal("InterruptGildaar","AC#W44",2)
+		SetGlobalTimer("GildaarTimer","AC#W44",ONE_ROUND)
+END
+
+IF
+	Global("Loot_Gildaar","AC#W44",0)
+	Dead("AC#WGIL4")
+THEN
+	RESPONSE #100
+		SetGlobal("Loot_Gildaar","AC#W44",1)
+		EraseJournalEntry(@110012)
+		EraseJournalEntry(@110013)
+		EraseJournalEntry(@110014)
+		EraseJournalEntry(@110015)
+		EraseJournalEntry(@110016)
+		AddJournalEntry(@110017,QUEST)
+END
+
+IF
+	Global("Loot_Gildaar","AC#W44",1)
+	PartyHasItem("AC#WGIL4")
+THEN
+	RESPONSE #100
+		SetGlobal("Loot_Gildaar","AC#W44",2)
+		EraseJournalEntry(@110017)
+		AddJournalEntry(@110018,QUEST)
+END
+
+IF
+	Global("AC#WSTYX","GLOBAL",1)
+	!Dead("AC#WGIL4")
+	InMyArea("AC#WGIL4")
+THEN
+	RESPONSE #100
+		Wait(1)
+		ActionOverride("AC#WGIL4",StartDialogueNoSet([PC]))	
+END
+
+/*
+// OLD
+IF
+	Global("AC#W_AttackedMaretta","GLOBAL",1)
+	Global("SpawnEnemies","AC#W44",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnEnemies","AC#W44",1)
+		CreateCreatureObjectDoor("AC#W44BL",Player1,0,0,0)  // Balor
+		CreateCreatureObjectDoor("AC#W44ML","AC#WMAR1",0,0,0)  // Marilith
+END
+*/
+
+// NEW
+
+IF
+	Global("AC#W_AttackedMaretta","GLOBAL",1)
+	Global("SpawnEnemies","AC#W44",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnEnemies","AC#W44",1)
+		SetGlobalTimer("MO_SpawnTimer","AC#W44",10)
+		CreateCreatureDoor("AC#W44BL",[892.1128],NE)  // Balor
+		CreateCreatureDoor("AC#W44ML",[1162.911],SW)  // Marilith
+		CreateCreatureDoor("AC#W44A1",[1192.1171],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[780.871],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[1202.1151],NW)  // Alu-Fiend
+		//TriggerActivation("TrAC#W80",FALSE)
+        TriggerActivation("TrAC#W40",FALSE)
+END
+
+IF
+	Global("SpawnEnemies","AC#W44",1)
+	!Dead("AC#WMAR1")
+	!GlobalTimerNotExpired("MO_SpawnTimer","AC#W44")
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnEnemies","AC#W44",2)
+		SetGlobalTimer("MO_SpawnTimer","AC#W44",10)
+		//CreateCreatureDoor("AC#W44BL",[892.1128],NE)  // Balor
+		//CreateCreatureDoor("AC#W44ML",[1162.911],SW)  // Marilith
+		CreateCreatureDoor("AC#W44A1",[1192.1171],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[780.871],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[1202.1151],NW)  // Alu-Fiend
+END
+
+IF
+	Global("SpawnEnemies","AC#W44",2)
+	!Dead("AC#WMAR1")
+	!GlobalTimerNotExpired("MO_SpawnTimer","AC#W44")
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnEnemies","AC#W44",3)
+		SetGlobalTimer("MO_SpawnTimer","AC#W44",10)
+		//CreateCreatureDoor("AC#W44BL",[892.1128],NE)  // Balor
+		//CreateCreatureDoor("AC#W44ML",[1162.911],SW)  // Marilith
+		CreateCreatureDoor("AC#W44A1",[1192.1171],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[780.871],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[1202.1151],NW)  // Alu-Fiend
+END
+
+IF
+	Global("SpawnEnemies","AC#W44",3)
+	!Dead("AC#WMAR1")
+	!GlobalTimerNotExpired("MO_SpawnTimer","AC#W44")
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnEnemies","AC#W44",4)
+		//CreateCreatureDoor("AC#W44BL",[892.1128],NE)  // Balor
+		//CreateCreatureDoor("AC#W44ML",[1162.911],SW)  // Marilith
+		CreateCreatureDoor("AC#W44A1",[1192.1171],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[780.871],SE)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[1066.1200],NW)  // Alu-Fiend
+		CreateCreatureDoor("AC#W44A1",[1287.1073],NW)  // Alu-Fiend
+END
+
+IF
+	Dead("AC#WMAR1")
+	Global("MO_Trapped","AC#W44",0)
+THEN
+	RESPONSE #100
+		//TriggerActivation("TrAC#W80",TRUE)
+        TriggerActivation("TrAC#W40",TRUE)
+		SetGlobal("MO_Trapped","AC#W44",1)
+END
+
+
+IF
+	Global("GildaarAppears","AC#W44",1)
+THEN
+	RESPONSE #100
+		SetGlobal("GildaarAppears","AC#W44",2)
+		CreateCreature("AC#WGIL4",[430.547],10)
+END
+
+IF
+	!PartyHasItem("AC#WPNT2") // player did not acquire the right pentacle yet...
+	Global("AC#W_AcidSwampQuest","GLOBAL",1) // ...BUT has talked to Margrog about the acid swamp already
+	Global("AC#W_Pentacle_MargrogLeave","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Pentacle_MargrogLeave","GLOBAL",1) //...set variable so Margrog leaves (Door02 in area AC#W40 closes)
+END
+

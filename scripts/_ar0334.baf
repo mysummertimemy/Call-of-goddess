@@ -1,0 +1,11 @@
+IF
+ Global("AC#W_BlackDragonScales","ar0334",1)
+  Global("ForgeStuff","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ForgeStuff","GLOBAL",0)
+    SetGlobal("ForgeItem","GLOBAL",999) // route to existing 'here you go' dialogue
+    GiveItemCreate("AC#WPTBD",Player1,1,1,1) // Tarterian dragon armor
+    SetGlobal("AC#W_BlackDragonScales","ar0334",10)
+    ActionOverride("wsmith01",StartDialogueNoSet([PC]))
+END

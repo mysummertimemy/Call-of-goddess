@@ -1,0 +1,74 @@
+IF
+	Global("AC#W_SetRescueTimer_2","GLOBAL",2)
+	Global("AC#W_SetRescueTimer_3","GLOBAL",0)
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SetRescueTimer_3","GLOBAL",1)
+		SetGlobalTimer("AC#W_RescueTimer_3","GLOBAL",360)
+END
+
+IF
+	Global("AC#W_SetRescueTimer_1","GLOBAL",2)
+	Global("AC#W_SetRescueTimer_2","GLOBAL",0)
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SetRescueTimer_2","GLOBAL",1)
+		SetGlobalTimer("AC#W_RescueTimer_2","GLOBAL",360)
+END
+
+IF
+	GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+	Global("AC#W_SetRescueTimer_1","GLOBAL",0)
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SetRescueTimer_1","GLOBAL",1)
+		SetGlobalTimer("AC#W_RescueTimer_1","GLOBAL",360)
+		DisplayStringHead(Player1,@89001) 
+END
+
+IF
+	Global("AC#W_SetRescueTimer_1","GLOBAL",1)
+	RealGlobalTimerExpired("AC#W_RescueTimer_1","GLOBAL")
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SetRescueTimer_1","GLOBAL",2)
+		DisplayStringHead(Player1,@89002)  
+END
+
+IF
+	Global("AC#W_SetRescueTimer_2","GLOBAL",1)
+	RealGlobalTimerExpired("AC#W_RescueTimer_2","GLOBAL")
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SetRescueTimer_2","GLOBAL",2)
+		DisplayStringHead(Player1,@89003)  
+END
+
+IF
+	Global("AC#W_SetRescueTimer_3","GLOBAL",1)
+	RealGlobalTimerExpired("AC#W_RescueTimer_3","GLOBAL")
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SetRescueTimer_3","GLOBAL",2)
+		SetGlobal("AC#W_Game_Over","GLOBAL",2)
+		TextScreen("AC#W80GO")
+		Kill(Player1)
+		Kill(Player2)
+		Kill(Player3)
+		Kill(Player4)
+		Kill(Player5)
+		Kill(Player6)
+END
+

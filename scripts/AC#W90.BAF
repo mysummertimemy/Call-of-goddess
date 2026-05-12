@@ -1,0 +1,109 @@
+IF
+	Global("TentacleSpawn","AC#W90",0)
+THEN
+	RESPONSE #100
+                 CreateCreatureImpassableAllowOverlap("ACTENT01",[1133.874],0) // Tentakel
+		CreateCreatureImpassableAllowOverlap("ACTENT02",[1439.681],0) // Tentakel
+		CreateCreatureImpassableAllowOverlap("ACTENT03",[1776.894],0) // Tentakel
+		SetGlobal("TentacleSpawn","AC#W90",1)
+END
+
+IF
+	Dead("ACTENT01") // Tentakel
+	OpenState("DOOR02",FALSE)
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("AC#WBLOD","ACTENT01")
+		OpenDoor("DOOR02")
+		DisplayStringHeadDead("ACTENT01",@100092) // Mit einem sauberen Hieb durchtrennt Ihr den Fangarm. Der Griff der Tentakel um die Gefangene Waukeen scheint sich zu lockern.
+		Continue()
+END
+
+IF
+	Dead("ACTENT02") // Tentakel
+	OpenState("DOOR03",FALSE)
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("AC#WBLOD","ACTENT02")
+		OpenDoor("DOOR03")
+		DisplayStringHeadDead("ACTENT02",@100092) // Mit einem sauberen Hieb durchtrennt Ihr den Fangarm. Der Griff der Tentakel um die Gefangene Waukeen scheint sich zu lockern.
+		Continue()
+END
+
+IF
+	Dead("ACTENT03") // Tentakel
+	OpenState("DOOR04",FALSE)
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("AC#WBLOD","ACTENT03")
+		OpenDoor("DOOR04")
+		DisplayStringHeadDead("ACTENT03",@100092) // Mit einem sauberen Hieb durchtrennt Ihr den Fangarm. Der Griff der Tentakel um die Gefangene Waukeen scheint sich zu lockern.
+		Continue()
+END
+
+IF
+	Dead("ACTENT01")  // Tentacle
+	Dead("ACTENT02")  // Tentacle
+	Dead("ACTENT03")  // Tentacle
+	CombatCounter(0)
+	Global("WaukeenFree","AC#W90",0)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		Wait(1)
+		SetGlobal("WaukeenFree","AC#W90",1)
+END
+
+IF
+	Global("WaukeenFree","AC#W90",1)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		SetGlobal("WaukeenFree","AC#W90",2)
+		MoveViewPoint([1443.791],INSTANT)
+		Wait(1)
+		CreateVisualEffect("AC#WBUUP",[1443.791])
+		Wait(1)
+		ScreenShake([1443.791],5)
+		AmbientActivate("Wurst",FALSE)
+		SmallWait(5)
+		CreateVisualEffect("SPGRWHRL",[1443.791])
+		PlaySound("EFF_108")
+		ApplySpellRES("AC#WKILL","ACWAUKE2")  // No such index
+		SmallWait(5)
+		CreateCreature("ACWAUKE1",[1443.791],S)  // Waukeen
+		PlaySong(%AC#WRES%)
+		Wait(3)
+		ActionOverride("ACWAUKE1",StartDialogueNoSet([PC]))
+END
+
+IF
+	Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_VerinFight","GLOBAL",10)
+END
+
+IF
+	Delay(12)
+	!Dead("AC#W#VE1")  // Verin
+	Global("AC#W_VerinFight","GLOBAL",1)
+	Global("Spawn_Ghasts","AC#W90",0)
+THEN
+	RESPONSE #100
+		CreateVisualEffect("SPFLESHS",[581.1358])
+		CreateCreature("GHAST01",[581.1358],S)  // Ghast
+		SetGlobal("Spawn_Ghasts","AC#W90",1)
+	RESPONSE #100
+		CreateVisualEffect("SPFLESHS",[568.1459])
+		CreateCreature("GHAST01",[568.1459],E)  // Ghast
+		SetGlobal("Spawn_Ghasts","AC#W90",1)		
+	RESPONSE #100
+		CreateVisualEffect("SPFLESHS",[643.1668])
+		CreateCreature("GHAST01",[643.1668],N)  // Ghast
+		SetGlobal("Spawn_Ghasts","AC#W90",1)				
+END
+
+

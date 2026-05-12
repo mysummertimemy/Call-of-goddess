@@ -1,0 +1,21 @@
+IF
+	Global("AC#_WaukeenMessage","GLOBAL",2)
+	Global("AC#W_Gildaar","GLOBAL",0)
+	AreaType(OUTDOOR)
+	AreaCheck("AR1000")  // Regierungsviertel
+	!AreaCheck("AR1010")
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Gildaar","GLOBAL",1)
+		CreateCreatureObjectOffset("AC#WGIL1",Player1,[5.5])   // Seltsamer Mann
+END
+
+IF
+	Global("AC#W_plotstart","AR1000",0)
+	AreaType(OUTDOOR)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_plotstart","AR1000",1)
+		CreateCreature("AC#WMESS",[2374.387],11) // Messenger
+END

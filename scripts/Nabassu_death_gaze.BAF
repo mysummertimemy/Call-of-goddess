@@ -1,0 +1,7 @@
+IF
+  !InParty(Player1)
+  Global("AC#W56GZ","GLOBAL",1)
+THEN
+  RESPONSE #100
+    GameOver(19377)  // The main character has been killed. You must restart the game.
+END
