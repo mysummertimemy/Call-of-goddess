@@ -1,0 +1,39 @@
+IF
+	OR(3)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+		HitBy([GOODCUTOFF],CRUSHING)
+		HPPercentLT(Myself,100)
+	Allegiance(Myself,NEUTRAL)
+	GlobalGT("AC#W_AcidSwampQuest","GLOBAL",0)
+	Global("TeleportAway","AC#W47",0)
+THEN
+	RESPONSE #100
+		SetGlobal("TeleportAway","AC#W47",1)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Global("AC#W_Margrog_trouble","GLOBAL",2)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Dead("AC#W47LV")  // Larva
+	Global("AC#W_Larva_quest","GLOBAL",6)
+THEN
+	RESPONSE #100
+		Wait(3)
+		StartDialogueNoSet([PC])
+END
+
+IF
+	See("AC#W47LV")  // Larva
+	Global("AC#W_Larva_quest","GLOBAL",5)
+THEN
+	RESPONSE #100
+		Wait(1)
+		StartDialogueNoSet([PC])
+END
+

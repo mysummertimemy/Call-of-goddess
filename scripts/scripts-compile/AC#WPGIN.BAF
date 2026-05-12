@@ -1,0 +1,14 @@
+IF
+	Global("Steal_Warning","AC#W48",1)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+	Global("Steal","AC#W48",1)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+

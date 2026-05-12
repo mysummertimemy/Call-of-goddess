@@ -1,0 +1,10 @@
+IF
+	OR(3)
+		GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+		GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+		GlobalGT("AC#W_AttackedNighthag","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

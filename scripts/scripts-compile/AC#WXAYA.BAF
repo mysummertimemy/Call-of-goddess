@@ -1,0 +1,50 @@
+IF
+	See(NearestEnemyOf(Myself))
+	GlobalLT("LIGHTNINGMEPHIT","LOCALS",2)
+	OR(2)
+		GlobalTimerExpired("Positive_Reload","LOCALS")
+		HPPercentGT(Myself,49)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#WXAY",NearestEnemyOf(Myself))  // Energy bolt
+		IncrementGlobal("LIGHTNINGMEPHIT","LOCALS",1)
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	HPPercentLT(Myself,50)
+	!Range("Info_Positive_Plane",6)
+	!GlobalTimerNotExpired("Positive_Reload","LOCALS")
+	GlobalLT("Reload","LOCALS",3)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Positive_Reload","LOCALS",TWO_ROUNDS)
+		MoveToObject("Info_Positive_Plane")
+		ApplySpell(Myself,CLERIC_HEAL)  // SPPR607.SPL (Heal)
+		PlaySound("EFF_P97")
+		CreateVisualEffectObject("SPGFLSH1",Myself)
+		IncrementGlobal("Reload","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	OR(2)
+		GlobalTimerExpired("Positive_Reload","LOCALS")
+		HPPercentGT(Myself,49)
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Delay(10)
+	OR(2)
+		GlobalTimerExpired("Positive_Reload","LOCALS")
+		HPPercentGT(Myself,49)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#WXAY",NearestEnemyOf(Myself))  // Energy bolt
+END
+

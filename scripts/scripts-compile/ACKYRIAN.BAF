@@ -1,0 +1,7 @@
+IF
+		GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

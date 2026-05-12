@@ -1,0 +1,102 @@
+IF
+	Detect([PC])
+	StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
+	!GlobalTimerNotExpired("Detect_Invisibility","LOCALS")
+	
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Detect_Invisibility","LOCALS",ONE_ROUND)
+		ReallyForceSpell(Myself,WIZARD_DETECT_INVISIBILITY)  // SPWI203.SPL (Detect Invisibility)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Vrock_Darkness","LOCALS",0)
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("AC#GDRK",NearestEnemyOf(Myself))  // Globe of Darkness
+		SetGlobal("Vrock_Darkness","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Delay(18)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+THEN
+	RESPONSE #20
+		ReallyForceSpell(LastSeenBy(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+		AttackOneRound(LastSeenBy(Myself))
+	RESPONSE #80
+		AttackOneRound(LastSeenBy(Myself))
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Range(LastSeenBy(Myself),8)
+	!GlobalTimerNotExpired("Spores","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Spores","LOCALS",THREE_ROUNDS)
+		ForceSpellRES("AC#WVRP",NearestEnemyOf(Myself))  // Spore discharge
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	Range(LastSeenBy(Myself),6)
+	HPPercentLT(Myself,25)
+	Global("Screech","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Screech","LOCALS",1)
+		ReallyForceSpellRES("AC#WVRS",Myself)  // Screech
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	Range(LastSeenBy(Myself),4)
+	HPPercentLT(Myself,50)
+	Global("MirrorImage","LOCALS",0)
+	!StateCheck(Myself,STATE_MIRRORIMAGE)
+	!StateCheck(Myself,STATE_BLUR)
+THEN
+	RESPONSE #100
+		SetGlobal("MirrorImage","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	Delay(12)
+THEN
+	RESPONSE #80
+		ReallyForceSpell(LastSeenBy(Myself),DEMON_FEAR)  // SPIN890.SPL (Demon Fear)
+		AttackOneRound(LastSeenBy(Myself))
+END
+
+IF
+	Heard([ANYONE],111)
+THEN
+	RESPONSE #100
+		MoveToObject(NearestEnemyOf(Myself))
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

@@ -1,0 +1,55 @@
+/*
+IF
+        See([PC])
+        Global("ShamurzAttacks","AC#W41",1)
+        Global("AC_WarwickHelps","AC#W41",0)
+        !CombatCounter(0)
+        Allegiance("ac#w41vr",ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_WarwickHelps","AC#W41",1)
+                DialogInterrupt(FALSE)
+		ChangeEnemyAlly(Myself,GOODBUTBLUE)
+END
+*/
+
+IF
+        See([PC])
+        //Global("ShamurzAttacks","AC#W41",1)
+        //Global("AC_WarwickHelps","AC#W41",1)
+        NumTimesTalkedTo(0)
+        //Global("AC_WarwickHelps","AC#W41",0)
+        CombatCounter(0)
+        Dead("ac#w41vr")
+THEN
+	RESPONSE #100
+		//SetGlobal("AC_WarwickHelps","AC#W41",2)            
+		Wait(1)
+                //SetGlobal("AC_WarwickHelps","AC#W41",1)
+                //DialogInterrupt(TRUE)
+                //ChangeEnemyAlly(Myself,NEUTRAL)
+		Dialogue([PC])
+END
+
+/*
+IF
+        !See([PC])
+        Global("ShamurzAttacks","AC#W41",1)
+        Global("AC_WarwickHelps","AC#W41",1)
+        CombatCounter(0)
+        Dead("ac#w41vr")
+THEN
+	RESPONSE #100
+        MoveToObject([PC])
+END
+
+IF
+	Global("AC_WarwickHelps","AC#W41",1)
+	!Dead("ac#w41vr")
+	See("ac#w41vr")
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),30)
+END
+*/
+

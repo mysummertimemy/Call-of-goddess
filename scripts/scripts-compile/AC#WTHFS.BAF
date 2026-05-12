@@ -1,0 +1,7 @@
+IF
+	Global("AC#W01_ThiefAccused","GLOBAL",10)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

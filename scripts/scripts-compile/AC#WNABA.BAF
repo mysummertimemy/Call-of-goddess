@@ -1,0 +1,950 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//            Trar'gezal
+/////////////////////////////////////////////////////////////////////
+//        Version 1
+// Tanari, 20th level Nabassu
+// 
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+// Death Var
+/////////////////////////////////////////////////////////////////////
+IF
+  Die()
+THEN
+  RESPONSE #100
+    ReallyForceSpellDead(Myself,RED_HOLY_MIGHT)  // SPWI985.SPL (No such index)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Initial Set-Up
+/////////////////////////////////////////////////////////////////////
+
+IF
+	See([GOODCUTOFF])
+	Global("Prep","LOCALS",0)
+	DifficultyGT(HARD)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_Spawn","LOCALS",THREE_ROUNDS)
+		SetGlobalTimer("MO_SilenceTimer","LOCALS",THREE_ROUNDS)
+		SetGlobal("Prep","LOCALS",1)
+		SetGlobal("MO_Paralyze","LOCALS",1)
+		SetGlobal("MO_Silence","LOCALS",1)
+		ForceSpell(NearestEnemyOfType([GOODCUTOFF]),TANARI_SILENCE)  // SPIN998.SPL (Stille: 4,5 m Radius)
+		ApplySpellRES("AC#WSUG",Myself)  // Tote beleben
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+END
+
+IF
+	See([GOODCUTOFF])
+	Global("Prep","LOCALS",0)
+	OR(2)
+		Difficulty(HARD)
+		LevelGT(Player1,13)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_Spawn","LOCALS",FOUR_ROUNDS)
+		SetGlobalTimer("MO_SilenceTimer","LOCALS",THREE_ROUNDS)
+		SetGlobal("Prep","LOCALS",1)
+		SetGlobal("MO_Paralyze","LOCALS",1)
+		SetGlobal("MO_Silence","LOCALS",1)
+		ApplySpellRES("AC#WSUG",Myself)  // Tote beleben
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+END
+
+IF
+	See([GOODCUTOFF])
+	Global("Prep","LOCALS",0)
+	DifficultyLT(HARD)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_Spawn","LOCALS",FIVE_ROUNDS)
+		SetGlobalTimer("MO_SilenceTimer","LOCALS",THREE_ROUNDS)
+		SetGlobal("Prep","LOCALS",1)
+		SetGlobal("MO_Silence","LOCALS",1)
+		ApplySpellRES("AC#WSUG",Myself)  // Tote beleben
+END
+
+IF
+	See([GOODCUTOFF])
+	!GlobalTimerNotExpired("MO_Spawn","LOCALS")
+	DifficultyGT(HARD)
+	!InMyArea("AC#WGLAB")  // Glabrezu
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_Spawn","LOCALS",THREE_ROUNDS)
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+END
+
+IF
+	See([GOODCUTOFF])
+	!GlobalTimerNotExpired("MO_Spawn","LOCALS")
+	Difficulty(HARD)
+	LevelGT(Player1,13)
+	!InMyArea("AC#WGLAB")  // Glabrezu
+THEN
+	RESPONSE #50
+		SetGlobalTimer("MO_Spawn","LOCALS",FOUR_ROUNDS)
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+END
+
+IF
+	See([GOODCUTOFF])
+	!GlobalTimerNotExpired("MO_Spawn","LOCALS")
+	DifficultyLT(HARD)
+	!InMyArea("AC#WGLAB")  // Glabrezu
+THEN
+	RESPONSE #30
+		SetGlobalTimer("MO_Spawn","LOCALS",FIVE_ROUNDS)
+		CreateCreatureObjectEffect("AC#WGLAB","SPSPEV",LastSeenBy(Myself))  // Glabrezu
+END
+
+
+/////////////////////////////////////////////////////////////////////
+// Paralyze
+/////////////////////////////////////////////////////////////////////
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  See([GOODCUTOFF])
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobal("MO_CastParalyze","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    SetGlobal("MO_CastParalyze","LOCALS",0)
+    Continue()
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  Global("MO_CastParalyze","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+  !CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+  !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  Global("MO_CastParalyze","LOCALS",1)
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+  !CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+  !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  Global("MO_CastParalyze","LOCALS",1)
+  See(ThirdNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+  !CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+  !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  Global("MO_CastParalyze","LOCALS",1)
+  See(FourthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+  !CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+  !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  Global("MO_CastParalyze","LOCALS",1)
+  See(FifthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+  !CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+  !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Paralyze","LOCALS",0)
+  Global("MO_CastParalyze","LOCALS",1)
+  See(SixthNearestEnemyOf(Myself))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),RANGER_ALL)
+    Class(LastSeenBy(Myself),FIGHTER_ALL)
+    Class(LastSeenBy(Myself),PALADIN)
+    Class(LastSeenBy(Myself),THIEF)
+    Kit(LastSeenBy(Myself),BARBARIAN)
+  !Kit(LastSeenBy(Myself),INQUISITOR)
+  !Kit(LastSeenBy(Myself),UNDEADHUNTER)
+  !HasItemEquiped("FREERING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("ROSSRING",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("RING09",LastSeenBy(Myself)) // Ring of Free Action
+  !HasItemEquiped("NPSW01",LastSeenBy(Myself)) // Sword of Avoreen
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_HARMLESS)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  CheckStatGT(LastSeenBy(Myself),-1,SAVEVSSPELL)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_CHAOTIC_COMMANDS)
+  !CheckStatGT(LastSeenBy(Myself),0,CLERIC_FREE_ACTION)
+  !CheckSpellState(LastSeenBy(Myself),SI_ENCHANTMENT)
+  !CheckSpellState(LastSeenBy(Myself),BARBARIAN_RAGE)
+  !CheckSpellState(LastSeenBy(Myself),BERSERKER_RAGE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_PARALYZE)  // SPIN999.SPL (Hold Person)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Silence
+/////////////////////////////////////////////////////////////////////
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  !GlobalTimerNotExpired("MO_SilenceTimer","LOCALS")
+  GlobalGT("MO_Silence","LOCALS",0)
+  See([GOODCUTOFF])
+  !CheckStatGT(Myself,0,CLERIC_INSECT_PLAGUE)
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #50
+    SetGlobal("MO_CastSilence","LOCALS",1)
+    Continue()
+  RESPONSE #50
+    SetGlobal("MO_CastSilence","LOCALS",0)
+    Continue()
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Silence","LOCALS",0)
+  Global("MO_CastSilence","LOCALS",1)
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !HasItemEquiped("AMUL21",LastSeenBy(Myself))  // Amulet of Power
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_SILENCE)  // SPIN998.SPL (Silence, 15' Radius)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Silence","LOCALS",0)
+  Global("MO_CastSilence","LOCALS",1)
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !HasItemEquiped("AMUL21",LastSeenBy(Myself))  // Amulet of Power
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_SILENCE)  // SPIN998.SPL (Silence, 15' Radius)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Silence","LOCALS",0)
+  Global("MO_CastSilence","LOCALS",1)
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !HasItemEquiped("AMUL21",LastSeenBy(Myself))  // Amulet of Power
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_SILENCE)  // SPIN998.SPL (Silence, 15' Radius)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Silence","LOCALS",0)
+  Global("MO_CastSilence","LOCALS",1)
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !HasItemEquiped("AMUL21",LastSeenBy(Myself))  // Amulet of Power
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_SILENCE)  // SPIN998.SPL (Silence, 15' Radius)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Silence","LOCALS",0)
+  Global("MO_CastSilence","LOCALS",1)
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !HasItemEquiped("AMUL21",LastSeenBy(Myself))  // Amulet of Power
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_SILENCE)  // SPIN998.SPL (Silence, 15' Radius)
+    SetInterrupt(TRUE)
+END
+
+IF
+  OR(2)
+    !GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+    CheckStatGT(Myself,0,AURACLEANSING)
+  GlobalGT("MO_Silence","LOCALS",0)
+  Global("MO_CastSilence","LOCALS",1)
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  OR(5)
+    Class(LastSeenBy(Myself),MAGE_ALL)
+    Class(LastSeenBy(Myself),BARD_ALL)
+    Class(LastSeenBy(Myself),CLERIC_ALL)
+    Class(LastSeenBy(Myself),DRUID_ALL)
+    Class(LastSeenBy(Myself),SORCERER)
+  CheckStatLT(LastSeenBy(Myself),20,RESISTMAGIC)
+  !StateCheck(LastSeenBy(Myself),STATE_SILENCED)
+  !CheckSpellState(LastSeenBy(Myself),SI_TRANSMUTATION)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_TARGETABLE)
+  !StateCheck(LastSeenBy(Myself),STATE_IMPROVEDINVISIBILITY)
+  CheckStatLT(LastSeenBy(Myself),1,WIZARD_SPELL_DEFLECTION)
+  !CheckStatGT(LastSeenBy(Myself),0,WIZARD_SPELL_TURNING)
+  !CheckStat(LastSeenBy(Myself),1,WIZARD_SPELL_TRAP)
+  !CheckStat(LastSeenBy(Myself),1,CLERIC_SHIELD_OF_THE_ARCHONS)
+  CheckStat(LastSeenBy(Myself),0,MINORGLOBE)
+  !HasItem("MORSWORD",LastSeenBy(Myself))  // Mordenkainen's Sword
+  !HasItemEquiped("AMUL21",LastSeenBy(Myself))  // Amulet of Power
+  !StateCheck(Myself,STATE_POISONED)
+  !StateCheck(Myself,STATE_SILENCED)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("MO_SpellCastTimer","LOCALS",6)
+    IncrementGlobal("MO_Silence","LOCALS",-1)
+    SetInterrupt(FALSE)
+    ForceSpell(LastSeenBy(Myself),TANARI_SILENCE)  // SPIN998.SPL (Silence, 15' Radius)
+    SetInterrupt(TRUE)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attack
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell([GOODCUTOFF],TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell([GOODCUTOFF],TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(ThirdNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",ThirdNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(SecondNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(FourthNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",ThirdNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTPIERCING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",FourthNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(FifthNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #25
+    ForceSpellRES("AC#WNAB",SixthNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #50
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell([GOODCUTOFF],TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell([GOODCUTOFF],TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(ThirdNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",ThirdNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",NearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(SecondNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",SecondNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(FourthNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",ThirdNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOfType([GOODCUTOFF]))
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",FourthNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(FifthNearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #50
+    ForceSpellRES("AC#WNAB",SixthNearestEnemyOf(Myself))  // Death Gaze
+    ForceSpell(NearestEnemyOf(Myself),TANARI_VAMPIRIC_TOUCH)  // SPIN997.SPL (Vampiric Touch)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+/////////////////////////////////////////////////////////////////////
+// Find them!
+/////////////////////////////////////////////////////////////////////
+IF
+  Heard([ENEMY],125)
+  !Detect([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END
+/////////////////////////////////////////////////////////////////////
+// If attacked by other guys, fight back
+/////////////////////////////////////////////////////////////////////
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+
+IF
+	ActionListEmpty()
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastAttackerOf(Myself),6)
+END
