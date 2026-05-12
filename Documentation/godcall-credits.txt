@@ -1,0 +1,39 @@
+
+***Call of the Lost Goddess - Credits***
+
+Acifer: Graphics, design, programming 
+Morpheus562: Enemy and encounter design, scripting 
+Lava: Ideas, item graphics and design, Beta Testing
+Weigo: Worldmap programming 
+megrimlock: English version, proofreading, Beta testing
+OiseauRebelle: Beta testing
+Soul: Beta testing
+Morywen: Beta testing
+Genwa: Beta testing
+shadowlich: Debug test run, proofreading 
+Taimon: Coding help 
+Argent: Coding & WeiDU help
+Roberciiik: Worldmap help for BP-BGT
+Shai Hulud, Lotus Noctus, Belryll, Danol: Help with German translation
+Laura Hirsbrunner: Readme Template
+
+The following assets were used to create the mod:
+Animations:
+This mod uses the following animations taken from Infinity Animations:
+Bebilith, Monodrone, Hamatula and Succubus.
+Credits for these amazing animations go to the original creators of this mod.
+Ideas:
+Some ideas of the encounters at the staircase are based on a description I found at mimir.net:
+https://mimir.net/places/infinite-staircase/
+
+Textures:
+This project uses textures created by David Gurrea and published at http://www.davegh.com
+
+Sounds from Freesound.com:
+https://freesound.org/people/klankbeeld/sounds/171078/
+https://freesound.org/people/marc3122/sounds/556976/
+https://freesound.org/people/LittleRobotSoundFactory/sounds/270526/
+https://freesound.org/people/Podsburgh/sounds/370710/
+
+
+

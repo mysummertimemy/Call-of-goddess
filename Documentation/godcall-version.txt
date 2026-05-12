@@ -1,0 +1,215 @@
+Version 2.5
+- updated chinese Version
+- updated Russian translation by Origanum8, thank you!
+- updated AC#W76 search map
+
+Version 2.4
+- Horn of Goodwill has correct usability flags
+- Piscoloth only drops one arena key
+
+Version 2.3
+- added Spanish translation by ElGamerViejuno, thank you!
+- added some beggars in Goldspires
+- moved the fruit merchant in Goldspires
+- The messenger now opens the door to Waukeen's temple
+- Changes Baphitaurus to Baphitaur in English version
+- changed cook's gender in area AC#W04 to male
+- damned souls aren't immune to everything anymore
+- summoned shadow from the helmet of childish nightmares can't cast wizard spells anymore
+- helmet of childish nightmares now recharges
+- fixed typos in English language version
+
+Version 2.2
+- updated voiceover folder for Russian and upcoming Spanish translation
+
+Version 2.1
+- added Russian translation by darthalex2014 and Origanum8, thank you!
+
+Version 2.01
+- used an alternate compression method as some people encountered problems with the download
+- switched AC#HEZRU scripts to the hezrou's "GENERAL" script
+- changed AC#MEZZO.bcs Spell(Sleep) to ForceSpell(Sleep)
+
+Version 2.0
+- New creatures with new animations:
+* Rutterkin animation
+* Dretch animation
+* Bodakanimation
+* Bar-Lgura animation
+* Mefisto, the abyssal town crier animation
+* Alkilith animation
+* Nalfeshnee animation
+* Arcanaloth animation
+* Hezrou animation
+* Mezzoloth animation
+- all these creatures have their unique abilites according to the AD&D setting
+- re-designed and re-rendered 7 area art graphics
+- re-rendered intro movie with better framerate to make the video play smoother
+- re-designed some encounters to make them more challenging
+- added various ambient sounds to make some areas more spooky
+- adjusted some height maps
+- changed some of the portraits
+- added reactions to finishing the quest in the temples of Waukeen in Athkatla, Trademeet and Saradush
+- added an option (for lawful stupid characters) to refuse a reward at all
+- removed some oBG2 checks during installation to speed up installation
+- changed voiceover files from wav to ogg format, included HANDLE_AUDIO
+- changed mayhaps to mayhap
+
+
+Version 1.5
+- new German version: Proofread, streamlined, enhanced, EE-conform, all by Shai Hulud - thank you!
+
+Version 1.4
+- The messenger for the funeral of Nalia's father will no longer appear during the quest
+- Margrog can't be killed anymore while teleporting away
+- the setup now assigns the correct scripts to summoned creatures if the script is missing - thanks, morpheus562!
+- the Deva feather quest entry should now be finally marked as finished
+- lowered the prices for most lootable items, for balancing reasons
+- removed many traces of the oBG2 installation routine to speed up the installation process
+- updated Chinese translation by lzw104522773 - thank you!
+
+Version 1.3
+- updated Chinese translation by lzw104522773 - thank you!
+- updated English translation by dizzyorange - thank you!
+- Demonknight of wrath will not spawn countless swords anymore
+- changed the demonknight's scripts and cre-files to prevent being indestructible
+- fixed typos in the journal
+- fixed typos in some item descriptions (e.g. 1d8 instead of the German 1w8)
+- fixed "Graz'zt's defamatory song" spell icon
+
+Version 1.2
+- added Chinese translation by lzw104522773 - thank you!
+- the worldmap displays properly using the EET worldmap
+- area AC#W54: Info regions removed
+- Demon in area AC#W76 doesn't spawn countless rewards before teleporting away
+
+
+Version 1.1
+- changed all tra-files to UTF-8
+- removed autotra folder and iconv
+- changed 6 "him" to <PRO_HIMHER>
+- Succubus and infant in area AC#W4S now disappear if Gildaar is already dead
+- the vrock in ac#w60 now teleports away when no enemies are nearby
+- removed nabassu horn from Annia's inventory
+
+Version 1.0
+- higher price for the Cup of Selune
+- fixed various typos in the English version
+- added more NPC reactions
+- added Waukeen's defender as reward for saving Tharundar's soul
+- Neera now reacts to spell keys
+- added correct map note triggers for area AC#W30
+- The holy coin now grants the correct amount of gold
+
+Version 0.95
+- added reworked scripts by morpheus562, thank you!
+- added battlemusic in area ac#w61
+- added ambient sound in area ac#w60
+- added many more different factions in the Blood War encounter
+- revamped Maurezhi encounter
+- revamped Cambion abilities and scripts
+- revamped Xag-Ya encounter
+- revamped arena fights
+- revamped blood war scripts
+- removed critical item flags of many non-essential sidequest items
+- changed some desc bams
+- added reactions of most NPCs to the quest start
+- added black abishai
+- added a Zombie Frostgiant
+- fixed a possible plot-stopping dialogue error in Zhelamiss' larva dialogue
+- added unique book item graphics for the lorebooks in area AC#W03
+- preparation for the Italian version by OiseauRebelle
+
+Version 0.9
+- added Blackguard encounter in Samora and AC#W70
+- added Dripping Darkblade +2 Katana item
+- players can now choose to get a +2 reputation reward for freeing Waukeen
+- correct AC#W01N.wed with all wallgroups
+- removed critical item flag of both helmets of acid resistance
+- added new merchant after finishing the main quest
+- new items for the new merchant store with new graphics by Lava
+- changed travel trigger in AC#W70 (no party required anymore)
+- changed holycoin gold amulet reward: player now gets 1d100 gold coins
+- changed sounds in AC#W4W (weeping goddess)
+- added area spell effect in AC#W4W (weeping goddess): Greater Malison
+- changed script in AC#W4W (weeping goddess)
+- added rivaling adventuring party in AC#W4W (weeping goddess)
+- better areatype.ids add EXTRAPLANAR area flag routine (thank you, Argent!)
+- reorganised journal entries strgrefs
+- added Lava's Hephernaan reaction when transforming into devil form
+- removed critical item flags of all Spell- and Powerkeys
+- corrected some typos
+- removed the oBG2-animations folder to save 73MB
+
+Version 0.8
+- added final English version by megrimlock 
+- all fiends now have a better detect invisibilty system according to the rules of AD&D; only the mightiest fiends (Balor, Marilith) have the power to see through illusions and detect invisibility immediately, all other fiends use some sort of spells according to their abilities
+- The Modron puzzle is now solvable for players with a color vision deficiency, as I have added info triggers.
+- Many dialogues have been streamlined to match BG2
+- added correct tavern and inn flags for the various inns / tavern in the mod
+- Verin now has weaker saving throws and a lower level for his spells
+- Added arrows of dispelling in Graz'zts prison
+- added a scroll of contingency in Graz'zts prison 
+- added a cloak of non-detection on the Infinite Staircase
+- you can now only purchase one single Deva wing
+- removed a non-reachable container in AC#W55
+- added traps in AC#W55
+- added traps in AC#W50
+- added traps in AC#W60
+- Bebilith is not attacking injured party members anymore
+- Aerie refuses now to put on the Fey'ri diadem
+- Fey'ri diadem can't be used by Haer'Dalis anymore as he is technically an elf, but in game terms a tiefling
+- Fey'ri diadem now changes the appearance while equipped by thieves and bards
+- new voiceover for the Innkeeper in the Sodden Solar
+- Belthazaar now turns hostile if you attack him in Samora
+- Players can now attack and kill Belthazaar in Samora to solve Ormad's quest
+- repainted a part of the map AC#W19.tis as there was a missing brick
+- added quest journal entries to finish the quest "A Larva for Margrog"
+- added quest journal entries to finish the quest "Prisoner and guard all in one"
+- added quest journal entries to finish the quest "The missing amulet"
+- Lucky Aello doesn't sell identified items anymore
+- Cell key now opens all cells in area AC#W80
+- added a different questline in the acid ponds; the players can now take the acid in their bare hands (and get burnt) instead of using the helmet
+- repainted portrait of Waukeen (golden eyes, as described in the rulesbook)
+- Daugralluvidan ignores now NPCs under the effect of Otiluke's Resilient Sphere
+- Mazzy can now invoke courage at the Tree of Cowards using her innate ability
+- Trar'gezal now attacks everybody that attacks him
+- AC#W56: you can no longer walk through a closed door
+- fixed various dialogue errors
+- Soul token seller deletes re-purchased soul tokens
+- Soul token seller now increases damage amount after purchasing 100 soul tokens
+- corrected AC#W70.tis pvrz files
+- corrected AC#W80.tis pvrz files
+- corrected AC#W90.tis pvrz files
+- corrected AC#W52.tis pvrz files
+- corrected AC#W47 search map
+- BP-BGT worldmap now uses correct icon #219 (Goldspires) and location for the starting area AC#W01
+- uses zip compression, as some players had problems unpacking a .rar archive
+
+Version 0.7
+- added first part of proofread English dialogues 
+- added new voiceover line for Waukeen
+- repainted Abishai portrait
+Version 0.6
+- added a CombatCounter(0) and a screen jump in AC#W90.baf
+- adjusted "Cry of despair" as it seemed to cast "Cloak of Fear" too often
+- repainted all of the previous AI generated portraits and removed the unneeded remaining AI generated portraits
+- repainted AC#W4G.tis area graphics
+- recreated ac#w30ms.mos and ac#2mos9.mos
+Version 0.5
+- split portrait and voiceover installation routine to a separate component
+- fixed AC#WFLBO.itm
+Version 0.4
+- added even more items from Lava
+- added Tarterian dragon
+Version 0.3 
+- added compatibility to Lava's "In Love, Undeath" mod
+- added compatibility to Lava's "Hephernaan" mod
+- added more dialogue choices
+- fixed ee item descriptions
+Version 0.2 
+- added items by Lava
+- added scripts and encounters by morpheus562
+- added english voiceover
+Version 0.1 
+- initial release
