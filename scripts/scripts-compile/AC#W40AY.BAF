@@ -1,0 +1,8 @@
+IF
+	Global("City_Angry","AC#W40",1)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+

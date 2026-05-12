@@ -1,0 +1,13 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W08NB")  // Edelmann
+		Wait(1)
+		ReallyForceSpellRES("AC#W08S",Myself)  // No such index
+		VerbalConstant(Myself,HURT)
+		Wait(2)
+		EndCutSceneMode()
+		StartDialogNoSet([PC])
+END
+

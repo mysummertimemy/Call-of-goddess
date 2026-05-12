@@ -1,0 +1,16 @@
+IF
+	NumTimesTalkedTo(0)
+	!Detect([PC])
+THEN
+	RESPONSE #100
+		MoveToObject([PC])
+END
+
+IF
+	NumTimesTalkedTo(0)
+	Detect([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet(LastSeenBy(Myself))
+END
+

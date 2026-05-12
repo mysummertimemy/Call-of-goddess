@@ -1,0 +1,23 @@
+IF
+	Global("AC#WMefisto_helps_Gildaar","GLOBAL",5)
+	Global("PlacedBaby","AC#W4S",0)
+	!Dead("AC#WGIL4")
+THEN
+	RESPONSE #100
+		ActionOverride("Cradle",CreateItem("AC#WDMBB",0,0,0))  // Daemeveras S�ugling
+		CreateCreature("AC#W4SSU",[396.466],10)  // Sukkubus
+		SetGlobal("PlacedBaby","AC#W4S",1)
+END
+
+IF
+	PartyHasItem("AC#WDMBB")  // Daemeveras S�ugling
+	PartyHasItem("AC#W4SKE")  //Daemevera's Key
+	Global("PlacedBaby","AC#W4S",1)
+THEN
+	RESPONSE #100
+		TakePartyItem("AC#W4SKE")
+		EraseJournalEntry(@110013)
+		AddJournalEntry(@110021,QUEST)
+		SetGlobal("PlacedBaby","AC#W4S",10)  
+END
+

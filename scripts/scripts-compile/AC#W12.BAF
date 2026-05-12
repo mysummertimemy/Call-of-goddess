@@ -1,0 +1,30 @@
+IF
+	Global("AC_deactivated","AC#W12",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC_deactivated","AC#W12",1)
+		TriggerActivation("TranW200",FALSE)
+		AmbientActivate("STARS",FALSE)
+		AmbientActivate("Portal_blur",FALSE)
+		SoundActivate("Portal",FALSE)
+END
+
+IF
+	Global("Sojourner_Portal","AC#W12",2)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		ActionOverride("AC#W#KY2",Face(9))
+		Wait(1)
+		ActionOverride("AC#W#KY2",SpellNoDec(Myself,DO_NOTHING))  // SPIN905.SPL (No such index)
+		Wait(2)
+		PlaySound("PORTAL2")
+		TriggerActivation("TranW200",TRUE)
+		AmbientActivate("STARS",TRUE)
+		AmbientActivate("Portal_blur",TRUE)
+		SoundActivate("Portal",TRUE)
+		SetGlobal("Sojourner_Portal","AC#W12",3)
+		EndCutSceneMode()
+END
+

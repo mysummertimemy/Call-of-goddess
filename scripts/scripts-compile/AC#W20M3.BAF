@@ -1,0 +1,106 @@
+IF
+	!See([ENEMY])
+	CombatCounter(0)
+	GlobalTimerExpired("KayurPrep","AC#W30")
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Prep","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+		ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Spiegelbild)
+END
+
+IF
+	HaveSpell(WIZARD_RESIST_FEAR)  // SPWI210.SPL (Furcht bannen)
+	See("AC#W20M1")  // Kayur
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell("AC#W20M1",WIZARD_RESIST_FEAR)  // Kayur
+END
+
+IF
+	HaveSpell(WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Erweiterte Unsichtbarkeit)
+	See("AC#W20M1")  // Kayur
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell("AC#W20M1",WIZARD_IMPROVED_INVISIBILITY)  // Kayur
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+	TookDamage()
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+END
+
+IF
+	See(NearestEnemyOf("AC#W20M1"))  // Kayur
+	Global("KayurGlobe","AC#W30",1)
+	Range(LastSeenBy(Myself),20)
+	HaveSpell(WIZARD_FIREBALL)  // SPWI304.SPL (Feuerball)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf("AC#W20M1"),WIZARD_FIREBALL)  // Kayur
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Personen festhalten)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Personen festhalten)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SKULL_TRAP)  // SPWI313.SPL (Schädelfalle)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_SKULL_TRAP)  // SPWI313.SPL (Schädelfalle)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MONSTER_SUMMONING_1)  // SPWI309.SPL (Monster herbeirufen 1)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MONSTER_SUMMONING_1)  // SPWI309.SPL (Monster herbeirufen 1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Spiegelbild)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Spiegelbild)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_HORROR)  // SPWI205.SPL (Alp)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_HORROR)  // SPWI205.SPL (Alp)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Farbkugel)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Farbkugel)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

@@ -1,0 +1,30 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Bloody_Hand","AC#W43",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Bloody_Hand","AC#W43",2)
+		ApplyDamage(LastTrigger,5,SLASHING)
+		OpenDoor("Door02")
+		DisplayString(Myself,@43001)  
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Bloody_Hand","AC#W43",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Bloody_Hand","AC#W43",1)
+		DisplayString(Myself,@43000) 
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+

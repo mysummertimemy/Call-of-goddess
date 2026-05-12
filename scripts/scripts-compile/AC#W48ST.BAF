@@ -1,0 +1,23 @@
+IF
+	Global("Steal_Warning","AC#W48",0)
+	Opened([ANYONE])
+	See([NOTGOOD])
+	!StateCheck(LastTrigger,STATE_INVISIBLE)
+	!StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+THEN
+	RESPONSE #100
+		ClearActions(LastTrigger)
+		SetGlobal("Steal_Warning","AC#W48",1)
+END
+
+IF
+	GlobalGT("Steal_Warning","AC#W48",1)
+	Opened([ANYONE])
+	See([NOTGOOD])
+	!StateCheck(LastTrigger,STATE_INVISIBLE)
+	!StateCheck(LastTrigger,STATE_IMPROVEDINVISIBILITY)
+THEN
+	RESPONSE #100
+		IncrementGlobal("Steal","AC#W48",1)
+END
+

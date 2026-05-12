@@ -1,0 +1,27 @@
+IF
+	Global("PlantedPepper","AC#W08",1)
+THEN
+	RESPONSE #100
+		ActionOverride("AC#W08MC",StartDialogNoSet([PC]))
+END
+
+IF
+	Global("PlantedPepper","AC#W08",2)
+	Global("NobleSpawn","AC#W08",0)
+THEN
+	RESPONSE #100
+		SetGlobal("NobleSpawn","AC#W08",1)
+		CreateCreature("AC#W08NB",[327.381],7)  // Edelmann
+		CreateCreature("AC#W08BG",[267.401],9)  // Leibw�chter
+END
+
+IF
+	Contains("AC#W08PP","Pepper_Container")  // Nachahmerblut
+	Global("PlantedPepper","AC#W08",0)
+THEN
+	RESPONSE #100
+		ActionOverride("Pepper_Container",DestroyItem("AC#W08PP"))
+		SetGlobal("PlantedPepper","AC#W08",1)
+		ContainerEnable("Pepper_Container",FALSE)
+END
+

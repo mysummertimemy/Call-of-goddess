@@ -1,0 +1,99 @@
+IF
+	WalkedToTrigger([ANYONE])
+	Range(LastTrigger,10)
+	!PartyHasItem("AC#WPNT2")  // Pentakel
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,FIRE)
+		IncrementGlobal("Ovenreaction","AC#W40",1)
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	Range(LastTrigger,10)
+	PartyHasItem("AC#WPNT2")  // Pentakel
+	Global("FirstFieryOven","AC#W40",1)
+	OR(4)
+		Global("2ndFieryOven","AC#W40",0)
+		Global("3rdFieryOven","AC#W40",0)
+		Global("4thFieryOven","AC#W40",0)
+		Global("5thFieryOven","AC#W40",0)
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,FIRE)
+		IncrementGlobal("Ovenreaction","AC#W40",1)
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	PartyHasItem("AC#WPNT2")  // Pentakel
+	Global("FirstFieryOven","AC#W40",1)
+	Global("2ndFieryOven","AC#W40",1)
+	Global("3rdFieryOven","AC#W40",1)
+	Global("4thFieryOven","AC#W40",1)
+	Global("5thFieryOven","AC#W40",1)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SaveGame(0)
+		SmallWait(5)
+		StartCutSceneMode()
+		MoveViewObject(LastTrigger,INSTANT)
+		//SetGlobal("AC#W_EnteredPrison","GLOBAL",0)
+		DisplayStringNoName(Myself,@40002)
+		Wait(2)
+		FadeToColor([30.0],0)
+		Wait(2)
+		ActionOverride(Player1,LeaveAreaLUAPanicEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player1,LeaveAreaLUAEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player2,LeaveAreaLUAEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player3,LeaveAreaLUAEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player4,LeaveAreaLUAEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player5,LeaveAreaLUAEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player6,LeaveAreaLUAEntry("AC#W80","Entry1",[0.0],0))
+		ActionOverride(Player1,Wait(2))
+		ActionOverride(Player1,MultiPlayerSync())
+		ActionOverride(Player1,FadeFromColor([30.0],0))
+		ActionOverride(Player1,EndCutSceneMode())
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	Range(LastTrigger,10)
+	PartyHasItem("AC#WPNT2")  // Pentakel
+	Global("FirstFieryOven","AC#W40",0)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		CreateVisualEffectObject("SPGFLSH1",LastTrigger)
+		CreateVisualEffectObject("SPGRWHRL",Player1)
+		CreateVisualEffectObject("SPGFLSH1",Player2)
+		CreateVisualEffectObject("SPGRWHRL",Player3)
+		CreateVisualEffectObject("SPGFLSH1",Player4)
+		CreateVisualEffectObject("SPGFLSH1",Player5)
+		CreateVisualEffectObject("SPGFLSH1",Player6)
+		PlaySound("EFF_M63")
+		Wait(1)
+		ActionOverride(Player1,JumpToPoint([1225.406]))
+		ActionOverride(Player2,JumpToPoint([1158.385]))
+		ActionOverride(Player3,JumpToPoint([1263.363]))
+		ActionOverride(Player4,JumpToPoint([1135.319]))
+		ActionOverride(Player5,JumpToPoint([1129.387]))
+		ActionOverride(Player6,JumpToPoint([1315.321]))
+		MoveViewPoint([1225.406],INSTANT)
+		PlaySound("EFF_M63")
+		CreateVisualEffectObject("SPGRWHRL",Player1)
+		Wait(1)
+		SetGlobal("FirstFieryOven","AC#W40",1)
+		EndCutSceneMode()
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	!Range(LastTrigger,10)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+

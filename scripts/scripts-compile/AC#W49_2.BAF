@@ -1,0 +1,91 @@
+IF
+	!Exists("AC#W49S3")  // Sklave
+	!Exists("AC#W49S4")  // Sklave
+	Global("Stab_cycle","AC#W49",0)
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W49SS")  // Spielmeister
+		ClearAllActions()
+		Wait(1)
+		ActionOverride(LastTalkedToBy(Myself),JumpToPoint([325.492]))
+		CreateCreature("AC#W49S3",[310.378],SSE)  // Sklave
+		CreateCreature("AC#W49S4",[228.457],SSE)  // Sklave
+		Wait(1)
+		IncrementGlobal("Stab_cycle","AC#W49",1)
+		StartCutSceneEx("AC#W49_1",TRUE)
+END
+
+IF
+	Global("Stab_cycle","AC#W49",1)
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W49SS")  // Spielmeister
+		FadeFromColor([10.0],0)
+		DisplayStringHead(Myself,@49100)  // Achtung, es geht los! Runde 1...
+		Wait(2)
+		ReallyForceSpellRES("AC#W49S","AC#W49S4")  // No such index
+		ReallyForceSpellRES("AC#W49S","AC#W49S3")  // No such index
+		Wait(4)
+		IncrementGlobal("Stab_cycle","AC#W49",1)
+		StartCutSceneEx("AC#W49_1",TRUE)
+END
+
+IF
+	GlobalLT("Stab_or_die","AC#W49",3)
+	HPLT("AC#W49S4",5)  // Sklave
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W49SS")  // Spielmeister
+		ActionOverride("AC#W49S4",PlayDeadInterruptable(6))
+		Wait(3)
+		ReallyForceSpellDead("AC#W49S4",RED_HOLY_MIGHT)
+		Wait(1)
+		SetGlobal("Player_Salve_Dead","AC#W49",1) 
+		SetGlobal("Stab_or_die","AC#W49",3)
+		StartDialogueNoSet([PC])
+		EndCutSceneMode()
+END
+
+IF
+	GlobalLT("Stab_or_die","AC#W49",3)
+	HPLT("AC#W49S3",5)  // Sklave
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W49SS")  // Spielmeister
+		ActionOverride("AC#W49S3",PlayDeadInterruptable(6))
+		Wait(3)
+		ReallyForceSpellDead("AC#W49S3",RED_HOLY_MIGHT)
+		Wait(1)
+		SetGlobal("Other_Salve_Dead","AC#W49",1) 
+		SetGlobal("Stab_or_die","AC#W49",3)
+		StartDialogueNoSet([PC])
+		EndCutSceneMode()
+END
+
+IF
+	Global("Stab_cycle","AC#W49",2)
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W49SS")  // Spielmeister
+		DisplayStringHead(Myself,@49101)  //  Runde 2...
+		ReallyForceSpellRES("AC#W49S","AC#W49S4")  // No such index
+		ReallyForceSpellRES("AC#W49S","AC#W49S3")  // No such index
+		Wait(4)
+		IncrementGlobal("Stab_cycle","AC#W49",1)
+		StartCutSceneEx("AC#W49_1",TRUE)
+END
+
+IF
+	Global("Stab_cycle","AC#W49",3)
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W49SS")  // Spielmeister
+		DisplayStringHead(Myself,@49102)  //  Runde 3!
+		ReallyForceSpellRES("AC#W49S","AC#W49S4")  // No such index
+		ReallyForceSpellRES("AC#W49S","AC#W49S3")  // No such index
+		Wait(1)
+		SetGlobal("Stab_or_die","AC#W49",3)
+		SetGlobal("Stab_cycle","AC#W49",0)
+		StartDialogueNoSet([PC])
+		EndCutSceneMode()
+END

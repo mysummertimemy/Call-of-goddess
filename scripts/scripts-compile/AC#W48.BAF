@@ -1,0 +1,21 @@
+IF
+	Global("SetRest","AC#W48",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SetRest","AC#W48",1)
+		SetAreaRestFlag(0)
+END
+
+IF
+	Global("SetRest","AC#W48",1)
+	Dead("AC#WPGCH")
+	Dead("AC#WPGSP")
+	Dead("AC#WPGHL")
+	Dead("AC#WPGIN")
+THEN
+	RESPONSE #100
+		SetGlobal("SetRest","AC#W48",2)
+		DisplayStringHead(Player1,@48000)
+		SetAreaRestFlag(1)
+END
+

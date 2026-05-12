@@ -1,0 +1,284 @@
+/////////////////////////////////////////////////////////////////////
+// Prep
+/////////////////////////////////////////////////////////////////////
+IF
+	!See([GOODCUTOFF])
+THEN
+	RESPONSE #100
+		MoveToPoint([480.540])
+END
+
+IF
+  Global("Prep","LOCALS",0)
+  Allegiance(Myself,ENEMY)
+  See(NearestEnemyOf(Myself))
+  DifficultyGT(NORMAL)
+THEN
+  RESPONSE #100
+    SetGlobal("Prep","LOCALS",1)
+    ApplySpell(Myself,CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Animate Dead)
+    ApplySpell(Myself,CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Animate Dead)
+    ApplySpell(Myself,CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Animate Dead)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Sequencer
+/////////////////////////////////////////////////////////////////////
+IF
+  See(NearestEnemyOf(Myself))
+  Global("Prep","LOCALS",1)
+  Global("SpellSequencer","LOCALS",0)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,39968)  // Spell Trigger—Fired
+    DisplayString(Myself,40244)  // Spell Trigger—Stoneskins
+    ForceSpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+    DisplayString(Myself,40248)  // Spell Trigger—True Sight
+    ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+    DisplayString(Myself,2469)  // Spell Trigger—Protection From Magical Weapons
+    ReallyForceSpell(Myself,WIZARD_PROTECTION_FROM_MAGIC_WEAPONS)  // SPWI611.SPL (Protection From Magical Weapons)
+    SetGlobal("SpellSequencer","LOCALS",1)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Contingency
+/////////////////////////////////////////////////////////////////////
+IF
+  See(NearestEnemyOf(Myself))
+  CheckStatLT(Myself,1,STONESKINS)
+  Global("Prep","LOCALS",1)
+THEN
+  RESPONSE #100
+    DisplayString(Myself,29736)  // Contingency—Stoneskin
+    ApplySpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+END
+
+/////////////////////////////////////////////////////////////////////
+// Attack
+/////////////////////////////////////////////////////////////////////
+IF
+  ActionListEmpty()
+  See(MostDamagedOf([PC]))
+  HPPercentLT(LastSeenBy(Myself),81)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(LastSeenBy(Myself),MAINHAND)
+  WeaponCanDamage(LastSeenBy(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(LastSeenBy(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  CheckStatLT(LastSeenBy(Myself),1,STONESKINS)
+  CheckStatGT(LastSeenBy(Myself),-20,ARMORCLASS)
+  CheckStatLT(LastSeenBy(Myself),60,RESISTSLASHING)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(MostDamagedOf([PC]))
+  HPPercentLT(LastSeenBy(Myself),81)
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  Range(LastSeenBy(Myself),5)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #25
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #75
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(NearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(NearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SecondNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SecondNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SecondNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(ThirdNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(ThirdNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(ThirdNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FourthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FourthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FourthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(FifthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(FifthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(FifthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  ActionListEmpty()
+  See(SixthNearestEnemyOf(Myself))
+  Allegiance(Myself,ENEMY)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !StateCheck(LastSeenBy(Myself),STATE_NOT_APPROACHABLE)
+  WeaponEffectiveVs(SixthNearestEnemyOf(Myself),MAINHAND)
+  WeaponCanDamage(SixthNearestEnemyOf(Myself),MAINHAND)
+THEN
+  RESPONSE #100
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END

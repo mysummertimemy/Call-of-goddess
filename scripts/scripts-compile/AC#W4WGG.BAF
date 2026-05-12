@@ -1,0 +1,16 @@
+IF
+	Global("Gutslicers","AC#W4W",3)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	Global("Gutslicers","AC#W4W",10)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		EscapeArea()
+END
+

@@ -1,0 +1,16 @@
+IF
+	Detect([PC])
+	See([0.0.0.TANARI])
+THEN
+	RESPONSE #100
+		AttackReevaluate([0.0.0.TANARI],30)
+END
+
+IF
+	Detect([PC])
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

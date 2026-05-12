@@ -1,0 +1,19 @@
+IF
+	Global("BloodWarJob","AC#W40",3)
+	See([PC])
+THEN
+	RESPONSE #100
+		Wait(2)
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("BloodWarJob","AC#W40",4)
+	PartyHasItem("AC#WPFHE")  // Kopf des Baatezu-Generals
+	See([PC])
+THEN
+	RESPONSE #100
+		SetGlobal("BloodWarJob","AC#W40",5)
+		StartDialogNoSet([PC])
+END
+

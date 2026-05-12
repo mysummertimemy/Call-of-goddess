@@ -1,0 +1,17 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("AC_WaukeenRescued","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@19000)  // Ihr m�sst Euren Auftrag erf�llen und Waukeen retten, um zur�ckkehren zu k�nnen.
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+

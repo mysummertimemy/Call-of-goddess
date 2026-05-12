@@ -1,0 +1,39 @@
+IF
+	NumberOfTimesTalkedTo(0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+	NumTimesTalkedToGT(0)
+	OR(3)
+		SpellCast([PC],WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+		SpellCastPriest([PC],CLERIC_TRUE_SIGHT)  // SPPR505.SPL (True Seeing)
+		SpellCastInnate([PC],INQUIS_TRUE_SIGHT)  // SPCL232.SPL (True Sight)
+	Global("IllusionDispelled","LOCALS",0)
+	OR(6)
+		See([PC.0.0.BARD_ALL])
+		See([PC.0.0.MAGE_ALL])
+		See([PC.0.0.CLERIC_ALL])
+		See([PC.0.0.DRUID_ALL])
+		See([PC.0.0.PALADIN_ALL])
+		See([PC.0.0.SORCERER])
+THEN
+	RESPONSE #100
+		DisplayString(Myself,20836)  // Illusion Dispelled
+		SetGlobal("IllusionDispelled","LOCALS",1)
+		ChangeAnimationNoEffect("AC#W50M2")  // Maurezhi
+END
+
+IF
+	OR(2)
+		Range([PC],9)
+		AttackedBy([GOODCUTOFF],DEFAULT)
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPFLESHS",Myself)
+		ChangeAnimationNoEffect("AC#W50M2")  // Maurezhi
+END
+

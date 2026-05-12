@@ -1,0 +1,10 @@
+IF
+	GlobalGT("AC#W_Marettas_Beds","GLOBAL",9)
+	Global("DeactivateRest","AC#W42",0)
+THEN
+	RESPONSE #100
+		SetGlobal("DeactivateRest","AC#W42",1)
+		SetRestEncounterProbabilityDay(0)
+		SetRestEncounterProbabilityNight(0)
+END
+

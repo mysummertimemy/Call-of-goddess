@@ -1,0 +1,26 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	PartyHasItem("AC#W50TH")
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@50002)  
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	!PartyHasItem("AC#W50TH")
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@50001)  
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702) 
+END
+

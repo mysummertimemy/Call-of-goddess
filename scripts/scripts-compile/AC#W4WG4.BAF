@@ -1,0 +1,96 @@
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	OR(5)
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+	CheckStatGT(LastSeenBy(Myself),2,ARMORCLASS)
+	!StateCheck(LastSeenBy(Myself),STATE_POISONED)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+IF
+	OR(5)
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+		See(SecondNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+	!StateCheck(LastSeenBy(Myself),STATE_POISONED)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+IF
+	OR(5)
+		See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+		See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+		See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+		See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+		See(ThirdNearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+	!StateCheck(LastSeenBy(Myself),STATE_POISONED)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+IF
+	OR(5)
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.MAGE_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.SORCERER]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.BARD]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.DRUID_ALL]))
+		See(NearestEnemyOfType([GOODCUTOFF.0.0.CLERIC_ALL]))
+	!StateCheck(LastSeenBy(Myself),STATE_POISONED)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(LastSeenBy(Myself),12)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!Range(NearestEnemyOf(Myself),7)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(NearestEnemyOf(Myself),12)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),7)
+THEN
+	RESPONSE #100
+		RunAwayFrom(NearestEnemyOf(Myself),12)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),12)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastAttackerOf(Myself),12)
+END
+

@@ -1,0 +1,18 @@
+IF
+	OR(2)
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+	Allegiance(Myself,NEUTRAL)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	Detect([PC])
+	See([0.0.0.IMP])
+THEN
+	RESPONSE #100
+		Attack([0.0.0.IMP])
+END
+

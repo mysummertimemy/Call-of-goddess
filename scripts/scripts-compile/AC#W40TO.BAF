@@ -1,0 +1,16 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,30)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,@40000)  // ~Dieser Ausgang führt in die Außenlande vor der Stadt. Ohne ein genaues Ziel vor Augen wäre ein Abstecher in diese Gegenden Euer sicherer Tod.~
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,30)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+

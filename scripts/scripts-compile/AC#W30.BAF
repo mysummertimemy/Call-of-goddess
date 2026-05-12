@@ -1,0 +1,327 @@
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("StaircaseAftermath","AC#W30",0)
+THEN
+	RESPONSE #100
+		FadeToColor([0.0],0)
+		SetGlobal("StaircaseAftermath","AC#W30",1)
+		TriggerActivation("TrAC#W40",FALSE)
+		OpenDoor("DOOR02")
+		ActionOverride(Player1,ApplySpellRES("jwtrue",Myself))  // No such index
+		ActionOverride(Player2,ApplySpellRES("jwtrue",Myself))  // No such index
+		ActionOverride(Player3,ApplySpellRES("jwtrue",Myself))  // No such index
+		ActionOverride(Player4,ApplySpellRES("jwtrue",Myself))  // No such index
+		ActionOverride(Player5,ApplySpellRES("jwtrue",Myself))  // No such index
+		ActionOverride(Player6,ApplySpellRES("jwtrue",Myself))  // No such index
+		StartCutSceneMode()
+		StartCutScene("AC#W30C1")
+END
+
+IF
+	Global("EnteredArea","AC#W30",0)
+THEN
+	RESPONSE #100
+		FadeToColor([0.0],0)
+		SetGlobal("EnteredArea","AC#W30",1)
+		TextScreen("AC#W30MS")
+		SetRestEncounterProbabilityDay(0)
+		SetRestEncounterProbabilityNight(0)
+		SpawnPtDeactivate("Spawn_kayur")
+		SpawnPtDeactivate("Spawn_pg_02")
+		SpawnPtDeactivate("Mindflayers")
+		FadeFromColor([30.0],0)
+END
+
+IF
+	Dead("AC#W20M1")  // Kayur
+	Dead("AC#W20M2")  // Kayur's apprentice
+	Dead("AC#W20M3")  // Kayur's apprentice
+	Global("KayurDead","AC#W30",0)
+	DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+		SetGlobal("KayurDead","AC#W30",1)
+		SpawnPtActivate("Spawn_kayur")
+END
+
+IF
+	Dead("AC#W30GA")  // Gauth
+	Global("GauthDead","AC#W30",0)
+	DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+		SetGlobal("GauthDead","AC#W30",1)
+		SpawnPtActivate("Spawn_pg_02")
+		SpawnPtDeactivate("Spawn_mephits_pg")
+END
+
+IF
+	Dead("AC#W30GA")  // Gauth
+	Global("GauthDead","AC#W30",0)
+	Difficulty(EASIEST)
+THEN
+	RESPONSE #100
+		SetGlobal("GauthDead","AC#W30",1)
+		SpawnPtDeactivate("Spawn_mephits_pg")
+END
+
+IF
+	Global("AC#W_BaatezuJob","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CreateCreature("AC#W30A1",[2643.796],14)  // Aphul
+		CreateCreature("AC#W30A2",[2538.737],10)  // Abishai
+		CreateCreature("AC#W30A2",[2676.725],10)  // Abishai
+		SpawnPtDeactivate("Mindflayers")
+		SetGlobal("AC#W_BaatezuJob","GLOBAL",2)
+END
+
+IF
+	GlobalGT("AC#W_BaatezuJob","GLOBAL",9)
+	Global("MindSpawn","AC#W30",0)
+THEN
+	RESPONSE #100
+		SpawnPtActivate("Mindflayers")
+		SetGlobal("MindSpawn","AC#W30",1)
+END
+
+IF
+	Global("Areaprep","AC#W30",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Areaprep","AC#W30",1)
+		AmbientActivate("Modron_light_red",TRUE)
+		AmbientActivate("Modron_light_blue",FALSE)
+		AmbientActivate("Modron_light_green",FALSE)
+		AmbientActivate("Modron_light_red",FALSE)
+		OpenDoor("DOOR01")
+END
+
+/*
+// now triggered through dialogue cutscene
+IF
+	Dead("AC#W30F1")  // Alu-Scheusal
+	Dead("AC#W30F2")  // Alu-Scheusal
+	Global("StaircaseAftermath","AC#W30",3)
+THEN
+	RESPONSE #100
+		Wait(1)
+		ActionOverride("AC#WLIL1",StartDialogueNoSet(Player1))
+END
+*/
+
+IF
+	Global("Areaprep","AC#W30",1)
+	Global("StaircaseAftermath","AC#W30",10)
+THEN
+	RESPONSE #100
+		SetGlobal("Areaprep","AC#W30",2)
+		CloseDoor("DOOR01")
+		SoundActivate("Portal",FALSE)
+		AmbientActivate("Portal",FALSE)
+		ActionOverride(Player1,RemoveSpellRES("AC#WBD1"))  // Graz'zts Schm�hlied
+		EraseJournalEntry(@400500)
+		EraseJournalEntry(@400501)
+		EraseJournalEntry(@400502)
+		EraseJournalEntry(@400010)
+		EraseJournalEntry(@400011)
+		EraseJournalEntry(@400012)
+		EraseJournalEntry(@400013)
+		EraseJournalEntry(@400020)
+		EraseJournalEntry(@400400)
+		EraseJournalEntry(@400401)
+		EraseJournalEntry(@400600)
+		EraseJournalEntry(@400601)
+		EraseJournalEntry(@400900)
+		EraseJournalEntry(@410000)
+		EraseJournalEntry(@410001)
+		//EraseJournalEntry(@410002)
+		//EraseJournalEntry(@410004)
+		EraseJournalEntry(@410005)
+		EraseJournalEntry(@410006)
+		EraseJournalEntry(@410100)
+		EraseJournalEntry(@410101)
+		EraseJournalEntry(@410102)
+		EraseJournalEntry(@410103)
+		EraseJournalEntry(@410110)
+		EraseJournalEntry(@460010)
+		EraseJournalEntry(@460011)
+		EraseJournalEntry(@470601)
+		EraseJournalEntry(@470700)
+		EraseJournalEntry(@470701)
+		EraseJournalEntry(@470702)
+		EraseJournalEntry(@470703)
+		EraseJournalEntry(@510000)
+		EraseJournalEntry(@510001)
+		EraseJournalEntry(@510002)
+		EraseJournalEntry(@600000)
+		EraseJournalEntry(@600001)
+		EraseJournalEntry(@800010)
+		SpawnPtDeactivate("Mindflayers")
+		SpawnPtDeactivate("Spawn_kayur")
+		SpawnPtDeactivate("Spawn_pg_02")
+		AddMapNote([2686.1591],@3007) 
+		CreateCreature("AC#WLIL4",[2798.1626],3)  // Lillend
+END
+
+IF
+	Global("ShowWayBack","AC#W30",1)
+THEN
+	RESPONSE #100
+		CreateCreature("AC#WLIL3",[3263.895],10)  // Lillend
+		SetGlobal("ShowWayBack","AC#W30",2)
+END
+
+IF
+	Global("ShowWayBack","AC#W30",3)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		FadeToColor([10.0],0)
+		SetGlobal("ShowWayBack","AC#W30",4)
+		Wait(2)
+		ActionOverride(Player1,JumpToPoint([2692.1604]))
+		ActionOverride(Player2,JumpToPoint([2692.1604]))
+		ActionOverride(Player3,JumpToPoint([2692.1604]))
+		ActionOverride(Player4,JumpToPoint([2692.1604]))
+		ActionOverride(Player5,JumpToPoint([2692.1604]))
+		ActionOverride(Player6,JumpToPoint([2692.1604]))
+		Wait(1)
+		MoveViewObject(Player1,INSTANT)
+		FadeFromColor([20.0],0)
+		Wait(1)
+		EndCutSceneMode()
+END
+
+IF
+	Global("ModronDoorOpens","AC#W30",20)
+THEN
+	RESPONSE #100
+		SetGlobal("ModronDoorOpens","AC#W30",21)
+		AmbientActivate("Modron_light_red",FALSE)
+		AmbientActivate("Modron_light_blue",FALSE)
+		AmbientActivate("Modron_light_green",FALSE)
+		AmbientActivate("Modron_light_red",TRUE)
+		OpenDoor("Door03")
+		AddexperienceParty(29750)
+END
+
+IF
+	GlobalGT("AC#WGildaarAbyss","GLOBAL",0)
+	Global("GildaarSpawn","AC#W30",1)
+	DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		CreateCreatureObjectEffect("GHAST01","SPRAISED",Player1)  // Ghast
+		CreateCreatureObjectEffect("GHAST01","SPRAISED",Player2)  // Ghast
+		CreateCreatureObjectEffect("GHAST01","SPRAISED",Player3)  // Ghast
+		CreateCreatureObjectEffect("GHAST01","SPRAISED",Player4)  // Ghast
+		CreateCreatureObjectEffect("GHAST01","SPRAISED",Player5)  // Ghast
+		CreateCreatureObjectEffect("GHAST01","SPRAISED",Player6)  // Ghast
+		SetGlobal("GildaarSpawn","AC#W30",2)
+END
+
+IF
+	Global("AC#W_BaatezuJob","GLOBAL",10)
+	Global("GildaarSpawn","AC#W30",0)
+THEN
+	RESPONSE #100
+		CreateCreature("AC#WGIL2",[4141.848],3)  // Gildaar
+		CreateCreature("AC#W30V1",[4167.843],2)  // Demidicus
+		CreateCreature("AC#W30V2",[4314.717],2)  // Zabrina
+		SetGlobal("GildaarSpawn","AC#W30",1)
+END
+
+IF
+	Global("Squirrel","AC#W30",0)
+	PartyRested()
+THEN
+	RESPONSE #100
+		CreateCreatureObjectOffset("AC#W30SQ",Player1,[80.80])  // Filibert Wippelschwanz
+		SetGlobal("Squirrel","AC#W30",1)
+		ClearAllActions()
+		SmallWait(5)
+		StartCutSceneMode()
+		MoveViewObject("AC#W30SQ",INSTANT)  // Filibert Wippelschwanz
+		ActionOverride("AC#W30SQ",VerbalConstant(Myself,DAMAGE))
+		ActionOverride("AC#W30SQ",MoveToObject(Player1))
+		Wait(4)
+		EndCutSceneMode()
+		SetRestEncounterProbabilityDay(8)
+		SetRestEncounterProbabilityNight(8)
+		ActionOverride("AC#W30SQ",Dialogue([PC]))
+END
+
+IF
+	Global("RivenWraithSpawn","AC#W30",0)
+THEN
+	RESPONSE #100
+		CreateCreature("WRAITH01",[1010.345],3)  // Wraith
+		SetGlobal("RivenWraithSpawn","AC#W30",1)
+END
+
+IF
+    Global("HezrouSpawn","AC#W30",0)
+	DifficultyGT(EASIEST)
+THEN
+    RESPONSE #100
+        CreateCreature("AC#WHEZ1",[4253.764],SWW)  // Hezrou
+        SetGlobal("HezrouSpawn","AC#W30",1)
+END
+
+IF
+    Global("MezzoSpawn","AC#W30",0)
+    DifficultyGT(EASIEST)
+THEN
+    RESPONSE #100
+        CreateCreature("AC#WMEZ1",[2661.849],SW)  // Mezzoloth
+        SetGlobal("MezzoSpawn","AC#W30",1)
+END
+
+IF
+    Global("MezzoSpawn","AC#W30",1)
+	NumInPartyGT(1)
+	OR(2)
+		LevelPartyGT(13)
+    	DifficultyGT(NORMAL)
+THEN
+    RESPONSE #100
+        CreateCreature("AC#WMEZ1",[2469.777],S)  // Mezzoloth
+        SetGlobal("MezzoSpawn","AC#W30",2)
+END
+
+IF
+	OR(3)
+		Exists("AC#WWAU3")  // Waukeen
+		Exists("AC#WLIL1")  // Lillend
+		Exists("AC#WLIL2")  // Lillend
+	Global("StaircaseAftermath","AC#W30",10)
+THEN
+	RESPONSE #100
+		ActionOverride("AC#WWAU3",DestroySelf())
+		ActionOverride("AC#WLIL1",DestroySelf())
+		ActionOverride("AC#WLIL2",DestroySelf())
+END
+
+IF
+	Global("XagYaSpawn","AC#W30",0)
+	OR(2)
+		LevelGT(Player1,12)
+		DifficultyGT(NORMAL)
+THEN
+	RESPONSE #100
+		CreateCreature("AC#WXAY1",[852.2039],SWW)  // Xag-Ya
+		SetGlobal("XagYaSpawn","AC#W30",1)
+END
+
+IF
+	Global("AC#W_SeluniteQuest","GLOBAL",2)
+	PartyHasItem("AC#W30PO")
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SeluniteQuest","GLOBAL",3)
+		EraseJournalEntry(@190000)
+		AddJournalEntry(@190001,QUEST)
+END
+

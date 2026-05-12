@@ -1,0 +1,12 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		SmallWait(4)
+		ForceSpellRES("AC#W44S","AC#WGIL4")  // Silence
+		Wait(1)
+		SetGlobal("Gildaar_Silence","AC#W44",2)
+		ActionOverride("AC#WGIL4",StartDialogueNoSet([PC]))
+END
+

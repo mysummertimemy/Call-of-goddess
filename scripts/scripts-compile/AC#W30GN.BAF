@@ -1,0 +1,9 @@
+IF
+	Global("GnomeAppears","AC#W30",0)
+THEN
+	RESPONSE #100
+		SetGlobal("GnomeAppears","AC#W30",1)
+		PlayDead(3)
+		StartDialogNoSet([PC])
+END
+

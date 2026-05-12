@@ -1,0 +1,7 @@
+IF
+	GlobalGT("Margrog_Leaves","AC#W40",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

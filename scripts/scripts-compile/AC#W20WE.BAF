@@ -1,0 +1,48 @@
+IF
+	See([PC])
+	Range([PC],15)
+	Global("Wizard_Eye","AC#W30",0)
+	OR(2)
+		LevelGT(Player1,11)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("Wizard_Eye","AC#W30",1)
+		Wait(1)
+		DisplayStringHead(Myself,@30001)  // Attention, <PRO_HESHE> is coming! Get ready!
+		ActionOverride("AC#W20M1",ReallyForceSpell(Myself,WIZARD_STONE_SKIN))  // SPWI408.SPL (Stoneskin)
+		ActionOverride("AC#W20M1",ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE))  // SPWI212.SPL (Mirror Image)
+		ActionOverride("AC#W20M1",ApplySpell(Myself,WIZARD_SPELL_SHIELD))  // SPWI519.SPL (Spell Shield)
+		ActionOverride("AC#W20M1",ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION))  // SPWI590.SPL (Immunity: Abjuration)
+		ActionOverride("AC#W20M2",ReallyForceSpell(Myself,WIZARD_STONE_SKIN))  // SPWI408.SPL (Stoneskin)
+		ActionOverride("AC#W20M2",ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE))  // SPWI212.SPL (Mirror Image)
+		ActionOverride("AC#W20M2",ReallyForceSpell(Myself,WIZARD_RESIST_FEAR))  // SPWI210.SPL (Resist Fear)
+		ActionOverride("AC#W20M3",ReallyForceSpell(Myself,WIZARD_STONE_SKIN))  // SPWI408.SPL (Stoneskin)
+		ActionOverride("AC#W20M3",ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE))  // SPWI212.SPL (Mirror Image)
+		SetGlobalTimer("KayurPrep","AC#W30",ONE_TURN)
+		Wait(1)
+		CreateVisualEffectObject("SPFLESHS",Myself)
+		DestroySelf()
+END
+
+IF
+	See([PC])
+	Range([PC],15)
+	Global("Wizard_Eye","AC#W30",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Wizard_Eye","AC#W30",1)
+		Wait(1)
+		DisplayStringHead(Myself,@30001)  // Attention, <PRO_HESHE> is coming! Get ready!
+		ActionOverride("AC#W20M1",ReallyForceSpell(Myself,WIZARD_STONE_SKIN))  // SPWI408.SPL (Stoneskin)
+		ActionOverride("AC#W20M1",ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE))  // SPWI212.SPL (Mirror Image)
+		ActionOverride("AC#W20M2",ReallyForceSpell(Myself,WIZARD_STONE_SKIN))  // SPWI408.SPL (Stoneskin)
+		ActionOverride("AC#W20M2",ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE))  // SPWI212.SPL (Mirror Image)
+		ActionOverride("AC#W20M3",ReallyForceSpell(Myself,WIZARD_STONE_SKIN))  // SPWI408.SPL (Stoneskin)
+		ActionOverride("AC#W20M3",ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE))  // SPWI212.SPL (Mirror Image)
+		SetGlobalTimer("KayurPrep","AC#W30",ONE_TURN)
+		Wait(1)
+		CreateVisualEffectObject("SPFLESHS",Myself)
+		DestroySelf()
+END
+

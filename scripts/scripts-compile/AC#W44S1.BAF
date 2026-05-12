@@ -1,0 +1,21 @@
+IF
+	OnCreation()
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPFLESHS",Myself)
+END
+
+IF
+	Dead("AC#WGIL4")  // Gildaar
+THEN
+	RESPONSE #100
+		EscapeArea()
+END
+
+IF
+	See("AC#WGIL4")  // Gildaar
+THEN
+	RESPONSE #100
+		Attack("AC#WGIL4")  // Gildaar
+END
+

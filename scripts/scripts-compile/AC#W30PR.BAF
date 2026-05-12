@@ -1,0 +1,15 @@
+IF
+	OR(2)
+		IsOverMe([PC])
+		Entered([PC])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		ReallyForceSpellRES("AC#W30C",LastTrigger)  // Comet
+		Wait(2)
+		SmallWait(15)
+		CreateCreatureObject("AC#W30GN",LastTrigger,0,0,0)  // Wilbur Iparos
+		ScreenShake([5.5],5)
+		TriggerActivation("Rocket_trap",FALSE)
+END
+

@@ -1,0 +1,150 @@
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	Global("Invisible","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Invisible","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		SetGlobalTimer("InvisibilityTimer","LOCALS",TEN_ROUNDS)
+		ReallyForceSpell(Myself,WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Improved Invisibility)
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[-7.-7])  // Ghoul
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[7.-7])  // Ghoul
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[-7.7])  // Ghoul
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[7.7])  // Ghoul
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+	!StateCheck(Myself,STATE_BLUR)
+	Global("Blur","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Blur","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		ReallyForceSpell(Myself,WIZARD_BLUR)  // SPWI201.SPL (Blur)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	OR(2)
+		See([CONTROLLED])
+		NumDeadGT("AC#W50G1",3)  // Ghoul
+	DifficultyGT(NORMAL)
+	Global("SummonGhouls","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SummonGhouls","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		DisplayString(Myself,12073)  // Animate Dead
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[-7.-7])  // Ghoul
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[7.-7])  // Ghoul
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[-7.7])  // Ghoul
+		CreateCreatureObjectOffset("AC#W50G1",Myself,[7.7])  // Ghoul
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	OR(2)
+		See([CONTROLLED])
+		NumDeadGT("AC#W50G1",3)  // Ghoul
+	Difficulty(EASY)
+	Global("Gate_Manes","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Gate_Manes","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		DisplayString(Myself,14260)  // Gate
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	OR(2)
+		See([CONTROLLED])
+		NumDeadGT("AC#W50G1",3)  // Ghoul
+	Difficulty(NORMAL)
+	Global("Gate_Manes","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Gate_Manes","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		DisplayString(Myself,14260)  // Gate
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	OR(2)
+		See([CONTROLLED])
+		NumDeadGT("AC#W50G1",3)  // Ghoul
+	DifficultyGT(NORMAL)
+	Global("Gate_Manes","LOCALS",0)
+	Global("SummonGhouls","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Gate_Manes","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		DisplayString(Myself,14260)  // Gate
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+		CreateCreatureObjectEffect("AC#W50MN","SPSPEV",Myself)  // Mane
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	Global("HoldPerson","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("HoldPerson","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		ReallyForceSpell(NearestEnemyOf(Myself),CLERIC_HOLD_PERSON)  // SPPR208.SPL (Hold Person)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	RandomNum(3,1)
+	GlobalLT("Fear_Aura","LOCALS",3)
+THEN
+	RESPONSE #100
+		IncrementGlobal("Fear_Aura","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		ReallyForceSpell(Myself,CLERIC_CLOAK_OF_FEAR)  // SPPR416.SPL (Cloak of Fear)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!See([EVILCUTOFF])
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	GlobalTimerExpired("InvisibilityTimer","LOCALS")
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

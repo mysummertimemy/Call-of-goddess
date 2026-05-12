@@ -1,0 +1,17 @@
+IF
+	Global("EnteredArea","AC#W19",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredArea","AC#W19",1)
+		StartMovie("AC#W#19")
+END
+
+IF
+	GlobalGT("AC#W_SeluniteQuest","GLOBAL",0)	
+	Global("RevealElandra","AC#W19",0)
+THEN
+	RESPONSE #100
+		AddMapNote([2010.2148],@3009)  
+		SetGlobal("RevealElandra","AC#W19",1)
+END
+

@@ -1,0 +1,119 @@
+IF
+	Allegiance(Myself,ENEMY)
+	HaveSpell(WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See("AC#W4WGF")  // Grimwald Gorefist
+	!StateCheck(LastSeenBy(Myself),STATE_HASTED)
+	HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
+	OR(2)
+		Global("Behaviour","LOCALS",0)
+		Global("Behaviour","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("Behaviour","LOCALS",1)
+		Spell(LastSeenBy(Myself),WIZARD_HASTE)  // SPWI305.SPL (Haste)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	DifficultyGT(EASY)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	HaveSpell(WIZARD_SLOW)  // SPWI312.SPL (Slow)
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		SetGlobalTimer("BD_Cast","LOCALS",ONE_ROUND)
+		SetGlobalTimer("BD_Slow","LOCALS",THREE_ROUNDS)
+		Spell(NearestEnemyOf(Myself),WIZARD_SLOW)  // SPWI312.SPL (Slow)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_EMOTION_HOPELESSNESS)  // SPWI411.SPL (Emotion: Hopelessness)
+	!HasBounceEffects(LastSeenBy(Myself))
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_EMOTION_HOPELESSNESS)  // SPWI411.SPL (Emotion: Hopelessness)
+END
+
+IF
+	HaveSpell(WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+	Detect([PC.0.0.MAGE])
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+END
+
+IF
+	HaveSpell(WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+	Detect([PC.0.0.CLERIC_MAGE])
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+END
+
+IF
+	HaveSpell(WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+	Detect([PC.0.0.CLERIC])
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SHADOW_DOOR)  // SPWI505.SPL (Shadow Door)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_SHADOW_DOOR)  // SPWI505.SPL (Shadow Door)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	Detect([PC.0.0.MAGE])
+	Allegiance(Myself,ENEMY)
+	!HasBounceEffects(LastSeenBy(Myself))
+	HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

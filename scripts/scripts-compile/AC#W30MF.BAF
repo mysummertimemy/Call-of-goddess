@@ -1,0 +1,16 @@
+IF
+	GlobalGT("AC#W_BaatezuJob","GLOBAL",0)
+	GlobalLT("AC#W_BaatezuJob","GLOBAL",10)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+IF
+	GlobalGT("StaircaseAftermath","AC#W30",0)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+
+

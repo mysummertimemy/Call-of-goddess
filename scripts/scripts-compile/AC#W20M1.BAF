@@ -1,0 +1,437 @@
+IF
+	Range([PC],14)
+	NumberOfTimesTalkedTo(0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet([PC])
+END
+
+IF
+	!See([ENEMY])
+	CombatCounter(0)
+	GlobalTimerExpired("KayurPrep","AC#W30")
+	Global("Prep","LOCALS",0)
+	OR(2)
+		LevelGT(Player1,11)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("Prep","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+		ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+		ApplySpell(Myself,WIZARD_SPELL_SHIELD)  // SPWI519.SPL (Spell Shield)
+		ApplySpell(Myself,WIZARD_SPELL_IMMUNITY_ABJURATION)  // SPWI590.SPL (Immunity: Abjuration)
+END
+
+IF
+	!See([ENEMY])
+	CombatCounter(0)
+	GlobalTimerExpired("KayurPrep","AC#W30")
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Prep","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+		ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	Allegiance(Myself,NEUTRAL)
+	Detect([PC])
+	!See(LastSeenBy(Myself))
+	Global("UseRobe","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("UseRobe","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_TRUE_SIGHT)  // SPWI609.SPL (True Sight)
+END
+
+IF
+	See(SixthNearestEnemyOf(Myself))
+	Global("SpawnAid","LOCALS",0)
+	OR(2)
+		LevelGT(Player1,10)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnAid","LOCALS",1)
+		ReallyForceSpell(SixthNearestEnemyOf(Myself),WIZARD_SUMMON_EFREET)  // SPWI717.SPL (Summon Efreeti)
+END
+
+IF
+	See(FifthNearestEnemyOf(Myself))
+	Global("SpawnAid","LOCALS",0)
+	OR(2)
+		LevelGT(Player1,10)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnAid","LOCALS",1)
+		ReallyForceSpell(FifthNearestEnemyOf(Myself),WIZARD_SUMMON_EFREET)  // SPWI717.SPL (Summon Efreeti)
+END
+
+IF
+	See(ThirdNearestEnemyOf(Myself))
+	Global("SpawnAid","LOCALS",0)
+	OR(2)
+		LevelGT(Player1,10)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnAid","LOCALS",1)
+		ReallyForceSpell(ThirdNearestEnemyOf(Myself),WIZARD_SUMMON_EFREET)  // SPWI717.SPL (Summon Efreeti)
+END
+
+IF
+	See(SecondNearestEnemyOf(Myself))
+	Global("SpawnAid","LOCALS",0)
+	OR(2)
+		LevelGT(Player1,10)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnAid","LOCALS",1)
+		ReallyForceSpell(SecondNearestEnemyOf(Myself),WIZARD_SUMMON_EFREET)  // SPWI717.SPL (Summon Efreeti)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("SpawnAid","LOCALS",0)
+	OR(2)
+		LevelGT(Player1,10)
+		DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnAid","LOCALS",1)
+		ReallyForceSpell(NearestEnemyOf(Myself),WIZARD_SUMMON_EFREET)  // SPWI717.SPL (Summon Efreeti)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	DifficultyGT(EASY)
+	TookDamage()
+	Global("Preparation2","LOCALS",0)
+	!StateCheck(Myself,STATE_REALLY_DEAD)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,43050)  // Chain Contingency—Improved Mantle
+		ApplySpell(Myself,WIZARD_IMPROVED_MANTLE)  // SPWI808.SPL (Improved Mantle)
+		DisplayString(Myself,40240)  // Chain Contingency—Mislead
+		ApplySpell(Myself,WIZARD_MISLEAD)  // SPWI607.SPL (Mislead)
+		SetGlobal("Preparation2","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_PRISMATIC_SPRAY)  // SPWI714.SPL (Prismatic Spray)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_PRISMATIC_SPRAY)  // SPWI714.SPL (Prismatic Spray)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+	TookDamage()
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MINOR_GLOBE_OF_INVULNERABILITY)  // SPWI406.SPL (Minor Globe of Invulnerability)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MINOR_GLOBE_OF_INVULNERABILITY)  // SPWI406.SPL (Minor Globe of Invulnerability)
+		SetGlobal("KayurGlobe","AC#W30",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See(Player6Fill)
+	!Range(LastSeenBy(Myself),8)
+	HaveSpell(WIZARD_DIMENSION_DOOR)  // SPWI402.SPL (Dimension Door)
+	Global("Door","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Door","LOCALS",1)
+		Spell(LastSeenBy(Myself),WIZARD_DIMENSION_DOOR)  // SPWI402.SPL (Dimension Door)
+END
+
+IF
+	HaveSpell(WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+	Detect([PC.0.0.MAGE])
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+END
+
+IF
+	HaveSpell(WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+	Detect([PC.0.0.CLERIC_MAGE])
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+END
+
+IF
+	HaveSpell(WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+	Detect([PC.0.0.CLERIC])
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_POWER_WORD_SILENCE)  // SPWI612.SPL (Power Word, Silence)
+END
+
+IF
+	See(Player6Fill)
+	Allegiance(Myself,ENEMY)
+	HaveSpell(WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+	Global("Behavior","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",1)
+		Spell(LastSeenBy(Myself),WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+END
+
+IF
+	See(Player5Fill)
+	Allegiance(Myself,ENEMY)
+	HaveSpell(WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+	Global("Behavior","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",1)
+		Spell(LastSeenBy(Myself),WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+END
+
+IF
+	See(Player4Fill)
+	Allegiance(Myself,ENEMY)
+	HaveSpell(WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+	Global("Behavior","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",1)
+		Spell(LastSeenBy(Myself),WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+END
+
+IF
+	See(Player3Fill)
+	Allegiance(Myself,ENEMY)
+	HaveSpell(WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+	Global("Behavior","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",1)
+		Spell(LastSeenBy(Myself),WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+	Global("Behavior","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",1)
+		Spell(NearestEnemyOf(Myself),WIZARD_MONSTER_SUMMONING_3)  // SPWI504.SPL (Monster Summoning III)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SHADOW_DOOR)  // SPWI505.SPL (Shadow Door)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_SHADOW_DOOR)  // SPWI505.SPL (Shadow Door)
+END
+
+IF
+	See(Player6Fill)
+	DifficultyGT(EASY)
+	Allegiance(Myself,ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	See(Player5Fill)
+	DifficultyGT(EASY)
+	Allegiance(Myself,ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	See(Player4Fill)
+	DifficultyGT(EASY)
+	Allegiance(Myself,ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	See(Player3Fill)
+	DifficultyGT(EASY)
+	Allegiance(Myself,ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	See(Player2Fill)
+	DifficultyGT(EASY)
+	Allegiance(Myself,ENEMY)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_AGANNAZAR_SCORCHER)  // SPWI217.SPL (Agannazar's Scorcher)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_AGANNAZAR_SCORCHER)  // SPWI217.SPL (Agannazar's Scorcher)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	DifficultyGT(EASY)
+	HaveSpell(WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_HOLD_PERSON)  // SPWI306.SPL (Hold Person)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+	Global("Behavior","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",2)
+		Spell(NearestEnemyOf(Myself),WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Haste)
+	Global("Behavior","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",3)
+		Spell(Myself,WIZARD_HASTE)  // SPWI305.SPL (Haste)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+	Global("Behavior","LOCALS",3)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",4)
+		Spell(NearestEnemyOf(Myself),WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+	Global("Behavior","LOCALS",4)
+THEN
+	RESPONSE #100
+		SetGlobal("Behavior","LOCALS",5)
+		Spell(NearestEnemyOf(Myself),WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+	!Range(NearestEnemyOf(Myself),6)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+	!Range(NearestEnemyOf(Myself),4)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CONE_OF_COLD)  // SPWI503.SPL (Cone of Cold)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_LIGHTNING_BOLT)  // SPWI308.SPL (Lightning Bolt)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_AGANNAZAR_SCORCHER)  // SPWI217.SPL (Agannazar's Scorcher)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_AGANNAZAR_SCORCHER)  // SPWI217.SPL (Agannazar's Scorcher)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CHAOS)  // SPWI508.SPL (Chaos)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CHAOS)  // SPWI508.SPL (Chaos)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)  // SPWI112.SPL (Magic Missile)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

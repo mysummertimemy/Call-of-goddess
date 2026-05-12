@@ -1,0 +1,9 @@
+IF
+	See(NearestEnemyOf(Myself))
+	!Range(NearestEnemyOf(Myself),7)
+THEN
+	RESPONSE #100
+		ForceSpellRES("AC#W40T",NearestEnemyOf(Myself))  // Teleport Without Error
+		CreateVisualEffectObject("SPFLESHS",Myself)
+END
+

@@ -1,0 +1,26 @@
+IF
+	Global("Tree_Cowards_courage","AC#W50",1)
+	CheckSpellState(Myself,RESIST_FEAR)
+	See([PC])
+THEN
+	RESPONSE #100
+		Wait(1)
+		SetGlobal("Tree_Cowards_courage","AC#W50",2)
+		StartDialogNoSet([GOODCUTOFF])
+END
+
+IF
+	Global("Tree_Cowards_courage","AC#W50",1)
+	OR(4)
+		SpellCastPriest([PC],CLERIC_REMOVE_FEAR)  // SPPR108.SPL (Remove Fear)
+		SpellCastInnate([PC],CAVALIER_REMOVE_FEAR)  // SPCL222.SPL (Remove Fear)
+		SpellCastInnate([PC],INVOKE_COURAGE)  // SPIN676.SPL (Invoke Courage)
+		SpellCast([PC],WIZARD_RESIST_FEAR)  // SPWI210.SPL (Resist Fear)
+	See(LastTrigger)
+THEN
+	RESPONSE #100
+		Wait(1)
+		SetGlobal("Tree_Cowards_courage","AC#W50",2)
+		StartDialogNoSet([GOODCUTOFF])
+END
+

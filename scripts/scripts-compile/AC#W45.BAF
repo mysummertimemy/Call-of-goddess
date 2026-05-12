@@ -1,0 +1,9 @@
+IF
+	Global("AC#W_Ormad_Quest","GLOBAL",3)
+	Global("CreateContract","AC#W45",0)
+	Dead("AC#W#NH1") // Zhelamiss, Night hag
+THEN
+	RESPONSE #100
+		SetGlobal("CreateContract","AC#W45",1)
+		ActionOverride("Container1",CreateItem("AC#WORM1",0,0,0))  // Zhelamiss' contract
+END

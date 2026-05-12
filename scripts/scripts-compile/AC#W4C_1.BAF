@@ -1,0 +1,24 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("AC#W4CBB")  // Kampfrichter
+		ClearAllActions()
+		FadeToColor([20.0],0)
+		Wait(1)
+		ActionOverride(Player1,JumpToPoint([718.523]))
+		ActionOverride(Player2,JumpToPoint([673.507]))
+		ActionOverride(Player3,JumpToPoint([756.518]))
+		ActionOverride(Player4,JumpToPoint([735.538]))
+		ActionOverride(Player5,JumpToPoint([748.561]))
+		ActionOverride(Player6,JumpToPoint([732.610]))
+		Wait(1)
+		FadeFromColor([20.0],0)
+		Wait(1)
+		CreateVisualEffectObject("SPDIMNDR",Myself)
+		Wait(1)
+		IncrementGlobal("AC#W4C_Pit_fight","GLOBAL",1)
+		EndCutSceneMode()
+		DestroySelf()
+END
+

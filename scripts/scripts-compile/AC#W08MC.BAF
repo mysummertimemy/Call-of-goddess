@@ -1,0 +1,17 @@
+IF
+	NumTimesTalkedTo(0)
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+IF
+	Global("PlantedPepper","AC#W08",4)
+	!See("AC#W08NB")  // Fürst Jessel
+	See([PC])
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+

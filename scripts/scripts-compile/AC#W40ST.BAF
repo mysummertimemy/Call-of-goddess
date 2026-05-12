@@ -1,0 +1,24 @@
+IF
+	IsOverMe([PC])
+	Global("SpawnGildaar","AC#W40",0)
+	Global("AC#WGildaarAbyss","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnGildaar","AC#W40",1)
+		CreateCreatureObjectOffset("AC#WGIL3",Player1,[10.10])  // Gildaar
+		CreateCreatureObjectOffset("AC#WALU6",Player1,[12.12])  // Lanzengarde
+		CreateCreatureObjectOffset("AC#WALU7",Player1,[14.14])  // Lanzengarde
+END
+
+IF
+	OR(3)
+		IsOverMe([PC.0.0.CLERIC_ALL])
+		IsOverMe([PC.0.0.DRUID_ALL])
+		IsOverMe([PC.0.0.FIGHTER_DRUID])
+	Global("SpawnClericWarning","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnClericWarning","AC#W40",1)
+		CreateCreatureOffScreen("AC#W40SW",0)  // Tiefling
+END
+

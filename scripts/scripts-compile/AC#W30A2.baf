@@ -1,0 +1,6 @@
+IF
+	GlobalGT("AC#W_BaatezuJob","GLOBAL",9)
+THEN
+	RESPONSE #100
+        EscapeArea()
+END

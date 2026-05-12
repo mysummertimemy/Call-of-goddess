@@ -1,0 +1,63 @@
+IF
+    See(NearestEnemyOf(Myself))
+    Global("Prep","LOCALS",0)
+THEN
+    RESPONSE #100
+        ApplySpell(Myself,CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Tote beleben)
+        ApplySpell(Myself,CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Tote beleben)
+        ApplySpell(Myself,CLERIC_ANIMATE_DEAD)  // SPPR301.SPL (Tote beleben)
+        SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    See(SecondNearest([GOODCUTOFF]))
+    DifficultyGT(EASIEST)
+    Global("Summon_mezzo","LOCALS",0)
+THEN
+    RESPONSE #100
+        SetGlobal("Summon_mezzo","LOCALS",1)
+        CreateCreatureObjectEffect("AC#WMEZ4","SPSPEV",LastSeenBy(Myself))  // Mezzoloth
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+    See(ThirdNearest([GOODCUTOFF]))
+    Global("Summon_mezzo","LOCALS",1)
+    OR(2)
+        DifficultyGT(EASY)
+        LevelPartyGT(12)
+THEN
+    RESPONSE #100
+        SetGlobal("Summon_mezzo","LOCALS",2)
+        CreateCreatureObjectEffect("AC#WMEZ4","SPSPEV",LastSeenBy(Myself))  // Mezzoloth
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipMostDamagingMelee()
+        AttackReevaluate(NearestEnemyOf(Myself),35)
+    RESPONSE #30
+        ForceSpell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)  // SPWI104.SPL (Personen bezaubern)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipMostDamagingMelee()
+        AttackReevaluate(NearestEnemyOf(Myself),35)
+    RESPONSE #30
+        ForceSpell(LastSeenBy(Myself),WIZARD_CONTAGION)  // SPWI409.SPL (Ansteckung)
+END
+
+IF
+    See(NearestEnemyOf(Myself))
+THEN
+    RESPONSE #100
+        EquipMostDamagingMelee()
+        AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+

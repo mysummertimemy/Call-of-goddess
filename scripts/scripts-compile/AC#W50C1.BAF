@@ -1,0 +1,28 @@
+IF
+	Clicked([ANYONE])
+	Global("Cowards","AC#W50",0)
+	Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		SetGlobal("Cowards","AC#W50",1)
+		CreateCreatureImpassableAllowOverlap("AC#W50C1",[1893.641],S)  // Tree of cowards
+		ActionOverride("AC#W50C1",StartDialogueNoSet([PC]))
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,12)
+	Global("Cowards","AC#W50",1)
+THEN
+	RESPONSE #100
+		ActionOverride("AC#W50C1",StartDialogueNoSet([PC]))
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,12)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // You are too far away to use that.
+END
+

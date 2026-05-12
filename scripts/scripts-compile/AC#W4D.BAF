@@ -1,0 +1,18 @@
+IF
+	Global("AC#W_FoolsLaughter","GLOBAL",2)
+THEN
+	RESPONSE #100
+		CreateCreature("AC#W4DDR",[483.341],2)  // Dretch
+		SetGlobal("AC#W_FoolsLaughter","GLOBAL",3)
+END
+
+IF
+	PartyHasItem("AC#WBOFO")  // Die Flasche mit dem Lachen eines Narren
+	Global("AC#W_FoolsLaughter","GLOBAL",3)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@400600)  
+		AddJournalEntry(@400601,QUEST)  
+		SetGlobal("AC#W_FoolsLaughter","GLOBAL",10)
+END
+

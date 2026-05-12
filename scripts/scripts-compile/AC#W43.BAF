@@ -1,0 +1,35 @@
+IF
+	Global("Entered","AC#W43",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Entered","AC#W43",1)
+		TriggerActivation("Trigger_Hand",FALSE)
+END
+
+IF
+	Global("Entered","AC#W43",1)
+	OR(2)
+		PartyHasItem("AC#WGBRI")
+		Global("AC#W_OrmadGlabrezu","GLOBAL",2)
+	Dead("AC#BGUR1")
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("Entered","AC#W43",10)
+		TriggerActivation("Trigger_Hand",TRUE)
+		ActionOverride("Trigger_Hand",DisplayString(Myself,@43002)) 
+END
+
+IF
+	Global("Bloody_Hand","AC#W43",2)
+THEN
+	RESPONSE #100
+		Wait(1)
+		SetGlobal("Bloody_Hand","AC#W43",10)
+		TriggerActivation("Trigger_Hand",FALSE)
+		OpenDoor("Door01")
+		AddExperienceParty(500)
+		EraseJournalEntry(@410101)
+		AddJournalEntry(@410102,QUEST)
+END
+

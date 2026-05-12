@@ -1,0 +1,130 @@
+IF
+	See(NearestEnemyOf(Myself))
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+		ApplySpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI408.SPL (Stoneskin)
+		SetGlobal("Prep","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+	OR(2)
+		TookDamage()
+		CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Stoneskin)
+		Continue()
+END
+
+IF
+	HPPercentLT(Myself,50)
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	HasItem("POTN52",Myself)  // Potion of Extra Healing
+THEN
+	RESPONSE #100
+		SetGlobalTimer("DrankPotionTimer","LOCALS",ONE_ROUND)
+		DisplayStringHead(Myself,46150)  // *quaffs a potion*
+		UseItem("POTN52",Myself)  // Potion of Extra Healing
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	!See([GOODCUTOFF])
+	Detect([GOODCUTOFF])
+	HaveSpell(WIZARD_DETECT_INVISIBILITY)  // SPWI203.SPL (Detect Invisibility)
+	OR(2)
+		SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_INVISIBILITY)  // SPWI206.SPL (Invisibility)
+		SpellCast(NearestEnemyOfType([0.0.0.MAGE_ALL]),WIZARD_IMPROVED_INVISIBILITY)  // SPWI405.SPL (Improved Invisibility)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_DETECT_INVISIBILITY)  // SPWI203.SPL (Detect Invisibility)
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+	!Range(NearestEnemyOf(Myself),6)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	HasItem("POTN10",Myself)  // Potion of Invisibility
+THEN
+	RESPONSE #100
+		SetGlobalTimer("DrankPotionTimer","LOCALS",ONE_ROUND)
+		UseItem("POTN10",Myself)  // Potion of Invisibility
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+THEN
+	RESPONSE #100
+		Spell(LastSeenBy(Myself),WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_ANIMATE_DEAD)  // SPWI501.SPL (Animate Dead)
+THEN
+	RESPONSE #50
+		Spell(LastSeenBy(Myself),WIZARD_ANIMATE_DEAD)  // SPWI501.SPL (Animate Dead)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_REMOVE_MAGIC)  // SPWI302.SPL (Remove Magic)
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Mirror Image)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Allegiance(Myself,ENEMY)
+	!GlobalTimerNotExpired("DrankPotionTimer","LOCALS")
+	HasItem("POTN14",Myself)  // Oil of Speed
+	!HaveSpell(WIZARD_FIREBALL)  // SPWI304.SPL (Fireball)
+	!HaveSpell(WIZARD_CLOUDKILL)  // SPWI502.SPL (Cloudkill)
+	!HaveSpell(WIZARD_ANIMATE_DEAD)  // SPWI501.SPL (Animate Dead)
+THEN
+	RESPONSE #100
+		UseItem("POTN14",Myself)  // Oil of Speed
+		SetGlobalTimer("DrankPotionTimer","LOCALS",ONE_ROUND)
+END
+
+IF
+	AttackedBy([GOODCUTOFF],DEFAULT)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Enemy()
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),12)
+END
+

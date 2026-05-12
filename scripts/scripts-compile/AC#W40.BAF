@@ -1,0 +1,503 @@
+IF
+	Global("EnteredArea","AC#W40",0)
+THEN
+	RESPONSE #100
+		FadeToColor([0.0],0)
+		SetGlobal("EnteredArea","AC#W40",1)
+		StartMovie("ac#w#40")
+		FadeFromColor([30.0],0)
+		AddJournalEntry(@400000,QUEST)
+		AmbientActivate("Portal_ac#w61",FALSE)
+		SoundActivate("Portal_bloodwar",FALSE)
+		TriggerActivation("TrAC#W61",FALSE)
+		TriggerActivation("TrAC#W50",FALSE)
+		OpenDoor("Door02")
+		CreateCreature("AC#WRUT1",[2711.879],S)  // Rutterkin
+        CreateCreature("AC#WRUT1",[2074.2049],N)  // Rutterkin
+        CreateCreature("AC#WRUT1",[1717.370],E)  // Rutterkin
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("City_Angry","AC#W40",0)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		FadeToColor([0.0],0)
+		BanterBlockTime(600)
+		MoveGlobalObject("acwauke1",Player1)  // Waukeen
+		Wait(1)
+		TriggerActivation("TrAC#W43",FALSE)
+		TriggerActivation("TrAC#W41",FALSE)
+		TriggerActivation("TrAC#W42",FALSE)
+		TriggerActivation("TrAC#W45",FALSE)
+		TriggerActivation("TrAC#W46",FALSE)
+		TriggerActivation("TrAC#W47",FALSE)
+		TriggerActivation("TrAC#W50",FALSE)
+		TriggerActivation("TrAC#W4b",FALSE)
+		TriggerActivation("TrAC#W49",FALSE)
+		TriggerActivation("TrAC#W4A",FALSE)
+		TriggerActivation("TrAC#W4D",FALSE)
+		TriggerActivation("TrAC#W4S",FALSE)
+		TriggerActivation("TrAC#W4W",FALSE)
+		TriggerActivation("TrAC#W4A",FALSE)
+		TriggerActivation("TrAC#W70",FALSE)
+		TriggerActivation("Fieryoven_grazzt",FALSE)
+		TriggerActivation("FieryOven05",FALSE)
+		TriggerActivation("FieryOven04",FALSE)
+		TriggerActivation("FieryOven03",FALSE)
+		TriggerActivation("FieryOven02",FALSE)
+		EraseJournalEntry(@400500)  // What's wrong with my spells? Some mage spells don't seem to be working properly in the Abyss. I'll have to find someone in Samora who is familiar with it.
+		SetGlobal("City_Angry","AC#W40",1)
+		SetMusic(COMBAT_NORMAL,Neera2)
+		FadeFromColor([30.0],0)
+		CreateCreature("AC#W40M2",[563.537],NW)  // Mefisto
+		Wait(1)
+		ActionOverride("AC#W40M2",StartDialogueNoSet([PC]))
+END
+
+IF
+	GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+	Global("City_Angry","AC#W40",0)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		BanterBlockTime(600)
+		TriggerActivation("TrAC#W43",FALSE)
+		TriggerActivation("TrAC#W41",FALSE)
+		TriggerActivation("TrAC#W42",FALSE)
+		TriggerActivation("TrAC#W45",FALSE)
+		TriggerActivation("TrAC#W46",FALSE)
+		TriggerActivation("TrAC#W47",FALSE)
+		TriggerActivation("TrAC#W50",FALSE)
+		TriggerActivation("TrAC#W4b",FALSE)
+		TriggerActivation("TrAC#W49",FALSE)
+		TriggerActivation("TrAC#W4A",FALSE)
+		TriggerActivation("TrAC#W4D",FALSE)
+		TriggerActivation("TrAC#W4S",FALSE)
+		TriggerActivation("TrAC#W4W",FALSE)
+		TriggerActivation("TrAC#W4A",FALSE)
+		TriggerActivation("TrAC#W70",FALSE)
+		TriggerActivation("Fieryoven_grazzt",FALSE)
+		TriggerActivation("FieryOven05",FALSE)
+		TriggerActivation("FieryOven04",FALSE)
+		TriggerActivation("FieryOven03",FALSE)
+		TriggerActivation("FieryOven02",FALSE)
+		EraseJournalEntry(@400500)  // What's wrong with my spells? Some mage spells don't seem to be working properly in the Abyss. I'll have to find someone in Samora who is familiar with it.
+		SetGlobal("City_Angry","AC#W40",1)
+END
+
+IF
+	Global("City_Angry","AC#W40",1)
+	Global("SpawnDemons","AC#W40",0)
+	DifficultyGT(EASY)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnDemons","AC#W40",1)
+		CreateCreature("AC#WVROK",[2663.1661],NW)  // Vrock
+		CreateCreature("AC#WVROK",[1902.499],SWW)  // Vrock
+		CreateCreature("AC#WVROK",[1137.1042],NNE)  // Vrock
+		CreateCreature("AC#W40MN",[806.432],NWW)  // Mane
+		CreateCreature("AC#W40MN",[828.357],SWW)  // Mane
+		CreateCreature("AC#W40MN",[840.619],NW)  // Mane
+		CreateCreature("AC#W40MN",[2906.1182],SW)  // Mane
+END
+
+IF
+	Global("City_Angry","AC#W40",1)
+	Global("SpawnDemons","AC#W40",0)
+	DifficultyGT(EASIEST)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnDemons","AC#W40",1)
+		CreateCreature("AC#WVROK",[2663.1661],NW)  // Vrock
+		CreateCreature("AC#WVROK",[1137.1042],NNE)  // Vrock
+		CreateCreature("AC#W40MN",[806.432],NWW)  // Mane
+END
+
+IF
+	Global("SpawnDemons","AC#W40",1)
+	CombatCounterLT(50)
+THEN
+	RESPONSE #100
+		StartCombatCounter()
+END
+
+IF
+	Global("SpawnBlackguard","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("SpawnBlackguard","AC#W40",1)
+		CreateCreature("AC#WBLK2",[1903.433],SSE)  // Morloth Darkblade, Blackguard
+END
+
+IF
+	InMyArea(Player1)
+	Global("AC#W_Bebilith_quest","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Bebilith_quest","GLOBAL",2)
+		TriggerActivation("Info_traveloutside",FALSE)
+		TriggerActivation("TrAC#W50",TRUE)
+END
+
+//NEW: Margrog leaves either if the party entered the acid swamp OR the party just aquired the pentacle in the counting house (area AC#W44)
+IF
+	OR(2)
+		Global("AC#W_EnteredAcidSwamp","GLOBAL",1)
+		Global("AC#W_Pentacle_MargrogLeave","GLOBAL",1)
+	Global("Margrog_Leaves","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_EnteredAcidSwamp","GLOBAL",2)
+		SetGlobal("Margrog_Leaves","AC#W40",1)
+END
+
+IF
+	Global("Margrog_Leaves","AC#W40",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Margrog_Leaves","AC#W40",10)
+		CloseDoor("Door02")
+END
+
+IF
+	Global("Margrog_Leaves","AC#W40",10)
+THEN
+	RESPONSE #100
+		SetGlobal("Margrog_Leaves","AC#W40",11)
+		CreateCreature("AC#WALMG",[841.503],6)  // Lanzengarde
+END
+
+IF
+	Global("2ndMefisto","AC#W40",0)
+	PartyHasItem("AC#WDMBB")  // Daemeveras Säugling
+THEN
+	RESPONSE #100
+		SetGlobal("2ndMefisto","AC#W40",1)
+		CreateCreature("AC#W40M3",[888.1621],2)  // Mefisto
+END
+
+IF
+	Global("CreateTortured","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CreateTortured","AC#W40",1)
+		CreateCreatureImpassable("AC#W40TR",[2159.1238],1)  // Alistair
+END
+
+IF
+	Global("Fiendbook_sold","AC#W40",0)
+	PartyHasItem("AC#WBKFD")
+THEN
+	RESPONSE #100
+		SetGlobal("Fiendbook_sold","AC#W40",1)
+END
+
+IF
+	Global("Create_Zombiecrier","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Create_Zombiecrier","AC#W40",1)
+		CreateCreature("AC#W40ZM",[932.812],0)  // Zombie town crier
+END
+// NEW
+IF
+	//PartyHasItem("AC#WDVFT")  // Deva-Feder
+	GlobalGT("AC#W_Verin_dispute","GLOBAL",3)
+	Global("AC#W_Margrog_trouble","GLOBAL",0)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		Wait(1)
+		SetGlobal("AC#W_Margrog_trouble","GLOBAL",1)
+		CreateCreatureObjectOffset("AC#W4QU2",Player1,[10.10])  // Quasit
+END
+//OLD
+/*
+IF
+	GlobalGT("AC#W_Nabassu_quest","GLOBAL",0)
+	Global("AC#W_Margrog_trouble","GLOBAL",0)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Margrog_trouble","GLOBAL",1)
+		CreateCreatureObjectOffset("AC#W4QU2",Player1,[10.10])
+END
+*/
+
+IF
+	Global("AC#W_Samoras_Arena","GLOBAL",10)
+	Global("Audience_Maretta","AC#W40",0)
+	GlobalGT("AC#W_Margrog_Mefisto","GLOBAL",0)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("Audience_Maretta","AC#W40",2)
+		SetGlobal("AC#W_Margrog_Mefisto","GLOBAL",20)
+		EraseJournalEntry(@470500)
+		CreateCreatureObjectOffset("AC#WAL4A",Player1,[40.40])
+END
+
+IF
+	Global("Audience_Maretta","AC#W40",1)
+	GlobalLT("AC#W_Margrog_Mefisto","GLOBAL",20)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("Audience_Maretta","AC#W40",2)
+		SetGlobal("AC#W_Margrog_Mefisto","GLOBAL",20)
+		//CreateCreatureObjectOffset("AC#WAL4A",Player1,[40.40])
+		CreateCreature("AC#WAL4A",[628.806],10)
+		CreateCreature("AC#WAL4A",[1973.339],0)
+		CreateCreature("AC#WAL4A",[2599.1031],3)
+END
+
+IF
+	GlobalGT("AC#W_BaatezuJob","GLOBAL",0)
+	Global("AC#W_Ormad_Quest","GLOBAL",0)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Ormad_Quest","GLOBAL",1)
+		CreateCreature("AC#W4QU1",[1513.1604],6)  // Zeep
+END
+
+IF
+	Global("BloodWarJob","AC#W40",2)
+THEN
+	RESPONSE #100
+		SetGlobal("BloodWarJob","AC#W40",3)
+		AmbientActivate("Portal_ac#w61",TRUE)
+		SoundActivate("Portal_bloodwar",TRUE)
+		TriggerActivation("TrAC#W61",TRUE)
+END
+
+IF
+	Global("BloodWarJob","AC#W40",9)
+THEN
+	RESPONSE #100
+		SetGlobal("BloodWarJob","AC#W40",10)
+		AmbientActivate("Portal_ac#w61",FALSE)
+		SoundActivate("Portal_bloodwar",FALSE)
+		TriggerActivation("TrAC#W61",FALSE)
+END
+
+IF
+	Global("Audience_Maretta","AC#W40",4)
+THEN
+	RESPONSE #100
+		SetGlobal("Audience_Maretta","AC#W40",5)
+		Unlock("Door01")
+		OpenDoor("Door01")
+END
+
+IF
+	Global("Rose_Quest","AC#W40",2)
+THEN
+	RESPONSE #100
+		SetGlobal("Rose_Quest","AC#W40",3)
+		Unlock("Door01")
+		OpenDoor("Door01")
+END
+
+IF
+	Global("AC#W_Rose_Abyss","GLOBAL",10)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Rose_Abyss","GLOBAL",20)
+		CloseDoor("Door01")
+		Lock("Door01")
+END
+
+IF
+	Global("AC#W_Rose_Abyss","GLOBAL",2)
+	Global("Audience_Maretta","AC#W40",5)
+THEN
+	RESPONSE #100
+		SetGlobal("Audience_Maretta","AC#W40",10)
+		CloseDoor("Door01")
+		Lock("Door01")
+END
+
+IF
+	Global("EnterCountingHouse","AC#W40",2)
+THEN
+	RESPONSE #100
+		SetGlobal("EnterCountingHouse","AC#W40",10)
+		Unlock("Door01")
+		OpenDoor("Door01")
+END
+
+IF
+	PartyHasItem("AC#WPNTG")  // Pentakel
+	Global("DevaEncounter","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("DevaEncounter","AC#W40",1)
+		CreateCreature("AC#W40V1",[1750.2303],9)  // Vrock
+		CreateCreature("AC#W40V2",[1908.2280],9)  // Vrock
+		CreateCreature("AC#W40DV",[1829.2277],9)  // Deva
+		CreateCreature("AC#DRETP",[1962.2095],1)  // Dretch (watching)
+END
+
+IF
+	GlobalGT("AC#W_Bebilith_Help","GLOBAL",0)
+	GlobalLT("AC#W_Bebilith_Help","GLOBAL",10)
+	Dead("AC#W#BEB")
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Bebilith_Help","GLOBAL",10)
+		SetGlobal("Placed_Bebilith_Orb","AC#W40",10)
+END
+
+IF
+	Contains("AC#W51OR","Container_grazzt")  // Bebilith-Kugel
+	Global("Erase_Bebilith_Orb","AC#W40",0)
+	Dead("AC#W#BEB")
+THEN
+	RESPONSE #100
+		SetGlobal("Erase_Bebilith_Orb","AC#W40",1)
+		ActionOverride("Container_grazzt",DestroyItem("AC#W51OR"))
+END
+
+IF
+	!Contains("AC#W51OR","Container_grazzt")  // Bebilith-Kugel
+	Global("Placed_Bebilith_Orb","AC#W40",1)
+	Global("AC#W_Bebilith_Help","GLOBAL",2)
+THEN
+	RESPONSE #100
+		SetGlobal("Placed_Bebilith_Orb","AC#W40",0)
+		SetGlobal("AC#W_Bebilith_Help","GLOBAL",1)
+		EraseJournalEntry(@510001)
+		AddJournalEntry(@510000,QUEST)
+END
+
+IF
+	Contains("AC#W51OR","Container_grazzt")  // Bebilith-Kugel
+	Global("Placed_Bebilith_Orb","AC#W40",0)
+	Global("AC#W_Bebilith_Help","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Placed_Bebilith_Orb","AC#W40",1)
+		SetGlobal("AC#W_Bebilith_Help","GLOBAL",2)
+		CreateVisualEffectObject("SPFLESHS","Container_grazzt")
+		EraseJournalEntry(@510000)
+		AddJournalEntry(@510001,QUEST_DONE)
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("Placed_Bebilith_Orb","AC#W40",1)
+	!Dead("AC#W#BE3")
+	!Dead("AC#W#BEB")
+THEN
+	RESPONSE #100
+		SetGlobal("Placed_Bebilith_Orb","AC#W40",2)
+		CreateCreature("AC#W#BE2",[1815.1777],9)
+		//EraseJournalEntry()
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("AC#W_Annia_Staircase","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Annia_Staircase","GLOBAL",2)
+		CreateCreature("AC#W#AG2",[3286.795],3)
+		CreateCreature("AC#DRET4",[3308.619],5)
+		CreateCreature("AC#DRET4",[3272.788],10)
+END
+
+IF
+	GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+	Global("AC#W_Aphul_Samora","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Aphul_Samora","GLOBAL",2)
+		AmbientActivate("Portal_ac#w61",TRUE)
+		SoundActivate("Portal_bloodwar",TRUE)
+		CreateCreature("AC#W40A1",[1093.1561],8)
+		CreateCreature("AC#W40A2",[977.1623],5)
+		CreateCreature("AC#W40A2",[1173.1611],10)
+END
+
+IF
+	GlobalGT("AC#W_Ormad_Quest","GLOBAL",2)
+	Global("GlabrezuJournal","AC#W40",0)
+	Dead("AC#W40GB")
+	PartyHasItem("AC#WGBRI")
+THEN
+	RESPONSE #100
+		AddJournalEntry(@410103,QUEST)  
+		SetGlobal("GlabrezuJournal","AC#W40",1)
+END
+
+IF
+	GlobalGT("AC#W_OrmadGlabrezu","GLOBAL",1)
+	Global("RevealGlabrezuHideout","AC#W40",0)
+THEN
+	RESPONSE #100
+		AddMapNote([2995.1467],@4017)  
+		SetGlobal("RevealGlabrezuHideout","AC#W40",1)
+END
+
+IF
+	Global("AC#W_FoolsLaughter","GLOBAL",2)	
+	Global("RevealGrimsnagHideout","AC#W40",0)
+THEN
+	RESPONSE #100
+		AddMapNote([2714.1133],@4018)  
+		SetGlobal("RevealGrimsnagHideout","AC#W40",1)
+END
+
+IF
+	Global("MagefailEncounter","AC#W40",0)
+THEN
+	RESPONSE #100
+		SetGlobal("MagefailEncounter","AC#W40",1)
+		CreateCreature("AC#W40MG",[2027.1645],SW)  // Mage Zaldranis Quixtor
+		CreateCreature("AC#W40M1",[1942.1672],NE)  // Dretch
+		CreateCreature("AC#W40MD",[2046.1726],N)  // Dretch
+END
+
+IF
+	InParty("L#HPH")
+	Global("L#AC#HephernaanAndWaukeen","GLOBAL",0)
+	THEN
+	RESPONSE #100
+	StartCutSceneMode()
+	SmallWait(1)
+	MoveViewObject("L#HPH",INSTANT)
+	Wait(1)
+	DisplayStringHead("L#HPH",@8100) // ~Bringing me here is quite ridiculous. You should be happy I still have a few cards in my diabolical sleeve.~
+	Wait(4)
+	CreateVisualEffectObject("SPFLESHS","L#HPH")
+	Wait(2)
+	CreateVisualEffectObject("SPDHRMNY","L#HPH")
+	Wait(3)
+	CreateVisualEffectObject("SPCLOUD1","L#HPH")
+	Wait(3)
+	DisplayStringHead("L#HPH",@8101) // ~Now, that should prevent them from seeing who, or more importantly WHAT I am. Demons, devils... It won't matter. I choose to sit that one out.~
+	Wait(5)
+	DisplayStringHead("L#HPH",@8102) // ~But don't let us stay here for too long, Bhaalspawn. That would be quite unwise.~
+	Wait(4)
+	SetGlobal("L#AC#HephernaanAndWaukeen","GLOBAL",1)
+	EndCutSceneMode()
+	Continue()
+END
+
+IF
+	OR(2)
+		GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+		GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+	GlobalGT("City_Angry","AC#W40",0)
+	!GlobalTimerNotExpired("EnemySpawn","AC#W40")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("EnemySpawn","AC#W40",TEN_ROUNDS)
+		CreateCreatureObjectDoor("AC#WALU9",Player1,50,50,50)  // Alu-Fiend
+END
+
+
+

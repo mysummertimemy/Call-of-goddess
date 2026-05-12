@@ -1,0 +1,170 @@
+IF
+	Global("Prep","AC#W4C",0)
+THEN
+	RESPONSE #100
+		Unlock("DOOR01")
+		OpenDoor("DOOR01")
+		SetGlobal("Prep","AC#W4C",1)
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",1)
+	Global("Frostgiant","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Frostgiant","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#WGIFR",[495.561],12)  // Frostriese
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",2)
+	Global("Tanarukk","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Tanarukk","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CT1",[479.487],13)  // Tanarukk
+		CreateCreature("AC#W4CT2",[460.606],12)  // Tanarukk
+		CreateCreature("AC#W4CT3",[716.639],0)  // Tanarukk
+		CreateCreature("AC#W4CT4",[566.532],12)  // Tanarukk
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",3)
+	Global("Dretches","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Dretches","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CD1",[479.487],13)  // Dretch
+		CreateCreature("AC#W4CD2",[460.606],12)  // Dretch
+		CreateCreature("AC#W4CD3",[716.639],0)  // Dretch
+		CreateCreature("AC#W4CD4",[566.532],12)  // Dretch
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",4)
+	Global("Minotaurs","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Minotaurs","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CM1",[479.487],13)  // Minotaur
+		CreateCreature("AC#W4CM2",[460.606],12)  // Minotaur
+		CreateCreature("AC#W4CM3",[716.639],0)  // Minotaur
+		CreateCreature("AC#W4CM4",[566.532],12)  // Minotaur
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",5)
+	Global("Cambion","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Cambion","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CCB",[495.561],12)  // Cambion
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",6)
+	Global("barlgura","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("barlgura","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CB1",[479.487],13)  // Bar-Lgura
+		CreateCreature("AC#W4CB2",[460.606],12)  // Bar-Lgura
+		CreateCreature("AC#W4CB3",[716.639],0)  // Bar-Lgura
+		CreateCreature("AC#W4CB4",[566.532],12)  // Bar-Lgura
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",7)
+	Global("tieflings","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("tieflings","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CP1",[479.487],13)  // Tiefling
+		CreateCreature("AC#W4CP2",[460.606],12)  // Tiefling
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",8)
+	Global("Deathtyrant","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Deathtyrant","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CDT",[495.561],12)  // Death tyrant
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",9)
+	Global("Piscoloth","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Piscoloth","AC#W4C",1)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CPS",[495.561],12)  // Piscoloth
+END
+
+IF
+	Global("AC#W4C_Pit_fight","GLOBAL",10)
+	Global("Solar","AC#W4C",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Solar","AC#W4C",1)
+		//SetMusic(COMBAT_NORMAL,86)
+		CloseDoor("DOOR01")
+		Lock("DOOR01")
+		SetGlobal("LockDoor","AC#W4C",1)
+		CreateCreature("AC#W4CFS",[495.561],E)  // Bezmodan
+END
+
+IF
+	PartyHasItem("AC#W4CK1")  // Arena-Schl�sselteil
+	PartyHasItem("AC#W4CK2")  // Arena-Schl�sselteil
+	PartyHasItem("AC#W4CK3")  // Arena-Schl�sselteil
+	PartyHasItem("AC#W4CK4")  // Arena-Schl�sselteil
+THEN
+	RESPONSE #100
+		DisplayStringHead(Player1,@49000) 
+		TakePartyItem("AC#W4CK1")  // Arena-Schl�sselteil
+		TakePartyItem("AC#W4CK2")  // Arena-Schl�sselteil
+		TakePartyItem("AC#W4CK3")  // Arena-Schl�sselteil
+		TakePartyItem("AC#W4CK4")  // Arena-Schl�sselteil
+		GiveItemCreate("AC#W4CKY",Player1,0,0,0)  // Arena-Schl�ssel
+END
+
+IF
+	OpenState("DOOR01",TRUE)
+	Global("LockDoor","AC#W4C",1)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SetGlobal("LockDoor","AC#W4C",0)
+		ActionOverride(Player1,ReallyForceSpell(Myself,CLERIC_ZONE_OF_SWEET_AIR))  // SPPR318.SPL (Zone of Sweet Air)
+		CreateCreatureDoor("AC#W4CBB",[584.523],NNE)  // Referee
+		Wait(1)
+		ActionOverride("AC#W4CBB",StartDialogueNoSet([PC]))
+END

@@ -1,0 +1,95 @@
+IF
+	!See([ENEMY])
+	CombatCounter(0)
+	GlobalTimerExpired("KayurPrep","AC#W30")
+	Global("Prep","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Prep","LOCALS",1)
+		ReallyForceSpell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+		ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)  // SPWI212.SPL (Spiegelbild)
+END
+
+IF
+	HaveSpell(WIZARD_PROTECTION_FROM_NORMAL_MISSILES)  // SPWI311.SPL (Schutz vor normalen Geschossen)
+	See("AC#W20M1")  // Kayur
+	Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		Spell("AC#W20M1",WIZARD_PROTECTION_FROM_NORMAL_MISSILES)  // Kayur
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_GREATER_MALISON)  // SPWI412.SPL (Größeres Unbehagen)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_GREATER_MALISON)  // SPWI412.SPL (Größeres Unbehagen)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+	TookDamage()
+	CheckStatLT(Myself,1,STONESKINS)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_STONE_SKIN)  // SPWI408.SPL (Steinhaut)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MINOR_GLOBE_OF_INVULNERABILITY)  // SPWI406.SPL (Kleinere Kugel der Unverwundbarkeit)
+THEN
+	RESPONSE #100
+		Spell(Myself,WIZARD_MINOR_GLOBE_OF_INVULNERABILITY)  // SPWI406.SPL (Kleinere Kugel der Unverwundbarkeit)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_HORROR)  // SPWI205.SPL (Alp)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_HORROR)  // SPWI205.SPL (Alp)
+END
+
+IF
+	See([ENEMY.MONSTER])
+	!StateCheck(LastSeenBy(Myself),STATE_HASTED)
+	HaveSpell(WIZARD_HASTE)  // SPWI305.SPL (Hast)
+THEN
+	RESPONSE #100
+		Spell([ENEMY.MONSTER],WIZARD_HASTE)  // SPWI305.SPL (Hast)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Farbkugel)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CHROMATIC_ORB)  // SPWI118.SPL (Farbkugel)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_SKULL_TRAP)  // SPWI313.SPL (Schädelfalle)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_SKULL_TRAP)  // SPWI313.SPL (Schädelfalle)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_MONSTER_SUMMONING_1)  // SPWI309.SPL (Monster herbeirufen 1)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_MONSTER_SUMMONING_1)  // SPWI309.SPL (Monster herbeirufen 1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

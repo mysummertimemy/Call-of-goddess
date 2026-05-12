@@ -1,0 +1,93 @@
+IF
+	Die()
+THEN
+	RESPONSE #100
+		CreateVisualEffectObject("SPUNHOLY",Myself)
+		DestroySelf()
+END
+
+IF
+	See(NearestEnemyOfType([0.0.0.MAGE_ALL]))
+	Global("Whip","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Whip","LOCALS",1)
+		ReallyForceSpell(LastSeenBy(Myself),WIZARD_WARDING_WHIP)  // SPWI705.SPL (Khelben's Warding Whip)
+		DisplayStringHead(Myself,@1320)  // No good deed goes unpunished!
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HPPercentLT(Myself,50)
+	Global("Animate_Zombie","LOCALS",0)
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobal("Animate_Zombie","LOCALS",1)
+		ForceSpellRES("AC#W4CZ",LastSeenBy(Myself))  // Animate Dead
+		ReallyForceSpell("AC#WGIFR",RED_HOLY_MIGHT)  // Frost Giant
+		ActionOverride("AC#WGIFR",DestroySelf())
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	See([0.0.0.0.0.SUMMONED])
+	Global("Death_summoned","LOCALS",0)
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobal("Death_summoned","LOCALS",1)
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		Spell([0.0.0.0.0.SUMMONED],WIZARD_NPC_SYMBOL_DEATH)  // SPWI897.SPL (Symbol, Death)
+END
+
+IF
+	See([GOODCUTOFF.UNDEAD])
+	!Allegiance(LastSeenBy(Myself),CHARMED)
+	!ModalState(TURNUNDEAD)
+THEN
+	RESPONSE #100
+		Turn()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_NPC_SYMBOL_STUN)  // SPWI898.SPL (Symbol, Stun)
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		Spell(LastSeenBy(Myself),WIZARD_NPC_SYMBOL_STUN)  // SPWI898.SPL (Symbol, Stun)
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(WIZARD_CHAOS)  // SPWI508.SPL (Chaos)
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		Spell(NearestEnemyOf(Myself),WIZARD_CHAOS)  // SPWI508.SPL (Chaos)
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	HaveSpell(PAIN)  // SPWI955.SPL (Symbol, Pain)
+	!GlobalTimerNotExpired("MO_SpellCastTimer","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("MO_SpellCastTimer","LOCALS",ONE_ROUND)
+		Spell(LastSeenBy(Myself),PAIN)  // SPWI955.SPL (Symbol, Pain)
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),6)
+END
+

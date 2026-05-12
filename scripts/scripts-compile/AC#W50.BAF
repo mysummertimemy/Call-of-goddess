@@ -1,0 +1,56 @@
+IF
+	Global("EnteredArea","AC#W50",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EnteredArea","AC#W50",1)
+		AmbientActivate("Portal_bebilith",FALSE)
+		SoundActivate("Portalsound_bebilith",FALSE)
+		TriggerActivation("TrAC#W53",FALSE)
+END
+
+
+IF
+	GlobalGT("AC#W_Nabassu_quest","GLOBAL",0)
+	Global("RevealNabassuPortal","AC#W50",0)
+THEN
+	RESPONSE #100
+		AddMapNote([2188.1002],@50004)  
+		SetGlobal("RevealNabassuPortal","AC#W50",1)
+END
+
+IF
+	GlobalGT("AC#W_AcidSwampQuest","GLOBAL",0)
+	Global("RevealClyddisPortal","AC#W50",0)
+THEN
+	RESPONSE #100
+		AddMapNote([458.1054],@50005)  
+		SetGlobal("RevealClyddisPortal","AC#W50",1)
+END
+
+
+IF
+	PartyHasItem("AC#WDLAR")
+	Global("AC#W_Feyri_quest","GLOBAL",1)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_Feyri_quest","GLOBAL",2)
+		EraseJournalEntry(@460010)
+		AddJournalEntry(@460011,QUEST)
+END
+
+IF
+	Contains("AC#W50TH","Container_Bebilith")  // Dämonenhorn
+	Global("Opened_Bebilith_Portal","AC#W50",0)
+THEN
+	RESPONSE #100
+		SetGlobal("Opened_Bebilith_Portal","AC#W50",1)
+		CreateVisualEffectObject("ICMAGICH","Container_Bebilith")
+		ActionOverride("Container_Bebilith",DestroyItem("AC#W50TH"))  // Dämonenhorn
+		AmbientActivate("Portal_bebilith",TRUE)
+		SoundActivate("Portalsound_bebilith",TRUE)
+		TriggerActivation("TrAC#W53",TRUE)
+		TriggerActivation("Info_bebilith",FALSE)
+		EraseJournalEntry(@470041)
+		EraseJournalEntry(@470043)
+		AddJournalEntry(@470042,QUEST)
+END

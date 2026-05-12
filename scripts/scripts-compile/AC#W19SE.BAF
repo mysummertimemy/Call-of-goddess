@@ -1,0 +1,9 @@
+IF
+	NumTimesTalkedToGT(0)
+	Global("AC#W_SeluniteQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#W_SeluniteQuest","GLOBAL",1)
+		StartDialogueNoSet([PC])
+END
+

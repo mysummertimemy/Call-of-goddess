@@ -1,0 +1,60 @@
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,10)
+	!PartyHasItem("AC#WPNT2")  // Pentakel
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,FIRE)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,10)
+	Global("FirstFieryOven","AC#W40",0)
+	PartyHasItem("AC#WPNT2")  // Pentakel
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,FIRE)
+END
+
+IF
+	Clicked([ANYONE])
+	Range(LastTrigger,10)
+	PartyHasItem("AC#WPNT2")  // Pentakel
+	Global("FirstFieryOven","AC#W40",1)
+	Global("2ndFieryOven","AC#W40",0)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		StartCutSceneMode()
+		CreateVisualEffectObject("SPGFLSH1",LastTrigger)
+		CreateVisualEffectObject("SPGRWHRL",Player1)
+		CreateVisualEffectObject("SPGFLSH1",Player2)
+		CreateVisualEffectObject("SPGRWHRL",Player3)
+		CreateVisualEffectObject("SPGFLSH1",Player4)
+		CreateVisualEffectObject("SPGFLSH1",Player5)
+		CreateVisualEffectObject("SPGFLSH1",Player6)
+		PlaySound("EFF_M63")
+		Wait(1)
+		ActionOverride(Player1,JumpToPoint([2797.1594]))
+		ActionOverride(Player2,JumpToPoint([2749.1591]))
+		ActionOverride(Player3,JumpToPoint([2857.1545]))
+		ActionOverride(Player4,JumpToPoint([2736.1573]))
+		ActionOverride(Player5,JumpToPoint([2755.1603]))
+		ActionOverride(Player6,JumpToPoint([2824.1633]))
+		MoveViewPoint([2797.1594],INSTANT)
+		PlaySound("EFF_M63")
+		CreateVisualEffectObject("SPGRWHRL",Player1)
+		Wait(1)
+		SetGlobal("2ndFieryOven","AC#W40",1)
+		EndCutSceneMode()
+END
+
+IF
+	Clicked([ANYONE])
+	!Range(LastTrigger,10)
+THEN
+	RESPONSE #100
+		DisplayString(Myself,14702)  // Ihr seid zu weit entfernt, um das zu benutzen.
+END
+

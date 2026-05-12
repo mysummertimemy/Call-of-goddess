@@ -1,0 +1,7 @@
+IF
+	HasItem("AC#WSGAM",Myself)  // Soul token
+THEN
+	RESPONSE #100
+		DestroyItem("AC#WSGAM")  // Soul token
+END
+

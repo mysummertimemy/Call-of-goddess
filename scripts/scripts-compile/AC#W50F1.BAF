@@ -1,0 +1,53 @@
+IF
+	WalkedToTrigger([ANYONE])
+	!PartyHasItem("AC#WPNT2")  // Pentakel
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,FIRE)
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	PartyHasItem("AC#WPNT2")  // Pentakel
+	Global("AC#W_AcidSwampQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ApplyDamage(LastTrigger,20,FIRE)
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	!PartyHasItem("AC#WPNT2")  // Pentakel
+	GlobalGT("AC#W_AcidSwampQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+		DisplayStringNoName(Myself,@50003)  // Ohne das Pentakel in Eurem Inventar scheint der Feuerofen nicht aktiviert werden zu können.
+		ApplyDamage(LastTrigger,20,FIRE)
+END
+
+IF
+	WalkedToTrigger([ANYONE])
+	PartyHasItem("AC#WPNT2")  // Pentakel
+	GlobalGT("AC#W_AcidSwampQuest","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ClearAllActions()
+		SaveGame(0)
+		SmallWait(5)
+		StartCutSceneMode()
+		MoveViewObject(LastTrigger,INSTANT)
+		FadeToColor([30.0],0)
+		Wait(2)
+		ActionOverride(Player1,LeaveAreaLUAPanicEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player1,LeaveAreaLUAEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player2,LeaveAreaLUAEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player3,LeaveAreaLUAEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player4,LeaveAreaLUAEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player5,LeaveAreaLUAEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player6,LeaveAreaLUAEntry("AC#W54","Entry1",[0.0],0))
+		ActionOverride(Player1,Wait(2))
+		ActionOverride(Player1,MultiPlayerSync())
+		ActionOverride(Player1,FadeFromColor([30.0],0))
+		ActionOverride(Player1,EndCutSceneMode())
+END
+

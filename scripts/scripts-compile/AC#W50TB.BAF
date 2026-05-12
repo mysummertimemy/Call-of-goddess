@@ -1,0 +1,6 @@
+IF
+	Entered([PC])
+THEN
+	RESPONSE #100
+		CreateCreature("AC#W50BE",[3242.1569],0)  // Bebilith
+END

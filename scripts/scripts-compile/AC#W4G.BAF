@@ -1,0 +1,48 @@
+IF
+	Global("Create_Contract","AC#W4G",0)
+	!Dead("AC#W40GB")
+THEN
+	RESPONSE #100
+		ActionOverride("Container01",CreateItem("AC#W4GNT",0,0,0))  // Reingelegt!
+		SetGlobal("Create_Contract","AC#W4G",1)
+END
+
+IF
+	Global("Create_Contract","AC#W4G",0)
+	Dead("AC#W40GB")
+THEN
+	RESPONSE #100
+		ActionOverride("Container01",CreateItem("AC#WORM3",0,0,0))  // Belthazaar's soul contract
+		SetGlobal("Create_Contract","AC#W4G",1)
+END
+
+IF
+	PartyHasItem("AC#W4GNT")  // Reingelegt!
+	Global("AC#W_Belthazaar","GLOBAL",0)
+THEN
+	RESPONSE #100
+		CreateCreature("AC#W4GGB",[393.577],8)  // Belthazaar
+		SetGlobal("AC#W_Belthazaar","GLOBAL",1)
+END
+
+IF
+    GlobalGT("AC#W_Belthazaar","GLOBAL",0)
+    Global("SummonDemons","AC#W4G",0)
+    DifficultyGT(EASIEST)
+THEN
+    RESPONSE #100
+        CreateCreatureDoor("AC#BGUR2",[354.325],S)
+        CreateCreatureDoor("AC#BGUR2",[572.552],S)
+        SetGlobal("SummonDemons","AC#W4G",1)
+END
+
+IF
+	PartyHasItem("AC#WORM3") 
+	Global("Have_Contract","AC#W4G",0)
+THEN
+	RESPONSE #100
+		EraseJournalEntry(@410102)
+		AddJournalEntry(@410110,QUEST)
+		SetGlobal("Have_Contract","AC#W4G",1)
+END
+

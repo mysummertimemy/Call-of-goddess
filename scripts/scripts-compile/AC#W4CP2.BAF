@@ -1,0 +1,125 @@
+IF
+	HPPercentLT(Myself,50)
+	HasItem("POTN52",Myself)  // Konzentrierter Heiltrank
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,46150)  // trinkt einen Trank
+		UseItem("POTN52",Myself)  // Konzentrierter Heiltrank
+END
+
+IF
+	HPPercentLT(Myself,50)
+	HasItem("POTN08",Myself)  // Heiltrank
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,46150)  // trinkt einen Trank
+		UseItem("POTN08",Myself)  // Heiltrank
+END
+
+IF
+	HitBy([ANYONE],CRUSHING)
+	Global("GiantStrengthPotion","LOCALS",0)
+	HasItem("POTN05",Myself)  // Trank der Feuerriesenstärke
+THEN
+	RESPONSE #100
+		SetGlobal("GiantStrengthPotion","LOCALS",1)
+		DisplayStringHead(Myself,46150)  // trinkt einen Trank
+		UseItem("POTN05",Myself)  // Trank der Feuerriesenstärke
+END
+
+IF
+	HitBy([ANYONE],CRUSHING)
+	Global("GiantStrengthPotion","LOCALS",0)
+	HasItem("POTN07",Myself)  // Trank der Sturmriesenstärke
+THEN
+	RESPONSE #100
+		SetGlobal("GiantStrengthPotion","LOCALS",1)
+		DisplayStringHead(Myself,46150)  // trinkt einen Trank
+		UseItem("POTN07",Myself)  // Trank der Sturmriesenstärke
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Allegiance(Myself,ENEMY)
+	Global("HastePotion","LOCALS",0)
+	HasItem("POTN14",Myself)  // Schnelligkeitsöl
+THEN
+	RESPONSE #100
+		SetGlobal("HastePotion","LOCALS",1)
+		SetGlobalTimer("SawEnemy","LOCALS",3)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Allegiance(Myself,ENEMY)
+	Global("HastePotion","LOCALS",1)
+	GlobalTimerExpired("SawEnemy","LOCALS")
+	HasItem("POTN14",Myself)  // Schnelligkeitsöl
+THEN
+	RESPONSE #100
+		SetGlobal("HastePotion","LOCALS",2)
+		DisplayStringHead(Myself,46150)  // trinkt einen Trank
+		UseItem("POTN11",Myself)  // Trank der Unverwundbarkeit
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Allegiance(Myself,ENEMY)
+	HasItem("POTN10",Myself)  // Unsichtbarkeitstrank
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,46150)  // trinkt einen Trank
+		UseItem("POTN10",Myself)  // Unsichtbarkeitstrank
+END
+
+IF
+	Heard([ANYONE],154)
+THEN
+	RESPONSE #100
+		RunAwayFrom(NearestEnemyOf(Myself),45)
+END
+
+IF
+	Heard([ANYONE],154)
+THEN
+	RESPONSE #100
+		AttackReevaluate([PC.0.0.MAGE],45)
+END
+
+IF
+	Delay(15)
+	!StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		Hide()
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+		Continue()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+		RunAwayFrom(NearestEnemyOf(Myself),10)
+		Continue()
+END
+
+IF
+	See([0.WEAPON])
+THEN
+	RESPONSE #100
+		AttackReevaluate([0.WEAPON],30)
+		Continue()
+END
+

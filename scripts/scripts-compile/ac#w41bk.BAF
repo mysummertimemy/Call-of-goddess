@@ -1,0 +1,12 @@
+IF
+	See([PC])
+	Global("ShamurzAttacks","AC#W41",1)
+	Global("Meckerei","LOCALS",0)
+	CombatCounter(0)
+	Dead("ac#w41vr")  // Shamurz
+THEN
+	RESPONSE #100
+		SetGlobal("Meckerei","LOCALS",1)
+		StartDialogNoSet([PC])
+END
+

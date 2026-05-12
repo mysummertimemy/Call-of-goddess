@@ -1,0 +1,12 @@
+IF
+	OR(5)
+		GlobalGT("AC_Waukeen_Free","GLOBAL",0)
+		GlobalGT("AC#W_AttackedMaretta","GLOBAL",0)
+		See("AC#W30GA")  // Gauth
+		See("AC#W20M1")  // Kayur
+		Difficulty(EASIEST)
+THEN
+	RESPONSE #100
+		DestroySelf()
+END
+

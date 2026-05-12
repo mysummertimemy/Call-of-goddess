@@ -1,0 +1,36 @@
+IF
+	PartyHasItem("AC#WSTYX")  // Styx water
+	Global("AC#WMefisto_helps_Gildaar","GLOBAL",11)
+THEN
+	RESPONSE #100
+		SetGlobal("AC#WMefisto_helps_Gildaar","GLOBAL",12)
+		EraseJournalEntry(@110014)
+		AddJournalEntry(@110016,QUEST)
+END
+
+IF
+	Global("Gutslicers","AC#W4W",1)
+THEN
+	RESPONSE #100
+		SetGlobal("Gutslicers","AC#W4W",2)
+		CreateCreature("AC#W4WGF",[497.935],NNE)  // Grimwald Gorefist
+		CreateCreature("AC#W4WG2",[414.918],NNE) // fighter
+		CreateCreature("AC#W4WG3",[554.967],NNE) // Drow Mage
+		CreateCreature("AC#W4WG4",[490.955],NNE) // Derro
+END
+
+IF
+	Global("MalisonInfo","AC#W4W",0)
+THEN
+	RESPONSE #100
+		SetGlobal("MalisonInfo","AC#W4W",1)
+		DisplayString("TrAC#W40",@43003) 
+END
+
+IF
+	!GlobalTimerNotExpired("MalisonTimer","AC#W4W")  
+THEN
+	RESPONSE #100
+		ApplySpellRES("AC#W4WM",Player1)  // Greater Malison
+		SetGlobalTimer("MalisonTimer","AC#W4W",6)  
+END
