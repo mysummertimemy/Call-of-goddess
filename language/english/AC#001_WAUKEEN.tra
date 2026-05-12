@@ -1,0 +1,16 @@
+@0    = ~Well, unfortunately this is the only help I can offer you. And now let's get out of here.~
+@1    = ~Am I to be bound in a new prison, you abominations? Or have you come to...?~ [AC#WWAU5]
+@2    = ~Wait, I sense the flavor of Toril on you! You are no servants of Graz'zt! Did the visions I dispatched to the young priestess Halanna sway my steadfast servant Tharundar to bring you before me?~ [AC#WWAU6]
+@3    = ~We have come to free you. I am <CHARNAME>, and I was sent by Tharundar Olehm to rescue you.~
+@4    = ~I understand that you have many questions, <CHARNAME>, but we should get out of the Abyss first before we engage in conversation.~ [AC#WWAU0]
+@5    = ~You went all the way into the Abyss to save me? Then you must be truly powerful. Many times I have tried to escape from here, but every attempt has failed so far, for Graz'zt has robbed me of all my divine energy, and so I am little more than a mere puny mortal.~
+@6    = ~I thank you with all my heart for saving me, but I fear that only the first part of your mission was successful, for it will be much more difficult to leave this place together with me than to come in here alone. Graz'zt guards every exit out of his realm.~
+@7    = ~He guards many exits, but for one. I came here by the Infinite Staircase, and we'll leave safely by the same way.~
+@8    = ~The Infinite Staircase? I was not aware that it leads to this terrible place before now. I have a lot of questions, just as I'm sure you have a lot of questions, too, but I beg you to hurry and take me away from here, for my release has certainly not been unnoticed.~
+@9    = ~To be honest, I expected to be rewarded by you right here, you are the goddess of wealth after all.~
+@10   = ~Yes, let's get the hell out of here!~
+@11   = ~Some members of my party are injured and in desperate need of some rest. We must first recover to regain our strength and refresh our spells.~
+@12   = ~Except for the clothes I own, all my wealth and abilities have been taken from me. I can give you nothing except the promise to reward you richly at a later time.~
+@13   = ~Well, then let us go. I will take your word for it.~
+@14   = ~Even though we are all at the edge of our strength, we should not spend a moment longer here than necessary, <CHARNAME>, if we are to have any chance of escape. I will try to raise a tiny bit of the divine magic I retain to help you, but then we should get out of here as soon as possible.~
+@15   = ~I'll try to stay close behind you, but I'm afraid I won't be much help in the fight. Let's go.~ [AC#WWAU7]

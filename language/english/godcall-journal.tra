@@ -1,0 +1,463 @@
+// Journal Entries
+
+@100001 = ~The rescue of Waukeen
+
+I rescued Waukeen from the clutches of the demon lord Graz'zt and led her safely out of the Abyss. What more could anyone expect than to enjoy the favor of a goddess of wealth?~
+
+@100010 = ~The mission of the Church of Waukeen.
+
+I visited the Temple of Waukeen in the Government District and talked to the priest located there. While he was unable to give me any specifics on the assignment I was given, he asked me to visit the abbey of "Goldspires" north of Athkatla. There, the leader of the church, Tharundar Olehm, is supposed to tell me exactly what the mission is all about.~
+
+@100030 = ~Call of the Lost Goddess
+
+I have accepted a mission given by Tharundar Olehm, High Priest of Waukeen, to free the goddess Waukeen from the clutches of the demon lord Graz'zt in the Abyss. With the help of Kyriani, a priestess of Selûne, I will make my way along a temple in Waterdeep to a structure called the 'Infinite Staircase', which will take me through the entire Multiverse and down into the Abyss. Once there, I have to find out where Waukeen is being held in Samora, a demon city, and escort her safely from Graz'zt's prison back to the Infinite Staircase. Tharundar and Kyriani have advised me to prepare myself well for this quest. They are waiting for me on the second floor of the Abbey of the Goldspires until I am ready for the adventure.~
+
+@100031 = ~Call of the Lost Goddess
+
+Starting from the temple in Waterdeep, I have to find my way up the 'Infinite Staircase' to the platform that will lead me to Samora. There I have to meet a Nalfeshnee called Margrog, who is my contact in the demon city.~
+
+//thief quest, alt. title: Tainted Gold?
+@100200 = ~A thief in the Goldspires  
+
+I came across Maendir, a thief, outside Waukeen's temple. I've agreed to assist in his dubious plot to loot the abbey's treasury of some gold. My task is to pick the key to the safe, which the priestess Faerthae Garblueth is said to be carrying inside the temple. Once I have the key, I have to bring it to Maendir outside. He will then take care of everything else.~
+
+@100201 = ~A thief in the Goldspires
+
+I stole the key of the safe room from the Waukeen priestess. Now I have to bring it to the thief Maendir outside in the Abbey of Goldspires.~
+//@100202 = ~~
+@100203 = ~A thief in the Goldspires
+
+I brought the key to Maendir. He immediately disappeared with it, off to his 'task'. I'll meet him again in one day - hopefully.~
+
+@100204 = ~A thief in the Goldspires
+
+The theft at the Goldspires did not end up well. The thief has turned into a golden statue. Luckily I hadn't taken any of the gold myself!~
+
+@100210 = ~A thief in the Goldspires
+
+I reported the thief who tried to rob Waukeen's church to the guards. This should make the Goldspires a little safer.~
+
+@110000 = ~Foes of Waukeen's faith
+
+I encountered a weird man after visiting Waukeen's temple in Athkatla's Government District who attempted to stop me from helping the church. I don't know who he is or where he's from, but I should be cautious about my next steps, as it appears that the church doesn't only have friends in Athkatla.~
+
+// Goldspires - merchant thievery accusation
+@110001 = ~Foes of Waukeen's faith
+
+A merchant in Waukeen Abbey tried to accuse me of theft. He confessed to having been hired by the man who tried to dissuade me from my mission outside Waukeen's temple in the Government District.~
+
+// Infinite Staircase - Mages
+@110002 = ~Foes of Waukeen's faith
+
+On the Infinite Staircase, I encountered some mages who were apparently hired by the dark-clad man from Athkatla in order to stop me. Somehow this guy must have managed to follow my trail to the Infinite Staircase. I should proceed carefully.~
+
+@110003 = ~Foes of Waukeen's faith
+
+Gildaar seems to be on the verge of being able to tell Maretta about my plans. I should be prepared for a confrontation with the priest - if things go badly, right in Maretta's throne room. I should make sure that he doesn't reveal my goals, as this would turn the whole city against me. In this respect, I should think of a tactic to quickly eliminate or silence Gildaar.~
+/*
+// Samora - Solar??
+@110003 =
+*/
+@110010 = ~Foes of Waukeen's faith
+
+On the Infinite Staircase, I met the strange man who had approached me in Athkatla and tried to dissuade me from my plans to travel to the Abyss. He revealed himself to me as Gildaar, Priest of Cyric, and disappeared in the direction of Samora. I should look for him in the city of demons, for I suspect he will continue to try to stop my mission.~
+
+@110011 = ~Foes of Waukeen's faith
+
+The Cyric priest Gildaar tried to denounce me to the city's guard, the Lady's Lancers. Fortunately, the fiends didn't believe him. However, I must find a way to get rid of Gildaar as soon as possible, as it will only be a matter of time before he tells someone the real reason why I'm here.~
+
+@110012 = ~Foes of Waukeen's faith
+
+Margrog, the Nalfeshnee, has suggested talking to the town crier, Mefisto, about Gildaar. It sounds like a reckless endeavor, but it seems there is no other option.~
+
+@110013 = ~Foes of Waukeen's faith
+
+I have spoken with Mefisto. He wants me to bring him an infant, whose mother is a Succubus named Daemevera, before he helps me against Gildaar. Her house is in the west of the city, in the square where they are recruiting for the Bloodwar.~
+
+@110014 = ~Foes of Waukeen's faith
+
+Mefisto has proposed to use the waters of the Styx to steal Gildaar's memories. A Merrenoloth named Az'zelbath, who has been traveling the River Styx, is staying at the tavern "The Weeping Goddess" in the north of the city and may be able to provide us with a vial. I don't know how to use it, but it seems worth a try.~
+
+@110015 = ~Foes of Waukeen's faith
+
+Az'zelbath, the Merrenoloth, has given me a bottle of the Water of Styx. Now I have to wait until Gildaar comes across me to throw the liquid in his face so he forgets why he wanted to plot against me.~
+
+@110016 = ~Foes of Waukeen's faith
+
+I have a bottle of Styx water! Now I have to wait until I meet Gildaar to throw the liquid in his face so he forgets why he wanted to plot against me.~
+
+@110017 = ~Foes of Waukeen's faith
+
+Gildaar is dead. Perhaps I can find a clue to his employers on his body.~
+
+@110018 = ~Foes of Waukeen's faith
+
+I discovered a letter on Gildaar's corpse hinting at a traitor within the Abbey of the Goldspires. I need to inform Tharundar Olehm about this.~
+
+@110019 = ~Foes of Waukeen's faith
+
+I delivered the letter Gildaar carried to Tharundar Olehm, who intends to deal with the traitor. I'm to meet him on the second floor of the Goldspires for an update on his investigation.~
+
+@110020 = ~Foes of Waukeen's faith
+
+The traitor has been caught and brought to justice. This solves the mystery of the Cyric priest Gildaar who followed me to the Abyss.~
+
+@110021 = ~Foes of Waukeen's faith
+
+I have taken the infant from the succubus Daemevera. In order to help me get rid of Gildaar, I have to hand over the child to Mefisto.~
+
+// Quest for Riven, bard poet on the Infinite Staircase
+@190000 = ~Verses of the staircase
+
+The priestess Elandra Moonsong has asked me to keep an eye out for a bard named Riven Windwalker as I continue my journey, as he set out to explore the Infinite Staircase and has not returned. He also intended to write a poem about the Staircase. I am to escort him back to the base of the stairs safe and sound.~
+
+@190001 = ~Verses of the staircase
+
+The bard Riven Windwalker is dead. I found his poem by his corpse at an edge of the Infinite Staircase. I should take this poem back to Elandra Moonsong at the bottom of the stairs and tell her the sad news of his death.~
+
+@190002 = ~Verses of the staircase
+
+I took Riven Windwalker's poem back to Elandra Moonsong at the bottom of the stairs and told her that the bard is dead.~
+
+// Samora Journal entries
+@400000 = ~Call of the Lost Goddess
+
+I have arrived in the city of Samora in the Abyss. Now I have to search for a Nalfeshnee named Margrog. I hope this demon can help me in my search for Waukeen.~
+
+@400001 = ~Call of the Lost Goddess
+
+My first part of the journey is done. I have found Margrog and now have to use all due caution in Samora to determine where Waukeen is being held captive.~
+
+@400010 = ~The rescue of Waukeen
+
+I was given the pentacle that controls the function of the fiery ovens by Maretta. Now, if I manage to find out where Waukeen is located, I can free her.~
+
+@400011 = ~The rescue of Waukeen
+
+Maretta mentioned a traitor who was thrown into the "Acid Pools of Yemach". If there's anything left of him, I might get a clue on how to get into Waukeen's prison. I should discuss this with the Nalfeshnee Margrog in his dwelling just across the street from the Counting House.~
+
+@400012 = ~The rescue of Waukeen
+
+A former guard of Waukeen named Clyddis, a Vrock who has fallen from grace, knows how to get into Waukeen's prison using the portals of the fiery ovens in Samora. Currently, he himself is being held captive in a place they call the 'Acid Pools of Yemach', which I can reach through a fiery oven in the Soulfields. However, I will need an item to activate the fiery ovens.~
+
+@400013 = ~The rescue of Waukeen
+
+A former guard of Waukeen named Clyddis, a Vrock who has fallen from grace, knows how to get into Waukeen's prison via the portals of the fiery ovens. Margrog has discovered that he is currently being held in a place they call the "Acid Pools of Yemach", where he is being slowly tortured to death. With the help of the pentacle Maretta gave me, I can use the western fiery oven in the Soulfields to get to Clyddis' prison and interrogate him about Waukeen's whereabouts.~
+
+@400020 = ~The rescue of Waukeen
+
+Waukeen's former guard - Clyddis, the Vrock - explained to me the function of the green fiery ovens in Samora. In order to enter Waukeen's prison, one has to pass through the ovens in a very specific order, tracing the shape of an inverted pentagram. I have to start at the statue of Graz'zt, and if I jump through an oven I've just come through, I end up at another one. Clyddis had a drawing on his body showing the correct sequence of ovens. A drawing on the floor of the city can also show me the correct order.~
+
+@400021 = ~The rescue of Waukeen
+
+I passed through the last fiery oven in Samora and now seem to have finally arrived in the prison where Waukeen is being kept. One of the cells ahead of me should hold the goddess I'm tasked with freeing.~
+
+@400022 = ~The rescue of Waukeen
+
+I have freed Waukeen from her cell. Now I have to get out of Samora as quickly as possible and can only hope that there aren't too many fiends hot on my heels.~
+
+@400023 = ~The rescue of Waukeen
+
+I have passed the door in the Counting House and seem to have finally arrived at the prison where Waukeen is being held. I don't have much time left to free Waukeen, because the fight with Maretta has made everyone aware of my intrusion and it's only a matter of time before I'm overwhelmed by angry demons.~
+
+@400100 = ~The missing amulet
+
+Zzrakh, the Bebilith demon has given me the amulet, a pentacle, which Maretta wants back. Now I have to return it to Maretta in the Counting House.~
+@400120 = ~The missing amulet
+
+I have killed the Bebilith. Since the demon has eaten many of Maretta's servants, I should search his corpse to see if I can find the amulet that the Succubus Maretta is looking for.~
+@400121 = ~The missing amulet
+
+I found the amulet on the corpse of the Bebilith demon. Now I must return it to Maretta in the Counting House.~
+@400122 = ~The missing amulet
+
+I brought the amulet back to Maretta.~
+
+@400200 = ~The Deva feather
+
+Maretta wants a Deva feather for her painting. I hope I find a merchant in Samora's marketplace who sells this.~
+
+@400201 = ~The Deva feather
+
+I have received a Deva feather. Now I have to take it back to Maretta at the Counting House.~
+
+@400202 = ~The Deva feather
+
+I have handed over the Deva's feather to Maretta, as she desired.~
+
+// Verin
+@400300 = ~Verin
+
+I met a strange person in the Counting House - a creature called Verin. He seems to distrust me.~
+
+@400301 = ~Verin
+
+Verin has been the keeper of Waukeen's prison. With his death, one of the last hurdles to freeing the goddess should be removed.~
+
+// soul thief
+@400400 = ~The Nabassu soul thief
+
+A Nabassu demon named Trar'gezal is stealing souls. I am to use a fiery oven, which acts as a portal, to travel near his dwelling and hunt him down. The portal is located in the Soulfields south of Samora near the Tree of Cowards. Afterward, I must report back to Maretta at the Counting House. However, I no longer have to carry out this order, as I should continue to progress quickly with the rescue of Waukeen.~
+
+@400401 = ~The Nabassu soul thief
+
+The Nabassu Trar'gezal is dead. I should report my success to Maretta.~
+
+@400402 = ~The Nabassu soul thief
+
+I told Maretta about the dead Nabassu. She has no more use for me now. I should move on to the rescue of Waukeen as soon as possible.~
+
+// spell failure info
+@400500 = ~Magic in the Abyss
+
+Some mage spells don't seem to be working properly in the Abyss. I'll have to find someone in Samora who is familiar with it.~
+
+@400501 = ~Magic in the Abyss
+
+With the help of Spellkeys for mages and Powerkeys for clerics, I am able to cast spells in the Abyss without risking them failing. Warwick in the 'Sodden Solar' sells Spellkeys, a being called Malashrihi in a store in the city of Samora outside the 'Sodden Solar' sells Spellkeys and Powerkeys.~
+
+@400502 = ~Magic in the Abyss
+
+I witnessed a mage's spell being corrupted in the Abyss. The mage did not survive. I should be careful with my own spells so that the same doesn't occur to me.~
+
+// fool's laughter
+@400600 = ~The bottle containing a fool's laughter
+
+For his services, Mefisto demands that I provide him with the bottle containing a fool's laughter. The bottle appears to be in the possession of a Dretch, a lesser demon, who is hiding in an abandoned warehouse north of "Maretta's Beds" next to the tavern "Lord's Pawns" and just across the street from "Cursed Fortune."~
+
+@400601 = ~The bottle containing a fool's laughter
+
+I have taken the bottle. I have to take it to Mefisto at Graz'zt's statue in Samora and hope he keeps his end of the bargain.~
+
+// Ormad Sulpar
+@400900 = ~Ormad Sulpar
+
+I'm supposed to meet a mage named Ormad Sulpar at the tavern "The Sodden Solar" in Samora. According to his familiar, he is in distress and needs my help.~
+
+
+@410000 = ~The threefold bartered soul
+
+I met the human Ormad Sulpar in the Sodden Solar. He has promised his soul to three fiends at once - the Nighthag Zhelamiss in the west of the city, the Succubus Zaehvielle, who has her dwelling opposite the brothel "Maretta's Beds", and Belthazaar, the Glabrezu. He is standing at a soul booth in front of "Maretta's Beds". I agreed to get the three soul contracts from the three fiends and bring them to Ormad so that he could regain his soul.~
+
+@410001 = ~The threefold bartered soul
+
+I tricked Ormad Sulpar into using the Nighthag's pillow, which cost him his life. Now I can return to Zhelamiss, the Nighthag, and claim my reward.~
+
+@410002 = ~The threefold bartered soul
+
+I have received my reward from the Nighthag for the death of Ormad Sulpar.~
+
+@410005 = ~The threefold bartered soul
+
+I have agreed to present a dagger to Ormad Sulpar on behalf of the Glabrezu Belthazaar. If I manage to get Ormad to injure himself with this dagger, it will cost him his life and earn me a large reward.~
+
+@410006 = ~The threefold bartered soul
+
+I tricked Ormad Sulpar into using the Glabrezu's dagger, which cost him his life. Now I can return to Belthazaar, the Glabrezu, and claim my reward.~
+
+@410007 = ~The threefold bartered soul
+
+I have received my reward from the Glabrezu Belthazaar for the death of Ormad Sulpar.~
+
+@410010 = ~The threefold bartered soul
+
+I delivered all three contracts to Ormad Sulpar. He was grateful and left immediately. I hope he rethinks his actions and doesn't get into trouble again.~
+
+@410100 = ~Belthazaar's Soul Contract
+
+The Glabrezu Belthazaar won't hand me Ormad Sulpar's soul contract that easily. He gave me a riddle that I might not be able to solve on my own. I should ask Ormad Sulpar about this riddle in the Sodden Solar, after all, it's his soul I'm supposed to save.~
+
+@410101 = ~Belthazaar's Soul Contract
+
+Ormad Sulpar believes that the Glabrezu Belthazaar often visits a dilapidated warehouse in the east of the city. He also seems to have played with the bloody hands of his victims more often. Maybe I can find a means of getting into the Glabrezu's lair in said warehouse?~
+
+@410102 = ~Belthazaar's Soul Contract
+
+I was able to open a door in the warehouse and should check whether Belthazaar's soul contract is hidden inside.~
+
+@410103 = ~Belthazaar's Soul Contract
+
+I killed the Glabrezu Belthazaar and found a strange riddle on his corpse. Perhaps Ormad Sulpar knows what it's all about.~
+
+@410110 = ~Belthazaar's Soul Contract
+
+I have retrieved the soul contract of the Glabrezu Belthazaar. Now I just need to bring it to Ormad Sulpar at the Sodden Solar.~
+
+@410111 = ~Belthazaar's Soul Contract
+
+I have given the soul contract of the Glabrezu Belthazaar to Ormad Sulpar.~
+
+// Maretta Bebilith hunting quest journal entries
+//(A demon among demons)
+@440000 = ~The Bebilith Demon Hunter 
+
+In the districts outside the city, a Tanar'ri hunting spider demon, a so-called Bebilith, is up to mischief. The Succubus Maretta, mistress of Samora, has commissioned me to hunt it down to make the area safe for her Tanar'ri again. Once I've taken care of the Bebilith, I'm to report back to her at the Counting House in northwest Samora.~
+
+@440010 = ~Recreation in Samora 
+
+The Succubus Maretta has granted me permission to spend the night in her brothel "Maretta's Beds" in the center of Samora free of charge from now on.~
+
+@440070 = ~The Rose of the Abyss 
+
+To prove my loyalty, Maretta asks me for a flower called the "Rose of the Abyss". It grows in the "Chamber of Temptations", an area below Samora. The entrance to this chamber is right next to the tavern "The Weeping Goddess" in the north of the city.~
+
+@440071 = ~The Rose of the Abyss 
+
+I have recovered the rose and must now take it back to Maretta in the Counting House.~
+
+@460010 = ~The House Insignia of the Fey'ri 
+
+I met Val'kreen, a Fey'ri, at the tavern 'The Weeping Goddess' in Samora. He tasked me with returning his stolen House Insignia from a Maurezhi said to be prowling the Soulfields just outside Samora. Although Val'kreen is arrogant, I have agreed to accept this assignment.~
+
+@460011 = ~The House Insignia of the Fey'ri 
+
+I have found the Fey'ri's House Insignia. Now I must return it to Val'kreen, the Fey'ri, at the Weeping Goddess Tavern in Samora.~
+
+@460012 = ~The House Insignia of the Fey'ri 
+
+I have successfully returned Val'kreen's stolen House Insignia and received the reward. Val'kreen showed little gratitude and let his arrogance show through, but I have learned that this place in the world is not about gratitude.~
+
+// Nalfeshnee quest journal entries
+@470000 = ~A Larva for Margrog
+
+I have met the Nalfeshnee Margrog in Samora. Before he tells me anything about Waukeen's whereabouts, he told me to fetch him a Larva from the Nighthag Zhelamiss, whose house is opposite Margrog's.~
+
+@470001 = ~A Larva for Margrog
+
+The Nighthag demands 1000 gold pieces for a Larva.~
+
+@470002 = ~A Larva for Margrog
+
+I have acquired a pawn ticket from the Nighthag Zhelamiss, with which I may obtain a Larva from her servant Saarixal, who is waiting at the exit of her lair next to the Larvae.~
+@470003 = ~A Larva for Margrog
+
+The Larva is in my possession. I should take the creature back to Margrog at his house in western Samora to learn where I can find Waukeen.~
+@470004 = ~A Larva for Margrog
+
+I have brought Margrog the Larva.~
+@470010 = ~Another errand for Margrog
+
+Margrog still won't tell me anything about Waukeen's whereabouts. He wants me to take a small vessel to a being called "Aphul", who is waiting on the Infinite Staircase near the platform that leads to Samora.~
+@470011 = ~Another errand for Margrog
+
+I delivered the vessel to the Abishai Aphul, a Baatezu, on the Infinite Staircase. Now I should return to Margrog and finally insist on telling me where Waukeen is.~
+
+@470020 = ~Mercenary of the Bloodwar
+
+Maretta has asked me to enlist as a mercenary in the Bloodwar. I am to find a babau named Garnuth in the city's southwest next to a large banner which is the Bloodwar recruiter in the city.~
+@470021 = ~ Mercenary of the Bloodwar
+
+I've enlisted for the Bloodwar through the Babau Garnuth. As soon as I'm ready, he'll open a portal and I'll be able to join the battle.~
+@470022 = ~ Mercenary of the Bloodwar
+
+I need to traverse a portal in Samora to reach a Tanar'ri outpost. My mission is to sever the head of a Baatezu commander and present it as a trophy to the Babau Garnuth in Samora. This might earn me greater trust from Maretta and bring me one step closer to Waukeen's location.~
+@470023 = ~ Mercenary of the Bloodwar
+
+I have taken the Baatezu commander's head! Now I have to return to Samora through the portal to inform Babau Garnuth of my trophy.~
+
+@470030 = ~A meeting with Maretta
+
+I should offer Maretta the Baatezu General's head as a token of my victory.~
+
+@470040 = ~The missing amulet
+
+Maretta sent me to search the regions south of Samora, which she calls the Soulfields, for a horde of Tanar'ri who were in her service and are now missing. Apparently something is hunting demons. Whether that's good or bad news, I'll have to find out on my own. In any case, I'm supposed to leave the city to the south and recover an amulet that one of their officers was carrying - a pentagram-shaped pendant.~
+
+@470041 = ~The missing amulet
+
+There is a portal in the east of the 'Soulfields' from which a spider-like beast hunts Tanar'ri. If I place the horn of a Tanar'ri in front of a small cave, the portal may be activated and I can discover whatever lurks behind it. Let's hope the beast has more of an appetite for demons than for a <PRO_RACE>.~
+
+@470042 = ~The missing amulet
+
+I have opened the portal through which the demon hunter passed. Now I can step through and discover what the creature is all about. My mission is to recover an amulet that one of the lost Tanar'ri was carrying. The pendant is in the shape of a pentagram.~
+
+@470043 = ~The missing amulet
+
+In the 'Soulfields', there is said to be a portal in a small cave in the east of the area, from which a spider-like beast hunts Tanar'ri. If I place an element of a greater Tanar'ri there, the portal should activate. At least that's what an entity that calls itself the 'Tree of Cowards' claims. It offered to give me a piece of a Tanar'ri if I would free it from its everlasting fear for a short time.~
+
+@470100 = ~Margrog sends for me
+
+The Nalfeshnee Margrog has summoned me to his house. It seems to be urgent.~
+
+@470500 = ~A meeting with Maretta
+
+I must either become champion of Samora's arena in "Cursed Fortune" or get the town crier Mefisto to speak so convincingly about my story that the mistress of Samora will take notice of me and grant me an audience. Since the path to Waukeen is controlled by Maretta, I must carefully gain her trust until I have an opportunity to enter the goddess's dungeon.~
+
+@470501 = ~A meeting with Maretta
+
+Mefisto kept his end of the bargain, and I was indeed summoned to Maretta in the Counting House in western Samora.~
+
+@470502 = ~A meeting with Maretta
+
+As Champion of the Arena of Samora, I was summoned to the Lady of the City, the Succubus Maretta, in the Counting House in western Samora.~
+
+@470503 = ~A meeting with Maretta
+
+As a champion, chances are good that I will soon be summoned to the Counting House.~
+
+@470601 = ~Margrog, the Nalfeshnee
+
+Margrog and his bizarre house have fled the scene, apparently leaving Samora in a hurry. I hope nobody suspects anything.~
+
+@470700 = ~A soul for the goddess
+
+Tharundar Olehm, the priest of Waukeen, has promised the Nalfeshnee Margrog nothing less than his own soul as a reward for helping to rescue Waukeen. There may be a way to prevent this pact. However, it might be difficult as long as Margrog is in town.~
+
+@470701 = ~A soul for the goddess
+
+Now that Margrog has left town, I may have an opportunity to eliminate him to prevent the pact he made with Waukeen's priest, Tharundar Olehm. Who might know where the Nalfeshnee has gone?~
+
+@470702 = ~A soul for the goddess
+
+To track down Margrog, I need a creature that is used to hunt down demons. If I know how to find a creature like a Bebilith, I could set it on the Nalfeshnee to undo the soul contract he made with Waukeen's priest, Tharundar Olehm.~
+
+@470703 = ~A soul for the goddess
+
+I set Zzrakh, the Bebilith, to hunt Margrog, who immediately took up the chase with enthusiasm. I'm to wait in the Bebilith's cave until he returns with Margrog in his wake.~
+
+@470704 = ~A soul for the goddess
+
+With the help of Zzrakh, the Bebilith, I defeated Margrog, the Nalfeshnee. Tharundar Olehm, the High Priest of Waukeen, will be grateful to keep his soul.~
+
+// Annia Graystockings
+@500000 = ~Annia Greystockings
+
+I met a paladin in the vastness of the Abyss. She was grateful that I showed her the way to the Infinite Staircase.~
+// Bebilith teleport quest journal entries
+@510000 = ~The Bebilith Demon Hunter
+
+I found the Bebilith. Instead of fighting it, however, I agreed to help it enter Samora. I am to place a magical orb at the base of Graz'zt's statue by the entrance of Samora, which will allow him to teleport into the city. This could still be useful if the townspeople are no longer well-disposed towards me - especially if I have to leave the city after the rescue of Waukeen.~
+@510001 = ~The Bebilith Demon Hunter
+
+I have placed the orb at the statue of Graz'zt. Now I just have to hope that Zzrakh, the Bebilith sticks to the deal and doesn't strike until I've freed Waukeen.~
+@510002 = ~The Bebilith Demon Hunter
+
+I've changed my mind and killed the Bebilith after all. This eliminates the task of granting him access to the city.~
+
+@540000 = ~Prisoner and guard all in one
+
+The entrance to Waukeen's former guard, the Vrock Clyddis, is guarded by the dragon Daugralluvidan, who claims to be from the plane of Carceri. He doesn't seem to be in this place of his own free will. I have promised to look for the spell 'Freedom' - either as a spell or a scroll - and thereby grant the Tarterian dragon his freedom. This would allow me to visit Clyddis without having to fight the dragon.~
+
+@540004 = ~Prisoner and guard all in one
+
+I have decided to kill the Tartarian dragon Daugralluvidan instead of freeing him.~
+
+@540005 = ~Prisoner and guard all in one
+
+I have granted freedom to the Tartarian dragon Daugralluvidan. I hope he makes good use of it.~
+
+@600000 = ~Devil allies
+
+A band of Abishai intends to infiltrate the demon city of Samora with my assistance. I am tasked with delivering a portal key to their leader, Aphul, so he can control the Tanar'ri outpost's portal back into the city.~
+
+@600001 = ~Devil allies
+
+I have delivered the portal key to the Abishai and hope that their assault on the city will be to my advantage in my eventual escape.~
+
+@800010 = ~The spark of a Deva
+
+A captured Deva within Graz'zt's prison has beseeched me to retrieve his spark. He suspects it may be hidden somewhere within this dungeon.~
+
+@800011 = ~The spark of a Deva
+
+I have returned the Deva's spark to him.~
